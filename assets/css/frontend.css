@@ -1,0 +1,110 @@
+.elementor-counter {
+	 text-align: center;
+}
+ .elementor-counter--icon-position-left .elementor-counter {
+	 display: flex;
+	 text-align: left;
+}
+ .elementor-counter--icon-position-left .elementor-counter__icon-wrap {
+	 margin-right: 16px;
+	 margin-bottom: 0 !important;
+}
+ .elementor-counter--icon-position-right .elementor-counter {
+	 display: flex;
+	 flex-direction: row-reverse;
+	 text-align: right;
+}
+ .elementor-counter--icon-position-right .elementor-counter__icon-wrap {
+	 margin-left: 16px;
+	 margin-bottom: 0 !important;
+}
+ .elementor-counter--vertical-align-top .elementor-counter {
+	 align-items: flex-start;
+}
+ .elementor-counter--vertical-align-middle .elementor-counter {
+	 align-items: center;
+}
+ .elementor-counter--vertical-align-bottom .elementor-counter {
+	 align-items: flex-end;
+}
+ .elementor-counter--icon-view-stacked .elementor-counter__icon, .elementor-counter--icon-view-framed .elementor-counter__icon {
+	 display: inline-flex;
+	 width: 100px;
+	 height: 100px;
+	 align-items: center;
+	 justify-content: center;
+}
+ .elementor-counter--icon-view-stacked .elementor-counter__icon {
+	 background: #d2440f;
+}
+ .elementor-counter--icon-view-stacked .elementor-counter__icon i {
+	 font-size: 16px;
+	 color: #fff;
+}
+ .elementor-counter--icon-view-stacked .elementor-counter__icon svg {
+	 width: 16px;
+	 height: auto;
+	 fill: #fff;
+}
+ .elementor-counter--icon-view-framed .elementor-counter__icon {
+	 background: #fff;
+	 border: 2px solid #d2440f;
+}
+ .elementor-counter--icon-view-framed .elementor-counter__icon i {
+	 font-size: 16px;
+	 color: #d2440f;
+}
+ .elementor-counter--icon-view-framed .elementor-counter__icon svg {
+	 width: 16px;
+	 height: auto;
+	 fill: #d2440f;
+}
+ .elementor-counter--icon-shape-circle .elementor-counter__icon {
+	 border-radius: 50%;
+}
+ .elementor-counter--icon-shape-square .elementor-counter__icon {
+	 border-radius: 0;
+}
+ .elementor-counter__icon-wrap {
+	 line-height: 1;
+	 margin-bottom: 16px;
+}
+ .elementor-counter__icon {
+	 display: inline-block;
+	 -webkit-transition: all 0.3s;
+	 transition: all 0.3s;
+}
+ .elementor-counter__icon i {
+	 font-size: 50px;
+	 color: #d2440f;
+	 margin-top: -2px;
+	 -webkit-transition: all 0.3s;
+	 transition: all 0.3s;
+}
+ .elementor-counter__icon svg {
+	 width: 50px;
+	 height: auto;
+	 fill: #d2440f;
+	 margin-top: -2px;
+	 -webkit-transition: all 0.3s;
+	 transition: all 0.3s;
+}
+ .elementor-counter__number-wrap {
+	 display: inline-flex;
+	 font-size: 60px;
+	 font-weight: 600;
+	 line-height: 100%;
+	 color: #d2440f;
+}
+ .elementor-counter__number-prefix {
+	 margin-right: 4px;
+}
+ .elementor-counter__number-suffix {
+	 margin-left: 4px;
+}
+ .elementor-counter__title {
+	 font-size: 18px;
+	 font-weight: 400;
+	 margin: 0;
+}
+ 
