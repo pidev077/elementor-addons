@@ -73,6 +73,7 @@
 	 display: inline-block;
 	 -webkit-transition: all 0.3s;
 	 transition: all 0.3s;
+	 animation: 1.3s ease-in-out both fade-up;
 }
  .elementor-counter__icon i {
 	 font-size: 50px;
@@ -107,4 +108,162 @@
 	 font-weight: 400;
 	 margin: 0;
 }
- 
+.elementor-counter__title a{
+	font-size:inherit;
+	font-weight: inherit;
+	margin: inherit;
+	color: inherit;
+}
+@keyframes fade-up {
+	0% {
+		opacity: 0.2;
+		transform: translateY(40px);
+ }
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+ }
+}
+/*be post*/
+.elementor-posts--default .elementor-post {
+	 background: #f9f7f5;
+	 overflow: hidden;
+	 -webkit-transition: all 0.3s;
+	 transition: all 0.3s;
+	 position: relative;
+	 margin-bottom: 30px;
+	 box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
+}
+.elementor-posts--default .elementor-post:nth-child(1n+0) {
+  background: #0a334d;
+}
+.elementor-posts--default .elementor-post:nth-child(2n+0) {
+  background: #2a8164;
+}
+.elementor-posts--default .elementor-post:nth-child(3n+0) {
+  background: #2f2f39;
+}
+ .elementor-posts--default .elementor-post__thumbnail {
+	 position: relative;
+	 padding-bottom: 66%;
+	 background: #e7e6e4;
+	 overflow: hidden;
+}
+ .elementor-posts--default .elementor-post__thumbnail img {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 object-fit: cover;
+	 -webkit-transition: all 0.3s;
+	 transition: all 0.3s;
+}
+ .elementor-posts--default .elementor-post__content {
+	 padding: 21px 20px;
+	 padding-bottom: 40px;
+	 color: #fff;
+}
+ .elementor-posts--default .elementor-post__comment-count {
+	 position: absolute;
+	 bottom: 16px;
+	 right: 16px;
+	 width: 24px;
+	 height: 24px;
+	 font-size: 12px;
+	 font-weight: 500;
+	 line-height: 24px;
+	 text-align: center;
+	 color: #fff;
+	 z-index: 3;
+	 border-radius: 2px;
+	 transition: all 0.3s;
+}
+ .elementor-posts--default .elementor-post__comment-count svg {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 fill: #333;
+	 z-index: -1;
+}
+ .elementor-posts--default .elementor-post__comment-count:hover {
+	 color: #fff;
+}
+ .elementor-posts--default .elementor-post__comment-count:hover svg {
+	 fill: #d2440f;
+}
+ .elementor-posts--default .elementor-post__cat-links {
+	 font-weight: 500;
+	 font-size: 13px;
+	 line-height: 100%;
+	 margin-bottom: 10px;
+}
+ .elementor-posts--default .elementor-post__cat-links a {
+	 color: #fff;
+	 text-decoration: none;
+	 text-transform: uppercase;
+}
+ .elementor-posts--default .elementor-post__cat-links a:hover {
+	 color: #d2440f;
+}
+ .elementor-posts--default .elementor-post__title {
+	 font-weight: 700;
+	 font-size: 22px;
+	 line-height: 26px;
+	 margin-bottom: 25px;
+	 letter-spacing: -0.5px;
+	 max-width: 200px;
+}
+ .elementor-posts--default .elementor-post__title a {
+	 color: inherit;
+}
+ .elementor-posts--default .elementor-post__title a:hover {
+	 color: #fff;
+}
+ .elementor-posts--default .elementor-post__meta {
+	 list-style: none;
+	 margin: 0 0 16px;
+	 padding: 0;
+}
+ .elementor-posts--default .elementor-post__meta li {
+	 display: inline-block;
+	 font-weight: 300;
+	 font-size: 14px;
+	 line-height: 16px;
+}
+ .elementor-posts--default .elementor-post__meta li:not(:last-child):after {
+	 content: "";
+	 display: inline-block;
+	 vertical-align: middle;
+	 width: 4px;
+	 height: 4px;
+	 background: #fff;
+	 border-radius: 4px;
+	 margin: 0 8px;
+}
+ .elementor-posts--default .elementor-post__meta li a {
+	 color: inherit;
+}
+ .elementor-posts--default .elementor-post__meta li a:hover {
+	 color: #fff;
+}
+ .elementor-posts--default .elementor-post__excerpt {
+	 margin-bottom: 24px;
+}
+ .elementor-posts--default .elementor-post__excerpt > p {
+	 margin: 0;
+	 font-size: 15px;
+}
+ .elementor-posts--default .elementor-post__read-more {
+	 display: inline-block;
+	 font-weight: 700;
+	 font-size: 13px;
+	 line-height: 100%;
+	 color: #fff;
+	 text-decoration:underline;
+	 position: absolute;
+	 bottom: 21px;
+}
+ .elementor-posts--default .elementor-post__read-more:hover {
+	 color: #d2440f;
+}

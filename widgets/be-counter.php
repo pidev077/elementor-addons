@@ -14,7 +14,7 @@ class Be_Counter extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Counter', 'bearsthemes-addons' );
+		return __( 'Data story', 'bearsthemes-addons' );
 	}
 
 	public function get_icon() {
@@ -26,7 +26,8 @@ class Be_Counter extends Widget_Base {
 	}
 
   public function get_script_depends() {
-		return [ 'elementor-addons' ];
+		//return [ 'elementor-addons' ];
+		return [ 'elementor-waypoints', 'jquery-numerator', 'elementor-addons' ];
 	}
 
   public function get_style_depends() {
@@ -228,6 +229,17 @@ class Be_Counter extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => __( 'This is the heading​', 'bearsthemes-addons' ),
+				'condition' => [
+					'show_title!' => '',
+				],
+			]
+		);
+		$this->add_control(
+			'link_url', [
+				'label' => __( 'Link', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => '#',
 				'condition' => [
 					'show_title!' => '',
 				],
@@ -690,7 +702,7 @@ class Be_Counter extends Widget_Base {
 
 				<?php if ( '' !== $settings['show_title'] ) { ?>
 					<h3 class="elementor-counter__title">
-						<?php echo $settings['title']; ?>
+						<a href="<?php echo $settings['link_url']; ?>"><?php echo $settings['title']; ?></a>
 					</h3>
 				<?php	} ?>
 			</div>

@@ -124,7 +124,7 @@ class Plugin {
 	 */
 	private function include_widgets_files() {
 		require_once( __DIR__ . '/widgets/be-counter.php' );
-
+		require_once( __DIR__ . '/widgets/be-post.php' );
 	}
 
 	/**
@@ -159,6 +159,7 @@ public function add_category( $elements_manager ) {
 
 		// Register Widgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Counter() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Posts() );
 	}
 
 	/**
