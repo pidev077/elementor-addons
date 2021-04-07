@@ -50,6 +50,7 @@ class Plugin {
 	 */
 	public function widget_styles() {
 		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
+		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) );
 
 	}
 
@@ -125,6 +126,8 @@ class Plugin {
 	private function include_widgets_files() {
 		require_once( __DIR__ . '/widgets/be-counter.php' );
 		require_once( __DIR__ . '/widgets/be-post.php' );
+		require_once( __DIR__ . '/widgets/subhead-bodycopy.php' );
+		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
 	}
 
 	/**
@@ -160,6 +163,8 @@ public function add_category( $elements_manager ) {
 		// Register Widgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Counter() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Posts() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Subhead_Bodycopy() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
 	}
 
 	/**
