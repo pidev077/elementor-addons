@@ -65,7 +65,7 @@ class Subhead_Bodycopy extends Widget_Base {
                         'h5' => __( 'H5', 'bearsthemes-addons' ),
                         'h6' => __( 'H6', 'bearsthemes-addons' ),
                     ],
-                    'default' => 'h1',
+                    'default' => 'h2',
                 ]
             );
 
@@ -110,16 +110,17 @@ class Subhead_Bodycopy extends Widget_Base {
                     ]
             );
 
+
             $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'name' => 'heading_typography',
-                    'default' => '',
-                    'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .heading',
-    				],
-                ]
-            );
+    			Group_Control_Typography::get_type(),
+    			[
+    				'name' => 'heading_typography',
+    				'default' => '',
+    				'selector' => '{{WRAPPER}} .subhead-bodycopy-elements .heading',
+    			]
+    		);
+
+
 
             $this->add_control(
     			'heading_color',
@@ -189,16 +190,16 @@ class Subhead_Bodycopy extends Widget_Base {
                     ]
             );
 
+            
+
             $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'name' => 'content_typography',
-                    'default' => '',
-                    'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .content',
-    				],
-                ]
-            );
+    			Group_Control_Typography::get_type(),
+    			[
+    				'name' => 'content_typography',
+    				'default' => '',
+    				'selector' => '{{WRAPPER}} .subhead-bodycopy-elements .content',
+    			]
+    		);
 
             $this->add_control(
                 'content_color',

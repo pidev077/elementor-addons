@@ -243,16 +243,15 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     ]
             );
 
+
             $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'name' => 'heading_typography',
-                    'default' => '',
-                    'selectors' => [
-    					'{{WRAPPER}} .heading-media-bodycopy-elements .heading',
-    				],
-                ]
-            );
+    			Group_Control_Typography::get_type(),
+    			[
+    				'name' => 'heading_typography',
+    				'default' => '',
+    				'selector' => '{{WRAPPER}} .heading-media-bodycopy-elements .heading',
+    			]
+    		);
 
             $this->add_control(
     			'heading_color',

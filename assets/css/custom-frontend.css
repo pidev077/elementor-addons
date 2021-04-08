@@ -23,13 +23,20 @@
     line-height: 26px;
     font-weight: 700;
 }
-
+.subhead-bodycopy-elements .heading{
+    max-width: 60%;
+}
+@media only screen and (max-width: 1199px){
+    .subhead-bodycopy-elements .heading{
+        max-width: 100%;
+    }
+}
 /* heading media bodycopy elements */
 .heading-media-bodycopy-elements{
     overflow: hidden;
     display: inline-block;
 }
-.heading-media-bodycopy-elements .thumbnail, .heading-media-bodycopy-elements .heading, .subhead-bodycopy-elements .content{
+.heading-media-bodycopy-elements .thumbnail, .heading-media-bodycopy-elements .heading, .heading-media-bodycopy-elements .content{
     width: 100%;
     display: inline-block;
     margin: 0;
