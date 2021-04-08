@@ -249,7 +249,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'name' => 'heading_typography',
                     'default' => '',
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .heading',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .heading',
     				],
                 ]
             );
@@ -261,7 +261,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
     				'type' => Controls_Manager::COLOR,
                     'default' => '#4a4a4a',
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .heading' => 'color: {{VALUE}};',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .heading' => 'color: {{VALUE}};',
     				],
     			]
     		);
@@ -286,7 +286,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .heading' => 'text-align: {{VALUE}};',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .heading' => 'text-align: {{VALUE}};',
     				],
                 ]
             );
@@ -306,7 +306,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .subhead-bodycopy-elements .heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .heading-media-bodycopy-elements .heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -328,7 +328,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'name' => 'content_typography',
                     'default' => '',
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .content',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .content',
     				],
                 ]
             );
@@ -340,7 +340,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'default' => '#4a4a4a',
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .content' => 'color: {{VALUE}};',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .content' => 'color: {{VALUE}};',
     				],
                 ]
             );
@@ -365,7 +365,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-    					'{{WRAPPER}} .subhead-bodycopy-elements .content' => 'text-align: {{VALUE}};',
+    					'{{WRAPPER}} .heading-media-bodycopy-elements .content' => 'text-align: {{VALUE}};',
     				],
                 ]
             );
