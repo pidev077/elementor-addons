@@ -128,6 +128,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/be-post.php' );
 		require_once( __DIR__ . '/widgets/subhead-bodycopy.php' );
 		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
+		require_once( __DIR__ . '/widgets/sidebar.php' );
 	}
 
 	/**
@@ -165,6 +166,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Posts() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Subhead_Bodycopy() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
 	}
 
 	/**
