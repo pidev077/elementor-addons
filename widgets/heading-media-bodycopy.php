@@ -22,7 +22,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-counter';
+        return 'fas fa-file-signature';
     }
 
     public function get_categories() {

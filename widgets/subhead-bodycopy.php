@@ -22,7 +22,7 @@ class Subhead_Bodycopy extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-counter';
+        return 'far fa-edit';
     }
 
     public function get_categories() {
@@ -190,7 +190,7 @@ class Subhead_Bodycopy extends Widget_Base {
                     ]
             );
 
-            
+
 
             $this->add_group_control(
     			Group_Control_Typography::get_type(),
