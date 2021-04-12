@@ -65,11 +65,32 @@ class Sidebar extends Widget_Base {
              ]
         );
 
+
+        $itemsMain = new \Elementor\Repeater();
+        $itemsMain->add_control(
+            'name',
+            [
+                'label' => __( 'Name', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
+        $itemsMain->add_control(
+            'link',
+            [
+                'label' => __( 'Link', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
         $this->add_control(
             'items_sidebar_main',
             [
-                'label' => __( 'List Items', 'bearsthemes-addons' ),
-                'type' => Controls_Manager::REPEATER,
+                'label' => __( 'List Items', 'plugin-domain' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $itemsMain->get_controls(),
                 'default' => [
                     [
                         'name' => __( 'Lorem ipsum', 'bearsthemes-addons' ),
@@ -82,23 +103,6 @@ class Sidebar extends Widget_Base {
                     [
                         'name' => __( 'inventore veritatis', 'bearsthemes-addons' ),
                         'link' => __( '#!', 'bearsthemes-addons' ),
-                    ],
-
-                ],
-                'fields' => [
-                    [
-                        'name' => 'name',
-                        'label' => __( 'Name', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( '#!' , 'bearsthemes-addons' ),
-                        'label_block' => true,
-                    ],
-                    [
-                        'name' => 'link',
-                        'label' => __( 'Link', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( '#!' , 'bearsthemes-addons' ),
-                        'label_block' => true,
                     ],
                 ],
                 'title_field' => '{{{ name }}}',
@@ -116,11 +120,31 @@ class Sidebar extends Widget_Base {
              ]
         );
 
+        $itemsPDF = new \Elementor\Repeater();
+        $itemsPDF->add_control(
+            'name',
+            [
+                'label' => __( 'Name', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
+        $itemsPDF->add_control(
+            'link',
+            [
+                'label' => __( 'Link', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
         $this->add_control(
             'items_sidebar_pdf',
             [
-                'label' => __( 'List PDF', 'bearsthemes-addons' ),
-                'type' => Controls_Manager::REPEATER,
+                'label' => __( 'List Items', 'plugin-domain' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $itemsPDF->get_controls(),
                 'default' => [
                     [
                         'name' => __( 'Lorem ipsum', 'bearsthemes-addons' ),
@@ -129,23 +153,6 @@ class Sidebar extends Widget_Base {
                     [
                         'name' => __( 'Ducimus qui blanditlls', 'bearsthemes-addons' ),
                         'link' => __( '#!', 'bearsthemes-addons' ),
-                    ],
-
-                ],
-                'fields' => [
-                    [
-                        'name' => 'name',
-                        'label' => __( 'Name', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Name' , 'bearsthemes-addons' ),
-                        'label_block' => true,
-                    ],
-                    [
-                        'name' => 'link',
-                        'label' => __( 'Link', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Name' , 'bearsthemes-addons' ),
-                        'label_block' => true,
                     ],
                 ],
                 'title_field' => '{{{ name }}}',
@@ -162,11 +169,31 @@ class Sidebar extends Widget_Base {
              ]
         );
 
+        $itemsFooter = new \Elementor\Repeater();
+        $itemsFooter->add_control(
+            'name',
+            [
+                'label' => __( 'Name', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
+        $itemsFooter->add_control(
+            'link',
+            [
+                'label' => __( 'Link', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
         $this->add_control(
             'items_sidebar_footer',
             [
-                'label' => __( 'List Items', 'bearsthemes-addons' ),
-                'type' => Controls_Manager::REPEATER,
+                'label' => __( 'List Items', 'plugin-domain' ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $itemsFooter->get_controls(),
                 'default' => [
                     [
                         'name' => __( 'Lorem ipsum', 'bearsthemes-addons' ),
@@ -175,23 +202,6 @@ class Sidebar extends Widget_Base {
                     [
                         'name' => __( 'Ducimus qui blanditlls', 'bearsthemes-addons' ),
                         'link' => __( '#!', 'bearsthemes-addons' ),
-                    ],
-
-                ],
-                'fields' => [
-                    [
-                        'name' => 'name',
-                        'label' => __( 'Name', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Name' , 'bearsthemes-addons' ),
-                        'label_block' => true,
-                    ],
-                    [
-                        'name' => 'link',
-                        'label' => __( 'Link', 'bearsthemes-addons' ),
-                        'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Name' , 'bearsthemes-addons' ),
-                        'label_block' => true,
                     ],
                 ],
                 'title_field' => '{{{ name }}}',
@@ -466,9 +476,6 @@ class Sidebar extends Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        // echo "<pre>";
-        // echo print_r($settings);
-        // echo "</pre>";
         $heading  = $settings['heading_sidebar_widget'];
         $items_main = $settings['items_sidebar_main'];
         $items_pdf = $settings['items_sidebar_pdf'];
