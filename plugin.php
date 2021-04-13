@@ -130,6 +130,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
 		require_once( __DIR__ . '/widgets/sidebar.php' );
 		require_once( __DIR__ . '/widgets/useful-links-info.php' );
+		require_once( __DIR__ . '/widgets/accordion-navigation-tabs.php' );
 	}
 
 	/**
@@ -169,6 +170,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Useful_Links_Info() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Accordion_Navigation_Tabs() );
 	}
 
 	/**
