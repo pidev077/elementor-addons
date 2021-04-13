@@ -206,7 +206,7 @@ class Subhead_Bodycopy extends Widget_Base {
                 [
                     'label' => __( 'Color', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#4a4a4a',
+                    'default' => '#2f2f39',
                     'selectors' => [
     					'{{WRAPPER}} .subhead-bodycopy-elements .content' => 'color: {{VALUE}};',
     				],
