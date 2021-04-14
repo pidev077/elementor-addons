@@ -131,6 +131,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
 		require_once( __DIR__ . '/widgets/sidebar.php' );
 		require_once( __DIR__ . '/widgets/useful-links-info.php' );
+		require_once( __DIR__ . '/widgets/accordion-navigation-tabs.php' );
 		require_once( __DIR__ . '/widgets/content-filter.php' );
 	}
 
@@ -171,7 +172,11 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Useful_Links_Info() );
+<<<<<<< HEAD
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Content_Filter() );
+=======
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Accordion_Navigation_Tabs() );
+>>>>>>> 9d55ce080babd7a0918cc8388329adcab3dc9412
 	}
 
 	/**

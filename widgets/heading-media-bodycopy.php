@@ -258,7 +258,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
     			[
     				'label' => __( 'Color', 'bearsthemes-addons' ),
     				'type' => Controls_Manager::COLOR,
-                    'default' => '#4a4a4a',
+                    'default' => '#2f2f39',
                     'selectors' => [
     					'{{WRAPPER}} .heading-media-bodycopy-elements .heading' => 'color: {{VALUE}};',
     				],
@@ -296,7 +296,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'label' => __( 'Spacing', 'elementor' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 25,
+                        'size' => 30,
                     ],
                     'range' => [
                         'px' => [
@@ -337,7 +337,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                 [
                     'label' => __( 'Color', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#4a4a4a',
+                    'default' => '#2f2f39',
                     'selectors' => [
     					'{{WRAPPER}} .heading-media-bodycopy-elements .content' => 'color: {{VALUE}};',
     				],
