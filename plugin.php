@@ -172,11 +172,8 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Useful_Links_Info() );
-<<<<<<< HEAD
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Content_Filter() );
-=======
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Accordion_Navigation_Tabs() );
->>>>>>> 9d55ce080babd7a0918cc8388329adcab3dc9412
 	}
 
 	/**
