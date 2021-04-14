@@ -51,7 +51,7 @@ class Plugin {
 	public function widget_styles() {
 		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
 		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) );
-
+		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', __FILE__ ) );
 	}
 
 
@@ -65,6 +65,7 @@ class Plugin {
 	 */
 	public function widget_scripts() {
 		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -130,6 +131,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
 		require_once( __DIR__ . '/widgets/sidebar.php' );
 		require_once( __DIR__ . '/widgets/useful-links-info.php' );
+		require_once( __DIR__ . '/widgets/content-filter.php' );
 	}
 
 	/**
@@ -169,6 +171,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Useful_Links_Info() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Content_Filter() );
 	}
 
 	/**
