@@ -605,7 +605,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 [
                     'name' => 'cta_ant_typography',
                     'default' => '',
-                    'selector' => '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta > a',
+                    'selector' => '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span',
                 ]
             );
 
@@ -624,8 +624,8 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => '#2F2F39',
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a' => 'color: {{VALUE}};',
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span i' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -637,7 +637,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => 'transparent',
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span' => 'background-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -649,7 +649,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => \Elementor\Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                         ]
                     );
@@ -669,8 +669,8 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => '#2F2F39',
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a:hover' => 'color: {{VALUE}};',
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a:hover i' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span:hover' => 'color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span:hover i' => 'color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -682,7 +682,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => Controls_Manager::COLOR,
                             'default' => 'transparent',
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta a:hover' => 'background-color: {{VALUE}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span:hover' => 'background-color: {{VALUE}};',
                             ],
                         ]
                     );
@@ -694,7 +694,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                             'type' => \Elementor\Controls_Manager::DIMENSIONS,
                             'size_units' => [ 'px', '%' ],
                             'selectors' => [
-                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta > a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                             ],
                         ]
                     );
@@ -710,7 +710,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'type' => \Elementor\Controls_Manager::DIMENSIONS,
                     'size_units' => [ 'px', '%' ],
                     'selectors' => [
-                        '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .accordion-navigation-tabs-content .item-team .cta span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
             );
@@ -957,7 +957,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 </div>
                 <?php if ($lengthDescription > 250): ?>
                     <div class="cta show-more">
-                        <a href="#">Expand <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                        <span>Expand <i class="fa fa-angle-down" aria-hidden="true"></i></span>
                     </div>
                 <?php endif; ?>
             </div>

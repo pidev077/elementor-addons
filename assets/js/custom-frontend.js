@@ -10,8 +10,10 @@
             dataTabs = $(this).data('tab');
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
-            isTabs.slideUp(800,'swing');
-            $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content.'+dataTabs).slideDown(800,'swing');
+            // isTabs.show(200,'linear');
+            // $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content.'+dataTabs).hide(200,'linear');
+            isTabs.removeClass('active');
+            $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content.'+dataTabs).addClass('active');
         });
 
     }
@@ -22,7 +24,7 @@
         let isContent = $('.accordion-navigation-tabs-content .item-team .meta-team .description');
         isCTA.on('click',function(){
             $(this).siblings().children().find('.description').addClass('active');
-            console.log("aa");
+            console.log("aac");
         });
     }
 

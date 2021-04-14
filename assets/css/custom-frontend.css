@@ -444,11 +444,11 @@
     bottom: 7px;
     right: 0;
 }
-.accordion-navigation-tabs-content .item-team .cta > a > i{
-    font-size: inherit;
+.accordion-navigation-tabs-content .item-team .cta > span > i{
+    font-size: 25px;
+    margin-left: 10px;
 }
-.accordion-navigation-tabs-content .item-team .cta > a{
-    display: inline-block;
+.accordion-navigation-tabs-content .item-team .cta > span{
     font-size: 14px;
     line-height: 25px;
     letter-spacing: -0.45px;
@@ -456,11 +456,19 @@
     border-radius: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
-.accordion-navigation-tabs-content .meta-team .list-social-team > a:focus, .accordion-navigation-tabs-content .item-team .cta > a:focus{
+.accordion-navigation-tabs-content .meta-team .list-social-team > a:focus, .accordion-navigation-tabs-content .item-team .cta > span:focus{
     outline: none;
 }
-.accordion-navigation-tabs-content .item-team .cta > a, .accordion-navigation-tabs-content .item-team .cta > a i{
+.accordion-navigation-tabs-content .item-team .cta > span, .accordion-navigation-tabs-content .item-team .cta > span i{
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
     -ms-transition: all 0.25s ease-in-out;
