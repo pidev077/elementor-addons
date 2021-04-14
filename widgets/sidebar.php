@@ -65,6 +65,16 @@ class Sidebar extends Widget_Base {
              ]
         );
 
+        $this->add_control(
+            'hidden_sidebar_main',
+            [
+                'label' => __( 'Show', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'selectors' => [
+                    '{{WRAPPER}} .sidebar-widget-elements .content-elements > div.sidebar-main' => 'display:none;',
+                ],
+            ]
+        );
 
         $itemsMain = new \Elementor\Repeater();
         $itemsMain->add_control(
@@ -120,6 +130,17 @@ class Sidebar extends Widget_Base {
              ]
         );
 
+        $this->add_control(
+            'hidden_sidebar_pdf',
+            [
+                'label' => __( 'Show', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'selectors' => [
+                    '{{WRAPPER}} .sidebar-widget-elements .content-elements > div.sidebar-pdf' => 'display:none;',
+                ],
+            ]
+        );
+
         $itemsPDF = new \Elementor\Repeater();
         $itemsPDF->add_control(
             'name',
@@ -167,6 +188,17 @@ class Sidebar extends Widget_Base {
             'section_sidebar_footer_layout',[
                 'label' => __( 'Sidebar Footer', 'bearsthemes-addons' ),
              ]
+        );
+
+        $this->add_control(
+            'hidden_sidebar_footer',
+            [
+                'label' => __( 'Show', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'selectors' => [
+                    '{{WRAPPER}} .sidebar-widget-elements .content-elements > div.sidebar-footer' => 'display:none;',
+                ],
+            ]
         );
 
         $itemsFooter = new \Elementor\Repeater();
@@ -481,6 +513,10 @@ class Sidebar extends Widget_Base {
         $items_pdf = $settings['items_sidebar_pdf'];
         $items_footer = $settings['items_sidebar_footer'];
 
+        // echo "<pre>";
+        // echo print_r($items_pdf);
+        // echo "</pre>";
+
         ?>
         <div class="bt-elements-elementor sidebar-widget-elements">
             <div class="content-elements">
@@ -498,9 +534,11 @@ class Sidebar extends Widget_Base {
                     <div class="sidebar-pdf">
                         <div class="_content">
                             <?php foreach ($items_pdf as $key => $item) { ?>
-                                <div class="item">
-                                    <a href="<?php echo $item['link'] ?>" target="_blank"> <?php echo $item['name'] ?>  </a>
-                                </div>
+                                <?php if ($item['name']): ?>
+                                    <div class="item">
+                                        <a href="<?php echo $item['link'] ?>" target="_blank"> <?php echo $item['name'] ?>  </a>
+                                    </div>
+                                <?php endif; ?>
                             <?php } ?>
                         </div>
                     </div>
@@ -519,9 +557,11 @@ class Sidebar extends Widget_Base {
 
     protected function loop_items($items){
         foreach ($items as $key => $item) { ?>
-            <div class="item">
-                <a href="<?php echo $item['link'] ?>"> <?php echo $item['name'] ?>  </a>
-            </div>
+            <?php if ($item['name']): ?>
+                <div class="item">
+                    <a href="<?php echo $item['link'] ?>"> <?php echo $item['name'] ?>  </a>
+                </div>
+            <?php endif; ?>
         <?php }
     }
 
