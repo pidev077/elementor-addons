@@ -65,6 +65,7 @@ class Plugin {
 	 */
 	public function widget_scripts() {
 		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
