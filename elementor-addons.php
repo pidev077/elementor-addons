@@ -74,7 +74,8 @@ final class Elementor_Addons {
 				'filters' => ''
 	  ), $atts, 'ica_content_filter' );
 	  ob_start();
-	
+		$TEMPLATEPATH =  dirname(__FILE__);
+		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
 	  return ob_get_clean();
 	}
 

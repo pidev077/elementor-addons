@@ -57,7 +57,7 @@ class Content_Filter extends Widget_Base {
 				'label' => __( 'Suggestions', 'bearsthemes-addons' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'label_block' => true,
-				'default' => [ 'lorem ipsum', 'dolor semet', 'sed it embaco' ],
+				'default' => 'lorem ipsum,dolor semet,sed it embaco',
 			]
 		);
 
@@ -177,9 +177,8 @@ class Content_Filter extends Widget_Base {
   protected function render() {
 		$settings = $this->get_settings_for_display();
 		$placeholder = $settings['placeholder'];
-		$suggestions = implode(',',$settings['ica_suggestions']);
 		$filters = implode(',',$settings['ica_filters']);
-		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$suggestions.'" filters="'.$filters.'"]');
+		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$settings['ica_suggestions'].'" filters="'.$filters.'"]');
 	}
 
 	protected function _content_template() {
