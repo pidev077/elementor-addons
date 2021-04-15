@@ -1,0 +1,72 @@
+.ica-content-filter .form-content-filter {
+  position: relative;
+}
+.ica-content-filter .form-content-filter button[type=submit] {
+  background: transparent;
+  position: absolute;
+  right: 0;
+  color: #000;
+  padding: 0;
+  font-size: 20px;
+  top: 10px;
+}
+.ica-content-filter .form-content-filter button[type=submit] .fa::before {
+  font-size: 22px;
+}
+.ica-content-filter .form-content-filter input[name=key-search] {
+  border: none;
+  border-bottom: solid 3px #4a4a4a;
+  font-size: 34px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: #4a4a4a;
+  padding: 0;
+  background: transparent;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  font-size: 15px;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
+  display: flex;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions {
+  margin-left: 4px;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions span {
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: -0.1px;
+  color: #4a4a4a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
+  cursor: pointer;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: -0.1px;
+  text-align: right;
+  color: #4a4a4a;
+  display: inline-flex;
+  align-items: center;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa {
+  margin-right: 12px;
+}
+.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa::before {
+  font-size: 20px;
+}
+.ica-content-filter .template-filter-form .__filter-options {
+  display: none;
+}
+
+/*# sourceMappingURL=content-filter.css.map */

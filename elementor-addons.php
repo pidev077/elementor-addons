@@ -61,6 +61,22 @@ final class Elementor_Addons {
 
 		// Init Plugin
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
+
+		//Content Filter
+		add_shortcode( 'ica_content_filter', array( $this, 'ica_content_filter_render' ) );
+	}
+
+	//Search Content Filter
+	function ica_content_filter_render( $atts ) {
+	  $atts = shortcode_atts( array(
+	      'placeholder' => 'Search...',
+				'suggestions' => '',
+				'filters' => ''
+	  ), $atts, 'ica_content_filter' );
+	  ob_start();
+		$TEMPLATEPATH =  dirname(__FILE__);
+		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
+	  return ob_get_clean();
 	}
 
 	/**
@@ -134,7 +150,7 @@ final class Elementor_Addons {
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 	}
-	
+
 	/**
 	 * Admin notice
 	 *

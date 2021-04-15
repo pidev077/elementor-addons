@@ -50,7 +50,8 @@ class Plugin {
 	 */
 	public function widget_styles() {
 		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
-
+		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) );
+		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', __FILE__ ) );
 	}
 
 
@@ -64,6 +65,8 @@ class Plugin {
 	 */
 	public function widget_scripts() {
 		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -125,6 +128,12 @@ class Plugin {
 	private function include_widgets_files() {
 		require_once( __DIR__ . '/widgets/be-counter.php' );
 		require_once( __DIR__ . '/widgets/be-post.php' );
+		require_once( __DIR__ . '/widgets/subhead-bodycopy.php' );
+		require_once( __DIR__ . '/widgets/heading-media-bodycopy.php' );
+		require_once( __DIR__ . '/widgets/sidebar.php' );
+		require_once( __DIR__ . '/widgets/useful-links-info.php' );
+		require_once( __DIR__ . '/widgets/accordion-navigation-tabs.php' );
+		require_once( __DIR__ . '/widgets/content-filter.php' );
 	}
 
 	/**
@@ -160,6 +169,12 @@ public function add_category( $elements_manager ) {
 		// Register Widgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Counter() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Posts() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Subhead_Bodycopy() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Heading_Media_BodyCopy() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Sidebar() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Useful_Links_Info() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Content_Filter() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Accordion_Navigation_Tabs() );
 	}
 
 	/**
