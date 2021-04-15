@@ -51,13 +51,43 @@
 
 	};
 	var CounterHandler = function( $scope, $ ) {
-	//console.log($scope);
-	var $selector = $scope.find('.elementor-counter__number'),
-			$dataCounter  = $selector.data('counter'),
+	console.log($scope);
+	var $selector1 = $scope.find('.elementor-counter__number.vv1'),
+			$dataCounter1  = $selector1.data('counter'),
 			waypoint = new Waypoint({
-				element: $selector,
+				element: $selector1,
 				handler: function() {
-					$selector.numerator( $dataCounter );
+					$selector1.numerator( $dataCounter1 );
+				},
+				offset: '100%',
+				triggerOnce: true
+			});
+	var $selector2 = $scope.find('.elementor-counter__number.vv2'),
+			$dataCounter2  = $selector2.data('counter'),
+			waypoint = new Waypoint({
+				element: $selector2,
+				handler: function() {
+					$selector2.numerator( $dataCounter2 );
+				},
+				offset: '100%',
+				triggerOnce: true
+			});
+	var $selector3 = $scope.find('.elementor-counter__number.vv3'),
+			$dataCounter3  = $selector3.data('counter'),
+			waypoint = new Waypoint({
+				element: $selector3,
+				handler: function() {
+					$selector3.numerator( $dataCounter3 );
+				},
+				offset: '100%',
+				triggerOnce: true
+			});
+	var $selector4 = $scope.find('.elementor-counter__number.vv4'),
+			$dataCounter4  = $selector4.data('counter'),
+			waypoint = new Waypoint({
+				element: $selector4,
+				handler: function() {
+					$selector4.numerator( $dataCounter4 );
 				},
 				offset: '100%',
 				triggerOnce: true

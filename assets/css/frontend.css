@@ -45,6 +45,7 @@
 	 width: 16px;
 	 height: auto;
 	 fill: #fff;
+	 transition: none;
 }
  .elementor-counter--icon-view-framed .elementor-counter__icon {
 	 background: #fff;
@@ -77,25 +78,27 @@
 }
  .elementor-counter__icon i {
 	 font-size: 50px;
-	 color: #d2440f;
+	 color: #36ba78;
 	 margin-top: -2px;
-	 -webkit-transition: all 0.3s;
-	 transition: all 0.3s;
+	 /*-webkit-transition: all 0.3s;
+	 transition: all 0.3s;*/
 }
  .elementor-counter__icon svg {
-	 width: 50px;
+	 width: 60px;
 	 height: auto;
-	 fill: #d2440f;
-	 margin-top: -2px;
-	 -webkit-transition: all 0.3s;
-	 transition: all 0.3s;
+	 fill: #36ba78;
+	 transition: none;
+	 /*-webkit-transition: all 0.3s;
+	 transition: all 0.3s;*/
 }
  .elementor-counter__number-wrap {
 	 display: inline-flex;
 	 font-size: 60px;
 	 font-weight: 600;
 	 line-height: 100%;
-	 color: #d2440f;
+	 color: #fff;
+	 margin-bottom: 10px;
+	 font-family: "Inter", Sans-serif;
 }
  .elementor-counter__number-prefix {
 	 margin-right: 4px;
@@ -107,12 +110,62 @@
 	 font-size: 18px;
 	 font-weight: 400;
 	 margin: 0;
+	 color: #fff;
+	 text-transform: uppercase;
+	 font-family: "Inter", Sans-serif;
+}
+.elementor-counter h2.bt-title{
+	font-size: 17px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.71;
+	letter-spacing: -0.5px;
+	text-align: center;
+	color: #ffffff;
+	font-family: "Inter", Sans-serif;
 }
 .elementor-counter__title a{
 	font-size:inherit;
 	font-weight: inherit;
 	margin: inherit;
 	color: inherit;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: bold;
+	transition: none;
+}
+.bt-custom-counter{
+	text-align: center;
+	background-color: #2F2F39;
+  padding: 70px 0px;
+}
+.bt-custom-counter .bt-heading{
+	font-size: 34px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	max-width: 370px;
+	margin: 0 auto;
+	letter-spacing: -0.77px;
+	text-align: center;
+	color: #ffffff;
+	font-family: "Inter", Sans-serif;
+}
+.bt-custom-counter .elementor-grid{
+	 padding: 50px 0;
+}
+.bt-custom-counter a.bt-button{
+	font-size: 17px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.71;
+	letter-spacing: -0.5px;
+	color: #ffffff;
+	font-family: "Inter", Sans-serif;
+	text-decoration:underline;
+	transition: none;
 }
 @keyframes fade-up {
 	0% {
