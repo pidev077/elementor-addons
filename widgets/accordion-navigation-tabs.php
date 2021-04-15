@@ -23,7 +23,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'fas fa-columns';
+        return 'eicon-tabs';
     }
 
     public function get_categories() {
@@ -782,7 +782,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .accordion-navigation-tabs-content .meta-team .list-social-team > a i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .accordion-navigation-tabs-content .meta-team .list-social-team > a i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -925,8 +925,6 @@ class Accordion_Navigation_Tabs extends Widget_Base {
             $addrress = get_field('addrress_team_insuranceca');
             $listSocial = get_field('list_social_team_insuranceca');
             $lengthDescription = strlen(get_the_content());
-            // $limitDecription = substr(get_the_content(), 0, 200);
-
             ?>
             <div id="post-<?php the_ID(); ?>" class="item-team">
                 <div class="content-team">
@@ -957,7 +955,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 </div>
                 <?php if ($lengthDescription > 250): ?>
                     <div class="cta show-more">
-                        <span>Expand <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                        <span>Expand</span>
                     </div>
                 <?php endif; ?>
             </div>

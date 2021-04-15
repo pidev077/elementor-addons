@@ -50,6 +50,9 @@ class Heading_Media_BodyCopy extends Widget_Base {
                 [
                     'label' => __( 'Choose Image', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::MEDIA,
+                    'default' => [
+                        'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    ]
                 ]
             );
 
