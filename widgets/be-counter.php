@@ -4,6 +4,7 @@ namespace ElementorAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -41,8 +42,54 @@ class Be_Counter extends Widget_Base {
 				'label' => __( 'Layout', 'bearsthemes-addons' ),
 			]
 		);
-
+		$this->add_responsive_control(
+			'columns',
+			[
+				'label' => __( 'Columns', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '4',
+				'tablet_default' => '2',
+				'mobile_default' => '1',
+				'options' => [
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+					'4' => '4',
+					'5' => '5',
+					'6' => '6',
+				],
+				'prefix_class' => 'elementor-grid%s-',
+			]
+		);
 		$this->add_control(
+			'bt_heading',
+			[
+				'label' => __( 'Heading', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => __( 'Lorem ipsum dolor hero data story', 'bearsthemes-addons' ),
+			]
+		);
+		$this->add_control(
+			'bt_button',
+			[
+				'label' => __( 'Button', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => __( 'Visit our data hub', 'bearsthemes-addons' ),
+			]
+		);
+		$this->add_control(
+			'bt_button_url', [
+				'label' => __( 'Button Link', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => '#',
+			]
+		);
+		$repeater = new Repeater();
+
+		$repeater->add_control(
 			'show_icon',
 			[
 				'label' => __( 'Show Icon', 'bearsthemes-addons' ),
@@ -54,7 +101,7 @@ class Be_Counter extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$repeater->add_control(
 			'select_icon',
 			[
 				'label' => __( 'Icon', 'bearsthemes-addons' ),
@@ -69,71 +116,7 @@ class Be_Counter extends Widget_Base {
 				],
 			]
 		);
-
-		$this->add_control(
-			'icon_view',
-			[
-				'label' => __( 'View', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => '',
-				'options' => [
-					'' => __( 'Default', 'bearsthemes-addons' ),
-					'stacked' => __( 'Stacked', 'bearsthemes-addons' ),
-					'framed' => __( 'Framed', 'bearsthemes-addons' ),
-				],
-				'condition' => [
-					'show_icon!' => '',
-				],
-				'prefix_class' => 'elementor-counter--icon-view-',
-			]
-		);
-
-		$this->add_control(
-			'icon_shape',
-			[
-				'label' => __( 'Shape', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'circle',
-				'options' => [
-					'circle' => __( 'Circle', 'bearsthemes-addons' ),
-					'square' => __( 'Square', 'bearsthemes-addons' ),
-				],
-				'condition' => [
-					'show_icon!' => '',
-					'icon_view!' => '',
-				],
-				'prefix_class' => 'elementor-counter--icon-shape-',
-			]
-		);
-
-		$this->add_control(
-			'icon_position',
-			[
-				'label' => __( 'Icon Position', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'default' => 'top',
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'bearsthemes-addons' ),
-						'icon' => 'eicon-h-align-left',
-					],
-					'top' => [
-						'title' => __( 'Top', 'bearsthemes-addons' ),
-						'icon' => 'eicon-v-align-top',
-					],
-					'right' => [
-						'title' => __( 'Right', 'bearsthemes-addons' ),
-						'icon' => 'eicon-h-align-right',
-					],
-				],
-				'prefix_class' => 'elementor-counter--icon-position-',
-				'condition' => [
-					'show_icon!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
+		$repeater->add_control(
 			'starting_number',
 			[
 				'label' => __( 'Starting Number', 'bearsthemes-addons' ),
@@ -143,7 +126,7 @@ class Be_Counter extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$repeater->add_control(
 			'ending_number',
 			[
 				'label' => __( 'Ending Number', 'bearsthemes-addons' ),
@@ -152,27 +135,8 @@ class Be_Counter extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'prefix',
-			[
-				'label' => __( 'Number Prefix', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => '',
-				'placeholder' => 1,
-			]
-		);
 
-		$this->add_control(
-			'suffix',
-			[
-				'label' => __( 'Number Suffix', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => '',
-				'placeholder' => __( 'Plus', 'bearsthemes-addons' ),
-			]
-		);
-
-		$this->add_control(
+		$repeater->add_control(
 			'duration',
 			[
 				'label' => __( 'Animation Duration', 'bearsthemes-addons' ),
@@ -183,34 +147,7 @@ class Be_Counter extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'thousand_separator',
-			[
-				'label' => __( 'Thousand Separator', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes',
-				'label_on' => __( 'Show', 'bearsthemes-addons' ),
-				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-			]
-		);
-
-		$this->add_control(
-			'thousand_separator_char',
-			[
-				'label' => __( 'Separator', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'condition' => [
-					'thousand_separator' => 'yes',
-				],
-				'options' => [
-					',' => 'Default',
-					'.' => 'Dot',
-					' ' => 'Space',
-				],
-			]
-		);
-
-		$this->add_control(
+		$repeater->add_control(
 			'show_title',
 			[
 				'label' => __( 'Show Title', 'bearsthemes-addons' ),
@@ -222,7 +159,7 @@ class Be_Counter extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$repeater->add_control(
 			'title',
 			[
 				'label' => __( 'Title', 'bearsthemes-addons' ),
@@ -234,7 +171,19 @@ class Be_Counter extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
+		$repeater->add_control(
+			'sub_title',
+			[
+				'label' => __( 'Sub Title', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => __( 'This is the heading​', 'bearsthemes-addons' ),
+				'condition' => [
+					'show_title!' => '',
+				],
+			]
+		);
+		$repeater->add_control(
 			'link_url', [
 				'label' => __( 'Link', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::TEXT,
@@ -243,6 +192,53 @@ class Be_Counter extends Widget_Base {
 				'condition' => [
 					'show_title!' => '',
 				],
+			]
+		);
+		$this->add_control(
+			'list',
+			[
+				'label' => __( 'Counter', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'title' => __( 'Total lorem ipsum', 'bearsthemes-addons' ),
+						'sub_title' => __( 'BILLION', 'bearsthemes-addons' ),
+						'ending_number' => __( '7655', 'bearsthemes-addons' ),
+						'select_icon' => __( [
+							'value' => 'fas fa-fire',
+							'library' => 'fa-solid',
+						], 'bearsthemes-addons' ),
+					],
+					[
+						'title' => __( 'Total lorem ipsum', 'bearsthemes-addons' ),
+						'sub_title' => __( 'BILLION', 'bearsthemes-addons' ),
+						'ending_number' => __( '4176', 'bearsthemes-addons' ),
+						'select_icon' => __( [
+							'value' => 'fas fa-house-damage',
+							'library' => 'fa-solid',
+						], 'bearsthemes-addons' ),
+					],
+					[
+						'title' => __( 'Total lorem ipsum', 'bearsthemes-addons' ),
+						'sub_title' => __( 'BILLION', 'bearsthemes-addons' ),
+						'ending_number' => __( '3397', 'bearsthemes-addons' ),
+						'select_icon' => __( [
+							'value' => 'fas fa-stethoscope',
+							'library' => 'fa-solid',
+						], 'bearsthemes-addons' ),
+					],
+					[
+						'title' => __( 'Total lorem ipsum', 'bearsthemes-addons' ),
+						'sub_title' => __( 'BILLION', 'bearsthemes-addons' ),
+						'ending_number' => __( '5118', 'bearsthemes-addons' ),
+						'select_icon' => __( [
+							'value' => 'fas fa-home',
+							'library' => 'fa-solid',
+						], 'bearsthemes-addons' ),
+					],
+				],
+				'title_field' => '{{{ ending_number }}}',
 			]
 		);
 
@@ -631,7 +627,7 @@ class Be_Counter extends Widget_Base {
   protected function _register_controls() {
 		$this->register_layout_section_controls();
 
-		$this->register_design_layout_section_controls();
+		//$this->register_design_layout_section_controls();
 		$this->register_design_icon_section_controls();
 		$this->register_design_number_section_controls();
 		$this->register_design_title_section_controls();
@@ -639,19 +635,19 @@ class Be_Counter extends Widget_Base {
 
 	protected function counter_data() {
 		$settings = $this->get_settings_for_display();
+		foreach ( $settings['list'] as $index => $item ) {
+				$counter_data = array(
+					'easing' => 'linear',
+					'duration' => $item['duration'],
+					'toValue' => $item['ending_number'],
+					'rounding' => 0,
+				);
 
-		$counter_data = array(
-			'easing' => 'linear',
-			'duration' => $settings['duration'],
-			'toValue' => $settings['ending_number'],
-			'rounding' => 0,
-		);
-
-		if ( ! empty( $settings['thousand_separator'] ) ) {
-			$counter_data['delimiter'] = $settings['thousand_separator_char'];
-		}
-
+				if ( ! empty( $item['thousand_separator'] ) ) {
+					$counter_data['delimiter'] = $item['thousand_separator_char'];
+				}
 		return $counter_data = json_encode( $counter_data );
+	}
 	}
 
 	protected function render_icon( $icon ) {
@@ -670,44 +666,60 @@ class Be_Counter extends Widget_Base {
 
   protected function render() {
 		$settings = $this->get_settings_for_display();
-
+		//var_dump($settings['columns']);
+		if ( empty( $settings['list'] ) ) {
+			return;
+		} ?>
+		<div class="elementor-grid-<?php echo $settings['columns']; ?> bt-custom-counter">
+		<h2 class=bt-heading><?php echo $settings['bt_heading']; ?></h2>
+		<div class="elementor-grid">
+		<?php
+		$i = 0;
+		$i < 10;
+		$i++;
+		foreach ( $settings['list'] as $index => $item ) {
 		?>
 		<div class="elementor-counter">
+			<h2 class=bt-title><?php echo $item['title']; ?></h2>
 			<?php if ( '' !== $settings['show_icon'] ) { ?>
 				<div class="elementor-counter__icon-wrap">
 					<div class="elementor-counter__icon">
-						<?php echo $this->render_icon( $settings['select_icon'] ); ?>
+						<?php echo $this->render_icon( $item['select_icon'] ); ?>
 					</div>
 				</div>
 			<?php } ?>
 
 			<div class="elementor-counter__content">
 				<div class="elementor-counter__number-wrap">
-					<?php if( $settings['prefix'] ) { ?>
+					<?php if( $item['prefix'] ) { ?>
 						<span class="elementor-counter__number-prefix">
-							<?php echo $settings['prefix']; ?>
+							<?php echo $item['prefix']; ?>
 						</span>
 					<?php } ?>
 
-					<span class="elementor-counter__number" data-counter="<?php echo esc_attr( $this->counter_data() ); ?>">
-						<?php echo $settings['starting_number']; ?>
+					<span class="elementor-counter__number vv<?php echo $i++; ?>" data-counter={"easing":"linear","duration":<?php echo $item['duration'] ?>,"toValue":<?php echo $item['ending_number'] ?>,"rounding":0,"delimiter":"."}>
+						<?php echo $item['starting_number']; ?>
 					</span>
 
-					<?php if( $settings['suffix'] ) { ?>
+					<?php if( $item['suffix'] ) { ?>
 						<span class="elementor-counter__number-suffix">
-							<?php echo $settings['suffix']; ?>
+							<?php echo $item['suffix']; ?>
 						</span>
 					<?php } ?>
 				</div>
 
-				<?php if ( '' !== $settings['show_title'] ) { ?>
+				<?php if ( '' !== $item['show_title'] ) { ?>
 					<h3 class="elementor-counter__title">
-						<a href="<?php echo $settings['link_url']; ?>"><?php echo $settings['title']; ?></a>
+						<a href="<?php echo $item['link_url']; ?>"><?php echo $item['sub_title']; ?></a>
 					</h3>
 				<?php	} ?>
 			</div>
 		</div>
+
 		<?php
+		}
+		?>
+	</div><a class="bt-button" href="<?php echo $settings['bt_button_url']; ?>"><?php echo $settings['bt_button']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a></div><?php
 	}
 
 	protected function _content_template() {
