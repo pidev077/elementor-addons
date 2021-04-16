@@ -21,12 +21,36 @@
 
         let isCTA = $('.accordion-navigation-tabs-content .item-team .show-more');
         let isContent = $('.accordion-navigation-tabs-content .item-team .meta-team .description');
-        isCTA.on('click',function(){
+
+        let isHeight = isContent.scrollHeight;
+
+        console.log(isHeight);
+
+        $(document).click(function() {
+    isContent.animate({
+        'height': '50px'
+    })
+})
+
+
+        isCTA.on('click',function(e){
+            // let a = isContent.outerHeight();
+            // console.log(a);
             $(this).toggleClass('show-more');
             $(this).siblings().children().find('.description').toggleClass('active');
             $(this).parents('.item-team').toggleClass('active');
-            console.log("aa")
+            // console.log("aac");
+            // e.stopPropagation();
+            // isContent.animate({
+            //     'height': isHeight
+            // })
         });
+
+//         isCTA.click(function(e) {
+//
+// });
+
+
 
     }
 

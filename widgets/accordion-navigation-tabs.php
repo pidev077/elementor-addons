@@ -955,7 +955,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 </div>
                 <?php if ($lengthDescription > 250): ?>
                     <div class="cta show-more">
-                        <span>Expand</span>
+                        <span>Collapse</span>
                     </div>
                 <?php endif; ?>
             </div>

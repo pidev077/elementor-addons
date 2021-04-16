@@ -1,6 +1,6 @@
 <?php
 /**
-* Element Secondary CTAs
+* Element Alert Banner
 */
 
 namespace ElementorAddons\Widgets;

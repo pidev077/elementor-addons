@@ -415,15 +415,15 @@
     box-sizing: border-box;
     border-bottom: 2px solid #979797;
     position: relative;
-    -webkit-transition: max-height 1s;
+    /* -webkit-transition: max-height 1s;
     -moz-transition: max-height 1s;
     -ms-transition: max-height 1s;
     -o-transition: max-height 1s;
     transition: max-height 1s;
-    max-height: 260px;
+    max-height: 260px; */
 }
 .accordion-navigation-tabs-container .accordion-navigation-tabs-content .item-tabs-content > .item-team.active{
-    max-height:500px;
+    /* max-height:500px; */
 }
 .accordion-navigation-tabs-container .accordion-navigation-tabs-content .item-tabs-content > .item-team:first-child{
     padding-top: 0 !important;
@@ -543,6 +543,10 @@
     display: flex;
     align-items: center;
     align-content: center;
+    -webkit-box-pack: space-between;
+    -moz-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
     margin: 0;
     padding: 0;
@@ -564,6 +568,10 @@
     display: flex;
     align-items: center;
     align-content: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
     justify-content: center;
     width: 30px;
     height: 30px;
@@ -604,21 +612,46 @@
 }
 .accordion-navigation-tabs-content .item-team .meta-team .description{
     overflow: hidden;
-    text-overflow: ellipsis;
+    height: 100px;
+    padding-top: 11px;
+    position: relative;
+    -webkit-transition: height 200ms;
+transition: height 200ms;
+    /* text-overflow: ellipsis;
     -webkit-line-clamp: 3;
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    padding-top: 11px;
-    -webkit-transition: max-height 1s;
+    -webkit-box-orient: vertical; */
+
+    /* -webkit-transition: max-height 1s;
     -moz-transition: max-height 1s;
     -ms-transition: max-height 1s;
     -o-transition: max-height 1s;
     transition: max-height 1s;
-    max-height: 90px;
+    max-height: 90px; */
 }
 .accordion-navigation-tabs-content .item-team .meta-team .description.active{
-    -webkit-line-clamp: 30;
-    max-height: 300px;
+    /* -webkit-line-clamp: 30;
+    max-height: 300px; */
+    height: 210px;
+}
+.accordion-navigation-tabs-content .item-team .meta-team .description::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 180deg ,#fff 9.27%,rgba(255,255,255,0) 28.93%);
+    transform: rotate(-180deg);
+    left: 0;
+    top: 0;
+
+    transition: all .5s;
+    opacity: 1;
+    visibility: visible;
+}
+.accordion-navigation-tabs-content .item-team .meta-team .description.active::before{
+    opacity: 0;
+    visibility: hidden;
 }
 .accordion-navigation-tabs-content .item-team .meta-team .description p{
     color: inherit;
@@ -642,6 +675,10 @@
         text-align: center;
     }
     .accordion-navigation-tabs-content .item-team .content-team .meta-team .header-meta{
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
         justify-content: center;
     }
     .elementor-289 .elementor-element.elementor-element-e4ad0eb .accordion-navigation-tabs-content .item-team .meta-team .name{
@@ -759,6 +796,10 @@
     height: 15px;
     border-radius: 50%;
     display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -795,4 +836,191 @@
 .alert-banner-elements > .cta-close i{
     color: #2f2f39;
     font-size: 20px;
+}
+
+
+/* elements resources */
+.resources-elements .heading{
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+}
+.resources-elements .list-pdf-resources{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.resources-elements .list-pdf-resources .item-pdf{
+    width: 50%;
+    padding: 0 10px;
+    margin-bottom: 30px;
+}
+.resources-elements .list-pdf-resources .item-pdf > .__content{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.resources-elements .list-pdf-resources .meta-resources{
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    padding-left: 42px;
+    width: 100%;
+    max-width: 370px;
+}
+.resources-elements .list-pdf-resources .meta-resources > a{
+    text-decoration: underline;
+}
+.resources-elements .list-pdf-resources .meta-resources::before{
+    width: 34px;
+    height: 42px;
+    background-image: url(../images/Bitmap-pdf.svg);
+    top: 50%;
+    transform: translateY(-50%);
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.list-pdf-resources .meta-resources .info-pdf{
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.41px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+.list-pdf-resources .meta-resources .info-pdf span{
+    text-transform: lowercase;
+}
+.resources-elements .list-pdf-resources .item-pdf.columns-des-1{
+    width: 100%;
+}
+.resources-elements .list-pdf-resources .item-pdf.columns-des-2{
+    width: 50%;
+}
+.resources-elements .list-pdf-resources .item-pdf.columns-des-3{
+    width: calc(100% / 3);
+}
+.resources-elements .list-pdf-resources .item-pdf.columns-des-4{
+    width: 25%;
+}
+@media only screen and (max-width: 1024px){
+    .resources-elements .list-pdf-resources .item-pdf.columns-tab-1{
+        width: 100%;
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-tab-2{
+        width: 50%;
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-tab-3{
+        width: calc(100% / 3);
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-tab-4{
+        width: 25%;
+    }
+}
+@media only screen and (max-width: 767px){
+    .resources-elements .heading br{
+        display: none;
+    }
+    .resources-elements .list-pdf-resources .item-pdf{
+        width: 100%;
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-mobi-1{
+        width: 100%;
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-mobi-2{
+        width: 50%;
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-mobi-3{
+        width: calc(100% / 3);
+    }
+    .resources-elements .list-pdf-resources .item-pdf.columns-mobi-4{
+        width: 25%;
+    }
+}
+
+/* elements card lrg */
+.card-lrg-elements .card-lrg-content{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.card-lrg-elements .card-lrg-content > div{
+    width: 50%;
+}
+.card-lrg-elements .card-lrg-content .thumbnail-card-lrg{
+    text-align: center;
+}
+.card-lrg-elements .card-lrg-content .thumbnail-card-lrg img{
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-lrg-elements .meta-card-lrg .description, .card-lrg-elements .meta-card-lrg .sub-heading, .card-lrg-elements .meta-card-lrg .heading{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.card-lrg-elements .meta-card-lrg .sub-heading{
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    font-weight: 400;
+}
+.card-lrg-elements .meta-card-lrg .heading{
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+}
+.card-lrg-elements .meta-card-lrg .description{
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+.card-lrg-elements .meta-card-lrg .cta > a{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-decoration: underline;
+    border-style: solid;
+    border-width: 0;
+}
+.card-lrg-elements .meta-card-lrg .cta > a:focus{
+    outline: none;
+}
+.bt-elements-elementor.card-lrg-elements{
+    padding: 20px;
 }

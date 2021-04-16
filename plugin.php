@@ -136,6 +136,10 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/content-filter.php' );
 		require_once( __DIR__ . '/widgets/secondary-ctas.php' );
 		require_once( __DIR__ . '/widgets/alert-banner.php' );
+		require_once( __DIR__ . '/widgets/alert-banner.php' );
+		require_once( __DIR__ . '/widgets/resources.php' );
+		require_once( __DIR__ . '/widgets/card-lrg.php' );
+		// M.8.3 Card lrg (landing page)
 	}
 
 	/**
@@ -179,6 +183,9 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Accordion_Navigation_Tabs() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Secondary_CTAs() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Alert_Banner() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Resources_Widgets() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Card_Lrg() );
+
 	}
 
 	/**
