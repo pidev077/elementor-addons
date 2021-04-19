@@ -59,7 +59,7 @@ class Be_Posts extends Widget_Base {
 		$supported_taxonomies = [];
 
 		$categories = get_terms( array(
-			'taxonomy' => 'category',
+			'taxonomy' => 'ins-type',
 	    'hide_empty' => false,
 		) );
 		if( ! empty( $categories ) ) {
@@ -1432,8 +1432,16 @@ class Be_Posts extends Widget_Base {
 			<article id="post-<?php the_ID();  ?>" <?php post_class( 'elementor-post' ); ?>>
 
 				<div class="elementor-post__content">
-					<?php if( has_category() && $settings['show_category'] ) { ?>
-						<div class="elementor-post__cat-links"><?php the_category( ', ' ); ?></div>
+					<?php if( '' !== $settings['show_category'] ) { ?>
+						<div class="elementor-post__cat-links"><?php
+							$terms = get_the_terms( get_the_id(), 'ins-type' );
+							if ($terms) {
+								foreach($terms as $term) {
+									echo $term->name;
+									//var_dump($term);
+								}
+							}
+						 ?></div>
 					<?php } ?>
 
 					<?php
