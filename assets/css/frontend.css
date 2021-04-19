@@ -320,3 +320,52 @@
  .elementor-posts--default .elementor-post__read-more:hover {
 	 color: #d2440f;
 }
+/*be promo*/
+.bt-elements-elementor.bt-promo {
+    display: flex;
+		justify-content: space-between;
+		align-items: center;
+}
+.bt-promo h2.bt-heading {
+    font-size: 44px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.09;
+    letter-spacing: -0.65px;
+    color: #d2440f;
+		font-family: "Inter", Sans-serif;
+		margin-bottom: 25px;
+		max-width: 200px;
+}
+.bt-promo .content-promo {
+    max-width: 346px;
+}
+.bt-promo .bt-des {
+	font-size: 22px;
+ 	font-weight: 500;
+ 	font-stretch: normal;
+ 	font-style: normal;
+ 	line-height: 1.18;
+ 	letter-spacing: -0.5px;
+ 	color: #2f2f39;
+  margin-bottom: 50px;
+}
+.bt-promo a.bt-button {
+	font-size: 17px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #d2440f;
+	display: inline-block;
+	padding: 6px 25px 7px 26px;
+  border: solid 1px #d2440f;
+}
+@media only screen and (min-width: 1200px) {
+	.bt-promo .thumbnail-promo {
+    margin-right: -165px;
+	}
+}
