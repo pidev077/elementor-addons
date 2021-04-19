@@ -1,15 +1,17 @@
 <?php
-
+extract($atts);
 if ( ! defined( 'ABSPATH' ) ) exit; // Don't allow direct access
-$suggestions = explode(',',$atts['suggestions']);
-$filters = explode(',',$atts['filters']);
+$suggestions = explode(',',$suggestions);
+$filters = !empty($filters) ? explode(',',$filters) : '';
 $is_date_filter = false;
 ?>
 <div class="ica-content-filter">
-    <form class="form-content-filter" action="/" method="post">
-       <input type="text" name="key-search" value="" placeholder="<?php echo $atts['placeholder']; ?>">
-       <button type="submit" name="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <form class="form-content-filter" action="<?php echo $action; ?>" method="get">
+       <input type="text" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
+       <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
+       <button type="submit" data-ajax="<?php echo $ajax; ?>"><i class="fa fa-search"></i></button>
     </form>
+    <div class="log-error"></div>
     <div class="template-filter-form">
         <div class="__filter-suggestion">
           <?php if(!empty($suggestions)): ?>
@@ -100,5 +102,6 @@ $is_date_filter = false;
           </div>
         <?php endif; ?>
     </div>
+    <div class="content-filter-results"></div>
 </div>
 <?php

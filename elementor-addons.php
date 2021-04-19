@@ -64,6 +64,8 @@ final class Elementor_Addons {
 
 		//Content Filter
 		add_shortcode( 'ica_content_filter', array( $this, 'ica_content_filter_render' ) );
+		add_action( 'wp_ajax_load_filter_data', array( $this, 'load_filter_data_ajax' )  );
+		add_action( 'wp_ajax_nopriv_load_filter_data', array( $this, 'load_filter_data_ajax' ) );
 	}
 
 	//Search Content Filter
@@ -71,13 +73,32 @@ final class Elementor_Addons {
 	  $atts = shortcode_atts( array(
 	      'placeholder' => 'Search...',
 				'suggestions' => '',
-				'filters' => ''
+				'filters' => array(),
+				'ajax'	=> true,
+				'action' => '',
+				'post_type' => ''
 	  ), $atts, 'ica_content_filter' );
+
+		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
+		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
+            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
+
 	  ob_start();
 		$TEMPLATEPATH =  dirname(__FILE__);
 		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
 	  return ob_get_clean();
 	}
+
+	/**
+	* Ajax Content Filter
+	* @access private
+	*/
+
+	function load_filter_data_ajax(){
+		$result = array('test' => 'okok');
+		wp_send_json($result);
+	}
+
 
 	/**
 	 * Load Textdomain

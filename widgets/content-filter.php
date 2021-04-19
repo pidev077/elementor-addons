@@ -77,87 +77,149 @@ class Content_Filter extends Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
-	}
-
-	protected function register_design_layout_section_controls() {
-		$this->start_controls_section(
-			'section_design_layout',
+		$this->add_control(
+			'ajax_toggle',
 			[
-				'label' => __( 'Settings', 'bearsthemes-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'label' => __( 'Show results by ajax?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'Yes', 'bearsthemes-addons' ),
+				'label_on' => __( 'No', 'bearsthemes-addons' ),
+				'return_value' => '1',
+				'default' => '1',
 			]
 		);
 
-		$this->add_responsive_control(
-			'alignment',
+		$this->add_control(
+			'action_result',
 			[
-				'label' => __( 'Alignment', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
+				'label' => __( 'Redirect to Page Result?', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => __( '', 'bearsthemes-addons' ),
+				'placeholder' => '/advanced-search/',
 				'condition' => [
-					'icon_position' => ['', 'top'],
+					'ajax_toggle' => '',
 				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-counter' => 'text-align: {{VALUE}}',
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	protected function register_query_filter_section_controls() {
+		$this->start_controls_section(
+			'section_query',
+			[
+				'label' => __( 'Query', 'bearsthemes-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'ica_source',
+			[
+				'label' => __( 'Source', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'multiple' => true,
+				'options' => [
+					'resources'  => __( 'Resources', 'bearsthemes-addons' ),
+					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
+					'post' => __( 'Post', 'bearsthemes-addons' ),
+				],
+				'label_block' => false,
+				'default' => 'resources',
+			]
+		);
+
+		$this->add_control(
+			'category',
+			[
+				'label' => __( 'Category', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies(),
+				'label_block' => true,
+				'multiple' => true,
+			]
+		);
+
+		$this->add_control(
+			'posts_per_page',
+			[
+				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 6,
+			]
+		);
+
+		$this->add_control(
+			'orderby',
+			[
+				'label' => __( 'Order By', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'post_date',
+				'options' => [
+					'post_date' => __( 'Date', 'bearsthemes-addons' ),
+					'post_title' => __( 'Title', 'bearsthemes-addons' ),
+					'menu_order' => __( 'Menu Order', 'bearsthemes-addons' ),
+					'rand' => __( 'Random', 'bearsthemes-addons' ),
 				],
 			]
 		);
 
 		$this->add_control(
-			'vertical_ignment',
+			'order',
 			[
-				'label' => __( 'Vertical Alignment', 'bearsthemes-addons' ),
+				'label' => __( 'Order', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'top',
+				'default' => 'desc',
 				'options' => [
-					'top' => __( 'Top', 'bearsthemes-addons' ),
-					'middle' => __( 'Middle', 'bearsthemes-addons' ),
-					'bottom' => __( 'Bottom', 'bearsthemes-addons' ),
+					'asc' => __( 'ASC', 'bearsthemes-addons' ),
+					'desc' => __( 'DESC', 'bearsthemes-addons' ),
 				],
-				'condition' => [
-					'icon_position!' => ['', 'top'],
-				],
-				'prefix_class' => 'elementor-counter--vertical-align-',
 			]
 		);
 
 		$this->end_controls_section();
 	}
 
-  protected function _register_controls() {
-		$this->register_layout_section_controls();
-		//$this->register_design_layout_section_controls();
-	}
+	protected function get_supported_taxonomies() {
+		$supported_taxonomies = [];
 
-	protected function counter_data() {
-		$settings = $this->get_settings_for_display();
-
-		$counter_data = array(
-			'easing' => 'linear',
-			'duration' => $settings['duration'],
-			'toValue' => $settings['ending_number'],
-			'rounding' => 0,
-		);
-
-		if ( ! empty( $settings['thousand_separator'] ) ) {
-			$counter_data['delimiter'] = $settings['thousand_separator_char'];
+		$categories = get_terms( array(
+			'taxonomy' => 'category',
+	    'hide_empty' => false,
+		) );
+		if( ! empty( $categories ) ) {
+			foreach ( $categories as $category ) {
+			    $supported_taxonomies[$category->term_id] = $category->name;
+			}
 		}
 
-		return $counter_data = json_encode( $counter_data );
+		$types = get_terms( array(
+			'taxonomy' => 'ins-type',
+	    'hide_empty' => false,
+		) );
+		if( ! empty( $categories ) ) {
+			foreach ( $types as $category ) {
+			    $supported_taxonomies[$category->term_id] = $category->name;
+			}
+		}
+
+		$topics = get_terms( array(
+			'taxonomy' => 'ins-topic',
+	    'hide_empty' => false,
+		) );
+		if( ! empty( $categories ) ) {
+			foreach ( $topics as $category ) {
+			    $supported_taxonomies[$category->term_id] = $category->name;
+			}
+		}
+
+		return $supported_taxonomies;
+	}
+
+  protected function _register_controls() {
+		$this->register_layout_section_controls();
+		$this->register_query_filter_section_controls();
 	}
 
 	protected function render_icon( $icon ) {
@@ -178,7 +240,16 @@ class Content_Filter extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		$placeholder = $settings['placeholder'];
 		$filters = implode(',',$settings['ica_filters']);
-		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$settings['ica_suggestions'].'" filters="'.$filters.'"]');
+		$ajax = $settings['ajax_toggle'];
+		$action = $settings['action_result'];
+		$query = array(
+			'post_type' => $settings['ica_source'],
+			'post_status' => 'public',
+			'posts_per_page' => $settings['posts_per_page'],
+			'orderby' => $settings['orderby'],
+			'order' => $settings['order'],
+		);
+		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$settings['ica_suggestions'].'" filters="'.$filters.'" ajax="'.$ajax.'" action="'.$action.'" post_type="'.$settings['ica_source'].'"]');
 	}
 
 	protected function _content_template() {

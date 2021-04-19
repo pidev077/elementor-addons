@@ -1,8 +1,8 @@
 @charset "UTF-8";
-.ica-content-filter .form-content-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter {
   position: relative;
 }
-.ica-content-filter .form-content-filter button[type=submit] {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button {
   background: transparent;
   position: absolute;
   right: 0;
@@ -11,10 +11,21 @@
   font-size: 20px;
   top: 10px;
 }
-.ica-content-filter .form-content-filter button[type=submit] .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button .fa::before {
   font-size: 22px;
 }
-.ica-content-filter .form-content-filter input[name=key-search] {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button.btn-removeall {
+  right: 20px;
+  padding-right: 16px;
+  margin-right: 16px;
+  border-right: solid 1px #4a4a4a;
+  border-radius: 0;
+  display: none;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button:focus {
+  outline: none;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key] {
   border: none;
   border-bottom: solid 3px #4a4a4a;
   font-size: 34px;
@@ -27,19 +38,22 @@
   padding: 0;
   background: transparent;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error {
+  border-color: #ff5858;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion {
   display: flex;
   justify-content: space-between;
   padding: 17px 0;
   font-size: 15px;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
   display: flex;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions {
   margin-left: 4px;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions span {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions span {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -50,7 +64,7 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
   cursor: pointer;
   font-style: normal;
   line-height: 1.33;
@@ -60,30 +74,30 @@
   display: inline-flex;
   align-items: center;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa {
   margin-right: 12px;
   transition: 0.3s all;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa::before {
   font-size: 20px;
 }
-.ica-content-filter .template-filter-form .__filter-suggestion .btn-filter.__is-actived .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter.__is-actived .fa {
   transform: rotate(90deg);
   transform-origin: center;
 }
-.ica-content-filter .template-filter-form .__filter-options {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options {
   display: none;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter {
   width: calc(50% - 10px);
   position: relative;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter {
   font-size: 17px;
   font-weight: bold;
   font-stretch: normal;
@@ -98,10 +112,10 @@
   height: 40px;
   cursor: pointer;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
   font-size: 36px;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter {
   display: none;
   position: absolute;
   background-color: #d8d8d8;
@@ -111,7 +125,7 @@
   max-height: 600px;
   overflow: auto;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label {
   display: block;
   cursor: pointer;
   font-size: 15px;
@@ -122,11 +136,11 @@
   letter-spacing: -0.1px;
   color: #4a4a4a;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.btn-select-all, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.btn-select-all {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.btn-select-all, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.btn-select-all {
   margin-bottom: 30px;
   text-decoration: underline;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container {
   margin-bottom: 18px;
   position: relative;
   padding-left: 35px;
@@ -136,14 +150,14 @@
   user-select: none;
   line-height: 25px;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container .checkmark, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container .checkmark {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container .checkmark, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -152,7 +166,7 @@
   background-color: transparent;
   border: solid 4px #4a4a4a;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container .checkmark:after, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container .checkmark:after {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container .checkmark:after, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container .checkmark:after {
   left: 4px;
   top: -1px;
   width: 9px;
@@ -166,26 +180,26 @@
   position: absolute;
   display: none;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input:checked ~ .checkmark, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input:checked ~ .checkmark {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input:checked ~ .checkmark, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input:checked ~ .checkmark {
   background-color: #4a4a4a;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input:checked ~ .checkmark:after, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input:checked ~ .checkmark:after {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.checkbox-container input:checked ~ .checkmark:after, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.btn-deselect-all, .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.btn-deselect-all {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > span.btn-deselect-all, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter > label.btn-deselect-all {
   margin-top: 32px;
   text-decoration: underline;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range {
   width: 100%;
   margin-top: 48px;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
   width: 50%;
   margin-left: auto;
   padding-left: 10px;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__label {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__label {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -194,15 +208,15 @@
   letter-spacing: -0.1px;
   color: #4a4a4a;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options {
   display: flex;
   justify-content: space-between;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div {
   width: calc(50% - 11px);
   position: relative;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div:before {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div:before {
   content: "";
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -214,7 +228,7 @@
   position: absolute;
   right: 0;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
   font-size: 17px;
   font-weight: bold;
   font-stretch: normal;
@@ -235,16 +249,16 @@
   position: relative;
   z-index: 1;
 }
-.ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select:focus {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select:focus {
   outline: none;
 }
-.ica-content-filter .template-filter-form .__filter-options .bt-actions {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 65px;
 }
-.ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -255,7 +269,7 @@
   display: flex;
   align-items: center;
 }
-.ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall .fa {
   width: 11px;
   height: 11px;
   border-radius: 50%;
@@ -265,10 +279,10 @@
   align-items: center;
   justify-content: center;
 }
-.ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall .fa:before {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall .fa:before {
   font-size: 7px;
 }
-.ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-applyfilter {
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-applyfilter {
   border-radius: 10px;
   background-color: #4a4a4a;
   padding: 6px 28px;
@@ -283,6 +297,24 @@
   color: #ffffff;
   min-width: 220px;
   text-align: center;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .log-error {
+  color: #ff3030;
+  font-size: 14px;
+  display: none;
+}
+.elementor-widget-ica-content-filter.__is-loading {
+  opacity: 0.5;
+}
+.elementor-widget-ica-content-filter.__is-loading:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+  height: 100%;
 }
 
 /*# sourceMappingURL=content-filter.css.map */
