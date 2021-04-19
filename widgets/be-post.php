@@ -38,7 +38,7 @@ class Be_Posts extends Widget_Base {
 		$supported_ids = [];
 
 		$wp_query = new \WP_Query( array(
-														'post_type' => 'post',
+														'post_type' => 'resources',
 														'post_status' => 'publish'
 													) );
 
@@ -105,69 +105,6 @@ class Be_Posts extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'show_thumbnail',
-			[
-				'label' => __( 'Thumbnail', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'bearsthemes-addons' ),
-				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-				'default' => 'yes',
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Image_Size::get_type(),
-			[
-				'name' => 'thumbnail_size',
-				'default' => 'medium',
-				'exclude' => [ 'custom' ],
-				'condition' => [
-					'show_thumbnail!'=> '',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'item_ratio',
-			[
-				'label' => __( 'Image Ratio', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 0.66,
-				],
-				'range' => [
-					'px' => [
-						'min' => 0.3,
-						'max' => 2,
-						'step' => 0.01,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-post__thumbnail' => 'padding-bottom: calc( {{SIZE}} * 100% );',
-				],
-				'condition' => [
-					'show_thumbnail!'=> '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'show_comment_count',
-			[
-				'label' => __( 'Comment Count', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'bearsthemes-addons' ),
-				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-				'default' => 'yes',
-				'separator' => 'before',
-				'condition' => [
-					'show_thumbnail!'=> '',
-				],
-			]
-		);
-
 
 		$this->add_control(
 			'show_category',
@@ -184,17 +121,6 @@ class Be_Posts extends Widget_Base {
 			'show_title',
 			[
 				'label' => __( 'Title', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'bearsthemes-addons' ),
-				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'show_meta',
-			[
-				'label' => __( 'Meta Data', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'bearsthemes-addons' ),
 				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
@@ -253,7 +179,7 @@ class Be_Posts extends Widget_Base {
 			[
 				'label' => __( 'Read More Text', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Read More »', 'bearsthemes-addons' ),
+				'default' => __( 'Read More', 'bearsthemes-addons' ),
 				'condition' => [
 					'show_read_more!' => '',
 				],
@@ -1394,7 +1320,7 @@ class Be_Posts extends Widget_Base {
 		}
 
 		$args = [
-			'post_type' => 'post',
+			'post_type' => 'resources',
 			'post_status' => 'publish',
 			'posts_per_page' => $this->get_settings_for_display('posts_per_page'),
 			'paged' => $paged,
@@ -1501,18 +1427,6 @@ class Be_Posts extends Widget_Base {
 
 		?>
 			<article id="post-<?php the_ID();  ?>" <?php post_class( 'elementor-post' ); ?>>
-				<?php if( '' !== $settings['show_thumbnail'] ) { ?>
-					<div class="elementor-post__thumbnail">
-						<?php the_post_thumbnail( $settings['thumbnail_size'] ); ?>
-
-						<?php if ( '' !== $settings['show_comment_count'] && ! post_password_required() && ( comments_open() || get_comments_number() ) ) { ?>
-				      <a class="elementor-post__comment-count" href="<?php comments_link(); ?>">
-								<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 511.096 511.096" viewBox="0 0 511.096 511.096"><path d="m74.414 480.548h-36.214l25.607-25.607c13.807-13.807 22.429-31.765 24.747-51.246-59.127-38.802-88.554-95.014-88.554-153.944 0-108.719 99.923-219.203 256.414-219.203 165.785 0 254.682 101.666 254.682 209.678 0 108.724-89.836 210.322-254.682 210.322-28.877 0-59.01-3.855-85.913-10.928-25.467 26.121-59.973 40.928-96.087 40.928z"></path></svg>
-				        <?php comments_number( '0', '1', '%' ); ?>
-				      </a>
-				    <?php } ?>
-					</div>
-				<?php } ?>
 
 				<div class="elementor-post__content">
 					<?php if( has_category() && $settings['show_category'] ) { ?>
@@ -1524,17 +1438,6 @@ class Be_Posts extends Widget_Base {
 							the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' );
 						}
 					?>
-
-					<?php if( '' !== $settings['show_meta'] ) { ?>
-						<ul class="elementor-post__meta">
-				      <li>
-				        <time class="entry-date published" datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php echo esc_html( get_the_date() ); ?></a></time>
-				      </li>
-				      <li>
-								<?php echo '<span>' . esc_html__('by ', 'bearsthemes-addons') . '</span><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a>'; ?>
-				      </li>
-				    </ul>
-					<?php } ?>
 
 					<?php
 						if( '' !== $settings['show_excerpt'] ) {
