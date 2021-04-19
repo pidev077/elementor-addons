@@ -18,7 +18,7 @@ class Be_Posts extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Posts', 'bearsthemes-addons' );
+		return __( 'Posts', 'elementor-addons' );
 	}
 
 	public function get_icon() {
@@ -30,9 +30,12 @@ class Be_Posts extends Widget_Base {
 	}
 
 	public function get_script_depends() {
-		return [ 'bearsthemes-addons' ];
+		return [ 'elementor-addons' ];
 	}
 
+	public function get_style_depends() {
+		return [ 'elementor-addons' ];
+	}
 
 	protected function get_supported_ids() {
 		$supported_ids = [];
