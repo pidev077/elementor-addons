@@ -439,7 +439,7 @@ class Secondary_CTAs extends Widget_Base {
                                         </a>
                                     <?php else: ?>
                                         <?php if ($images['url']): ?>
-                                            <div class="thumbnail">
+                                            <div class="thumbnail secondary-ctas-thumbnail-<?php echo $key ?>">
                                                 <img src="<?php echo $images['url'] ?>" alt="image" class="<?php echo $classAnimation ?>">
                                             </div>
                                         <?php endif; ?>
