@@ -141,6 +141,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/resources.php' );
 		require_once( __DIR__ . '/widgets/card-lrg.php' );
 		require_once( __DIR__ . '/widgets/be-promo.php' );
+		require_once( __DIR__ . '/widgets/be-latest-resources.php' );
 		// M.8.3 Card lrg (landing page)
 	}
 
@@ -188,6 +189,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Resources_Widgets() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Card_Lrg() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Promo() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Latest_Resources() );
 
 	}
 
