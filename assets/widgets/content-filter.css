@@ -25,7 +25,7 @@
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button:focus {
   outline: none;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key] {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
   border: none;
   border-bottom: solid 3px #4a4a4a;
   font-size: 34px;
@@ -38,8 +38,33 @@
   padding: 0;
   background: transparent;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error {
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error, .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead.__is-error {
   border-color: #ff5858;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+  color: #b8b8b8;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .twitter-typeahead {
+  display: block !important;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .tt-menu {
+  background: white;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 4px 0px #d4d4d4;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .tt-menu .league-name {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .tt-menu .tt-suggestion {
+  cursor: pointer;
+  margin: 10px;
+  line-height: 1;
+  text-decoration: underline;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .tt-menu .tt-suggestion:hover {
+  text-decoration: none;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion {
   display: flex;

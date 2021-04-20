@@ -68,6 +68,7 @@ class Plugin {
 		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
 		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], false, true );
 		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-bloodhound', plugins_url( '/assets/js/typeahead/typeahead.bundle.min.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**

@@ -26,7 +26,7 @@ class Content_Filter extends Widget_Base {
 	}
 
   public function get_script_depends() {
-		return [ 'elementor-addons-content-filter' ];
+		return [ 'elementor-addons-content-filter', 'elementor-addons-bloodhound' ];
 	}
 
   public function get_style_depends() {
@@ -55,7 +55,7 @@ class Content_Filter extends Widget_Base {
 			'ica_suggestions',
 			[
 				'label' => __( 'Suggestions', 'bearsthemes-addons' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => 'lorem ipsum,dolor semet,sed it embaco',
 			]
