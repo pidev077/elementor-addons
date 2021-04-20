@@ -335,6 +335,60 @@
       font-size: 14px;
       display: none;
     }
+    .content-filter-results{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      .item-content-filter{
+        width: calc(100% / 3 - (42px / 3));
+        border-radius: 8px;
+        box-shadow: 0 0 0 1px rgb(150 150 150 / 21%);
+        background-color: #ffffff;
+        .__meta{
+          padding: 16px;
+          display: flex;
+          align-items: center;
+          &--type{
+            font-size: 17px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.18;
+            letter-spacing: -0.5px;
+            color: #2f2f39;
+          }
+          &--color{
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+          }
+        }
+        .__info{
+          padding: 26px 16px;
+          .__title{
+            font-size: 22px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.18;
+            letter-spacing: -0.5px;
+            color: #2f2f39;
+            margin-bottom: 17px;
+          }
+          .__content{
+            font-size: 15px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.47;
+            letter-spacing: -0.1px;
+            color: #2f2f39;
+          }
+        }
+      }
+    }
   }
   &.__is-loading{
     opacity: 0.5;
