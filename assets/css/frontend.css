@@ -451,3 +451,11 @@ article.be-latest-resources .elementor-post__content {
   color: #2f2f39;
 	text-decoration: underline;
 }
+.heading-resources a i.fa{
+	font-size: 30px;
+	margin-left: 10px;
+}
+.heading-resources a i.fa::before{
+	position: relative;
+	top: 4px;
+}
