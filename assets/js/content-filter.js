@@ -11,6 +11,7 @@
 			var inputSearch  = $scope.find('input[name="key"]');
 			var btnSearch  	 = $scope.find('button[type="submit"]');
 			var logError     = $scope.find('.log-error');
+			var btnSuggestion = $scope.find('.btn-suggestion');
 
 			//Show and Hide Filters
       toggleFilter.click(function (e) {
@@ -51,7 +52,7 @@
 			//Search key
 			var btnRemoveAll = $scope.find('.btn-removeall');
 			if(inputSearch.val() != '') btnRemoveAll.show();
-			inputSearch.on('keyup',function(){
+			inputSearch.on('keyup',function(event){
 				let val = $(this).val();
 				if(val !== ''){ btnRemoveAll.show(); }else{ btnRemoveAll.hide(); }
 			});
@@ -59,6 +60,45 @@
 				inputSearch.val('');
 				btnRemoveAll.hide();
 				return false;
+			});
+
+			//Auto Suggestions
+		  var substringMatcher = function(strs) {
+		    return function findMatches(q, cb) {
+		      var matches, substringRegex;
+		      // an array that will be populated with substring matches
+		      matches = [];
+		      // regex used to determine if a string contains the substring `q`
+		      substrRegex = new RegExp(q, 'i');
+		      // iterate through the pool of strings and for any string that
+		      // contains the substring `q`, add it to the `matches` array
+		      $.each(strs, function(i, str) {
+		        if (substrRegex.test(str)) {
+		          matches.push(str);
+		        }
+		      });
+		      cb(matches);
+		    };
+		  };
+			var keys = $scope.find('.ica-content-filter').data('keys');
+		  $scope.find('.typeahead').typeahead({
+		      hint: true,
+		      highlight: true,
+		      minLength: 1
+		    },
+		    {
+	      name: 'keys',
+	      source: substringMatcher(keys.split(",")),
+				templates: {
+			    header: '<h3 class="league-name">Suggestions:</h3>'
+			  }
+		  });
+
+			//Button Suggestions
+			btnSuggestion.on('click',function(){
+				var val = $(this).data('value');
+				inputSearch.val(val);
+				if(val !== ''){ btnRemoveAll.show(); }else{ btnRemoveAll.hide(); }
 			});
 
 			//Search content

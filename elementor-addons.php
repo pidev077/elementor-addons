@@ -81,7 +81,7 @@ final class Elementor_Addons {
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
 		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
-            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
+            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) , 'keys' => $atts['suggestions'] ) );
 
 	  ob_start();
 		$TEMPLATEPATH =  dirname(__FILE__);

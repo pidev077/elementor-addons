@@ -1,25 +1,35 @@
 <?php
 extract($atts);
-if ( ! defined( 'ABSPATH' ) ) exit; // Don't allow direct access
-$suggestions = explode(',',$suggestions);
+$suggestionsArr = explode(',',$suggestions);
+$suggestionTop = array();
+foreach ($suggestionsArr as $key => $val) {
+  $suggestionTop[] = $val;
+  if($key > 1) break;
+}
 $filters = !empty($filters) ? explode(',',$filters) : '';
 $is_date_filter = false;
+$rand_id = rand(1000,99999);
+$keys = "";
+foreach ($suggestionsArr as $key => $val) {
+  $keys .= trim($val);
+  $keys .= (($key + 1) < count($suggestionsArr)) ? ',':'';
+}
 ?>
-<div class="ica-content-filter">
-    <form class="form-content-filter" action="<?php echo $action; ?>" method="get">
-       <input type="text" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
+<div id="content_filter_<?php echo $rand_id; ?> " class="ica-content-filter" data-keys="<?php echo esc_attr($keys) ?>">
+    <div class="form-content-filter" action="<?php echo $action; ?>" method="get">
+       <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
        <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
        <button type="submit" data-ajax="<?php echo $ajax; ?>"><i class="fa fa-search"></i></button>
-    </form>
+    </div>
     <div class="log-error"></div>
     <div class="template-filter-form">
         <div class="__filter-suggestion">
-          <?php if(!empty($suggestions)): ?>
+          <?php if(!empty($suggestionTop)): ?>
             <div class="load-suggestion">
               <?php echo __('Suggestions:','bearsthemes-addons') ?>
               <div class="list-suggestions">
-                <?php foreach ($suggestions as $key => $suggestion): ?>
-                  <span><?php echo $suggestion; ?></span><?php echo (($key+1) < count($suggestions)) ? ',' : ''; ?>
+                <?php foreach ($suggestionTop as $key => $suggestion): ?>
+                  <span class="btn-suggestion" data-value="<?php echo $suggestion; ?>"><?php echo $suggestion; ?></span><?php echo (($key+1) < count($suggestions)) ? ',' : ''; ?>
                 <?php endforeach; ?>
               </div>
             </div>

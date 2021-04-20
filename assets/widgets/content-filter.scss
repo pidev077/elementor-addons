@@ -25,7 +25,7 @@
           outline: none;
         }
       }
-      input[name="key"] {
+      input[name="key"],.typeahead {
           border: none;
           border-bottom: solid 3px #4a4a4a;
           font-size: 34px;
@@ -40,6 +40,31 @@
           &.__is-error{
             border-color: #ff5858;
           }
+      }
+      .typeahead{
+        color: #b8b8b8;
+      }
+      .twitter-typeahead{
+        display: block !important;
+      }
+      .tt-menu{
+        background: rgb(255, 255, 255);
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 4px 4px 0px #d4d4d4;
+        .league-name{
+          font-size: 18px;
+          margin-bottom: 0;
+        }
+        .tt-suggestion{
+          cursor: pointer;
+          margin: 10px;
+          line-height: 1;
+          text-decoration: underline;
+          &:hover{
+            text-decoration: none;
+          }
+        }
       }
     }
     .template-filter-form{
