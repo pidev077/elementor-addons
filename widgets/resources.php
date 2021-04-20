@@ -293,13 +293,14 @@ class Resources_Widgets extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         $heading  = $settings['heading_resources'];
-        $ids = $item['post_ids_resources'];
+        $ids = $settings['post_ids_resources'];
         $column_des = $settings['colum_pdf_resources'];
         $column_tab = $settings['colum_pdf_resources_tablet'];
         $column_mobi = $settings['colum_pdf_resources_mobile'];
         $class_des = '';
         $class_tab = '';
         $class_mobi = '';
+        //var_dump($ids);
         switch ($column_des) {
             case '4':
                 $class_des = 'columns-des-4';
@@ -375,13 +376,14 @@ class Resources_Widgets extends Widget_Base {
 
 
     protected function get_resources_template($id, $class_des, $class_tab,  $class_mobi){
+
         $loop = new \WP_Query( array(
             'post_type' => 'resources',
             'post_status' => 'publish',
             'post__in' => $id,
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
-
+        //var_dump($loop);
             $pdf= get_field('upload_file');
             $id_pdf = $pdf['ID'];
             // echo "<pre>";
