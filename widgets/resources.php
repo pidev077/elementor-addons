@@ -382,7 +382,7 @@ class Resources_Widgets extends Widget_Base {
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
 
-            $pdf= get_field('up_load_pdf_resources_ins');
+            $pdf= get_field('upload_file');
             $id_pdf = $pdf['ID'];
             // echo "<pre>";
             // echo print_r($pdf);
