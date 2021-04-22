@@ -12,30 +12,30 @@ use Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Resources_Widgets extends Widget_Base {
+class Be_Popular_Results extends Widget_Base {
 
     public function get_name() {
-        return 'resources-widgets';
+        return 'be-popular-results';
     }
 
     public function get_title() {
-        return __( 'Resources Widgets', 'bearsthemes-addons' );
+        return __( 'Popular Results', 'bearsthemes-addons' );
     }
 
     public function get_icon() {
-        return 'fas fa-columns';
+        return 'eicon-columns';
     }
 
     public function get_categories() {
-        return [ 'bearsthemes-addons' ];
+      return [ 'bearsthemes-addons' ];
     }
 
     public function get_script_depends() {
-        return [ 'elementor-addons-custom-frontend' ];
+      return [ 'elementor-addons' ];
     }
 
     public function get_style_depends() {
-        return [ 'elementor-addons-custom-frontend' ];
+      return [ 'elementor-addons' ];
     }
 
     protected function register_content_section_controls() {
@@ -49,7 +49,7 @@ class Resources_Widgets extends Widget_Base {
                     [
                         'label' => __( 'Heading', 'bearsthemes-addons' ),
                         'type' => Controls_Manager::TEXTAREA,
-                        'default' => __( 'Key documentation sed do eiusmod tempor incididunt', 'bearsthemes-addons' ),
+                        'default' => __( 'Popular results', 'bearsthemes-addons' ),
                         'label_block' => true,
                     ]
             );
@@ -178,7 +178,7 @@ class Resources_Widgets extends Widget_Base {
                 [
                     'name' => 'content_resources_typography',
                     'default' => '',
-                    'selector' => '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf',
+                    'selector' => '{{WRAPPER}} .list-pdf-resources .elementor-post__title',
                 ]
             );
 
@@ -189,8 +189,8 @@ class Resources_Widgets extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'default' => '#2f2f39',
                     'selectors' => [
-                        '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} .list-pdf-resources .meta-resources > a' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .list-pdf-resources .elementor-post__title .info-pdf' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .list-pdf-resources .elementor-post__title > a' => 'color: {{VALUE}};',
                     ],
                 ]
             );
@@ -216,7 +216,7 @@ class Resources_Widgets extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .list-pdf-resources .elementor-post__title .info-pdf' => 'text-align: {{VALUE}};',
                     ],
                 ]
             );
@@ -242,22 +242,22 @@ class Resources_Widgets extends Widget_Base {
             );
 
             $this->add_responsive_control(
-    			'container_items_pdf_resources',
-    			[
-    				'label' => __( 'Container Items PDF', 'bearsthemes-addons' ),
-    				'type' => Controls_Manager::SLIDER,
-    				'size_units' => [ 'px', '%' ],
-    				'range' => [
-    					'px' => [
-    						'min' => 0,
-    						'max' => 800,
-    					],
-    				],
-    				'selectors' => [
-    					'{{WRAPPER}} .resources-elements .list-pdf-resources .meta-resources' => 'max-width: {{SIZE}}{{UNIT}}',
-    				],
-    			]
-    		);
+        			'container_items_pdf_resources',
+        			[
+        				'label' => __( 'Container Items PDF', 'bearsthemes-addons' ),
+        				'type' => Controls_Manager::SLIDER,
+        				'size_units' => [ 'px', '%' ],
+        				'range' => [
+        					'px' => [
+        						'min' => 0,
+        						'max' => 800,
+        					],
+        				],
+        				'selectors' => [
+        					'{{WRAPPER}} .resources-elements .list-pdf-resources .elementor-post__title' => 'max-width: {{SIZE}}{{UNIT}}',
+        				],
+        			]
+        		);
 
 
         $this->end_controls_section();
@@ -359,7 +359,7 @@ class Resources_Widgets extends Widget_Base {
         // echo "</pre>";
         ?>
 
-        <div class="bt-elements-elementor resources-elements">
+        <div class="bt-elements-elementor popular-results-elements">
             <div class="content-elements">
                 <?php if ($heading): ?>
                     <h2 class="heading"> <?php echo $heading ?> </h2>
@@ -383,27 +383,10 @@ class Resources_Widgets extends Widget_Base {
             'post__in' => $id,
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
-        //var_dump($loop);
-            $pdf= get_field('upload_file');
-            $id_pdf = $pdf['ID'];
-            // echo "<pre>";
-            // echo print_r($pdf);
-            // echo "</pre>";
-            $name_pdf = $pdf['title'];
-            $filesize = filesize( get_attached_file( $id_pdf ) );
-            $filesize = size_format($filesize, 2);
-            $link_pdf = $pdf['url'];
             ?>
 
             <div id="post-<?php the_ID(); ?>" class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
-                <div class="__content">
-                    <div class="meta-resources">
-                        <a href="<?php echo $link_pdf; ?>" target="_blank">
-                            <h4 class="info-pdf name-pdf"> <?php echo $name_pdf; ?> </h4>
-                            <div class="info-pdf size-pdf"> [PDF <span><?php echo $filesize ?>]</span></div>
-                        </a>
-                    </div>
-                </div>
+                <?php the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' ); ?>
             </div>
         <?php
         endwhile;
