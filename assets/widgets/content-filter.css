@@ -294,6 +294,11 @@
   display: flex;
   align-items: center;
   visibility: hidden;
+  padding: 0;
+  background: transparent;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall:active, .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall:focus {
+  outline: none;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall .fa {
   width: 11px;

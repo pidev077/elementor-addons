@@ -96,7 +96,7 @@ class Content_Filter extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => __( '', 'bearsthemes-addons' ),
-				'placeholder' => '/advanced-search/',
+				'placeholder' => home_url().'/advanced-search/',
 				'condition' => [
 					'ajax_toggle' => '',
 				],

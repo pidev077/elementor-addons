@@ -19,7 +19,7 @@ foreach ($suggestionsArr as $key => $val) {
     <div class="form-content-filter">
        <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
        <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
-       <button type="submit" data-ajax="<?php echo $ajax; ?>"><i class="fa fa-search"></i></button>
+       <button type="submit" data-ajax="<?php echo $ajax; ?>" <?php echo (!$ajax) ? 'data-redirect="'.$action.'"' : ''; ?>><i class="fa fa-search"></i></button>
     </div>
     <div class="log-error"></div>
     <div class="template-filter-form">
@@ -107,7 +107,7 @@ foreach ($suggestionsArr as $key => $val) {
             </div>
             <div class="bt-actions">
               <button class="btn-clearall" data-filter data-ajax="<?php echo $ajax; ?>"><i class="fa fa-times" aria-hidden="true"></i> <?php echo __('Clear filters','bearsthemes-addons'); ?></button>
-              <button class="btn-applyfilter" data-filter data-ajax="<?php echo $ajax; ?>"><?php echo __('Apply filters','bearsthemes-addons'); ?></button>
+              <button class="btn-applyfilter" data-filter data-ajax="<?php echo $ajax; ?>" <?php echo (!$ajax) ? 'data-redirect="'.$action.'"' : ''; ?>><?php echo __('Apply filters','bearsthemes-addons'); ?></button>
             </div>
           </div>
         <?php endif; ?>

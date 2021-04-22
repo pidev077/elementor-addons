@@ -14,10 +14,11 @@
 			var btnSuggestion  = $scope.find('.btn-suggestion');
 			var btnSelectAll   = $scope.find('.btn-select-all');
 			var btnUnSelectAll = $scope.find('.btn-deselect-all');
-			var btnFilters 		 = $scope.find('.bt-actions button[data-filter]');
+			var btnFilters 		 = $scope.find('.btn-applyfilter');
 			var listFilters		 = $scope.find('.ica-item-filter');
 			var tempPagination = $scope.find('.content-filter-pagination');
 			var btnLoadmore 	 = $scope.find('button[name="button-showmore"]');
+			var btnClearAll    = $scope.find('.btn-clearall');
 			var paged = 1;
 
 			//Show and Hide Filters
@@ -49,6 +50,7 @@
 			    var value = +$(this).val();
 					if(value < 1) return;
 			    $auto.empty();
+					$('<option value="">Select end year</option>').appendTo($auto);
 			    for (var i = 0; i < 20; i++) {
 			        $('<option>', {
 			            text: i + value
@@ -124,22 +126,39 @@
 			btnSearch.on('click',loadFilters);
 			btnFilters.on('click',loadFilters);
 			$scope.on('click','button[name="button-showmore"]',loadMoreContent);
+			btnClearAll.on('click',clearAllFilters);
 
 			function loadFilters(){
 				var ajax = $(this).data('ajax');
-				// if(validationForm()){
-				// 	return false;
-				// }
-				// logError.slideUp();
+				var redirect = $(this).data('redirect');
 				if(ajax){
-					loadFilterData(inputSearch.val(),'search');
+					loadFilterData(inputSearch.val(),'filter');
 				}else{
-
+					// similar behavior as clicking on a link
+					window.location.href = redirect;
 				}
 			}
 
 			function loadMoreContent(){
 				loadFilterData(inputSearch.val(),'loadmore');
+			}
+
+			function clearAllFilters(){
+				listFilters.each(function(index,e){
+					var filter = $(e).data('filter');
+					if(filter != 'date'){
+						$(e).find('input[name="'+filter+'"]').each(function(i,e){
+							if($(e).prop("checked") == true){
+	               $(e).prop("checked",false);
+	            }
+						});
+					}
+					if(filter == 'date'){
+						$(e).find('select[name="date-range-start"]').val('');
+						$(e).find('select[name="date-range-end"]').val('');
+					}
+				});
+				loadFilterData(inputSearch.val(),'filter');
 			}
 
 			function validationForm(){
@@ -177,7 +196,7 @@
 					var filter = $(e).data('filter');
 					var vals = [];
 					if(filter != 'date'){
-						$('input[name="'+filter+'"]').each(function(i,e){
+						$(e).find('input[name="'+filter+'"]').each(function(i,e){
 							if($(e).prop("checked") == true){
 	               vals.push($(e).val());
 	            }
@@ -187,7 +206,7 @@
 					if(filter == 'date'){
 						var start_date = $(e).find('select[name="date-range-start"]').val();
 						var end_date = $(e).find('select[name="date-range-end"]').val();
-						filters.push({name : 'post_date' , value : start_date+","+end_date});
+						if(start_date || end_date) filters.push({name : 'post_date' , value : start_date+","+end_date});
 					}
 				});
 				jQuery.ajax({
@@ -217,6 +236,11 @@
 								resultFilter.css('height','auto');
 							}
 							tempPagination.html(response.loadmore);
+							if(filters.length > 0){
+								 btnClearAll.css('visibility','visible');
+							}else{
+								 btnClearAll.css('visibility','hidden');
+							}
 							$scope.removeClass('__is-loading');
 	          },
 	          error: function(errorThrown){
