@@ -26,7 +26,7 @@ class Content_Filter extends Widget_Base {
 	}
 
   public function get_script_depends() {
-		return [ 'elementor-addons-content-filter', 'elementor-addons-bloodhound' ];
+		return [ 'elementor-addons-content-filter', 'elementor-addons-bloodhound' , 'elementor-addons-masonry' ];
 	}
 
   public function get_style_depends() {
@@ -103,6 +103,26 @@ class Content_Filter extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'filter_toggle',
+			[
+				'label' => __( 'Default Filter?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
+		$this->add_control(
+			'pagination_toggle',
+			[
+				'label' => __( 'Pagination', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -131,17 +151,6 @@ class Content_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
-			'category',
-			[
-				'label' => __( 'Category', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SELECT2,
-				'options' => $this->get_supported_taxonomies(),
-				'label_block' => true,
-				'multiple' => true,
-			]
-		);
-
-		$this->add_control(
 			'posts_per_page',
 			[
 				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
@@ -159,7 +168,6 @@ class Content_Filter extends Widget_Base {
 				'options' => [
 					'post_date' => __( 'Date', 'bearsthemes-addons' ),
 					'post_title' => __( 'Title', 'bearsthemes-addons' ),
-					'menu_order' => __( 'Menu Order', 'bearsthemes-addons' ),
 					'rand' => __( 'Random', 'bearsthemes-addons' ),
 				],
 			]
@@ -242,14 +250,19 @@ class Content_Filter extends Widget_Base {
 		$filters = implode(',',$settings['ica_filters']);
 		$ajax = $settings['ajax_toggle'];
 		$action = $settings['action_result'];
-		$query = array(
-			'post_type' => $settings['ica_source'],
-			'post_status' => 'public',
-			'posts_per_page' => $settings['posts_per_page'],
-			'orderby' => $settings['orderby'],
-			'order' => $settings['order'],
-		);
-		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$settings['ica_suggestions'].'" filters="'.$filters.'" ajax="'.$ajax.'" action="'.$action.'" post_type="'.$settings['ica_source'].'"]');
+		echo do_shortcode('[ica_content_filter
+			placeholder="'.$placeholder.'"
+			suggestions="'.$settings['ica_suggestions'].'"
+			filters="'.$filters.'"
+			ajax="'.$ajax.'"
+			action="'.$action.'"
+			post_type="'.$settings['ica_source'].'"
+			numberposts="'.$settings['posts_per_page'].'"
+			orderby="'.$settings['orderby'].'"
+			order="'.$settings['order'].'"
+			default_filter="'.$settings['filter_toggle'].'"
+			pagination="'.$settings['pagination_toggle'].'"
+		]');
 	}
 
 	protected function _content_template() {

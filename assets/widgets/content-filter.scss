@@ -297,6 +297,7 @@
              color: #4a4a4a;
              display: flex;
              align-items: center;
+             visibility: hidden;
              .fa{
                width: 11px;
                height: 11px;
@@ -328,6 +329,9 @@
             text-align: center;
           }
         }
+        &.__is-actived{
+          display: block;
+        }
       }
     }
     .log-error{
@@ -336,19 +340,20 @@
       display: none;
     }
     .content-filter-results{
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: flex-start;
+      margin-top: 36px;
+      width: 100% !important;
       .item-content-filter{
         width: calc(100% / 3 - (42px / 3));
         border-radius: 8px;
         box-shadow: 0 0 0 1px rgb(150 150 150 / 21%);
         background-color: #ffffff;
+        margin-bottom: 21px;
+        float: left;
         .__meta{
           padding: 16px;
           display: flex;
           align-items: center;
+          justify-content: space-between;
           &--type{
             font-size: 17px;
             font-weight: bold;
@@ -363,10 +368,30 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
+            margin-right: 5px;
+          }
+          &--date{
+            font-size: 15px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.47;
+            letter-spacing: -0.1px;
+            text-align: right;
+            color: #2f2f39;
+            opacity: 0.7;
+          }
+        }
+        .__featured-img{
+          img{
+            height: 209px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
           }
         }
         .__info{
-          padding: 26px 16px;
+          padding: 26px 16px 17px;
           .__title{
             font-size: 22px;
             font-weight: bold;
@@ -386,6 +411,33 @@
             letter-spacing: -0.1px;
             color: #2f2f39;
           }
+          .btn-readmore{
+            opacity: 0.7;
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.54;
+            letter-spacing: -0.1px;
+            color: #2f2f39;
+            text-decoration: underline;
+            margin-top: 28px;
+            display: inline-block;
+            &:hover{
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      .not-found{
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        background: #fff;
+        padding: 20px 10px;
+        .fa:before{
+          font-size: 40px;
         }
       }
     }

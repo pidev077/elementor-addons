@@ -69,20 +69,23 @@ final class Elementor_Addons {
 	}
 
 	//Search Content Filter
-	function ica_content_filter_render( $atts ) {
+	public function ica_content_filter_render( $atts ) {
 	  $atts = shortcode_atts( array(
 	      'placeholder' => 'Search...',
 				'suggestions' => '',
 				'filters' => array(),
 				'ajax'	=> true,
+				'default_filter' => true,
 				'action' => '',
-				'post_type' => ''
+				'post_type' => '',
+				'numberposts' => 6,
+				'orderby'	=> 'post_date',
+				'order' => "DESC"
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
 		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
-            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) , 'keys' => $atts['suggestions'] ) );
-
+            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
 	  ob_start();
 		$TEMPLATEPATH =  dirname(__FILE__);
 		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
@@ -94,9 +97,81 @@ final class Elementor_Addons {
 	* @access private
 	*/
 
-	function load_filter_data_ajax(){
-		$result = array('test' => 'okok');
+	public function load_filter_data_ajax(){
+		$result = array();
+
+		$key = $_POST['key'];
+		$filters = $_POST['filters'];
+
+		$args = array(
+			'post_type' => $_POST['post_type'],
+			'post_status' => 'public',
+			'posts_per_page' => $_POST['numberposts'],
+			'search_key' => $key,
+			'orderby' => $_POST['orderby'],
+			'order' => $_POST['order']
+		);
+
+		if(!empty($filters)){
+			$args['tax_query']['relation'] = 'AND';
+
+			foreach ($filters as $key => $filter) {
+				if($filter['name'] !== 'post_date'){
+					$args['tax_query'][] = array(
+							'taxonomy' => $filter['name'],
+							'field'    => 'slug',
+							'terms'    => $filter['value']
+					);
+				}
+				if($filter['name'] == 'post_date' && $filter['value'] !== ','){
+					$args['search_date'] = $filter['value'];
+				}
+			}
+		}
+
+		$result['html'] = $this->get_data_filters($args);
+
 		wp_send_json($result);
+	}
+
+	public function get_data_filters($args){
+			// The Query
+			ob_start();
+			$TEMPLATEPATH =  dirname(__FILE__);
+			add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+			$the_query = new WP_Query($args);
+			remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+			// The Loop
+			if ( $the_query->have_posts() ) {
+					while ( $the_query->have_posts() ) {
+							$the_query->the_post();
+							include($TEMPLATEPATH.'/templates/content-filter/item-resoures.php');
+					}
+			} else {
+				?> <div class="not-found">
+					<i class="fa fa-frown-o" aria-hidden="true"></i>
+					<div><?php echo __("Not found result!"); ?></div>
+				</div> <?php
+			}
+			return ob_get_clean();
+	}
+
+	function ica_title_filter( $where, &$wp_query ){
+	    global $wpdb;
+	    if ( $search_term = $wp_query->get( 'search_key' ) ) {
+					$where .= ' AND (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\'';
+	        $where .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\')';
+	    }
+			if ( $search_date = $wp_query->get( 'search_date' ) ) {
+				  $date = explode(',',$search_date);
+					if($date[0] && !$date[1])
+							$where .= " AND post_date >= '".$date[0]."-01-01'";
+					if(!$date[0] && $date[1])
+ 						  $where .= " AND post_date <= '".$date[1]."-12-31'";
+					if($date[0] && $date[1])
+							$where .= " AND post_date >= '".$date[0]."-01-01'  AND post_date <= '".$date[1]."-12-31'";
+	    }
+	    return $where;
 	}
 
 

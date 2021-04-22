@@ -4,22 +4,26 @@
 	 * @param $ The jQuery alias
 	 */
 	var WidgetContentFilterHandler = function( $scope, $ ) {
-      var toggleFilter = $scope.find('.btn-filter');
-      var optionFilter = $scope.find('.__filter-options');
-      var selectFilter = $scope.find('.select-filter');
-			var ResultFilter = $scope.find('.content-filter-results');
-			var inputSearch  = $scope.find('input[name="key"]');
-			var btnSearch  	 = $scope.find('button[type="submit"]');
-			var logError     = $scope.find('.log-error');
-			var btnSuggestion = $scope.find('.btn-suggestion');
+      var toggleFilter   = $scope.find('.btn-filter');
+      var optionFilter   = $scope.find('.__filter-options');
+      var selectFilter   = $scope.find('.select-filter');
+			var resultFilter   = $scope.find('.content-filter-results');
+			var inputSearch    = $scope.find('input[name="key"]');
+			var btnSearch  	   = $scope.find('button[type="submit"]');
+			var logError       = $scope.find('.log-error');
+			var btnSuggestion  = $scope.find('.btn-suggestion');
+			var btnSelectAll   = $scope.find('.btn-select-all');
+			var btnUnSelectAll = $scope.find('.btn-deselect-all');
+			var btnFilters 		 = $scope.find('.bt-actions button[data-filter]');
+			var listFilters		 = $scope.find('.ica-item-filter');
 
 			//Show and Hide Filters
       toggleFilter.click(function (e) {
         if(toggleFilter.hasClass('__is-actived')){
-          toggleFilter.removeClass('__is-actived');
+					toggleFilter.removeClass('__is-actived');
           optionFilter.slideUp();
         }else{
-          toggleFilter.addClass('__is-actived');
+					toggleFilter.addClass('__is-actived');
           optionFilter.slideDown();
         }
       });
@@ -38,7 +42,7 @@
 
 			// Auto render end year
 			var $auto = $scope.find('select[name="date-range-end"]');
-				$scope.find('select[name="date-range-start"]').on('change', function () {
+			$scope.find('select[name="date-range-start"]').on('change', function () {
 			    var value = +$(this).val();
 					if(value < 1) return;
 			    $auto.empty();
@@ -60,6 +64,18 @@
 				inputSearch.val('');
 				btnRemoveAll.hide();
 				return false;
+			});
+
+			//Select ALL
+			btnSelectAll.on('click',function(){
+				var box_select = $(this).closest('.select-filter');
+				box_select.find('input[type="checkbox"]').prop( "checked", true );
+			});
+
+			//UnSelect ALL
+			btnUnSelectAll.on('click',function(){
+				var box_select = $(this).closest('.select-filter');
+				box_select.find('input[type="checkbox"]').prop( "checked", false );
 			});
 
 			//Auto Suggestions
@@ -102,21 +118,21 @@
 			});
 
 			//Search content
-			var key = '';
-			var filters = [];
-			btnSearch.on('click',function(){
-				var ajax = $(this).data('ajax');
+			btnSearch.on('click',loadFilters);
+			btnFilters.on('click',loadFilters);
 
+			function loadFilters(){
+				var ajax = $(this).data('ajax');
 				if(validationForm()){
 					return false;
-				}else{
-					logError.slideUp();
 				}
+				logError.slideUp();
 				if(ajax){
-					loadFilterData(inputSearch.val(),filters);
-					return false;
+					loadFilterData(inputSearch.val());
+				}else{
+					
 				}
-			});
+			}
 
 			function validationForm(){
 				if(inputSearch.val().trim() == ''){
@@ -132,16 +148,56 @@
 				logError.slideDown();
 			}
 
-			function loadFilterData(key,filters){
+			var masonryOptions = {
+				 isFitWidth: true,
+	 			 gutter: 21,
+	 			 itemSelector: '.item-content-filter'
+			};
+
+			// initialize Masonry
+			resultFilter.masonry( masonryOptions );
+
+			function loadFilterData(key){
 				$scope.addClass('__is-loading');
+				var filters = [];
+				var post_type = $scope.find('.ica-content-filter').data('post');
+				var numberposts = $scope.find('.ica-content-filter').data('numberposts');
+				var orderby = $scope.find('.ica-content-filter').data('orderby');
+				var order = $scope.find('.ica-content-filter').data('order');
+				listFilters.each(function(index,e){
+					var filter = $(e).data('filter');
+					var vals = [];
+					if(filter != 'date'){
+						$('input[name="'+filter+'"]').each(function(i,e){
+							if($(e).prop("checked") == true){
+	               vals.push($(e).val());
+	            }
+						});
+						if(vals.length > 0) filters.push({name : filter , value : vals});
+					}
+					if(filter == 'date'){
+						var start_date = $(e).find('select[name="date-range-start"]').val();
+						var end_date = $(e).find('select[name="date-range-end"]').val();
+						filters.push({name : 'post_date' , value : start_date+","+end_date});
+					}
+				});
 				jQuery.ajax({
+						type: 'POST',
 	          url: ajaxObject.ajaxUrl,
 	          data:{
-	               'action':'load_filter_data',
+               'action':'load_filter_data',
+							 'key' : key,
+							 'post_type' : post_type,
+							 'numberposts' : numberposts,
+							 'orderby' : orderby,
+							 'order' : order,
+							 'filters' : filters,
 	          },
 	          dataType: 'JSON',
 	          success:function(response){
-							console.log(response);
+							resultFilter.html(response.html);
+							resultFilter.masonry('destroy'); // destroy
+							resultFilter.masonry( masonryOptions ); // re-initialize
 							$scope.removeClass('__is-loading');
 	          },
 	          error: function(errorThrown){
@@ -151,6 +207,13 @@
 	     });
 			}
 
+			$(document).on('click',function(event) {
+				  var target = $(event.target).closest(".ica-item-filter");
+        	if (!target.length) {
+						  $('.select-filter').slideUp();
+	            $('.select-filter').removeClass('__is-opened');
+	        }
+	    });
 
 	};
 
