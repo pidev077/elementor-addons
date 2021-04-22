@@ -985,6 +985,7 @@ transition: height 200ms;
     margin-left: auto;
     margin-right: auto;
     max-height: 106px;
+    max-width: 100px;
 }
 .card-lrg-elements .meta-card-lrg .description, .card-lrg-elements .meta-card-lrg .sub-heading, .card-lrg-elements .meta-card-lrg .heading{
     width: 100%;
