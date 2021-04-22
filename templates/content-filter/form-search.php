@@ -113,5 +113,8 @@ foreach ($suggestionsArr as $key => $val) {
         <?php endif; ?>
     </div>
     <div class="content-filter-results"></div>
+    <?php if($pagination): ?>
+      <div class="content-filter-pagination"></div>
+    <?php endif; ?>
 </div>
 <?php

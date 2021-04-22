@@ -80,7 +80,8 @@ final class Elementor_Addons {
 				'post_type' => '',
 				'numberposts' => 6,
 				'orderby'	=> 'post_date',
-				'order' => "DESC"
+				'order' => "DESC",
+				'pagination' => ''
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
@@ -102,6 +103,7 @@ final class Elementor_Addons {
 
 		$key = $_POST['key'];
 		$filters = $_POST['filters'];
+		$paged = $_POST['paged'];
 
 		$args = array(
 			'post_type' => $_POST['post_type'],
@@ -109,7 +111,8 @@ final class Elementor_Addons {
 			'posts_per_page' => $_POST['numberposts'],
 			'search_key' => $key,
 			'orderby' => $_POST['orderby'],
-			'order' => $_POST['order']
+			'order' => $_POST['order'],
+			'paged' => $paged
 		);
 
 		if(!empty($filters)){
@@ -129,31 +132,33 @@ final class Elementor_Addons {
 			}
 		}
 
-		$result['html'] = $this->get_data_filters($args);
+		// The Query
+		ob_start();
+		$TEMPLATEPATH =  dirname(__FILE__);
+		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		$the_query = new WP_Query($args);
+		$_GLOBAL['wp_query'] = $the_query;
+		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		// The Loop
+		if ( $the_query->have_posts() ) {
+				$countpost = $the_query->found_posts;
+				while ( $the_query->have_posts() ) {
+						$the_query->the_post();
+						include($TEMPLATEPATH.'/templates/content-filter/item-resoures.php');
+				}
+		} else {
+			$countpost = 0;
+			?> <div class="not-found">
+				<i class="fa fa-frown-o" aria-hidden="true"></i>
+				<div><?php echo __("Not found result!"); ?></div>
+			</div> <?php
+		}
+
+		$result['html'] = ob_get_clean();
+		$result['countpost'] = $countpost;
+		$result['loadmore'] = ($_GLOBAL['wp_query']->max_num_pages > $paged) ? '<button type="button" name="button-showmore">Show more</button>' : '';
 
 		wp_send_json($result);
-	}
-
-	public function get_data_filters($args){
-			// The Query
-			ob_start();
-			$TEMPLATEPATH =  dirname(__FILE__);
-			add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
-			$the_query = new WP_Query($args);
-			remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
-			// The Loop
-			if ( $the_query->have_posts() ) {
-					while ( $the_query->have_posts() ) {
-							$the_query->the_post();
-							include($TEMPLATEPATH.'/templates/content-filter/item-resoures.php');
-					}
-			} else {
-				?> <div class="not-found">
-					<i class="fa fa-frown-o" aria-hidden="true"></i>
-					<div><?php echo __("Not found result!"); ?></div>
-				</div> <?php
-			}
-			return ob_get_clean();
 	}
 
 	function ica_title_filter( $where, &$wp_query ){

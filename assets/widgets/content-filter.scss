@@ -441,6 +441,25 @@
         }
       }
     }
+    .content-filter-pagination{
+      text-align: center;
+      button[name="button-showmore"]{
+        background: transparent;
+        font-size: 17px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: -0.5px;
+        text-align: center;
+        color: #2f2f39;
+        padding: 6px 25px;
+        min-width: 198px;
+        border: solid 1px #2f2f39;
+        border-radius: 0;
+        margin: 10px 0;
+      }
+    }
   }
   &.__is-loading{
     opacity: 0.5;

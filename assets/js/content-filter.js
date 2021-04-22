@@ -16,6 +16,9 @@
 			var btnUnSelectAll = $scope.find('.btn-deselect-all');
 			var btnFilters 		 = $scope.find('.bt-actions button[data-filter]');
 			var listFilters		 = $scope.find('.ica-item-filter');
+			var tempPagination = $scope.find('.content-filter-pagination');
+			var btnLoadmore 	 = $scope.find('button[name="button-showmore"]');
+			var paged = 1;
 
 			//Show and Hide Filters
       toggleFilter.click(function (e) {
@@ -120,18 +123,23 @@
 			//Search content
 			btnSearch.on('click',loadFilters);
 			btnFilters.on('click',loadFilters);
+			$scope.on('click','button[name="button-showmore"]',loadMoreContent);
 
 			function loadFilters(){
 				var ajax = $(this).data('ajax');
-				if(validationForm()){
-					return false;
-				}
-				logError.slideUp();
+				// if(validationForm()){
+				// 	return false;
+				// }
+				// logError.slideUp();
 				if(ajax){
-					loadFilterData(inputSearch.val());
+					loadFilterData(inputSearch.val(),'search');
 				}else{
-					
+
 				}
+			}
+
+			function loadMoreContent(){
+				loadFilterData(inputSearch.val(),'loadmore');
 			}
 
 			function validationForm(){
@@ -157,7 +165,8 @@
 			// initialize Masonry
 			resultFilter.masonry( masonryOptions );
 
-			function loadFilterData(key){
+			function loadFilterData($key,$option){
+				if($option !== 'loadmore') paged = 1;
 				$scope.addClass('__is-loading');
 				var filters = [];
 				var post_type = $scope.find('.ica-content-filter').data('post');
@@ -185,19 +194,29 @@
 						type: 'POST',
 	          url: ajaxObject.ajaxUrl,
 	          data:{
-               'action':'load_filter_data',
-							 'key' : key,
-							 'post_type' : post_type,
-							 'numberposts' : numberposts,
-							 'orderby' : orderby,
-							 'order' : order,
-							 'filters' : filters,
+             	 'action'				:'load_filter_data',
+							 'key' 					: $key,
+							 'post_type' 		: post_type,
+							 'numberposts'  : numberposts,
+							 'orderby' 			: orderby,
+							 'order' 				: order,
+							 'filters' 			: filters,
+							 'paged'        : paged
 	          },
 	          dataType: 'JSON',
 	          success:function(response){
-							resultFilter.html(response.html);
+							if($option == 'loadmore'){
+								paged += paged + 1;
+								resultFilter.append(response.html);
+							}else{
+								resultFilter.html(response.html);
+							}
 							resultFilter.masonry('destroy'); // destroy
 							resultFilter.masonry( masonryOptions ); // re-initialize
+							if(!response.countpost){
+								resultFilter.css('height','auto');
+							}
+							tempPagination.html(response.loadmore);
 							$scope.removeClass('__is-loading');
 	          },
 	          error: function(errorThrown){
