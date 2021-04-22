@@ -125,8 +125,10 @@
 			//Search content
 			btnSearch.on('click',loadFilters);
 			btnFilters.on('click',loadFilters);
-			$scope.on('click','button[name="button-showmore"]',loadMoreContent);
 			btnClearAll.on('click',clearAllFilters);
+			$scope.on('click','button[name="button-showmore"]',loadMoreContent);
+			$scope.on('click', '.item-filter i.fa', removeFilterItem);
+			$scope.on('click', '.btn-sortby span', showHideSortby);
 
 			function loadFilters(){
 				var ajax = $(this).data('ajax');
@@ -161,6 +163,23 @@
 				loadFilterData(inputSearch.val(),'filter');
 			}
 
+			function removeFilterItem(){
+				var item = $(this).data('filter');
+				$scope.find('input[value="'+item+'"]').prop('checked',false);
+				loadFilterData(inputSearch.val(),'filter');
+			}
+
+			function showHideSortby(){
+				var $this = $(this).closest('.btn-sortby')
+				if($this.hasClass('__is-actived')){
+					$this.removeClass('__is-actived');
+          $this.find('.content-sortby').slideUp();
+        }else{
+					$this.addClass('__is-actived');
+          $this.find('.content-sortby').slideDown();
+        }
+			}
+
 			function validationForm(){
 				if(inputSearch.val().trim() == ''){
 					logErrorForm('The key search is empty!');
@@ -182,7 +201,7 @@
 			};
 
 			// initialize Masonry
-			resultFilter.masonry( masonryOptions );
+			resultFilter.find('.list-grids').masonry( masonryOptions );
 
 			function loadFilterData($key,$option){
 				if($option !== 'loadmore') paged = 1;
@@ -192,6 +211,7 @@
 				var numberposts = $scope.find('.ica-content-filter').data('numberposts');
 				var orderby = $scope.find('.ica-content-filter').data('orderby');
 				var order = $scope.find('.ica-content-filter').data('order');
+				var pagination = $scope.find('.ica-content-filter').data('pagination');
 				listFilters.each(function(index,e){
 					var filter = $(e).data('filter');
 					var vals = [];
@@ -220,27 +240,39 @@
 							 'orderby' 			: orderby,
 							 'order' 				: order,
 							 'filters' 			: filters,
+							 'pagination'   : pagination,
 							 'paged'        : paged
 	          },
 	          dataType: 'JSON',
 	          success:function(response){
+							console.log(response);
 							if($option == 'loadmore'){
-								paged += paged + 1;
-								resultFilter.append(response.html);
+								paged += 1;
+								$scope.find('.list-grids').append(response.html);
+								$scope.find('.totalpost').text(response.totalpost);
 							}else{
+								paged = 2;
 								resultFilter.html(response.html);
 							}
-							resultFilter.masonry('destroy'); // destroy
-							resultFilter.masonry( masonryOptions ); // re-initialize
+							resultFilter.find('.list-grids').masonry('destroy'); // destroy
+							resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
 							if(!response.countpost){
 								resultFilter.css('height','auto');
 							}
-							tempPagination.html(response.loadmore);
+
+							//Pagination
+							if(!response.pagination){
+								 $scope.find('.content-filter-pagination').remove();
+							}
+
+							//Button Clear All
 							if(filters.length > 0){
 								 btnClearAll.css('visibility','visible');
 							}else{
 								 btnClearAll.css('visibility','hidden');
 							}
+
+							//remove loading
 							$scope.removeClass('__is-loading');
 	          },
 	          error: function(errorThrown){
@@ -255,6 +287,9 @@
         	if (!target.length) {
 						  $('.select-filter').slideUp();
 	            $('.select-filter').removeClass('__is-opened');
+	        }
+					if (!$(event.target).closest(".btn-sortby")) {
+						  $('.content-sortby').slideUp();
 	        }
 	    });
 

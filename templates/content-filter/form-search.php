@@ -15,7 +15,14 @@ foreach ($suggestionsArr as $key => $val) {
   $keys .= (($key + 1) < count($suggestionsArr)) ? ',':'';
 }
 ?>
-<div id="content_filter_<?php echo $rand_id; ?> " class="ica-content-filter" data-keys="<?php echo esc_attr($keys) ?>" data-post="<?php echo $post_type; ?>" data-numberposts="<?php echo $numberposts; ?>" data-orderby="<?php echo $orderby; ?>" data-order="<?php echo $order; ?>">
+<div id="content_filter_<?php echo $rand_id; ?> "
+  class="ica-content-filter"
+  data-keys="<?php echo esc_attr($keys) ?>"
+  data-post="<?php echo $post_type; ?>"
+  data-numberposts="<?php echo $numberposts; ?>"
+  data-orderby="<?php echo $orderby; ?>"
+  data-order="<?php echo $order; ?>"
+  data-pagination="<?php echo $pagination ?>">
     <div class="form-content-filter">
        <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
        <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
@@ -113,8 +120,5 @@ foreach ($suggestionsArr as $key => $val) {
         <?php endif; ?>
     </div>
     <div class="content-filter-results"></div>
-    <?php if($pagination): ?>
-      <div class="content-filter-pagination"></div>
-    <?php endif; ?>
 </div>
 <?php
