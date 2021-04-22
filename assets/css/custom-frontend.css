@@ -972,8 +972,11 @@ transition: height 200ms;
     align-content: center;
     flex-wrap: wrap;
 }
-.card-lrg-elements .card-lrg-content > div{
-    width: 50%;
+.card-lrg-elements .card-lrg-content > div.meta-card-lrg{
+    width: 60%;
+}
+.card-lrg-elements .card-lrg-content > div.thumbnail-card-lrg{
+    width: 40%;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg{
     text-align: right;
