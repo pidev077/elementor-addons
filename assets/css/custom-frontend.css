@@ -976,11 +976,12 @@ transition: height 200ms;
     width: 50%;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg{
-    text-align: center;
+    text-align: right;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg img{
     margin-left: auto;
     margin-right: auto;
+    max-height: 106px;
 }
 .card-lrg-elements .meta-card-lrg .description, .card-lrg-elements .meta-card-lrg .sub-heading, .card-lrg-elements .meta-card-lrg .heading{
     width: 100%;
@@ -999,12 +1000,16 @@ transition: height 200ms;
     font-size: 22px;
     line-height: 26px;
     letter-spacing: -0.5px;
+    font-weight: bold;
 }
 .card-lrg-elements .meta-card-lrg .description{
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 0;
     font-weight: 400;
+}
+.card-lrg-elements .meta-card-lrg .cta{
+  margin-top: 50px;
 }
 .card-lrg-elements .meta-card-lrg .cta > a{
     display: inline-block;
@@ -1022,5 +1027,5 @@ transition: height 200ms;
     outline: none;
 }
 .bt-elements-elementor.card-lrg-elements{
-    padding: 20px;
+    padding: 20px 45px 20px 20px;
 }

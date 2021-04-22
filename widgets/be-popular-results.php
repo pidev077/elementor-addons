@@ -385,7 +385,7 @@ class Be_Popular_Results extends Widget_Base {
         while ( $loop->have_posts() ) : $loop->the_post();
             ?>
 
-            <div id="post-<?php the_ID(); ?>" class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
+            <div id="post-<?php the_ID(); ?>" class="items item-popular <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
                 <?php the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' ); ?>
             </div>
         <?php
