@@ -90,32 +90,16 @@ class Be_Counter extends Widget_Base {
 		$repeater = new Repeater();
 
 		$repeater->add_control(
-			'show_icon',
+			'select_icon',
 			[
-				'label' => __( 'Show Icon', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'bearsthemes-addons' ),
-				'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-				'default' => 'yes',
-				'separator' => 'before',
+				'label' => __( 'Choose Image', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+						'url' => \Elementor\Utils::get_placeholder_image_src(),
+				]
 			]
 		);
 
-		$repeater->add_control(
-			'select_icon',
-			[
-				'label' => __( 'Icon', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
-				'default' => [
-					'value' => 'fas fa-star',
-					'library' => 'fa-solid',
-				],
-				'condition' => [
-					'show_icon!' => '',
-				],
-			]
-		);
 		$repeater->add_control(
 			'starting_number',
 			[
@@ -678,14 +662,17 @@ class Be_Counter extends Widget_Base {
 		$i < 10;
 		$i++;
 		foreach ( $settings['list'] as $index => $item ) {
+			$images = $item['select_icon'];
 		?>
 		<div class="elementor-counter">
 			<h2 class=bt-title><?php echo $item['title']; ?></h2>
 			<?php if ( '' !== $settings['show_icon'] ) { ?>
 				<div class="elementor-counter__icon-wrap">
-					<div class="elementor-counter__icon">
-						<?php echo $this->render_icon( $item['select_icon'] ); ?>
-					</div>
+					<?php if ($images['url']): ?>
+							<div class="elementor-counter__icon">
+									<img src="<?php echo $images['url'] ?>" alt="image">
+							</div>
+					<?php endif; ?>
 				</div>
 			<?php } ?>
 
