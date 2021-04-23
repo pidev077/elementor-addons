@@ -105,14 +105,17 @@ final class Elementor_Addons {
 		$filters = $_POST['filters'];
 		$paged = $_POST['paged'];
 		$pagination = $_POST['pagination'];
+		$orderby = $_POST['orderby'];
+		$order = $_POST['order'];
+		$option = $_POST['option'];
 
 		$args = array(
 			'post_type' => $_POST['post_type'],
 			'post_status' => 'public',
 			'posts_per_page' => $_POST['numberposts'],
 			'search_key' => $key,
-			'orderby' => $_POST['orderby'],
-			'order' => $_POST['order'],
+			'orderby' => $orderby,
+			'order' => $order,
 			'paged' => $paged
 		);
 
@@ -166,13 +169,13 @@ final class Elementor_Addons {
 			?>
 			<div class="sort-by-content">
 				<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?></div>
-				<div class="btn-sortby">
+				<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
 					<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-					<div class="content-sortby">
-							<div class="item-sortby">
+					<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
+							<div class="item-sortby <?php echo $orderby == 'post_date' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'post_date' ? $order : 'desc'; ?>" data-orderby="post_date">
 								Date <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
 							</div>
-							<div class="item-sortby">
+							<div class="item-sortby <?php echo $orderby == 'title' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'title' ? $order : 'desc'; ?>" data-orderby="title">
 								A-Z <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
 							</div>
 					</div>

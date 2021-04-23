@@ -129,6 +129,7 @@
 			$scope.on('click','button[name="button-showmore"]',loadMoreContent);
 			$scope.on('click', '.item-filter i.fa', removeFilterItem);
 			$scope.on('click', '.btn-sortby span', showHideSortby);
+			$scope.on('click', '.item-sortby', loadDataSortby);
 
 			function loadFilters(){
 				var ajax = $(this).data('ajax');
@@ -180,6 +181,22 @@
         }
 			}
 
+			function loadDataSortby(){
+				var order = $(this).data('order');
+				var orderby = $(this).data('orderby');
+				$(this).closest('.content-sortby').find('.item-sortby').removeClass('__is-actived');
+				$(this).addClass('__is-actived');
+				if(order == 'desc'){
+					$(this).data('order','asc');
+				}else{
+					$(this).data('order','desc');
+				}
+				var neworder = $(this).data('order');
+				$scope.find('.ica-content-filter').data('order',neworder);
+				$scope.find('.ica-content-filter').data('orderby',orderby);
+				loadFilterData(inputSearch.val(),'sortby');
+			}
+
 			function validationForm(){
 				if(inputSearch.val().trim() == ''){
 					logErrorForm('The key search is empty!');
@@ -209,8 +226,8 @@
 				var filters = [];
 				var post_type = $scope.find('.ica-content-filter').data('post');
 				var numberposts = $scope.find('.ica-content-filter').data('numberposts');
-				var orderby = $scope.find('.ica-content-filter').data('orderby');
-				var order = $scope.find('.ica-content-filter').data('order');
+				var orderby = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('orderby') : $scope.find('.ica-content-filter').data('orderby');
+				var order = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('order') :  $scope.find('.ica-content-filter').data('order');
 				var pagination = $scope.find('.ica-content-filter').data('pagination');
 				listFilters.each(function(index,e){
 					var filter = $(e).data('filter');
@@ -241,7 +258,8 @@
 							 'order' 				: order,
 							 'filters' 			: filters,
 							 'pagination'   : pagination,
-							 'paged'        : paged
+							 'paged'        : paged,
+							 'option'				: $option
 	          },
 	          dataType: 'JSON',
 	          success:function(response){

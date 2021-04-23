@@ -385,7 +385,7 @@
   opacity: 0.7;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__featured-img img {
-  height: 209px;
+  height: 206px;
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -487,7 +487,7 @@
   margin-top: 18px;
   border-radius: 8px;
   box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
-  background-color: #ffffff;
+  background-color: #d8d8d8;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby::before {
   content: "";
@@ -497,7 +497,7 @@
   border-top: none;
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
-  border-bottom: 12px solid #fff;
+  border-bottom: 12px solid #d8d8d8;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby {
   display: flex;
@@ -509,13 +509,29 @@
   line-height: 2.35;
   letter-spacing: -0.25px;
   color: #4a4a4a;
+  padding: 0 25px;
   cursor: pointer;
+  position: relative;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa {
   margin-left: 10px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa::before {
   font-size: 16px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby.__is-actived::before {
+  content: "";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  left: 0;
+  position: absolute;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby[data-order=asc] .fa::before {
+  content: "";
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected label {
   font-size: 17px;
