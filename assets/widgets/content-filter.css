@@ -314,20 +314,19 @@
   font-size: 7px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-applyfilter {
-  border-radius: 10px;
-  background-color: #4a4a4a;
-  padding: 6px 28px;
-  display: inline-block;
+  border: solid 1px #2f2f39;
+  background: transparent;
+  padding: 6px 50px;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.71;
   letter-spacing: -0.5px;
   text-align: center;
-  color: #ffffff;
-  min-width: 220px;
-  text-align: center;
+  color: #2f2f39;
+  border-radius: 0;
+  min-width: auto;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options.__is-actived {
   display: block;

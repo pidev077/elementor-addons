@@ -1,6 +1,8 @@
 <?php
 $post_id = get_the_ID();
 $types = get_the_terms( $post_id, 'ins-type' );
+$type_file = get_field( 'file_type' );
+$upload_file = get_field( 'upload_file' );
 ?>
 <div class="item-content-filter">
     <div class="__meta">
@@ -20,9 +22,13 @@ $types = get_the_terms( $post_id, 'ins-type' );
     <div class="__info">
       <a href="<?php the_permalink(); ?>"><h3 class="__title"><?php the_title(); ?></h3></a>
       <div class="__content">
-        <?php the_field('short_description'); ?>
+        <?php the_excerpt(); ?>
       </div>
-      <a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a>
+      <?php if($type_file == 'PDF'){
+        ?><a href="<?php echo $upload_file['url']; ?>" download class="btn-readmore">Download <?php echo $type_file; ?></a><?php
+      }else{
+        ?><a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a><?php
+      } ?>
     </div>
 </div>
 <?php

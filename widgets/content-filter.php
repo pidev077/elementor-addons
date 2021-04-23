@@ -227,6 +227,41 @@ class Content_Filter extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	protected function register_style_form_section_controls(){
+		$this->start_controls_section(
+				'style_title_section',[
+						'label' => __( 'Form', 'bearsthemes-addons' ),
+						'tab' => Controls_Manager::TAB_STYLE,
+				 ]
+		);
+
+		$this->add_control(
+				'ica_form_bg',
+				[
+						'label' => __( 'Background Color', 'bearsthemes-addons' ),
+						'type' => Controls_Manager::COLOR,
+						'default' => 'transparent',
+						'selectors' => [
+								'{{WRAPPER}} .wrrap-content-filter' => 'background-color: {{VALUE}};',
+						],
+				]
+		);
+
+		$this->add_responsive_control(
+				'ica_form_padding',
+				[
+						'label' => __( 'Padding', 'elementor' ),
+						'type' => Controls_Manager::DIMENSIONS,
+						'size_units' => [ 'px', '%' ],
+						'selectors' => [
+								'{{WRAPPER}} .wrrap-content-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						],
+				]
+		);
+
+		$this->end_controls_section();
+	}
+
 	protected function get_supported_taxonomies($taxonomy) {
 		$supported_taxonomies = [];
 
@@ -246,6 +281,7 @@ class Content_Filter extends Widget_Base {
   protected function _register_controls() {
 		$this->register_layout_section_controls();
 		$this->register_query_filter_section_controls();
+		$this->register_style_form_section_controls();
 	}
 
 	protected function render_icon( $icon ) {
