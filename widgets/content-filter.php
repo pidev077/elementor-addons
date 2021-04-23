@@ -62,22 +62,6 @@ class Content_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
-			'ica_filters',
-			[
-				'label' => __( 'Filters', 'bearsthemes-addons' ),
-				'type' => \Elementor\Controls_Manager::SELECT2,
-				'multiple' => true,
-				'options' => [
-					'ins-type'  => __( 'Types', 'bearsthemes-addons' ),
-					'ins-topic' => __( 'Topic', 'bearsthemes-addons' ),
-					'date' => __( 'Date', 'bearsthemes-addons' ),
-				],
-				'label_block' => true,
-				'default' => [ 'ins-type', 'ins-topic', 'date' ],
-			]
-		);
-
-		$this->add_control(
 			'ajax_toggle',
 			[
 				'label' => __( 'Show results by ajax?', 'bearsthemes-addons' ),
@@ -100,6 +84,16 @@ class Content_Filter extends Widget_Base {
 				'condition' => [
 					'ajax_toggle' => '',
 				],
+			]
+		);
+
+		$this->add_control(
+			'content_toggle',
+			[
+				'label' => __( 'Default Content?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
 			]
 		);
 
@@ -151,6 +145,50 @@ class Content_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
+			'ica_filters',
+			[
+				'label' => __( 'Filters by?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'multiple' => true,
+				'options' => [
+					'ins-type'  => __( 'Types', 'bearsthemes-addons' ),
+					'ins-topic' => __( 'Topic', 'bearsthemes-addons' ),
+					'date' => __( 'Date', 'bearsthemes-addons' ),
+				],
+				'label_block' => true,
+				'default' => [ 'ins-type', 'ins-topic', 'date' ]
+			]
+		);
+
+		$this->add_control(
+			'cat_type',
+			[
+				'label' => __( 'Types', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies('ins-type'),
+				'label_block' => true,
+				'multiple' => true,
+				'condition' => [
+					'ica_source' => 'resources',
+				],
+			]
+		);
+
+		$this->add_control(
+			'cat_topic',
+			[
+				'label' => __( 'Topics', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies('ins-topic'),
+				'label_block' => true,
+				'multiple' => true,
+				'condition' => [
+					'ica_source' => 'resources',
+				],
+			]
+		);
+
+		$this->add_control(
 			'posts_per_page',
 			[
 				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
@@ -189,36 +227,16 @@ class Content_Filter extends Widget_Base {
 		$this->end_controls_section();
 	}
 
-	protected function get_supported_taxonomies() {
+	protected function get_supported_taxonomies($taxonomy) {
 		$supported_taxonomies = [];
 
 		$categories = get_terms( array(
-			'taxonomy' => 'category',
+			'taxonomy' => $taxonomy,
 	    'hide_empty' => false,
 		) );
 		if( ! empty( $categories ) ) {
 			foreach ( $categories as $category ) {
-			    $supported_taxonomies[$category->term_id] = $category->name;
-			}
-		}
-
-		$types = get_terms( array(
-			'taxonomy' => 'ins-type',
-	    'hide_empty' => false,
-		) );
-		if( ! empty( $categories ) ) {
-			foreach ( $types as $category ) {
-			    $supported_taxonomies[$category->term_id] = $category->name;
-			}
-		}
-
-		$topics = get_terms( array(
-			'taxonomy' => 'ins-topic',
-	    'hide_empty' => false,
-		) );
-		if( ! empty( $categories ) ) {
-			foreach ( $topics as $category ) {
-			    $supported_taxonomies[$category->term_id] = $category->name;
+			    $supported_taxonomies[$category->slug] = $category->name;
 			}
 		}
 
@@ -262,6 +280,9 @@ class Content_Filter extends Widget_Base {
 			order="'.$settings['order'].'"
 			default_filter="'.$settings['filter_toggle'].'"
 			pagination="'.$settings['pagination_toggle'].'"
+			showcontent="'.$settings['content_toggle'].'"
+			types="'.implode(',',$settings['cat_type']).'"
+			topics="'.implode(',',$settings['cat_topic']).'"
 		]');
 	}
 

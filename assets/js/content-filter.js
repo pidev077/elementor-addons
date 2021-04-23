@@ -220,6 +220,10 @@
 			// initialize Masonry
 			resultFilter.find('.list-grids').masonry( masonryOptions );
 
+			//Load default data
+			var showcontent = $scope.find('.ica-content-filter').data('showcontent');
+			if(showcontent) loadFilterData(inputSearch.val(),'default');
+
 			function loadFilterData($key,$option){
 				if($option !== 'loadmore') paged = 1;
 				$scope.addClass('__is-loading');

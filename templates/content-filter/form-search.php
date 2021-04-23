@@ -7,6 +7,8 @@ foreach ($suggestionsArr as $key => $val) {
   if($key > 1) break;
 }
 $filters = !empty($filters) ? explode(',',$filters) : '';
+$types = !empty($types) ? explode(',',$types) : '';
+$topics = !empty($topics) ? explode(',',$topics) : '';
 $is_date_filter = false;
 $rand_id = rand(1000,99999);
 $keys = "";
@@ -22,7 +24,8 @@ foreach ($suggestionsArr as $key => $val) {
   data-numberposts="<?php echo $numberposts; ?>"
   data-orderby="<?php echo $orderby; ?>"
   data-order="<?php echo $order; ?>"
-  data-pagination="<?php echo $pagination ?>">
+  data-pagination="<?php echo $pagination ?>"
+  data-showcontent="<?php echo $showcontent; ?>">
     <div class="form-content-filter">
        <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
        <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
@@ -59,6 +62,7 @@ foreach ($suggestionsArr as $key => $val) {
                             'hide_empty' => false,
                           ) );
                   if(!empty($terms)):
+                    $checkdata = ($filter == 'ins-type') ? $types : $topics;
                     ?>
                     <div class="ica-item-filter" data-filter="<?php echo $filter ?>">
                         <div class="name-filter">
@@ -70,7 +74,11 @@ foreach ($suggestionsArr as $key => $val) {
                             <?php foreach ($terms as $key => $term) {
                                 ?>
                                 <label class="checkbox-container"><?php echo $term->name; ?> (<?php echo $term->count; ?>)
-                                  <input type="checkbox" name="<?php echo $taxonomy->name ?>" value="<?php echo $term->slug ?>">
+                                  <input type="checkbox"
+                                         name="<?php echo $taxonomy->name ?>"
+                                         value="<?php echo $term->slug ?>"
+                                         <?php echo (in_array($term->slug, $checkdata)) ? 'checked' : ''; ?>
+                                         >
                                   <span class="checkmark"></span>
                                 </label>
                                 <?php

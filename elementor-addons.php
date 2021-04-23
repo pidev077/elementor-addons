@@ -81,7 +81,10 @@ final class Elementor_Addons {
 				'numberposts' => 6,
 				'orderby'	=> 'post_date',
 				'order' => "DESC",
-				'pagination' => ''
+				'pagination' => '',
+				'showcontent' => '',
+				'types'	=> '',
+				'topics' => ''
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
