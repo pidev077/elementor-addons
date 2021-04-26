@@ -93,8 +93,8 @@
 }
  .elementor-counter__number-wrap {
 	 display: inline-flex;
-	 font-size: 60px;
-	 font-weight: 600;
+	 font-size: 44px;
+	 font-weight: 700;
 	 line-height: 100%;
 	 color: #fff;
 	 margin-bottom: 10px;
@@ -138,7 +138,7 @@
 .bt-custom-counter{
 	text-align: center;
 	background-color: #2F2F39;
-  padding: 70px 40px;
+  padding: 70px 50px;
 }
 .bt-custom-counter .bt-heading{
 	font-size: 34px;
@@ -177,6 +177,10 @@
 		opacity: 1;
 		transform: translateY(0px);
  }
+}
+.elementor-grid-3.bt-custom-counter .elementor-grid{
+	max-width: 650px;
+	margin: 0 auto;
 }
 /*be post*/
 .elementor-posts--default .elementor-post {
