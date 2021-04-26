@@ -300,7 +300,13 @@ class Resources_Widgets extends Widget_Base {
         $class_des = '';
         $class_tab = '';
         $class_mobi = '';
+<<<<<<< HEAD
+        echo "<pre>";
+        echo print_r($ids);
+        echo "</pre>";
+=======
         //var_dump($ids);
+>>>>>>> 5351f0447a394620eca6f2b901b628c5462a1769
         switch ($column_des) {
             case '4':
                 $class_des = 'columns-des-4';
@@ -375,6 +381,16 @@ class Resources_Widgets extends Widget_Base {
     }
 
 
+<<<<<<< HEAD
+    protected function get_resources_template($ids, $class_des, $class_tab,  $class_mobi){
+        echo $id;
+        if ($ids) {
+            $loop = new \WP_Query( array(
+                'post_type' => 'resources',
+                'post_status' => 'publish',
+                'post__in' => $ids,
+            ) );
+=======
     protected function get_resources_template($id, $class_des, $class_tab,  $class_mobi){
 
         $loop = new \WP_Query( array(
@@ -386,28 +402,39 @@ class Resources_Widgets extends Widget_Base {
         //var_dump($loop);
             $pdf= get_field('upload_file');
             $id_pdf = $pdf['ID'];
+>>>>>>> 5351f0447a394620eca6f2b901b628c5462a1769
             // echo "<pre>";
-            // echo print_r($pdf);
+            // echo print_r($loop);
             // echo "</pre>";
-            $name_pdf = $pdf['title'];
-            $filesize = filesize( get_attached_file( $id_pdf ) );
-            $filesize = size_format($filesize, 2);
-            $link_pdf = $pdf['url'];
-            ?>
+            while ( $loop->have_posts() ) : $loop->the_post();
 
-            <div id="post-<?php the_ID(); ?>" class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
-                <div class="__content">
-                    <div class="meta-resources">
-                        <a href="<?php echo $link_pdf; ?>" target="_blank">
-                            <h4 class="info-pdf name-pdf"> <?php echo $name_pdf; ?> </h4>
-                            <div class="info-pdf size-pdf"> [PDF <span><?php echo $filesize ?>]</span></div>
-                        </a>
+                $pdf= get_field('up_load_pdf_resources_ins');
+                $id_pdf = $pdf['ID'];
+                // echo "<pre>";
+                // echo print_r($pdf);
+                // echo "</pre>";
+                $name_pdf = $pdf['title'];
+                $filesize = filesize( get_attached_file( $id_pdf ) );
+                $filesize = size_format($filesize, 2);
+                $link_pdf = $pdf['url'];
+                ?>
+
+                <div id="post-<?php the_ID(); ?>" class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
+                    <div class="__content">
+                        <div class="meta-resources">
+                            <a href="<?php echo $link_pdf; ?>" target="_blank">
+                                <h4 class="info-pdf name-pdf"> <?php echo $name_pdf; ?> </h4>
+                                <div class="info-pdf size-pdf"> [PDF <span><?php echo $filesize ?>]</span></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php
-        endwhile;
-        wp_reset_postdata();
+            <?php
+            endwhile;
+            wp_reset_postdata();
+        }
+
+
     }
 
     protected function _content_template() {
