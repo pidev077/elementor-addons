@@ -154,6 +154,7 @@
 }
 .bt-custom-counter .elementor-grid{
 	 padding: 50px 0;
+	 grid-gap: 15px;
 }
 .bt-custom-counter a.bt-button{
 	font-size: 17px;
@@ -306,6 +307,35 @@
  .elementor-posts--default .elementor-post__read-more:hover {
 	 color: #d2440f;
 }
+.elementor-swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    padding: 6px;
+    border: solid 1px #2a8164;
+		position: relative;
+		opacity: 1;
+}
+.elementor-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+	width: 6px;
+	 height: 6px;
+	 position: absolute;
+	 content: '';
+	 background: #2a8164;
+	 border-radius: 50%;
+	 left: 3px;
+	 top: 3px;
+}
+.elementor-swiper-pagination .swiper-pagination-bullet::before {
+	width: 6px;
+	 height: 6px;
+	 position: absolute;
+	 content: '';
+	 background: #fff;
+	 border-radius: 50%;
+	 left: 3px;
+	 top: 3px;
+}
 /*be promo*/
 .bt-elements-elementor.bt-promo {
     display: flex;
@@ -361,6 +391,7 @@ article.be-latest-resources{
 	box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
 	background-color: #ffffff;
 	position: relative;
+	margin: 1px;
 }
 article.be-latest-resources .elementor-post__cat-links{
 	font-size: 17px;
@@ -382,8 +413,7 @@ article.be-latest-resources .elementor-post__cat-links span{
 }
 article.be-latest-resources .elementor-post__meta {
 	list-style: none;
-	margin: 15px;
-	padding: 0;
+	padding: 15px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
