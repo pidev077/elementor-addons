@@ -98,6 +98,7 @@
 	$( window ).on( 'elementor/frontend/init', function() {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-testimonial-carousel.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-posts.default', SwiperSliderHandler );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-top-faq.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-latest-resources.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-testimonial.default', TestimonialHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-counter.default', CounterHandler );
