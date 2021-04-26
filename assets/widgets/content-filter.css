@@ -411,6 +411,9 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content p {
+  margin-bottom: 0;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore {
   opacity: 0.7;
   font-size: 13px;
@@ -426,6 +429,15 @@
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore:hover {
   text-decoration: none;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__meta {
+  padding: 22px 16px 8px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info {
+  padding: 0 16px 16px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info .btn-readmore {
+  margin-top: 10px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .not-found {
   width: 100%;
@@ -531,6 +543,9 @@
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby[data-order=asc] .fa::before {
   content: "";
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected {
+  margin-top: 40px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected label {
   font-size: 17px;

@@ -415,6 +415,9 @@
               line-height: 1.47;
               letter-spacing: -0.1px;
               color: #2f2f39;
+              p{
+                margin-bottom: 0;
+              }
             }
             .btn-readmore{
               opacity: 0.7;
@@ -430,6 +433,17 @@
               display: inline-block;
               &:hover{
                 text-decoration: none;
+              }
+            }
+          }
+          &.post-faq{
+            .__meta{
+              padding: 22px 16px 8px;
+            }
+            .__info{
+              padding: 0 16px 16px;
+              .btn-readmore{
+                margin-top: 10px;
               }
             }
           }
@@ -545,6 +559,7 @@
         }
       }
       .filter-selected{
+        margin-top: 40px;
         label{
           font-size: 17px;
           font-weight: bold;

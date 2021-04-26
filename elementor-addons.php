@@ -111,9 +111,10 @@ final class Elementor_Addons {
 		$orderby = $_POST['orderby'];
 		$order = $_POST['order'];
 		$option = $_POST['option'];
+		$post_type = $_POST['post_type'];
 
 		$args = array(
-			'post_type' => $_POST['post_type'],
+			'post_type' => $post_type,
 			'post_status' => 'public',
 			'posts_per_page' => $_POST['numberposts'],
 			'search_key' => $key,
@@ -171,7 +172,7 @@ final class Elementor_Addons {
 			}
 			?>
 			<div class="sort-by-content">
-				<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?></div>
+				<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?> results</div>
 				<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
 					<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
 					<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
@@ -193,7 +194,7 @@ final class Elementor_Addons {
 				if($paged < 2){ ?> <div class="list-grids"> <?php }
 					while ( $the_query->have_posts() ) {
 							$the_query->the_post();
-							include($TEMPLATEPATH.'/templates/content-filter/item-resoures.php');
+							include($TEMPLATEPATH.'/templates/content-filter/item-'.$post_type.'.php');
 					}
 				if($paged < 2){ ?></div> <?php }
 		} else {
