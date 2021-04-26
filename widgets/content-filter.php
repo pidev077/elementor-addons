@@ -317,8 +317,8 @@ class Content_Filter extends Widget_Base {
 			default_filter="'.$settings['filter_toggle'].'"
 			pagination="'.$settings['pagination_toggle'].'"
 			showcontent="'.$settings['content_toggle'].'"
-			types="'.implode(',',$settings['cat_type']).'"
-			topics="'.implode(',',$settings['cat_topic']).'"
+			types="'.($settings['cat_type'] ? implode(',',$settings['cat_type']) :'').'"
+			topics="'.($settings['cat_topic'] ? implode(',',$settings['cat_topic']) : '').'"
 		]');
 	}
 

@@ -142,7 +142,30 @@
 					loadFilterData(inputSearch.val(),'filter');
 				}else{
 					// similar behavior as clicking on a link
-					window.location.href = redirect;
+					var $linkSearch = redirect;
+					if(inputSearch.val() != '') $linkSearch += '?key=' + inputSearch.val();
+					listFilters.each(function(index,e){
+						var filter = $(e).data('filter');
+						var vals = [];
+						var start_date = '';
+						var end_date = '';
+						if(filter != 'date'){
+							$(e).find('input[name="'+filter+'"]').each(function(i,e){
+								if($(e).prop("checked") == true){
+		               vals.push($(e).val());
+		            }
+							});
+							filter = filter.replace('ins-','');
+							if(vals.length > 0) $linkSearch += ($linkSearch.indexOf('?') > 0 ? '&' : '?' )+filter+'=' + vals.join(',');
+						}
+						if(filter == 'date'){
+							start_date = $(e).find('select[name="date-range-start"]').val();
+							end_date = $(e).find('select[name="date-range-end"]').val();
+							if(start_date) $linkSearch += ($linkSearch.indexOf('?') > 0 ? '&' : '?' )+'start_date=' + start_date;
+							if(end_date) $linkSearch += ($linkSearch.indexOf('?') > 0 ? '&' : '?' ) + 'end_date=' + end_date;
+						}
+					});
+					window.location.href = $linkSearch;
 				}
 			}
 
