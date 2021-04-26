@@ -1837,7 +1837,7 @@ protected function register_design_pagination_section_controls() {
 
 		$classes .= ' elementor-posts--default';
 
-		?>
+		?> 
 		<div class="heading-resources">
 			<h2><?php echo $settings['heading_resources']; ?></h2>
 			<a href="<?php echo $settings['heading_resources_button_url']; ?>"><?php echo $settings['heading_resources_button']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
