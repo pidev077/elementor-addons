@@ -433,7 +433,7 @@ article.be-latest-resources h3.elementor-post__title {
 	font-family: "Inter", Sans-serif;
 	max-width: 100%;
 }
-article.be-latest-resources h3.elementor-post__title:hover {
+article.be-latest-resources h3.elementor-post__title a:hover {
 	color: #2f2f39;
 }
 article.be-latest-resources .elementor-post__excerpt {
@@ -566,7 +566,7 @@ article.be-latest-faqs h3.elementor-post__title {
 	font-family: "Inter", Sans-serif;
 	max-width: 100%;
 }
-article.be-latest-faqs h3.elementor-post__title:hover {
+article.be-latest-faqs h3.elementor-post__title a:hover {
 	color: #2f2f39;
 }
 article.be-latest-faqs .elementor-post__excerpt {
