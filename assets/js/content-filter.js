@@ -34,13 +34,13 @@
 
 			//Render select
       $scope.find('.ica-item-filter .name-filter').on('click',function(){
-        var select = $(this).closest('.ica-item-filter').find('.select-filter');
+        var select = $(this).closest('.ica-item-filter');
         if(select.hasClass('__is-opened')){
           select.removeClass('__is-opened');
-          select.slideUp();
+          select.find('.select-filter').slideUp();
         }else{
           select.addClass('__is-opened');
-          select.slideDown();
+          select.find('.select-filter').slideDown();
         }
       });
 
@@ -56,6 +56,10 @@
 			            text: i + value
 			        }).appendTo($auto);
 			    }
+					var end_date = window.location.search.match(new RegExp('(?:[\?\&]end_date=)([^&]+)'));
+					if(end_date){
+						$auto.val(end_date[1]);
+					}
 			}).change();
 
 			//Search key
@@ -308,9 +312,9 @@
 				  var target = $(event.target).closest(".ica-item-filter");
         	if (!target.length) {
 						  $('.select-filter').slideUp();
-	            $('.select-filter').removeClass('__is-opened');
+	            $('.ica-item-filter').removeClass('__is-opened');
 	        }
-					if (!$(event.target).closest(".btn-sortby")) {
+					if (!$(event.target).closest(".btn-sortby").length) {
 						  $('.content-sortby').slideUp();
 	        }
 	    });

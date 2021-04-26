@@ -16,6 +16,27 @@ foreach ($suggestionsArr as $key => $val) {
   $keys .= trim($val);
   $keys .= (($key + 1) < count($suggestionsArr)) ? ',':'';
 }
+
+//Types
+if(isset($_GET['type']) && $_GET['type'] != ''){
+  $types = explode(',',$_GET['type']);
+}
+
+//Topic
+if(isset($_GET['topic']) && $_GET['topic'] != ''){
+  $topics = explode(',',$_GET['topic']);
+}
+
+//start date
+if(isset($_GET['start_date']) && $_GET['start_date'] != ''){
+  $start_date = $_GET['start_date'];
+}
+
+//end date
+if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
+  $end_date = $_GET['end_date'];
+}
+
 ?>
 <div id="content_filter_<?php echo $rand_id; ?> "
   class="ica-content-filter"
@@ -104,7 +125,8 @@ foreach ($suggestionsArr as $key => $val) {
                             <select name="date-range-start">
                               <option value=""><?php echo __('Select start year','bearsthemes-addons') ?></option>
                               <?php for ($i=0; $i < $breakYears; $i++) {
-                                ?><option value="<?php echo $years - $i ?>"><?php echo $years - $i ?></option><?php
+                                $selected = ($years - $i == $start_date) ? 'selected="selected"' : '';
+                                ?><option value="<?php echo $years - $i ?>" <?php echo $selected; ?>><?php echo $years - $i ?></option><?php
                               } ?>
                             </select>
                           </div>
@@ -112,7 +134,8 @@ foreach ($suggestionsArr as $key => $val) {
                             <select name="date-range-end">
                               <option value=""><?php echo __('Select end year','bearsthemes-addons') ?></option>
                               <?php for ($i=0; $i < $breakYears; $i++) {
-                                ?><option value="<?php echo $years - $i ?>"><?php echo $years - $i ?></option><?php
+                                $selected = ($years - $i == $end_date) ? 'selected="selected"' : '';
+                                ?><option value="<?php echo $years - $i ?>" <?php echo $selected; ?>><?php echo $years - $i ?></option><?php
                               } ?>
                             </select>
                           </div>
