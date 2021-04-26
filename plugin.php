@@ -36,6 +36,7 @@ class Plugin {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 		}
+
 		return self::$_instance;
 	}
 
@@ -67,6 +68,8 @@ class Plugin {
 		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
 		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], false, true );
 		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-bloodhound', plugins_url( '/assets/js/typeahead/typeahead.bundle.min.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons-masonry', plugins_url( '/assets/js/masonry.pkgd.min.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -139,6 +142,10 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/alert-banner.php' );
 		require_once( __DIR__ . '/widgets/resources.php' );
 		require_once( __DIR__ . '/widgets/card-lrg.php' );
+		require_once( __DIR__ . '/widgets/be-promo.php' );
+		require_once( __DIR__ . '/widgets/be-latest-resources.php' );
+		require_once( __DIR__ . '/widgets/be-popular-results.php' );
+		require_once( __DIR__ . '/widgets/be-top-faq.php' );
 		// M.8.3 Card lrg (landing page)
 	}
 
@@ -185,6 +192,10 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Alert_Banner() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Resources_Widgets() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Card_Lrg() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Promo() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Latest_Resources() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Popular_Results() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Top_Faq() );
 
 	}
 

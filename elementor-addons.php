@@ -64,20 +64,212 @@ final class Elementor_Addons {
 
 		//Content Filter
 		add_shortcode( 'ica_content_filter', array( $this, 'ica_content_filter_render' ) );
+		add_action( 'wp_ajax_load_filter_data', array( $this, 'load_filter_data_ajax' )  );
+		add_action( 'wp_ajax_nopriv_load_filter_data', array( $this, 'load_filter_data_ajax' ) );
 	}
 
 	//Search Content Filter
-	function ica_content_filter_render( $atts ) {
+	public function ica_content_filter_render( $atts ) {
 	  $atts = shortcode_atts( array(
 	      'placeholder' => 'Search...',
 				'suggestions' => '',
-				'filters' => ''
+				'filters' => array(),
+				'ajax'	=> true,
+				'default_filter' => true,
+				'action' => '',
+				'post_type' => '',
+				'numberposts' => 6,
+				'orderby'	=> 'post_date',
+				'order' => "DESC",
+				'pagination' => '',
+				'showcontent' => '',
+				'types'	=> '',
+				'topics' => ''
 	  ), $atts, 'ica_content_filter' );
+
+		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
+		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
+            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
 	  ob_start();
 		$TEMPLATEPATH =  dirname(__FILE__);
 		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
 	  return ob_get_clean();
 	}
+
+	/**
+	* Ajax Content Filter
+	* @access private
+	*/
+
+	public function load_filter_data_ajax(){
+		$result = array();
+
+		$key = $_POST['key'];
+		$filters = $_POST['filters'];
+		$paged = $_POST['paged'];
+		$pagination = $_POST['pagination'];
+		$orderby = $_POST['orderby'];
+		$order = $_POST['order'];
+		$option = $_POST['option'];
+		$post_type = $_POST['post_type'];
+
+		$args = array(
+			'post_type' => $post_type,
+			'post_status' => 'public',
+			'posts_per_page' => $_POST['numberposts'],
+			'search_key' => $key,
+			'orderby' => $orderby,
+			'order' => $order,
+			'paged' => $paged
+		);
+
+		if(!empty($filters)){
+			$args['tax_query']['relation'] = 'AND';
+
+			foreach ($filters as $key => $filter) {
+				if($filter['name'] !== 'post_date'){
+					$args['tax_query'][] = array(
+							'taxonomy' => $filter['name'],
+							'field'    => 'slug',
+							'terms'    => $filter['value']
+					);
+				}
+				if($filter['name'] == 'post_date' && $filter['value'] !== ','){
+					$args['search_date'] = $filter['value'];
+				}
+			}
+		}
+
+		// The Query
+		ob_start();
+		$TEMPLATEPATH =  dirname(__FILE__);
+		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		$the_query = new WP_Query($args);
+		$_GLOBAL['wp_query'] = $the_query;
+		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		$totalpost = (($_POST['numberposts']*($paged-1)) + $the_query->post_count);
+
+		//Top content filter
+		if($paged < 2){
+			if(!empty($filters)){
+				foreach ($filters as $key => $filter) {
+					if($filter['name'] == 'ins-type'){
+						?>
+						<div class="filter-selected">
+								<label for="">Selected filters by “Type”</label>
+								<div class="list-selected">
+									<?php foreach ($filter['value'] as $key => $val) {
+										$text = ucwords(str_replace('-',' ',$val));
+										?><span class="item-filter"><?php echo $text; ?> <i class="fa fa-times" data-filter="<?php echo $val;?>"></i></span><?php
+									} ?>
+								</div>
+						</div>
+						<?php
+						break;
+					}
+
+				}
+			}
+			?>
+			<div class="sort-by-content">
+				<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?> results</div>
+				<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
+					<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+					<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
+							<div class="item-sortby <?php echo $orderby == 'post_date' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'post_date' ? $order : 'desc'; ?>" data-orderby="post_date">
+								Date <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+							</div>
+							<div class="item-sortby <?php echo $orderby == 'title' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'title' ? $order : 'desc'; ?>" data-orderby="title">
+								A-Z <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+							</div>
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+
+		// The Loop
+		if ( $the_query->have_posts() ) {
+				$countpost = $the_query->found_posts;
+				if($paged < 2){ ?> <div class="list-grids"> <?php }
+					while ( $the_query->have_posts() ) {
+							$the_query->the_post();
+							include($TEMPLATEPATH.'/templates/content-filter/item-'.$post_type.'.php');
+					}
+				if($paged < 2){ ?></div> <?php }
+		} else {
+			$countpost = 0;
+			?> <div class="not-found">
+				<i class="fa fa-frown-o" aria-hidden="true"></i>
+				<div><?php echo __("Not found result!"); ?></div>
+			</div> <?php
+		}
+
+		if($pagination && $the_query->max_num_pages > $paged && $paged < 2){
+			?><div class="content-filter-pagination"><button type="button" name="button-showmore">Show more</button></div><?php
+		}
+
+		//Top content filter
+		if($paged < 2){
+			if(!empty($filters)){
+				foreach ($filters as $key => $filter) {
+					if($filter['name'] == 'ins-topic'){
+						?>
+						<div class="filter-selected">
+								<label for="">Selected filters by “Topic”</label>
+								<div class="list-selected">
+									<?php foreach ($filter['value'] as $key => $val) {
+										$text = ucwords(str_replace('-',' ',$val));
+										?><span class="item-filter"><?php echo $text; ?> <i class="fa fa-times" data-filter="<?php echo $val;  ?>"></i></span><?php
+									} ?>
+								</div>
+						</div>
+						<?php
+						break;
+					}
+
+				}
+			}
+		}
+
+		//check pagination
+		if($_GLOBAL['wp_query']->max_num_pages == $paged){
+			$result['pagination'] = false;
+		}else{
+			$result['pagination'] = true;
+		}
+
+		$result['html'] = ob_get_clean();
+
+		$result['countpost'] = $countpost;
+		$result['totalpost'] = $totalpost;
+		$result['global'] = $_GLOBAL['wp_query'];
+
+		wp_send_json($result);
+	}
+
+	public function ica_title_filter( $where, &$wp_query ){
+	    global $wpdb;
+	    if ( $search_term = $wp_query->get( 'search_key' ) ) {
+					$where .= ' AND (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\'';
+	        $where .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\')';
+	    }
+			if ( $search_date = $wp_query->get( 'search_date' ) ) {
+				  $date = explode(',',$search_date);
+					if($date[0] && !$date[1])
+							$where .= " AND post_date >= '".$date[0]."-01-01'";
+					if(!$date[0] && $date[1])
+ 						  $where .= " AND post_date <= '".$date[1]."-12-31'";
+					if($date[0] && $date[1])
+							$where .= " AND post_date >= '".$date[0]."-01-01'  AND post_date <= '".$date[1]."-12-31'";
+	    }
+	    return $where;
+	}
+
+	public function get_total_posts($args){
+
+	}
+
 
 	/**
 	 * Load Textdomain

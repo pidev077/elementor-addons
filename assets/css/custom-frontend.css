@@ -37,7 +37,7 @@
 
 /* heading media bodycopy elements */
 .heading-media-bodycopy-elements{
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: inline-block;
 }
 .heading-media-bodycopy-elements .thumbnail, .heading-media-bodycopy-elements .heading, .heading-media-bodycopy-elements .content{
@@ -111,12 +111,12 @@
     font-family: inherit;
     text-decoration: underline;
 }
-.heading-media-bodycopy-elements .content ul li [tooltip]{
+[tooltip]{
     position: relative;
     cursor: pointer;
     font-weight: 700;
 }
-.heading-media-bodycopy-elements .content ul li [tooltip]::before, .heading-media-bodycopy-elements .content ul li [tooltip]::after{
+[tooltip]::before, [tooltip]::after{
     text-transform: none; /* opinion 2 */
     font-size: .9em; /* opinion 3 */
     line-height: 1;
@@ -126,11 +126,11 @@
     display: none;
     opacity: 0;
 }
-.heading-media-bodycopy-elements .content ul li [tooltip]:hover::before, .heading-media-bodycopy-elements .content ul li [tooltip]:hover::after{
+[tooltip]:hover::before, [tooltip]:hover::after{
     -webkit-animation: tooltips-vert 300ms ease-out forwards;
     animation: tooltips-vert 300ms ease-out forwards;
 }
-.heading-media-bodycopy-elements .content ul li [tooltip]::before{
+[tooltip]::before{
     content: '';
     display: inline-block;
     border: 11px solid transparent;
@@ -153,7 +153,7 @@
     transform: translate(0, -50%);
   }
 }
-.heading-media-bodycopy-elements .content ul li [tooltip]::after{
+[tooltip]::after{
     content: attr(tooltip);
     display: inline-block;
     min-width: 351px;
@@ -972,15 +972,20 @@ transition: height 200ms;
     align-content: center;
     flex-wrap: wrap;
 }
-.card-lrg-elements .card-lrg-content > div{
-    width: 50%;
+.card-lrg-elements .card-lrg-content > div.meta-card-lrg{
+    width: 60%;
+}
+.card-lrg-elements .card-lrg-content > div.thumbnail-card-lrg{
+    width: 40%;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg{
-    text-align: center;
+    text-align: right;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg img{
     margin-left: auto;
     margin-right: auto;
+    max-height: 106px;
+    max-width: 100px;
 }
 .card-lrg-elements .meta-card-lrg .description, .card-lrg-elements .meta-card-lrg .sub-heading, .card-lrg-elements .meta-card-lrg .heading{
     width: 100%;
@@ -999,12 +1004,16 @@ transition: height 200ms;
     font-size: 22px;
     line-height: 26px;
     letter-spacing: -0.5px;
+    font-weight: bold;
 }
 .card-lrg-elements .meta-card-lrg .description{
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 0;
     font-weight: 400;
+}
+.card-lrg-elements .meta-card-lrg .cta{
+  margin-top: 50px;
 }
 .card-lrg-elements .meta-card-lrg .cta > a{
     display: inline-block;
@@ -1022,5 +1031,5 @@ transition: height 200ms;
     outline: none;
 }
 .bt-elements-elementor.card-lrg-elements{
-    padding: 20px;
+    padding: 20px 45px 20px 20px;
 }

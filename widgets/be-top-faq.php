@@ -11,14 +11,14 @@ use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Be_Posts extends Widget_Base {
+class Be_Top_Faq extends Widget_Base {
 
 	public function get_name() {
-		return 'be-posts';
+		return 'be-top-faq';
 	}
 
 	public function get_title() {
-		return __( 'Posts', 'elementor-addons' );
+		return __( 'Top FAQs', 'elementor-addons' );
 	}
 
 	public function get_icon() {
@@ -41,7 +41,7 @@ class Be_Posts extends Widget_Base {
 		$supported_ids = [];
 
 		$wp_query = new \WP_Query( array(
-														'post_type' => 'resources',
+														'post_type' => 'ins-faqs',
 														'post_status' => 'publish'
 													) );
 
@@ -59,7 +59,7 @@ class Be_Posts extends Widget_Base {
 		$supported_taxonomies = [];
 
 		$categories = get_terms( array(
-			'taxonomy' => 'ins-type',
+			'taxonomy' => 'cat-faq',
 	    'hide_empty' => false,
 		) );
 		if( ! empty( $categories ) ) {
@@ -70,7 +70,40 @@ class Be_Posts extends Widget_Base {
 
 		return $supported_taxonomies;
 	}
-
+  protected function register_heading_section_controls() {
+		$this->start_controls_section(
+			'section_heading',
+			[
+				'label' => __( 'Heading', 'bearsthemes-addons' ),
+			]
+		);
+    $this->add_control(
+      'heading_resources',
+      [
+        'label' => __( 'Heading', 'bearsthemes-addons' ),
+        'type' => Controls_Manager::TEXT,
+        'default' => __( 'Top FAQs', 'bearsthemes-addons' ),
+      ]
+    );
+    $this->add_control(
+      'heading_resources_button',
+      [
+        'label' => __( 'Button', 'bearsthemes-addons' ),
+        'type' => Controls_Manager::TEXT,
+        'label_block' => true,
+        'default' => __( 'View all FAQs', 'bearsthemes-addons' ),
+      ]
+    );
+    $this->add_control(
+      'heading_resources_button_url', [
+        'label' => __( 'Button Link', 'bearsthemes-addons' ),
+        'type' => Controls_Manager::TEXT,
+        'label_block' => true,
+        'default' => '#',
+      ]
+    );
+    $this->end_controls_section();
+  }
 	protected function register_layout_section_controls() {
 		$this->start_controls_section(
 			'section_layout',
@@ -145,7 +178,7 @@ class Be_Posts extends Widget_Base {
 			[
 				'label' => __( 'Excerpt Length', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => apply_filters( 'excerpt_length', 25 ),
+				'default' => apply_filters( 'excerpt_length', 35 ),
 				'condition' => [
 					'show_excerpt!' => '',
 				],
@@ -180,12 +213,28 @@ class Be_Posts extends Widget_Base {
 			[
 				'label' => __( 'Read More Text', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Read More', 'bearsthemes-addons' ),
+				'default' => __( 'View full answer', 'bearsthemes-addons' ),
 				'condition' => [
 					'show_read_more!' => '',
 				],
 			]
 		);
+
+    $this->add_control(
+      'link_resources',
+      [
+        'label' => __( 'Link', 'bearsthemes-addons' ),
+        'type' => Controls_Manager::SELECT,
+        'default' => 'link_more',
+        'options' => [
+          'link_more' => 'Link more',
+          'link_pdf' => 'Link pdf',
+        ],
+        'condition' => [
+          'show_read_more!' => '',
+        ],
+      ]
+    );
 
 		$this->end_controls_section();
 	}
@@ -1656,12 +1705,10 @@ protected function register_design_pagination_section_controls() {
 			],
 		]
 	);
-
 	$this->end_controls_section();
 }
-
 	protected function _register_controls() {
-
+    $this->register_heading_section_controls();
 		$this->register_layout_section_controls();
 		$this->register_query_section_controls();
 		$this->register_additional_section_controls();
@@ -1686,7 +1733,7 @@ protected function register_design_pagination_section_controls() {
 		}
 
 		$args = [
-			'post_type' => 'resources',
+			'post_type' => 'ins-faqs',
 			'post_status' => 'publish',
 			'posts_per_page' => $this->get_settings_for_display('posts_per_page'),
 			'paged' => $paged,
@@ -1706,7 +1753,7 @@ protected function register_design_pagination_section_controls() {
 		if( ! empty( $settings['category'] ) ) {
 			$args['tax_query'] = array(
 				array(
-						'taxonomy' => 'ins-type',
+						'taxonomy' => 'cat-faq',
 						'field'    => 'term_id',
 						'terms'    => $settings['category'],
 				),
@@ -1716,7 +1763,7 @@ protected function register_design_pagination_section_controls() {
 		if( ! empty( $settings['category_exclude'] ) ) {
 			$args['tax_query'] = array(
 				array(
-						'taxonomy' => 'ins-type',
+						'taxonomy' => 'cat-faq',
 						'field'    => 'term_id',
 						'terms'    => $settings['category_exclude'],
 						'operator' => 'NOT IN',
@@ -1791,6 +1838,10 @@ protected function register_design_pagination_section_controls() {
 		$classes .= ' elementor-posts--default';
 
 		?>
+    <div class="heading-resources">
+      <h2><?php echo $settings['heading_resources']; ?></h2>
+      <a href="<?php echo $settings['heading_resources_button_url']; ?>"><?php echo $settings['heading_resources_button']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </div>
 		<div class="<?php echo esc_attr( $classes ); ?>" data-swiper="<?php echo esc_attr( $this->swiper_data() ); ?>">
 		<div class="swiper-wrapper">
 		<?php
@@ -1899,29 +1950,25 @@ protected function register_design_pagination_section_controls() {
 
 	protected function render_post() {
 		$settings = $this->get_settings_for_display();
-		$term_list = get_the_terms( get_the_id(), 'ins-type' );
+		$term_list = get_the_terms( get_the_id(), 'cat-faq' );
 		$currentcolor='';
-		foreach($term_list as $term_single)
-		{
-				$termid= $term_single->term_id;
-				$colorvalue= get_field('color',  'ins-type_' . $termid);
-				if($colorvalue!='')  $currentcolor =$colorvalue;
-		}
-		?><div class="swiper-slide">
-			<article id="post-<?php the_ID();  ?>" <?php post_class( 'elementor-post' ); ?> style="background-color:<?php echo $currentcolor; ?>">
-				<div class="elementor-post__content">
-					<?php if( '' !== $settings['show_category'] ) { ?>
-						<div class="elementor-post__cat-links"><?php
-							$terms = get_the_terms( get_the_id(), 'ins-type' );
-							if ($terms) {
-								foreach($terms as $term) {
-									echo $term->name;
-									//var_dump($term);
-								}
-							}
-						 ?></div>
-					<?php } ?>
-
+		?>
+		<div class="swiper-slide">
+			<article class="be-latest-faqs" id="post-<?php the_ID();  ?>">
+        <?php if( '' !== $settings['show_category'] ) { ?>
+          <div class="elementor-post__meta">
+            <div class="elementor-post__cat-links"><?php
+              $terms = get_the_terms( get_the_id(), 'cat-faq' );
+              if ($terms) {
+                foreach($terms as $term) {
+                  echo $term->name;
+                  //var_dump($term);
+                }
+              }
+             ?></div>
+           </div>
+        <?php } ?>
+        <div class="elementor-post__content">
 					<?php
 						if( '' !== $settings['show_title'] ) {
 							the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' );
@@ -1946,12 +1993,17 @@ protected function register_design_pagination_section_controls() {
 
 					<?php
 						if( '' !== $settings['show_read_more'] ) {
-							echo '<a class="elementor-post__read-more" href="' . get_the_permalink() . '">' . $settings['read_more_text'] . '</a>';
+              $pdf= get_field('upload_file');
+              if ( $settings['link_resources'] == 'link_pdf' ) {
+                echo '<a class="elementor-post__read-more" href="' . $pdf['url'] . '">' . $settings['read_more_text'] . '</a>';
+              } else {
+                echo '<a class="elementor-post__read-more" href="' . get_the_permalink() . '">' . $settings['read_more_text'] . '</a>';
+              }
 						}
 					?>
 				</div>
 			</article>
-			</div>
+		</div>
 		<?php
 	}
 
@@ -1978,7 +2030,6 @@ protected function register_design_pagination_section_controls() {
 
 	wp_reset_postdata();
 }
-
 
 	protected function _content_template() {
 

@@ -26,7 +26,7 @@ class Content_Filter extends Widget_Base {
 	}
 
   public function get_script_depends() {
-		return [ 'elementor-addons-content-filter' ];
+		return [ 'elementor-addons-content-filter', 'elementor-addons-bloodhound' , 'elementor-addons-masonry' ];
 	}
 
   public function get_style_depends() {
@@ -55,16 +55,99 @@ class Content_Filter extends Widget_Base {
 			'ica_suggestions',
 			[
 				'label' => __( 'Suggestions', 'bearsthemes-addons' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => 'lorem ipsum,dolor semet,sed it embaco',
 			]
 		);
 
 		$this->add_control(
+			'ajax_toggle',
+			[
+				'label' => __( 'Show results by ajax?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'Yes', 'bearsthemes-addons' ),
+				'label_on' => __( 'No', 'bearsthemes-addons' ),
+				'return_value' => '1',
+				'default' => '1',
+			]
+		);
+
+		$this->add_control(
+			'action_result',
+			[
+				'label' => __( 'Redirect to Page Result?', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default' => __( '', 'bearsthemes-addons' ),
+				'placeholder' => home_url().'/advanced-search/',
+				'condition' => [
+					'ajax_toggle' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+			'content_toggle',
+			[
+				'label' => __( 'Default Content?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
+		$this->add_control(
+			'filter_toggle',
+			[
+				'label' => __( 'Default Filter?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
+		$this->add_control(
+			'pagination_toggle',
+			[
+				'label' => __( 'Pagination', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	protected function register_query_filter_section_controls() {
+		$this->start_controls_section(
+			'section_query',
+			[
+				'label' => __( 'Query', 'bearsthemes-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'ica_source',
+			[
+				'label' => __( 'Source', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'multiple' => true,
+				'options' => [
+					'resources'  => __( 'Resources', 'bearsthemes-addons' ),
+					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
+					'post' => __( 'Post', 'bearsthemes-addons' ),
+				],
+				'label_block' => false,
+				'default' => 'resources',
+			]
+		);
+
+		$this->add_control(
 			'ica_filters',
 			[
-				'label' => __( 'Filters', 'bearsthemes-addons' ),
+				'label' => __( 'Filters by?', 'bearsthemes-addons' ),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'multiple' => true,
 				'options' => [
@@ -73,91 +156,132 @@ class Content_Filter extends Widget_Base {
 					'date' => __( 'Date', 'bearsthemes-addons' ),
 				],
 				'label_block' => true,
-				'default' => [ 'ins-type', 'ins-topic', 'date' ],
+				'default' => [ 'ins-type', 'ins-topic', 'date' ]
 			]
 		);
 
-		$this->end_controls_section();
-	}
-
-	protected function register_design_layout_section_controls() {
-		$this->start_controls_section(
-			'section_design_layout',
+		$this->add_control(
+			'cat_type',
 			[
-				'label' => __( 'Settings', 'bearsthemes-addons' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_responsive_control(
-			'alignment',
-			[
-				'label' => __( 'Alignment', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'bearsthemes-addons' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
+				'label' => __( 'Types', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies('ins-type'),
+				'label_block' => true,
+				'multiple' => true,
 				'condition' => [
-					'icon_position' => ['', 'top'],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-counter' => 'text-align: {{VALUE}}',
+					'ica_source' => 'resources',
 				],
 			]
 		);
 
 		$this->add_control(
-			'vertical_ignment',
+			'cat_topic',
 			[
-				'label' => __( 'Vertical Alignment', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'top',
-				'options' => [
-					'top' => __( 'Top', 'bearsthemes-addons' ),
-					'middle' => __( 'Middle', 'bearsthemes-addons' ),
-					'bottom' => __( 'Bottom', 'bearsthemes-addons' ),
-				],
+				'label' => __( 'Topics', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies('ins-topic'),
+				'label_block' => true,
+				'multiple' => true,
 				'condition' => [
-					'icon_position!' => ['', 'top'],
+					'ica_source' => 'resources',
 				],
-				'prefix_class' => 'elementor-counter--vertical-align-',
+			]
+		);
+
+		$this->add_control(
+			'posts_per_page',
+			[
+				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 6,
+			]
+		);
+
+		$this->add_control(
+			'orderby',
+			[
+				'label' => __( 'Order By', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'post_date',
+				'options' => [
+					'post_date' => __( 'Date', 'bearsthemes-addons' ),
+					'post_title' => __( 'Title', 'bearsthemes-addons' ),
+					'rand' => __( 'Random', 'bearsthemes-addons' ),
+				],
+			]
+		);
+
+		$this->add_control(
+			'order',
+			[
+				'label' => __( 'Order', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'desc',
+				'options' => [
+					'asc' => __( 'ASC', 'bearsthemes-addons' ),
+					'desc' => __( 'DESC', 'bearsthemes-addons' ),
+				],
 			]
 		);
 
 		$this->end_controls_section();
 	}
 
-  protected function _register_controls() {
-		$this->register_layout_section_controls();
-		//$this->register_design_layout_section_controls();
-	}
-
-	protected function counter_data() {
-		$settings = $this->get_settings_for_display();
-
-		$counter_data = array(
-			'easing' => 'linear',
-			'duration' => $settings['duration'],
-			'toValue' => $settings['ending_number'],
-			'rounding' => 0,
+	protected function register_style_form_section_controls(){
+		$this->start_controls_section(
+				'style_title_section',[
+						'label' => __( 'Form', 'bearsthemes-addons' ),
+						'tab' => Controls_Manager::TAB_STYLE,
+				 ]
 		);
 
-		if ( ! empty( $settings['thousand_separator'] ) ) {
-			$counter_data['delimiter'] = $settings['thousand_separator_char'];
+		$this->add_control(
+				'ica_form_bg',
+				[
+						'label' => __( 'Background Color', 'bearsthemes-addons' ),
+						'type' => Controls_Manager::COLOR,
+						'default' => 'transparent',
+						'selectors' => [
+								'{{WRAPPER}} .wrrap-content-filter' => 'background-color: {{VALUE}};',
+						],
+				]
+		);
+
+		$this->add_responsive_control(
+				'ica_form_padding',
+				[
+						'label' => __( 'Padding', 'elementor' ),
+						'type' => Controls_Manager::DIMENSIONS,
+						'size_units' => [ 'px', '%' ],
+						'selectors' => [
+								'{{WRAPPER}} .wrrap-content-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						],
+				]
+		);
+
+		$this->end_controls_section();
+	}
+
+	protected function get_supported_taxonomies($taxonomy) {
+		$supported_taxonomies = [];
+
+		$categories = get_terms( array(
+			'taxonomy' => $taxonomy,
+	    'hide_empty' => false,
+		) );
+		if( ! empty( $categories ) ) {
+			foreach ( $categories as $category ) {
+			    $supported_taxonomies[$category->slug] = $category->name;
+			}
 		}
 
-		return $counter_data = json_encode( $counter_data );
+		return $supported_taxonomies;
+	}
+
+  protected function _register_controls() {
+		$this->register_layout_section_controls();
+		$this->register_query_filter_section_controls();
+		$this->register_style_form_section_controls();
 	}
 
 	protected function render_icon( $icon ) {
@@ -178,7 +302,24 @@ class Content_Filter extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		$placeholder = $settings['placeholder'];
 		$filters = implode(',',$settings['ica_filters']);
-		echo do_shortcode('[ica_content_filter placeholder="'.$placeholder.'" suggestions="'.$settings['ica_suggestions'].'" filters="'.$filters.'"]');
+		$ajax = $settings['ajax_toggle'];
+		$action = $settings['action_result'];
+		echo do_shortcode('[ica_content_filter
+			placeholder="'.$placeholder.'"
+			suggestions="'.$settings['ica_suggestions'].'"
+			filters="'.$filters.'"
+			ajax="'.$ajax.'"
+			action="'.$action.'"
+			post_type="'.$settings['ica_source'].'"
+			numberposts="'.$settings['posts_per_page'].'"
+			orderby="'.$settings['orderby'].'"
+			order="'.$settings['order'].'"
+			default_filter="'.$settings['filter_toggle'].'"
+			pagination="'.$settings['pagination_toggle'].'"
+			showcontent="'.$settings['content_toggle'].'"
+			types="'.($settings['cat_type'] ? implode(',',$settings['cat_type']) :'').'"
+			topics="'.($settings['cat_topic'] ? implode(',',$settings['cat_topic']) : '').'"
+		]');
 	}
 
 	protected function _content_template() {
