@@ -37,7 +37,7 @@
 
 /* heading media bodycopy elements */
 .heading-media-bodycopy-elements{
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: inline-block;
 }
 .heading-media-bodycopy-elements .thumbnail, .heading-media-bodycopy-elements .heading, .heading-media-bodycopy-elements .content{
