@@ -489,7 +489,7 @@ article.be-latest-resources .elementor-post__content {
 	text-decoration: underline;
 }
 .heading-resources a i.fa{
-	font-size: 30px;
+	font-size: 30px !important;
 	margin-left: 10px;
 }
 .heading-resources a i.fa::before{
