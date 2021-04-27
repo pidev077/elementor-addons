@@ -352,42 +352,19 @@ class Be_Posts extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'column_gap',
+		$this->add_responsive_control(
+			'space_between',
 			[
-				'label' => __( 'Columns Gap', 'bearsthemes-addons' ),
+				'label' => __( 'Space Between', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
 				'default' => [
 					'size' => 30,
-				],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}}' => '--grid-column-gap: {{SIZE}}{{UNIT}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'row_gap',
-			[
-				'label' => __( 'Rows Gap', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 35,
-				],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}}' => '--grid-row-gap: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -735,7 +712,7 @@ class Be_Posts extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-post__cat-links a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-post__cat-links' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'show_category!' => '',
@@ -750,7 +727,7 @@ class Be_Posts extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					' {{WRAPPER}} .elementor-post__cat-links a:hover' => 'color: {{VALUE}};',
+					' {{WRAPPER}} .elementor-post__cat-links:hover' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'show_category!' => '',

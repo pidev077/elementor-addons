@@ -401,42 +401,19 @@ class Be_Latest_Resources extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'column_gap',
+		$this->add_responsive_control(
+			'space_between',
 			[
-				'label' => __( 'Columns Gap', 'bearsthemes-addons' ),
+				'label' => __( 'Space Between', 'bearsthemes-addons' ),
 				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
 				'default' => [
 					'size' => 30,
-				],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}}' => '--grid-column-gap: {{SIZE}}{{UNIT}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'row_gap',
-			[
-				'label' => __( 'Rows Gap', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 35,
-				],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}}' => '--grid-row-gap: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -1837,7 +1814,7 @@ protected function register_design_pagination_section_controls() {
 
 		$classes .= ' elementor-posts--default';
 
-		?> 
+		?>
 		<div class="heading-resources">
 			<h2><?php echo $settings['heading_resources']; ?></h2>
 			<a href="<?php echo $settings['heading_resources_button_url']; ?>"><?php echo $settings['heading_resources_button']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i></a>

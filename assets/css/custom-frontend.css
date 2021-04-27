@@ -58,6 +58,15 @@
     line-height: 40px;
     font-weight: 700;
 }
+.bt-elements-elementor.heading-media-bodycopy-elements .bt-sub-heading{
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: #2f2f39;
+}
 .heading-media-bodycopy-elements .thumbnail img{
     width: 100%;
     height: auto;
