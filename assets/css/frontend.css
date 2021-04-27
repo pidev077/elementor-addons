@@ -293,6 +293,7 @@
 }
  .elementor-posts--default .elementor-post__excerpt {
 	 margin-bottom: 24px;
+	 min-height: 130px;
 }
  .elementor-posts--default .elementor-post__excerpt > p {
 	 margin: 0;
@@ -387,6 +388,7 @@
 @media only screen and (min-width: 1200px) {
 	.bt-promo .thumbnail-promo {
     margin-right: -165px;
+		padding-left: 55px;
 	}
 }
 /*be-latest-resources*/
@@ -395,7 +397,7 @@ article.be-latest-resources{
 	box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
 	background-color: #ffffff;
 	position: relative;
-	margin: 1px;
+	margin: 2px;
 }
 article.be-latest-resources .elementor-post__cat-links{
 	font-size: 17px;
