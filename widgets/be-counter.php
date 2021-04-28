@@ -617,22 +617,6 @@ class Be_Counter extends Widget_Base {
 		$this->register_design_title_section_controls();
 	}
 
-	protected function counter_data() {
-		$settings = $this->get_settings_for_display();
-		foreach ( $settings['list'] as $index => $item ) {
-				$counter_data = array(
-					'easing' => 'linear',
-					'duration' => $item['duration'],
-					'toValue' => $item['ending_number'],
-					'rounding' => 0,
-				);
-
-				if ( ! empty( $item['thousand_separator'] ) ) {
-					$counter_data['delimiter'] = $item['thousand_separator_char'];
-				}
-		return $counter_data = json_encode( $counter_data );
-	}
-	}
 
 	protected function render_icon( $icon ) {
 		$icon_html = '';

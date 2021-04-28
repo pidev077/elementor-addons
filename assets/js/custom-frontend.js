@@ -19,36 +19,34 @@
     // funtion show all content in elements accordion navigation tabs
     function showAllContent() {
 
-        let isCTA = $('.accordion-navigation-tabs-content .item-team .show-more');
+        let isCTA = $('.accordion-navigation-tabs-content .item-team .show-more > span');
         let isContent = $('.accordion-navigation-tabs-content .item-team .meta-team .description');
 
         let isHeight = isContent.scrollHeight;
 
-        console.log(isHeight);
-
-        $(document).click(function() {
-    isContent.animate({
-        'height': '50px'
-    })
-})
-
-
         isCTA.on('click',function(e){
-            // let a = isContent.outerHeight();
-            // console.log(a);
-            $(this).toggleClass('show-more');
-            $(this).siblings().children().find('.description').toggleClass('active');
-            $(this).parents('.item-team').toggleClass('active');
-            // console.log("aac");
-            // e.stopPropagation();
-            // isContent.animate({
-            //     'height': isHeight
-            // })
+
+            $(this).parent().toggleClass('show-more');
+            let fullHeight = $(this).parent().siblings('.content-team').children().find('.description')['0'].scrollHeight;
+
+            let isItem = $(this).parent().siblings('.content-team').children().find('.description');
+            if($(this).attr('data-state') == 1) {
+                
+                $(this).attr('data-state', 0);
+                $(this).text('Collapse');
+                isItem.animate({
+                    'height': fullHeight
+                })
+            }else {
+                $(this).attr('data-state', 1);
+                $(this).text('Expand');
+                isItem.animate({
+                    'height': '106'
+                })
+            }
+
         });
 
-//         isCTA.click(function(e) {
-//
-// });
 
 
 
@@ -83,7 +81,7 @@
         let isModulseAlertBanner = $('.alert-banner-elements');
         ctaHidden.on('click',function(){
             isModulseAlertBanner.slideUp(400);
-            console.log("klkl");
+
         });
     }
 

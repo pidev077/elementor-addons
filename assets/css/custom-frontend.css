@@ -37,7 +37,7 @@
 
 /* heading media bodycopy elements */
 .heading-media-bodycopy-elements{
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: inline-block;
 }
 .heading-media-bodycopy-elements .thumbnail, .heading-media-bodycopy-elements .heading, .heading-media-bodycopy-elements .content{
@@ -57,6 +57,15 @@
     font-size: 34px;
     line-height: 40px;
     font-weight: 700;
+}
+.bt-elements-elementor.heading-media-bodycopy-elements .bt-sub-heading{
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: #2f2f39;
 }
 .heading-media-bodycopy-elements .thumbnail img{
     width: 100%;
@@ -612,29 +621,12 @@
 }
 .accordion-navigation-tabs-content .item-team .meta-team .description{
     overflow: hidden;
-    height: 100px;
+    height: 106px;
     padding-top: 11px;
     position: relative;
-    -webkit-transition: height 200ms;
-transition: height 200ms;
-    /* text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    display: -webkit-box;
-    -webkit-box-orient: vertical; */
+}
 
-    /* -webkit-transition: max-height 1s;
-    -moz-transition: max-height 1s;
-    -ms-transition: max-height 1s;
-    -o-transition: max-height 1s;
-    transition: max-height 1s;
-    max-height: 90px; */
-}
-.accordion-navigation-tabs-content .item-team .meta-team .description.active{
-    /* -webkit-line-clamp: 30;
-    max-height: 300px; */
-    height: 210px;
-}
-.accordion-navigation-tabs-content .item-team .meta-team .description::before{
+/* .accordion-navigation-tabs-content .item-team .meta-team .description::before{
     content: "";
     display: block;
     position: absolute;
@@ -648,11 +640,11 @@ transition: height 200ms;
     transition: all .5s;
     opacity: 1;
     visibility: visible;
-}
-.accordion-navigation-tabs-content .item-team .meta-team .description.active::before{
+} */
+/* .accordion-navigation-tabs-content .item-team .meta-team .description.active::before{
     opacity: 0;
     visibility: hidden;
-}
+} */
 .accordion-navigation-tabs-content .item-team .meta-team .description p{
     color: inherit;
     line-height: inherit;

@@ -145,6 +145,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/be-promo.php' );
 		require_once( __DIR__ . '/widgets/be-latest-resources.php' );
 		require_once( __DIR__ . '/widgets/be-popular-results.php' );
+		require_once( __DIR__ . '/widgets/be-top-faq.php' );
 		// M.8.3 Card lrg (landing page)
 	}
 
@@ -194,6 +195,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Promo() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Latest_Resources() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Popular_Results() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Top_Faq() );
 
 	}
 

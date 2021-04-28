@@ -51,53 +51,43 @@
 
 	};
 	var CounterHandler = function( $scope, $ ) {
-	console.log($scope);
-	var $selector1 = $scope.find('.elementor-counter__number.vv1'),
-			$dataCounter1  = $selector1.data('counter'),
-			waypoint = new Waypoint({
-				element: $selector1,
+	//console.log($scope);
+
+	var test = function() {
+		window.__beCounter = []
+
+		var do_counter = function( $elem ) {
+			var counter = $elem.data( 'counter' )
+			return new Waypoint({
+				element: $elem,
 				handler: function() {
-					$selector1.numerator( $dataCounter1 );
+					$elem.numerator( counter );
 				},
 				offset: '100%',
 				triggerOnce: true
 			});
-	var $selector2 = $scope.find('.elementor-counter__number.vv2'),
-			$dataCounter2  = $selector2.data('counter'),
-			waypoint = new Waypoint({
-				element: $selector2,
-				handler: function() {
-					$selector2.numerator( $dataCounter2 );
-				},
-				offset: '100%',
-				triggerOnce: true
-			});
-	var $selector3 = $scope.find('.elementor-counter__number.vv3'),
-			$dataCounter3  = $selector3.data('counter'),
-			waypoint = new Waypoint({
-				element: $selector3,
-				handler: function() {
-					$selector3.numerator( $dataCounter3 );
-				},
-				offset: '100%',
-				triggerOnce: true
-			});
-	var $selector4 = $scope.find('.elementor-counter__number.vv4'),
-			$dataCounter4  = $selector4.data('counter'),
-			waypoint = new Waypoint({
-				element: $selector4,
-				handler: function() {
-					$selector4.numerator( $dataCounter4 );
-				},
-				offset: '100%',
-				triggerOnce: true
-			});
+		}
+
+		for( var i = 1; i <= 10; i++ ) {
+			var class_selector = `.elementor-counter__number.vv${ i }`
+			var counterElem = jQuery( class_selector, $scope )
+
+			if( counterElem.length != 0 ) {
+				//console.log(counterElem, class_selector);
+				window.__beCounter.push( do_counter( counterElem ) )
+			}
+		}
+	}
+	test()
+
 
 };
+//};
 	// Make sure you run this code under Elementor.
 	$( window ).on( 'elementor/frontend/init', function() {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-testimonial-carousel.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-posts.default', SwiperSliderHandler );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-top-faq.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-latest-resources.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-testimonial.default', TestimonialHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-counter.default', CounterHandler );

@@ -44,7 +44,16 @@ class Heading_Media_BodyCopy extends Widget_Base {
                 'label' => __( 'Images', 'bearsthemes-addons' ),
              ]
         );
-
+          $this->add_control(
+            'show_image_heading',
+            [
+              'label' => __( 'Images', 'bearsthemes-addons' ),
+              'type' => Controls_Manager::SWITCHER,
+              'label_on' => __( 'Show', 'bearsthemes-addons' ),
+              'label_off' => __( 'Hide', 'bearsthemes-addons' ),
+              'default' => 'yes',
+            ]
+          );
             $this->add_control(
                 'image_heading_media_bodycopy',
                 [
@@ -52,7 +61,10 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'type' => Controls_Manager::MEDIA,
                     'default' => [
                         'url' => \Elementor\Utils::get_placeholder_image_src(),
-                    ]
+                    ],
+                    'condition' => [
+                      'show_image_heading!' => '',
+                    ],
                 ]
             );
 
@@ -89,6 +101,30 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'default' => 'h1',
                 ]
             );
+            $this->add_control(
+              'show_sub_heading',
+              [
+                'label' => __( 'Sub Heading', 'bearsthemes-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'bearsthemes-addons' ),
+                'label_off' => __( 'Hide', 'bearsthemes-addons' ),
+                'default' => 'yes',
+              ]
+            );
+
+            $this->add_control(
+                'sub_heading_media_bodycopy',
+                    [
+                        'label' => __( 'Sub Heading', 'bearsthemes-addons' ),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __( 'This is the sub heading', 'bearsthemes-addons' ),
+                        'label_block' => true,
+                        'condition' => [
+                          'show_sub_heading!' => '',
+                        ],
+                    ]
+            );
+
 
             $this->add_control(
                 'content_title_heading_media_bodycopy',
@@ -313,6 +349,83 @@ class Heading_Media_BodyCopy extends Widget_Base {
                 ]
             );
 
+            // style heading in elements
+            $this->add_control(
+                'style_sub_heading_subhead_bodycopy',
+                    [
+                    'label' => __( 'Sub Heading', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    ]
+            );
+
+
+            $this->add_group_control(
+          Group_Control_Typography::get_type(),
+          [
+            'name' => 'sub_heading_typography',
+            'default' => '',
+            'selector' => '{{WRAPPER}} .heading-media-bodycopy-elements .bt-sub-heading',
+          ]
+        );
+
+            $this->add_control(
+          'sub_heading_color',
+          [
+            'label' => __( 'Color', 'bearsthemes-addons' ),
+            'type' => Controls_Manager::COLOR,
+                    'default' => '#2f2f39',
+                    'selectors' => [
+              '{{WRAPPER}} .heading-media-bodycopy-elements .bt-sub-heading' => 'color: {{VALUE}};',
+            ],
+          ]
+        );
+
+            $this->add_responsive_control(
+                'sub_heading_alignment',
+                [
+                    'label' => __( 'Alignment', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'selectors' => [
+              '{{WRAPPER}} .heading-media-bodycopy-elements .bt-sub-heading' => 'text-align: {{VALUE}};',
+            ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'spacing_sub_heading',
+                [
+                    'label' => __( 'Spacing', 'elementor' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 20,
+                    ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 200,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .heading-media-bodycopy-elements .bt-sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
 
             // style content in elements
             $this->add_control(
@@ -418,11 +531,16 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     }
                     ?>
                 <?php endif; ?>
-                <?php if ($images['url']): ?>
+                <?php if( '' !== $settings['show_image_heading'] ) { ?>
                     <div class="thumbnail">
                         <img src="<?php echo $images['url'] ?>" alt="image">
                     </div>
-                <?php endif; ?>
+                <?php } ?>
+                <?php
+      						if( '' !== $settings['show_sub_heading'] ) {
+      							echo '<h4 class="bt-sub-heading"">' . $settings['sub_heading_media_bodycopy'] . '</h4>';
+      						}
+      					?>
                 <?php if ($content): ?>
                     <div class="content"> <?php echo $content ?> </div>
                 <?php endif; ?>

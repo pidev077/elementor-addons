@@ -93,8 +93,8 @@
 }
  .elementor-counter__number-wrap {
 	 display: inline-flex;
-	 font-size: 60px;
-	 font-weight: 600;
+	 font-size: 44px;
+	 font-weight: 700;
 	 line-height: 100%;
 	 color: #fff;
 	 margin-bottom: 10px;
@@ -138,7 +138,7 @@
 .bt-custom-counter{
 	text-align: center;
 	background-color: #2F2F39;
-  padding: 70px 40px;
+  padding: 70px 50px;
 }
 .bt-custom-counter .bt-heading{
 	font-size: 34px;
@@ -177,6 +177,10 @@
 		opacity: 1;
 		transform: translateY(0px);
  }
+}
+.elementor-grid-3.bt-custom-counter .elementor-grid{
+	max-width: 650px;
+	margin: 0 auto;
 }
 /*be post*/
 .elementor-posts--default .elementor-post {
@@ -289,6 +293,7 @@
 }
  .elementor-posts--default .elementor-post__excerpt {
 	 margin-bottom: 24px;
+	 min-height: 130px;
 }
  .elementor-posts--default .elementor-post__excerpt > p {
 	 margin: 0;
@@ -383,6 +388,7 @@
 @media only screen and (min-width: 1200px) {
 	.bt-promo .thumbnail-promo {
     margin-right: -165px;
+		padding-left: 55px;
 	}
 }
 /*be-latest-resources*/
@@ -391,7 +397,7 @@ article.be-latest-resources{
 	box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
 	background-color: #ffffff;
 	position: relative;
-	margin: 1px;
+	margin: 2px;
 }
 article.be-latest-resources .elementor-post__cat-links{
 	font-size: 17px;
@@ -428,6 +434,9 @@ article.be-latest-resources h3.elementor-post__title {
   color: #2f2f39;
 	font-family: "Inter", Sans-serif;
 	max-width: 100%;
+}
+article.be-latest-resources h3.elementor-post__title a:hover {
+	color: #2f2f39;
 }
 article.be-latest-resources .elementor-post__excerpt {
 	font-size: 15px;
@@ -482,7 +491,7 @@ article.be-latest-resources .elementor-post__content {
 	text-decoration: underline;
 }
 .heading-resources a i.fa{
-	font-size: 30px;
+	font-size: 30px !important;
 	margin-left: 10px;
 }
 .heading-resources a i.fa::before{
@@ -520,197 +529,69 @@ article.be-latest-resources .elementor-post__content {
   color: #2f2f39;
 	text-decoration: underline;
 }
-/* START TOOLTIP STYLES */
-[tooltip] {
-  position: relative; /* opinion 1 */
+
+/*be-latest-faq*/
+article.be-latest-faqs{
+	border-radius: 8px;
+	box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
+	background-color: #ffffff;
+	position: relative;
+	margin: 2px;
+}
+article.be-latest-faqs .elementor-post__cat-links{
+	font-size: 13px;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.18;
+	letter-spacing: -0.5px;
+	color: #2f2f39;
+	font-family: "Inter", Sans-serif;
+	margin-bottom: 0;
 }
 
-/* Applies to all tooltips */
-[tooltip]::before,
-[tooltip]::after {
-  text-transform: none; /* opinion 2 */
-  font-size: .9em; /* opinion 3 */
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-  position: absolute;
-  display: none;
-  opacity: 0;
+article.be-latest-faqs .elementor-post__meta {
+	list-style: none;
+	padding: 22px 15px 5px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-[tooltip]::before {
-  content: '';
-  border: 5px solid transparent; /* opinion 4 */
-  z-index: 1001; /* absurdity 1 */
-}
-[tooltip]::after {
-  content: attr(tooltip); /* magic! */
-
-  /* most of the rest of this is opinion */
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-
-  /*
-    Let the content set the size of the tooltips
-    but this will also keep them from being obnoxious
-    */
-  min-width: 3em;
-  max-width: 21em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 1ch 1.5ch;
-  border-radius: .3ch;
-  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
-  background: #333;
-  color: #fff;
-  z-index: 1000; /* absurdity 2 */
-}
-
-/* Make the tooltips respond to hover */
-[tooltip]:hover::before,
-[tooltip]:hover::after {
-  display: block;
-}
-
-/* don't show empty tooltips */
-[tooltip='']::before,
-[tooltip='']::after {
-  display: none !important;
-}
-
-/* FLOW: UP */
-[tooltip]:not([flow])::before,
-[tooltip][flow^="up"]::before {
-  bottom: 100%;
-  border-bottom-width: 0;
-  border-top-color: #333;
-}
-[tooltip]:not([flow])::after,
-[tooltip][flow^="up"]::after {
-  bottom: calc(100% + 5px);
-}
-[tooltip]:not([flow])::before,
-[tooltip]:not([flow])::after,
-[tooltip][flow^="up"]::before,
-[tooltip][flow^="up"]::after {
-  left: 50%;
-  transform: translate(-50%, -.5em);
-}
-
-/* FLOW: DOWN */
-[tooltip][flow^="down"]::before {
-  top: 100%;
-  border-top-width: 0;
-  border-bottom-color: #333;
-}
-[tooltip][flow^="down"]::after {
-  top: calc(100% + 5px);
-}
-[tooltip][flow^="down"]::before,
-[tooltip][flow^="down"]::after {
-  left: 50%;
-  transform: translate(-50%, .5em);
-}
-
-/* FLOW: LEFT */
-[tooltip][flow^="left"]::before {
-  top: 50%;
-  border-right-width: 0;
-  border-left-color: #333;
-  left: calc(0em - 5px);
-  transform: translate(-.5em, -50%);
-}
-[tooltip][flow^="left"]::after {
-  top: 50%;
-  right: calc(100% + 5px);
-  transform: translate(-.5em, -50%);
-}
-
-/* FLOW: RIGHT */
-[tooltip][flow^="right"]::before {
-  top: 50%;
-  border-left-width: 0;
-  border-right-color: #333;
-  right: calc(0em - 5px);
-  transform: translate(.5em, -50%);
-}
-[tooltip][flow^="right"]::after {
-  top: 50%;
-  left: calc(100% + 5px);
-  transform: translate(.5em, -50%);
-}
-
-/* KEYFRAMES */
-@keyframes tooltips-vert {
-  to {
-    opacity: .9;
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes tooltips-horz {
-  to {
-    opacity: .9;
-    transform: translate(0, -50%);
-  }
-}
-
-/* FX All The Things */
-[tooltip]:not([flow]):hover::before,
-[tooltip]:not([flow]):hover::after,
-[tooltip][flow^="up"]:hover::before,
-[tooltip][flow^="up"]:hover::after,
-[tooltip][flow^="down"]:hover::before,
-[tooltip][flow^="down"]:hover::after {
-  animation: tooltips-vert 300ms ease-out forwards;
-}
-
-[tooltip][flow^="left"]:hover::before,
-[tooltip][flow^="left"]:hover::after,
-[tooltip][flow^="right"]:hover::before,
-[tooltip][flow^="right"]:hover::after {
-  animation: tooltips-horz 300ms ease-out forwards;
-}
-/* UNRELATED to tooltips */
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: sans-serif;
-  background: #ededed;
-}
-main {
-  flex: 1 1 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-aside {
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #49b293;
-  color: #fff;
-  padding: 1em;
-}
-main div {
-  text-align: center;
-  color: #353539;
-}
-main span {
-  padding: .5em 1em;
-  margin: .5em;
-  display: inline-block;
-  background: #dedede;
-}
-
-aside a {
-  color: inherit;
-  text-decoration: none;
+article.be-latest-faqs h3.elementor-post__title {
+	font-size: 22px;
   font-weight: bold;
-  display: inline-block;
-  padding: .4em 1em;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+  color: #2f2f39;
+	font-family: "Inter", Sans-serif;
+	max-width: 100%;
+}
+article.be-latest-faqs h3.elementor-post__title a:hover {
+	color: #2f2f39;
+}
+article.be-latest-faqs .elementor-post__excerpt {
+	font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.47;
+  letter-spacing: -0.1px;
+  color: #2f2f39;
+	font-family: "Inter", Sans-serif;
+}
+article.be-latest-faqs a.elementor-post__read-more{
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.54;
+	letter-spacing: -0.1px;
+	color: #2f2f39;
+	font-family: "Inter", Sans-serif;
+}
+article.be-latest-faqs .elementor-post__content {
+    padding: 10px 15px 22px 15px;
+		padding-bottom: 40px;
 }
