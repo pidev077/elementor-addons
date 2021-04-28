@@ -965,10 +965,10 @@
     flex-wrap: wrap;
 }
 .card-lrg-elements .card-lrg-content > div.meta-card-lrg{
-    width: 60%;
+    width: 66%;
 }
 .card-lrg-elements .card-lrg-content > div.thumbnail-card-lrg{
-    width: 40%;
+    width: 34%;
 }
 .card-lrg-elements .card-lrg-content .thumbnail-card-lrg{
     text-align: right;
@@ -978,6 +978,7 @@
     margin-right: auto;
     max-height: 106px;
     max-width: 100px;
+    width: 100%;
 }
 .card-lrg-elements .meta-card-lrg .description, .card-lrg-elements .meta-card-lrg .sub-heading, .card-lrg-elements .meta-card-lrg .heading{
     width: 100%;
@@ -1024,4 +1025,16 @@
 }
 .bt-elements-elementor.card-lrg-elements{
     padding: 20px 45px 20px 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .card-lrg-elements .card-lrg-content > div.meta-card-lrg{
+      width: 79%;
+  }
+  .card-lrg-elements .card-lrg-content > div.thumbnail-card-lrg{
+      width: 21%;
+  }
+  .bt-elements-elementor.card-lrg-elements{
+      padding: 20px;
+  }
 }
