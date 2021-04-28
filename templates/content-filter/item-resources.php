@@ -24,8 +24,8 @@ $upload_file = get_field( 'upload_file' );
       <div class="__content">
         <?php the_excerpt(); ?>
       </div>
-      <?php if($type_file == 'PDF'){
-        ?><a href="<?php echo $upload_file['url']; ?>" download class="btn-readmore">Download <?php echo $type_file; ?></a><?php
+      <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
+        ?><a href="<?php echo $upload_file['url']; ?>" download class="btn-readmore">Download <?php echo strtoupper($upload_file['subtype']); ?></a><?php
       }else{
         ?><a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a><?php
       } ?>
