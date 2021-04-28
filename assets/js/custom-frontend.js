@@ -24,59 +24,25 @@
 
         let isHeight = isContent.scrollHeight;
 
-
-
-
-
-        // isCTA.click(function(e) {
-        //     e.stopPropagation();
-        //     // $(this).text('Collapse');
-        //     $('div').animate({
-        //         'height': h
-        //     })
-        // });
-        //
-        // $(document).click(function() {
-        //     $('.accordion-navigation-tabs-content .item-team .meta-team .description').animate({
-        //         'height': '150px'
-        //     })
-        // })
-
-
-        // $(document).click(function() {
-        //     isContent.animate({
-        //     'height': '50px'
-        //     })
-        // })
-
-
         isCTA.on('click',function(e){
-            // let a = isContent.outerHeight();
-            // console.log(a);
-            $(this).parents().toggleClass('show-more');
-            $(this).parents().siblings().children().find('.description').toggleClass('active');
-            $(this).parents('.item-team').toggleClass('active');
-            var c = $(this).parents().siblings('.content-team').children().find('.description');
 
-            // console.log(h);
-            var h = $(this).parents().siblings('.content-team').children().find('.description').scrollHeight;
+            $(this).parent().toggleClass('show-more');
+            let fullHeight = $(this).parent().siblings('.content-team').children().find('.description')['0'].scrollHeight;
 
+            let isItem = $(this).parent().siblings('.content-team').children().find('.description');
             if($(this).attr('data-state') == 1) {
-                var t = 250;
-                $(this).parents().siblings('.content-team').children().find('.description').animate({
-                    'height': t
-                })
-
+                
                 $(this).attr('data-state', 0);
                 $(this).text('Collapse');
+                isItem.animate({
+                    'height': fullHeight
+                })
             }else {
                 $(this).attr('data-state', 1);
                 $(this).text('Expand');
-
-                $('.accordion-navigation-tabs-content .item-team .meta-team .description').animate({
+                isItem.animate({
                     'height': '106'
                 })
-
             }
 
         });
