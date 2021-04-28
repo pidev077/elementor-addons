@@ -83,8 +83,10 @@ final class Elementor_Addons {
 				'order' => "DESC",
 				'pagination' => '',
 				'showcontent' => '',
+				'sortby'	=> '',
 				'types'	=> '',
-				'topics' => ''
+				'topics' => '',
+				'template' => ''
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
@@ -112,10 +114,12 @@ final class Elementor_Addons {
 		$order = $_POST['order'];
 		$option = $_POST['option'];
 		$post_type = $_POST['post_type'];
+		$template  = $_POST['template'];
+		$sortby		 = $_POST['sortby'];
 
 		$args = array(
 			'post_type' => $post_type,
-			'post_status' => 'public',
+			'post_status' => 'publish',
 			'posts_per_page' => $_POST['numberposts'],
 			'search_key' => $key,
 			'orderby' => $orderby,
@@ -170,31 +174,34 @@ final class Elementor_Addons {
 
 				}
 			}
-			?>
-			<div class="sort-by-content">
-				<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?> results</div>
-				<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
-					<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-					<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
-							<div class="item-sortby <?php echo $orderby == 'post_date' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'post_date' ? $order : 'desc'; ?>" data-orderby="post_date">
-								Date <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-							</div>
-							<div class="item-sortby <?php echo $orderby == 'title' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'title' ? $order : 'desc'; ?>" data-orderby="title">
-								A-Z <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-							</div>
+			if($sortby):
+				?>
+				<div class="sort-by-content">
+					<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?> results</div>
+					<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
+						<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+						<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
+								<div class="item-sortby <?php echo $orderby == 'post_date' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'post_date' ? $order : 'desc'; ?>" data-orderby="post_date">
+									Date <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+								</div>
+								<div class="item-sortby <?php echo $orderby == 'title' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'title' ? $order : 'desc'; ?>" data-orderby="title">
+									A-Z <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+								</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<?php
+				<?php
+			endif;
 		}
 
 		// The Loop
 		if ( $the_query->have_posts() ) {
 				$countpost = $the_query->found_posts;
-				if($paged < 2){ ?> <div class="list-grids"> <?php }
+				$item = 0;
+				if($paged < 2){ ?> <div class="list-grids template-<?php echo $post_type.($template ? '-'.$template:''); ?>"> <?php }
 					while ( $the_query->have_posts() ) {
 							$the_query->the_post();
-							include($TEMPLATEPATH.'/templates/content-filter/item-'.$post_type.'.php');
+							include($TEMPLATEPATH.'/templates/content-filter/item-'.$post_type.($template ? '-'.$template:'').'.php');
 					}
 				if($paged < 2){ ?></div> <?php }
 		} else {

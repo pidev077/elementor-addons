@@ -457,6 +457,67 @@
             }
           }
         }
+        &.template-ins-faqs-list{
+          padding: 20px 80px;
+          .item-content-filter{
+            width: 100%;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            border-bottom: solid 1px #979797;
+            border-radius: 0;
+            margin-bottom: 0;
+            .__title{
+              position: relative;
+              display: flex;
+              align-items: center;
+              padding-right: 22px;
+              font-size: 22px;
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.18;
+              letter-spacing: -0.5px;
+              color: #2f2f39;
+              margin: 0;
+              padding: 20px 0;
+              cursor: pointer;
+              .fa{
+                position: absolute;
+                right: 0;
+                transition: 0.3s all;
+                &:before{
+                  font-size: 30px;
+                }
+              }
+            }
+            .__info{
+              padding: 0;
+              padding-bottom: 20px;
+              display: none;
+              .__content{
+                font-size: 13px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.54;
+                letter-spacing: -0.1px;
+                color: #2f2f39;
+              }
+            }
+            &.__is-actived{
+              .__info{
+                display: block;
+              }
+            }
+            &.__is-showed{
+              .__title .fa{
+                transform: rotate( 180deg );
+                transform-origin: center;
+              }
+            }
+          }
+        }
       }
       .not-found{
         width: 100%;

@@ -88,12 +88,34 @@ class Content_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
+			'pagination_toggle',
+			[
+				'label' => __( 'Show/Hide Pagination?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' )
+			]
+		);
+
+		$this->add_control(
+			'sortby_toggle',
+			[
+				'label' => __( 'Show/Hide Sortby?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
+				'label_on' => __( 'ON', 'bearsthemes-addons' ),
+				'return_value' => '1',
+				'default' => '1',
+			]
+		);
+
+		$this->add_control(
 			'content_toggle',
 			[
 				'label' => __( 'Default Content?', 'bearsthemes-addons' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
-				'label_on' => __( 'ON', 'bearsthemes-addons' )
+				'label_off' => __( 'HIDE', 'bearsthemes-addons' ),
+				'label_on' => __( 'SHOW', 'bearsthemes-addons' )
 			]
 		);
 
@@ -102,18 +124,8 @@ class Content_Filter extends Widget_Base {
 			[
 				'label' => __( 'Default Filter?', 'bearsthemes-addons' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
-				'label_on' => __( 'ON', 'bearsthemes-addons' )
-			]
-		);
-
-		$this->add_control(
-			'pagination_toggle',
-			[
-				'label' => __( 'Pagination', 'bearsthemes-addons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_off' => __( 'OFF', 'bearsthemes-addons' ),
-				'label_on' => __( 'ON', 'bearsthemes-addons' )
+				'label_off' => __( 'HIDE', 'bearsthemes-addons' ),
+				'label_on' => __( 'SHOW', 'bearsthemes-addons' )
 			]
 		);
 
@@ -141,6 +153,24 @@ class Content_Filter extends Widget_Base {
 				],
 				'label_block' => false,
 				'default' => 'resources',
+			]
+		);
+
+		$this->add_control(
+			'ica_template_faq',
+			[
+				'label' => __( 'Templates', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'multiple' => true,
+				'options' => [
+					'grid'  => __( 'Grid', 'bearsthemes-addons' ),
+					'list' => __( 'List', 'bearsthemes-addons' ),
+				],
+				'label_block' => true,
+				'default' => 'grid',
+				'condition' => [
+					'ica_source' => 'ins-faqs',
+				],
 			]
 		);
 
@@ -317,8 +347,10 @@ class Content_Filter extends Widget_Base {
 			default_filter="'.$settings['filter_toggle'].'"
 			pagination="'.$settings['pagination_toggle'].'"
 			showcontent="'.$settings['content_toggle'].'"
+			sortby="'.$settings['sortby_toggle'].'"
 			types="'.($settings['cat_type'] ? implode(',',$settings['cat_type']) :'').'"
 			topics="'.($settings['cat_topic'] ? implode(',',$settings['cat_topic']) : '').'"
+			template="'.($settings['ica_template_faq'] ? $settings['ica_template_faq'] : '').'"
 		]');
 	}
 

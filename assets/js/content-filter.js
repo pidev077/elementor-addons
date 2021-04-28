@@ -69,6 +69,8 @@
 				let val = $(this).val();
 				if(val !== ''){ btnRemoveAll.show(); }else{ btnRemoveAll.hide(); }
 			});
+
+			//remove key
 			btnRemoveAll.on('click',function(){
 				inputSearch.val('');
 				btnRemoveAll.hide();
@@ -134,6 +136,7 @@
 			$scope.on('click', '.item-filter i.fa', removeFilterItem);
 			$scope.on('click', '.btn-sortby span', showHideSortby);
 			$scope.on('click', '.item-sortby', loadDataSortby);
+      $scope.on('click','.template-ins-faqs-list .__title', toggleContentFAQ);
 
 			function loadFilters(){
 				var ajax = $(this).data('ajax');
@@ -238,6 +241,21 @@
 				logError.slideDown();
 			}
 
+			function toggleContentFAQ(){
+				var $this = $(this);
+				var $item = $this.closest('.item-content-filter');
+				var $list = $this.closest('.list-grids');
+				if($item.hasClass('__is-showed')){
+					$item.find('.__info').slideUp();
+					$item.removeClass('__is-showed');
+				}else{
+					$list.find('.__info').slideUp();
+					$list.find('.item-content-filter').removeClass('__is-showed');
+					$item.find('.__info').slideDown();
+					$item.addClass('__is-showed');
+				}
+			}
+
 			var masonryOptions = {
 				 isFitWidth: true,
 	 			 gutter: 21,
@@ -245,7 +263,8 @@
 			};
 
 			// initialize Masonry
-			resultFilter.find('.list-grids').masonry( masonryOptions );
+			var template = $scope.find('.ica-content-filter').data('template');
+			if(template != 'list') resultFilter.find('.list-grids').masonry( masonryOptions );
 
 			//Load default data
 			var showcontent = $scope.find('.ica-content-filter').data('showcontent');
@@ -260,6 +279,8 @@
 				var orderby = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('orderby') : $scope.find('.ica-content-filter').data('orderby');
 				var order = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('order') :  $scope.find('.ica-content-filter').data('order');
 				var pagination = $scope.find('.ica-content-filter').data('pagination');
+				var template = $scope.find('.ica-content-filter').data('template');
+				var sortby = $scope.find('.ica-content-filter').data('sortby');
 				listFilters.each(function(index,e){
 					var filter = $(e).data('filter');
 					var vals = [];
@@ -289,8 +310,10 @@
 							 'order' 				: order,
 							 'filters' 			: filters,
 							 'pagination'   : pagination,
+							 'sortby'				: sortby,
 							 'paged'        : paged,
-							 'option'				: $option
+							 'option'				: $option,
+							 'template'			: template
 	          },
 	          dataType: 'JSON',
 	          success:function(response){
@@ -303,8 +326,10 @@
 								paged = 2;
 								resultFilter.html(response.html);
 							}
-							resultFilter.find('.list-grids').masonry('destroy'); // destroy
-							resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
+							if(template != 'list'){
+								resultFilter.find('.list-grids').masonry('destroy'); // destroy
+								resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
+							}
 							if(!response.countpost){
 								resultFilter.css('height','auto');
 							}
