@@ -280,11 +280,23 @@ class Content_Filter extends Widget_Base {
 		$this->add_responsive_control(
 				'ica_form_padding',
 				[
-						'label' => __( 'Padding', 'elementor' ),
+						'label' => __( 'Padding Form', 'elementor' ),
 						'type' => Controls_Manager::DIMENSIONS,
 						'size_units' => [ 'px', '%' ],
 						'selectors' => [
 								'{{WRAPPER}} .wrrap-content-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						],
+				]
+		);
+
+		$this->add_responsive_control(
+				'ica_content_padding',
+				[
+						'label' => __( 'Padding Content', 'elementor' ),
+						'type' => Controls_Manager::DIMENSIONS,
+						'size_units' => [ 'px', '%' ],
+						'selectors' => [
+								'{{WRAPPER}} .list-grids' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						],
 				]
 		);
