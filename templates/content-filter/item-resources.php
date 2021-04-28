@@ -1,7 +1,6 @@
 <?php
 $post_id = get_the_ID();
 $types = get_the_terms( $post_id, 'ins-type' );
-$type_file = get_field( 'file_type' );
 $upload_file = get_field( 'upload_file' );
 ?>
 <div class="item-content-filter">
