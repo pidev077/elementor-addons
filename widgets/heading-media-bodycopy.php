@@ -51,7 +51,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
               'type' => Controls_Manager::SWITCHER,
               'label_on' => __( 'Show', 'bearsthemes-addons' ),
               'label_off' => __( 'Hide', 'bearsthemes-addons' ),
-              'default' => 'yes',
+              'default' => 'no',
             ]
           );
             $this->add_control(
