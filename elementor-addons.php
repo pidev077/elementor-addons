@@ -127,6 +127,14 @@ final class Elementor_Addons {
 			'paged' => $paged
 		);
 
+		if(trim($key) && $post_type == 'resources'){
+			$args['meta_query'][] = array(
+					'key' => 'content_file',
+					'value' => $key,
+					'compare' => 'LIKE'
+			);
+		}
+
 		if(!empty($filters)){
 			$args['tax_query']['relation'] = 'AND';
 
@@ -257,10 +265,12 @@ final class Elementor_Addons {
 
 	public function ica_title_filter( $where, &$wp_query ){
 	    global $wpdb;
-	    if ( $search_term = $wp_query->get( 'search_key' ) ) {
-					$where .= ' AND (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\'';
-	        $where .= ' OR ' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\')';
-	    }
+	    // if ( $search_term = $wp_query->get( 'search_key' ) && $wp_query->query['post_type'] == 'resources' ) {
+			// 	$where .= ' AND (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\' OR (' . $wpdb->postmeta . '.meta_key = \'content_file\' AND ' . $wpdb->postmeta . '.meta_value LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\'))';
+	    // }else{
+				if($search_term = $wp_query->get( 'search_key' ) && $wp_query->query['post_type'] != 'resources')
+					$where .= ' AND (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( like_escape( $search_term ) ) . '%\')';
+			//}
 			if ( $search_date = $wp_query->get( 'search_date' ) ) {
 				  $date = explode(',',$search_date);
 					if($date[0] && !$date[1])
@@ -272,11 +282,6 @@ final class Elementor_Addons {
 	    }
 	    return $where;
 	}
-
-	public function get_total_posts($args){
-
-	}
-
 
 	/**
 	 * Load Textdomain
