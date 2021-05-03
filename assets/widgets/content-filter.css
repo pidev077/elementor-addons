@@ -137,6 +137,9 @@
   height: 40px;
   cursor: pointer;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa {
+  transition: 0.3s all;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
   font-size: 36px;
 }
@@ -276,6 +279,10 @@
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select:focus {
   outline: none;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.__is-opened .name-filter .fa {
+  transform: rotate(180deg);
+  transform-origin: center;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions {
   display: flex;
