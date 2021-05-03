@@ -31,7 +31,7 @@
 
             let isItem = $(this).parent().siblings('.content-team').children().find('.description');
             if($(this).attr('data-state') == 1) {
-                
+
                 $(this).attr('data-state', 0);
                 $(this).text('Collapse');
                 isItem.animate({
@@ -85,11 +85,51 @@
         });
     }
 
+    // get url tabs
+    function getUrlTabs() {
+
+        let isTabs = $('.accordion-navigation-tabs-container .accordion-navigation-tabs-title .item-tabs-title');
+        isTabs.each(function(){
+            let dataUrl = $(this).data('active');
+            ativeTabsByUrl(dataUrl);
+            // console.log("aaa");
+        });
+    }
+
+    // active tab by url
+
+    function ativeTabsByUrl(url) {
+        // console.log(url);
+        if(window.location.href.indexOf(url) > -1) {
+            let isTabs = $('.accordion-navigation-tabs-container .accordion-navigation-tabs-title .item-tabs-title');
+            let contetTabs = $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content');
+
+            isTabs.each(function(){
+                if ($(this).attr('data-active') == url) {
+                    let dataTabs = $(this).data('tab');
+                    $(this).addClass('active');
+                    contetTabs.removeClass('active');
+                    $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content.'+dataTabs).addClass('active');
+                }else {
+                    $(this).removeClass('active');
+                }
+            });
+
+        }
+
+
+    }
+
     $( document ).ready(function() {
         tabsElement();
         showAllContent();
         equalImageHeight();
         hiddenModulseAlertBanner();
+        // let url = "active_tab=our-exec-team";
+        // let ourBoard = "active_tab=our-board";
+        // ativeTabsByUrl(url);
+        // ativeTabsByUrl(ourBoard);
+        getUrlTabs();
     });
 
 

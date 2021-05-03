@@ -97,8 +97,8 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'title_field' => '{{{ title }}}',
                 ]
             );
-
         $this->end_controls_section();
+
     }
 
     protected function register_style_title_section_controls() {
@@ -852,6 +852,12 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 $supported_ids[get_the_ID()] = get_the_title();
             }
         }
+        //
+        // echo "<pre>";
+        // echo print_r($supported_ids);
+        // echo "</pre>";
+
+
         return $supported_ids;
     }
 
@@ -870,11 +876,25 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $heading  = $settings['title_accordion_navigation_tabs'];
         $items = $settings['list_tabs_items'];
+        $aa = $settings['list'];
+
         // echo "<pre>";
-        // echo print_r($items);
+        // echo print_r($aa);
         // echo "</pre>";
         ?>
         <div class="bt-elements-elementor accordion-navigation-tabs-elements">
+
+            <?php foreach ($aa as $key => $value): ?>
+                <?php echo $value['list_title']; echo "<br/>"; ?>
+
+                <?php
+                    $listTeams = $value['list_buttons'];
+                    foreach ($listTeams as $key => $listTeam) {
+                        echo $listTeam['id_team']; echo "<br/>";
+                    }
+                 ?>
+            <?php endforeach; ?>
+
             <div class="content-elements">
                 <?php if ($heading): ?>
                     <h2 class="heading"> <?php echo $heading ?> </h2>
@@ -886,7 +906,11 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                 <?php foreach ($items as $key => $item): ?>
                                     <?php $activeTitle = ($key == 0) ? "active" : " " ;?>
                                     <?php if ($item['title']): ?>
-                                        <div class="items item-tabs-title <?php echo $activeTitle; ?>" data-tab="bears-tab-<?php echo $key ?>">
+                                        <?php
+                                        $slug=preg_replace('/[^A-Za-z0-9-]+/', '-',strtolower($item['title']));
+
+                                        ?>
+                                        <div class="items item-tabs-title <?php echo $activeTitle; ?>" data-tab="bears-tab-<?php echo $key ?>" data-active="active_tab=<?php echo $slug ?>">
                                             <?php echo $item['title'];  ?>
                                         </div>
                                     <?php endif; ?>
@@ -912,10 +936,17 @@ class Accordion_Navigation_Tabs extends Widget_Base {
     }
 
     protected function get_team_template($id) {
+
+        // echo "<pre>";
+        // echo print_r($id);
+        // echo "</pre>";
+
         $loop = new \WP_Query( array(
             'post_type' => 'team',
             'post_status' => 'publish',
             'post__in' => $id,
+            'orderby' => 'menu_order',
+            'order' => 'ASC', 
         ) ); ?>
         <?php
         while ( $loop->have_posts() ) : $loop->the_post();
