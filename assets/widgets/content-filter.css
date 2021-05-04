@@ -502,6 +502,19 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
+  list-style-type: decimal-leading-zero;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol {
+  list-style-type: lower-latin;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
   display: block;
 }
