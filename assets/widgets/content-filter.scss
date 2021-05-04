@@ -516,8 +516,9 @@
 
                 }
                 > ol{
-                    list-style-type:decimal-leading-zero;
+                    list-style-type:decimal;
                     >li{
+                        position: relative;
                         ol{
                             list-style-type:lower-latin;
                             margin-top: 5px;

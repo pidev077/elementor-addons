@@ -508,7 +508,10 @@
   padding: 0;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
-  list-style-type: decimal-leading-zero;
+  list-style-type: decimal;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li {
+  position: relative;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol {
   list-style-type: lower-latin;
