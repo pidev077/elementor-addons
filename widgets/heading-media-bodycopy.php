@@ -550,9 +550,11 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     ?>
                 <?php endif; ?>
                 <?php if ($settings['show_image_heading'] =="yes"): ?>
-                    <div class="thumbnail">
-                        <img src="<?php echo $images['url'] ?>" alt="image">
-                    </div>
+                    <?php if ($images['url']): ?>
+                        <div class="thumbnail">
+                            <img src="<?php echo $images['url'] ?>" alt="image">
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <?php
       						if( '' !== $settings['show_sub_heading'] ) {

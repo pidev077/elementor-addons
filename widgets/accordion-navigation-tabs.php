@@ -97,6 +97,19 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'title_field' => '{{{ title }}}',
                 ]
             );
+
+            $this->add_control(
+                'order_tabs',
+                [
+                    'label' => __( 'Order', 'elementor' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'DESC',
+                    'options' => [
+                        'DESC' => __( 'DESC', 'elementor' ),
+                        'ASC' => __( 'ASC', 'elementor' ),
+                    ],
+                ]
+            );
         $this->end_controls_section();
 
     }
@@ -843,7 +856,9 @@ class Accordion_Navigation_Tabs extends Widget_Base {
 
         $wp_query = new \WP_Query( array(
             'post_type' => 'team',
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'DESC',
         ) );
 
         if ( $wp_query->have_posts() ) {
@@ -876,24 +891,13 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $heading  = $settings['title_accordion_navigation_tabs'];
         $items = $settings['list_tabs_items'];
-        $aa = $settings['list'];
+        $order = $settings['order_tabs'] ? $settings['order_tabs'] : 'DESC';
 
         // echo "<pre>";
         // echo print_r($aa);
         // echo "</pre>";
         ?>
         <div class="bt-elements-elementor accordion-navigation-tabs-elements">
-
-            <?php foreach ($aa as $key => $value): ?>
-                <?php echo $value['list_title']; echo "<br/>"; ?>
-
-                <?php
-                    $listTeams = $value['list_buttons'];
-                    foreach ($listTeams as $key => $listTeam) {
-                        echo $listTeam['id_team']; echo "<br/>";
-                    }
-                 ?>
-            <?php endforeach; ?>
 
             <div class="content-elements">
                 <?php if ($heading): ?>
@@ -922,7 +926,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                     <?php $ids = $item['post_ids_tabs'] ?>
                                     <?php if ($ids): ?>
                                         <div class="items item-tabs-content bears-tab-<?php echo $key ?> <?php echo $activeContent; ?>">
-                                            <?php $this->get_team_template($ids); ?>
+                                            <?php $this->get_team_template($ids, $order); ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
@@ -935,19 +939,17 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         <?php
     }
 
-    protected function get_team_template($id) {
-
-        // echo "<pre>";
-        // echo print_r($id);
-        // echo "</pre>";
-
+    protected function get_team_template($id, $order) {
+        echo $order;
         $loop = new \WP_Query( array(
             'post_type' => 'team',
             'post_status' => 'publish',
             'post__in' => $id,
             'orderby' => 'menu_order',
-            'order' => 'ASC', 
+            'order' =>  $order,
         ) ); ?>
+
+
         <?php
         while ( $loop->have_posts() ) : $loop->the_post();
             $id_team = get_the_ID();
