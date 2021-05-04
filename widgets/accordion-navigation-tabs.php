@@ -867,10 +867,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 $supported_ids[get_the_ID()] = get_the_title();
             }
         }
-        //
-        // echo "<pre>";
-        // echo print_r($supported_ids);
-        // echo "</pre>";
+
 
 
         return $supported_ids;
@@ -893,9 +890,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         $items = $settings['list_tabs_items'];
         $order = $settings['order_tabs'] ? $settings['order_tabs'] : 'DESC';
 
-        // echo "<pre>";
-        // echo print_r($aa);
-        // echo "</pre>";
+
         ?>
         <div class="bt-elements-elementor accordion-navigation-tabs-elements">
 
@@ -940,7 +935,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
     }
 
     protected function get_team_template($id, $order) {
-        echo $order;
+
         $loop = new \WP_Query( array(
             'post_type' => 'team',
             'post_status' => 'publish',
