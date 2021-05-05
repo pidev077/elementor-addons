@@ -219,6 +219,20 @@ class Content_Filter extends Widget_Base {
 		);
 
 		$this->add_control(
+			'cat_faq',
+			[
+				'label' => __( 'Category', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $this->get_supported_taxonomies('cat-faq'),
+				'label_block' => true,
+				'multiple' => true,
+				'condition' => [
+					'ica_source' => 'ins-faqs',
+				],
+			]
+		);
+
+		$this->add_control(
 			'posts_per_page',
 			[
 				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
@@ -362,6 +376,7 @@ class Content_Filter extends Widget_Base {
 			sortby="'.$settings['sortby_toggle'].'"
 			types="'.($settings['cat_type'] ? implode(',',$settings['cat_type']) :'').'"
 			topics="'.($settings['cat_topic'] ? implode(',',$settings['cat_topic']) : '').'"
+			cats_faq="'.($settings['cat_faq'] ? implode(',',$settings['cat_faq']) : '').'"
 			template="'.($settings['ica_template_faq'] ? $settings['ica_template_faq'] : '').'"
 		]');
 	}

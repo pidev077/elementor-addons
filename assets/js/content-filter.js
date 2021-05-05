@@ -281,6 +281,7 @@
 				var pagination = $scope.find('.ica-content-filter').data('pagination');
 				var template = $scope.find('.ica-content-filter').data('template');
 				var sortby = $scope.find('.ica-content-filter').data('sortby');
+				var cats_faq = $scope.find('.ica-content-filter').data('cat_faq');
 				listFilters.each(function(index,e){
 					var filter = $(e).data('filter');
 					var vals = [];
@@ -313,6 +314,7 @@
 							 'sortby'				: sortby,
 							 'paged'        : paged,
 							 'option'				: $option,
+							 'cats_faq'     : cats_faq,
 							 'template'			: template
 	          },
 	          dataType: 'JSON',

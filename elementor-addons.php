@@ -86,6 +86,7 @@ final class Elementor_Addons {
 				'sortby'	=> '',
 				'types'	=> '',
 				'topics' => '',
+				'cats_faq' => '',
 				'template' => ''
 	  ), $atts, 'ica_content_filter' );
 
@@ -116,6 +117,7 @@ final class Elementor_Addons {
 		$post_type = $_POST['post_type'];
 		$template  = $_POST['template'];
 		$sortby		 = $_POST['sortby'];
+		$cats_faq  = $_POST['cats_faq'];
 
 		$args = array(
 			'post_type' => $post_type,
@@ -151,6 +153,14 @@ final class Elementor_Addons {
 					$args['search_date'] = $filter['value'];
 				}
 			}
+		}
+
+		if(!empty($cats_faq)){
+			$args['tax_query'][] = array(
+					'taxonomy' => 'cat-faq',
+					'field'    => 'slug',
+					'terms'    => $cats_faq
+			);
 		}
 
 		// The Query
@@ -259,7 +269,7 @@ final class Elementor_Addons {
 
 		$result['countpost'] = $countpost;
 		$result['totalpost'] = $totalpost;
-		$result['global'] = $_GLOBAL['wp_query'];
+		$result['global'] = $cats_faq;
 
 		wp_send_json($result);
 	}
