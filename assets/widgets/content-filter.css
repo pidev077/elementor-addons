@@ -545,13 +545,19 @@
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker {
   font-weight: bold;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol {
   list-style-type: lower-latin;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol > li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li::marker {
   color: #42866f;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol {
+  list-style-type: lower-roman;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol li::marker {
+  color: #2e6dff;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
   display: block;
