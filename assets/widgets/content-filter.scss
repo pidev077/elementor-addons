@@ -509,6 +509,23 @@
                 line-height: 1.54;
                 letter-spacing: -0.1px;
                 color: #2f2f39;
+                ol{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+
+                }
+                > ol{
+                    list-style-type:decimal;
+                    >li{
+                        position: relative;
+                        ol{
+                            list-style-type:lower-latin;
+                            margin-top: 5px;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
               }
             }
             &.__is-actived{

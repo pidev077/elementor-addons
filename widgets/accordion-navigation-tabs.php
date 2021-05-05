@@ -98,7 +98,20 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'order_tabs',
+                [
+                    'label' => __( 'Order', 'elementor' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'DESC',
+                    'options' => [
+                        'DESC' => __( 'DESC', 'elementor' ),
+                        'ASC' => __( 'ASC', 'elementor' ),
+                    ],
+                ]
+            );
         $this->end_controls_section();
+
     }
 
     protected function register_style_title_section_controls() {
@@ -843,7 +856,9 @@ class Accordion_Navigation_Tabs extends Widget_Base {
 
         $wp_query = new \WP_Query( array(
             'post_type' => 'team',
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'DESC',
         ) );
 
         if ( $wp_query->have_posts() ) {
@@ -852,6 +867,9 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                 $supported_ids[get_the_ID()] = get_the_title();
             }
         }
+
+
+
         return $supported_ids;
     }
 
@@ -870,11 +888,12 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $heading  = $settings['title_accordion_navigation_tabs'];
         $items = $settings['list_tabs_items'];
-        // echo "<pre>";
-        // echo print_r($items);
-        // echo "</pre>";
+        $order = $settings['order_tabs'] ? $settings['order_tabs'] : 'DESC';
+
+
         ?>
         <div class="bt-elements-elementor accordion-navigation-tabs-elements">
+
             <div class="content-elements">
                 <?php if ($heading): ?>
                     <h2 class="heading"> <?php echo $heading ?> </h2>
@@ -886,7 +905,11 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                 <?php foreach ($items as $key => $item): ?>
                                     <?php $activeTitle = ($key == 0) ? "active" : " " ;?>
                                     <?php if ($item['title']): ?>
-                                        <div class="items item-tabs-title <?php echo $activeTitle; ?>" data-tab="bears-tab-<?php echo $key ?>">
+                                        <?php
+                                        $slug=preg_replace('/[^A-Za-z0-9-]+/', '-',strtolower($item['title']));
+
+                                        ?>
+                                        <div class="items item-tabs-title <?php echo $activeTitle; ?>" data-tab="bears-tab-<?php echo $key ?>" data-active="active_tab=<?php echo $slug ?>">
                                             <?php echo $item['title'];  ?>
                                         </div>
                                     <?php endif; ?>
@@ -898,7 +921,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                     <?php $ids = $item['post_ids_tabs'] ?>
                                     <?php if ($ids): ?>
                                         <div class="items item-tabs-content bears-tab-<?php echo $key ?> <?php echo $activeContent; ?>">
-                                            <?php $this->get_team_template($ids); ?>
+                                            <?php $this->get_team_template($ids, $order); ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
@@ -911,12 +934,17 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         <?php
     }
 
-    protected function get_team_template($id) {
+    protected function get_team_template($id, $order) {
+
         $loop = new \WP_Query( array(
             'post_type' => 'team',
             'post_status' => 'publish',
             'post__in' => $id,
+            'orderby' => 'menu_order',
+            'order' =>  $order,
         ) ); ?>
+
+
         <?php
         while ( $loop->have_posts() ) : $loop->the_post();
             $id_team = get_the_ID();

@@ -63,7 +63,7 @@ class Heading_Media_BodyCopy extends Widget_Base {
                         'url' => \Elementor\Utils::get_placeholder_image_src(),
                     ],
                     'condition' => [
-                      'show_image_heading!' => '',
+                      'show_image_heading' => 'yes',
                     ],
                 ]
             );
@@ -281,6 +281,24 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     'separator' => 'before',
                     ]
             );
+
+            $this->add_responsive_control(
+            'max_width_heading_bodycopy',
+            [
+                'label' => __( 'Width', 'bearsthemes-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .heading-media-bodycopy-elements .heading' => 'max-width: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
 
 
             $this->add_group_control(
@@ -531,11 +549,13 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     }
                     ?>
                 <?php endif; ?>
-                <?php if( '' !== $settings['show_image_heading'] ) { ?>
-                    <div class="thumbnail">
-                        <img src="<?php echo $images['url'] ?>" alt="image">
-                    </div>
-                <?php } ?>
+                <?php if ($settings['show_image_heading'] =="yes"): ?>
+                    <?php if ($images['url']): ?>
+                        <div class="thumbnail">
+                            <img src="<?php echo $images['url'] ?>" alt="image">
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <?php
       						if( '' !== $settings['show_sub_heading'] ) {
       							echo '<h4 class="bt-sub-heading"">' . $settings['sub_heading_media_bodycopy'] . '</h4>';
