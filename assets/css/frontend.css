@@ -595,3 +595,49 @@ article.be-latest-faqs .elementor-post__content {
     padding: 10px 15px 22px 15px;
 		padding-bottom: 40px;
 }
+/*card carousel*/
+.elementor-card {
+	padding: 21px 20px;
+	padding-bottom: 40px;
+	color: #fff;
+	background-color: #0a334d;
+}
+.elementor-card .elementor-card__category {
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 100%;
+	margin-bottom: 10px;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.elementor-card .elementor-card__title {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 26px;
+	margin-bottom: 25px;
+	letter-spacing: -0.5px;
+	max-width: 200px;
+	color: #fff;
+}
+.elementor-card .elementor-card__content {
+	margin-bottom: 24px;
+	min-height: 130px;
+}
+.elementor-card .elementor-card__content > p {
+	margin: 0;
+	font-size: 15px;
+}
+.elementor-card .elementor-post__read-more {
+	display: inline-block;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 100%;
+	color: #fff;
+	text-decoration:underline;
+	position: absolute;
+	bottom: 21px;
+}
+.elementor-card .elementor-post__read-more:hover {
+	color: #d2440f;
+}
