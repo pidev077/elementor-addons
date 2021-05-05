@@ -76,12 +76,11 @@
         }
     }
     // funtion hidden modules alert banner in page
-    function hiddenModulseAlertBanner() {
+    function hiddenModulesAlertBanner() {
         let ctaHidden = $('.alert-banner-elements > .cta-close');
         let isModulseAlertBanner = $('.alert-banner-elements');
         ctaHidden.on('click',function(){
-            isModulseAlertBanner.slideUp(400);
-
+            isModulseAlertBanner.parents('.elementor-section').slideUp(400);
         });
     }
 
@@ -124,7 +123,7 @@
         tabsElement();
         showAllContent();
         equalImageHeight();
-        hiddenModulseAlertBanner();
+        hiddenModulesAlertBanner();
         // let url = "active_tab=our-exec-team";
         // let ourBoard = "active_tab=our-board";
         // ativeTabsByUrl(url);
