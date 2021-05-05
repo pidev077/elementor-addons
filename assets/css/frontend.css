@@ -623,6 +623,7 @@ article.be-latest-faqs .elementor-post__content {
 .elementor-card .elementor-card__content {
 	margin-bottom: 24px;
 	min-height: 130px;
+	font-size: 15px;
 }
 .elementor-card .elementor-card__content > p {
 	margin: 0;
