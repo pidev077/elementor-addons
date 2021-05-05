@@ -250,6 +250,7 @@ class Content_Filter extends Widget_Base {
 				'options' => [
 					'post_date' => __( 'Date', 'bearsthemes-addons' ),
 					'post_title' => __( 'Title', 'bearsthemes-addons' ),
+					'menu_order' => __( 'Custom', 'bearsthemes-addons' ),
 					'rand' => __( 'Random', 'bearsthemes-addons' ),
 				],
 			]
