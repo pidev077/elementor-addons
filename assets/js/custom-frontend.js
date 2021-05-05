@@ -80,7 +80,7 @@
         let ctaHidden = $('.alert-banner-elements > .cta-close');
         let isModulseAlertBanner = $('.alert-banner-elements');
         ctaHidden.on('click',function(){
-            isModulseAlertBanner.parents('.elementor-section').slideUp(400);
+            isModulseAlertBanner.parents('.elementor-section').slideUp(600);
         });
     }
 
