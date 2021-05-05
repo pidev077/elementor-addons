@@ -509,20 +509,65 @@
                 line-height: 1.54;
                 letter-spacing: -0.1px;
                 color: #2f2f39;
+                h3{
+                    margin: 15px 0 10px 0;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p{
+                    margin-bottom: 5px;
+                }
                 ol{
                     width: 100%;
                     margin: 0;
                     padding: 0;
 
                 }
+                ol{
+                    li{
+                        position: relative;
+                        &::marker {
+                            font-weight: bold;
+                        }
+                        span{
+                            display: inline-block;
+                            width: 100%;
+                        }
+                    }
+                    > ol{
+                        list-style-type:lower-latin;
+                          > li{
+                              &::marker{
+                                  color: #42866f;
+                              }
+                            > ol{
+                                list-style-type:lower-roman;
+                                li{
+                                    &::marker{
+                                        color: #2e6dff;
+                                    }
+                                }
+                            }
+                          }
+                    }
+                }
                 > ol{
                     list-style-type:decimal;
+                    padding-left: 30px !important;
                     >li{
-                        position: relative;
+                        &::marker {
+                            font-weight: bold;
+                        }
                         ol{
                             list-style-type:lower-latin;
                             margin-top: 5px;
                             margin-bottom: 5px;
+                            > li{
+                                &::marker{
+                                    color: #42866f;
+                                }
+                            }
                         }
                     }
                 }

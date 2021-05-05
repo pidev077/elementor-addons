@@ -502,21 +502,56 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content h3 {
+  margin: 15px 0 10px 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content p {
+  margin-bottom: 5px;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol {
   width: 100%;
   margin: 0;
   padding: 0;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li {
+  position: relative;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li::marker {
+  font-weight: bold;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li span {
+  display: inline-block;
+  width: 100%;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol {
+  list-style-type: lower-latin;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li::marker {
+  color: #42866f;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol {
+  list-style-type: lower-roman;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol li::marker {
+  color: #2e6dff;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
   list-style-type: decimal;
+  padding-left: 30px !important;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li {
-  position: relative;
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker {
+  font-weight: bold;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol {
   list-style-type: lower-latin;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol > li::marker {
+  color: #42866f;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
   display: block;
