@@ -112,6 +112,7 @@
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options {
   display: none;
+  margin-top: 8.5px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options {
   display: flex;
