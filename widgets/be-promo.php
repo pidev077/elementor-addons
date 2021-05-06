@@ -74,13 +74,25 @@ class Be_Promo extends Widget_Base {
                 'default' => __( 'Find an insurer', 'bearsthemes-addons' ),
               ]
             );
+            // $this->add_control(
+            //   'promo_button_url', [
+            //     'label' => __( 'Button Link', 'bearsthemes-addons' ),
+            //     'type' => Controls_Manager::TEXT,
+            //     'label_block' => true,
+            //     'default' => '#',
+            //   ]
+            // );
+
             $this->add_control(
-              'promo_button_url', [
-                'label' => __( 'Button Link', 'bearsthemes-addons' ),
-                'type' => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default' => '#',
-              ]
+                'promo_button_url',
+                [
+                    'label' => __( 'Button Link', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::URL,
+                    'placeholder' => 'http://your-link.com',
+                    'default' => [
+                        'url' => '#!',
+                    ],
+                ]
             );
 
         $this->end_controls_section();
@@ -382,6 +394,8 @@ class Be_Promo extends Widget_Base {
         $heading  = $settings['heading_promo'];
         $content = $settings['content_promo'];
         $images = $settings['image_promo'];
+        $linkCTa = $settings['promo_button_url'];
+        $target = $linkCTa['is_external'] ? '_blank' :  '_self';
         ?>
         <div class="bt-elements-elementor bt-promo">
             <div class="content-promo">
@@ -391,7 +405,9 @@ class Be_Promo extends Widget_Base {
                 <?php if ($content): ?>
                     <div class="bt-des"> <?php echo $content ?> </div>
                 <?php endif; ?>
-                <a class="bt-button" href="<?php echo $settings['promo_button_url']; ?>"><?php echo $settings['promo_button']; ?></a>
+                <a class="bt-button" href="<?php echo $linkCTa['url']; ?>" target="<?php echo $target ?>">
+                    <?php echo $settings['promo_button']; ?>
+                </a>
             </div>
             <?php if ($images['url']): ?>
                 <div class="thumbnail-promo">
