@@ -744,11 +744,16 @@
 }
 @media only screen and (max-width: 767px){
     .secondary-ctas-elements .list-items .item{
-        width: 100%;
+        width: 50%;
     }
     .secondary-ctas-elements .list-items{
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+}
+@media only screen and (max-width: 540px){
+    .secondary-ctas-elements .list-items .item{
+        width: 100%;
     }
 }
 

@@ -228,6 +228,12 @@
   margin-left: auto;
   padding-left: 10px;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
+    width: 100%;
+    padding-left: 0;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__label {
   font-size: 15px;
   font-weight: normal;

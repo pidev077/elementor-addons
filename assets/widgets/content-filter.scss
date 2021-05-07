@@ -227,6 +227,10 @@
                 width: 50%;
                 margin-left: auto;
                 padding-left: 10px;
+                @media only screen and (max-width: 767px){
+                    width: 100%;
+                    padding-left: 0;
+                }
                 .__label{
                   font-size: 15px;
                   font-weight: normal;

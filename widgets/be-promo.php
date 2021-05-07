@@ -74,15 +74,7 @@ class Be_Promo extends Widget_Base {
                 'default' => __( 'Find an insurer', 'bearsthemes-addons' ),
               ]
             );
-            // $this->add_control(
-            //   'promo_button_url', [
-            //     'label' => __( 'Button Link', 'bearsthemes-addons' ),
-            //     'type' => Controls_Manager::TEXT,
-            //     'label_block' => true,
-            //     'default' => '#',
-            //   ]
-            // );
-
+            
             $this->add_control(
                 'promo_button_url',
                 [
@@ -384,8 +376,8 @@ class Be_Promo extends Widget_Base {
 
     protected function _register_controls() {
         $this->register_content_section_controls();
-        //$this->register_style_image_controls();
-        //$this->register_style_content_section_controls();
+        $this->register_style_image_controls();
+        $this->register_style_content_section_controls();
     }
 
 
