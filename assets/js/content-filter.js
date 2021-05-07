@@ -70,10 +70,21 @@
 				if(val !== ''){ btnRemoveAll.show(); }else{ btnRemoveAll.hide(); }
 			});
 
+			// Enter key on the keyboard, then submit
+			inputSearch.on("keypress", function (event) {
+
+				var keyPressed = event.keyCode || event.which;
+				if (keyPressed === 13) {
+					loadFilterData(inputSearch.val(),'filter');
+					return false;
+				}
+			});
+
 			//remove key
 			btnRemoveAll.on('click',function(){
 				inputSearch.val('');
 				btnRemoveAll.hide();
+				loadFilterData(inputSearch.val(),'filter');
 				return false;
 			});
 
