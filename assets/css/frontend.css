@@ -187,8 +187,21 @@
 	.bt-custom-counter .bt-heading{
 		font-size: 30px;
 	}
-}
 
+}
+@media only screen and (max-width: 540px){
+	.bt-custom-counter .bt-heading{
+		font-size: 28px;
+	}
+	.bt-custom-counter{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.bt-custom-counte .elementor-grid{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
 
 /*be post*/
 .elementor-posts--default .elementor-post {
@@ -406,6 +419,19 @@
 		padding-left: 55px;
 	}
 }
+@media only screen and (min-width: 767px) {
+	.bt-promo h2.bt-heading{
+		font-size: 34px;
+	}
+}
+@media only screen and (min-width: 540px) {
+
+	.bt-promo h2.bt-heading{
+		font-size: 28px;
+		max-width: 100%;
+	}
+
+}
 /*be-latest-resources*/
 article.be-latest-resources{
 	border-radius: 8px;
@@ -517,6 +543,15 @@ article.be-latest-resources .elementor-post__content {
 @media only screen and (max-width: 767px){
 	.heading-resources h2{
 	   font-size: 25px;
+	}
+}
+
+@media only screen and (max-width: 540px){
+	.heading-resources{
+		flex-wrap: wrap;
+	}
+	.heading-resources h2{
+		margin-bottom: 10px;
 	}
 }
 
@@ -663,4 +698,10 @@ article.be-latest-faqs .elementor-post__content {
 }
 .elementor-card .elementor-post__read-more:hover {
 	color: #d2440f;
+}
+
+@media only screen and (max-width: 767px){
+	.elementor-card .elementor-card__content{
+		min-height: auto;
+	}
 }

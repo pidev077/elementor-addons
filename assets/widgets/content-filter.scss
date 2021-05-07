@@ -37,9 +37,18 @@
           color: #4a4a4a;
           padding: 0;
           background: transparent;
+          @media only screen and (max-width: 1023px){
+              font-size: 30px;
+          }
+          @media only screen and (max-width: 767px){
+              font-size: 27px;
+          }
           &.__is-error{
             border-color: #ff5858;
           }
+          // &::placeholder{
+          //
+          // }
       }
       .typeahead{
         color: #b8b8b8;
@@ -73,8 +82,14 @@
         justify-content: space-between;
         padding: 17px 0;
         font-size: 15px;
+        @media only screen and (max-width: 540px){
+            flex-wrap: wrap;
+        }
         .load-suggestion{
           display: flex;
+          @media only screen and (max-width: 540px){
+              width: 100%;
+          }
           .list-suggestions{
             margin-left: 4px;
             span{
@@ -99,6 +114,9 @@
           color: #4a4a4a;
           display: inline-flex;
           align-items: center;
+          @media only screen and (max-width: 540px){
+              margin-top: 10px;
+          }
           .fa{
             margin-right: 12px;
             transition: .3s all;

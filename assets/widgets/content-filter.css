@@ -38,6 +38,16 @@
   padding: 0;
   background: transparent;
 }
+@media only screen and (max-width: 1023px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 27px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error, .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead.__is-error {
   border-color: #ff5858;
 }
@@ -72,8 +82,18 @@
   padding: 17px 0;
   font-size: 15px;
 }
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion {
+    flex-wrap: wrap;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
   display: flex;
+}
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
+    width: 100%;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions {
   margin-left: 4px;
@@ -98,6 +118,11 @@
   color: #4a4a4a;
   display: inline-flex;
   align-items: center;
+}
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
+    margin-top: 10px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa {
   margin-right: 12px;
