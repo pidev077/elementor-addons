@@ -150,6 +150,7 @@ class Content_Filter extends Widget_Base {
 					'resources'  => __( 'Resources', 'bearsthemes-addons' ),
 					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
 					'post' => __( 'Post', 'bearsthemes-addons' ),
+					'page' => __( 'Page', 'bearsthemes-addons' ),
 				],
 				'label_block' => false,
 				'default' => 'resources',
