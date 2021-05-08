@@ -11,6 +11,11 @@
   font-size: 20px;
   top: 10px;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button {
+    top: 3px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button .fa::before {
   font-size: 22px;
 }
@@ -108,6 +113,11 @@
   color: #4a4a4a;
   text-decoration: underline;
   cursor: pointer;
+}
+@media only screen and (max-width: 375px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions span {
+    font-size: 13px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
   cursor: pointer;
