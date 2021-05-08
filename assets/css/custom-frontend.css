@@ -337,10 +337,18 @@
 .useful-link-info-elements .list-items .item .content b a{
     text-decoration: none;
 }
+@media only screen and (max-width: 1023px){
+  .useful-link-info-elements .content-elements{
+    padding: 10px;
+  }
+}
 @media only screen and (max-width: 767px){
     .useful-link-info-elements .content-elements{
         margin-left: auto;
         margin-right: auto;
+    }
+    .elementor-118 .elementor-element.elementor-element-89c77fb .useful-link-info-elements .list-items .item .content p{
+      margin-bottom: 0;
     }
 }
 
@@ -455,6 +463,9 @@
   .accordion-navigation-tabs-container .accordion-navigation-tabs-content{
     max-width: 500px;
     margin: 0 auto;
+  }
+  .accordion-navigation-tabs-container .accordion-navigation-tabs-title .item-tabs-title:first-child{
+    padding-left: 10px !important;
   }
 }
 
@@ -1057,6 +1068,9 @@
   }
   .bt-elements-elementor.card-lrg-elements{
       padding: 20px;
+  }
+  .card-lrg-elements .meta-card-lrg .description{
+    padding-right: 10px;
   }
   .card-lrg-elements .meta-card-lrg .cta{
     margin-top: 16px;
