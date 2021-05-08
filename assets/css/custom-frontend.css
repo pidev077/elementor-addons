@@ -1042,4 +1042,7 @@
   .bt-elements-elementor.card-lrg-elements{
       padding: 20px;
   }
+  .card-lrg-elements .meta-card-lrg .cta{
+    margin-top: 16px;
+  }
 }
