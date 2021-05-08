@@ -720,9 +720,8 @@
     height: auto;
 }
 .secondary-ctas-elements .list-items .item .thumbnail img{
-    width: 100%;
-    max-width: 59px;
-    height: auto;
+    width: auto;
+    height: 80px;
     margin: 0;
     padding: 0;
 }

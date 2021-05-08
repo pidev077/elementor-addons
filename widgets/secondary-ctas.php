@@ -255,7 +255,7 @@ class Secondary_CTAs extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .secondary-ctas-elements .list-items .item .thumbnail img' => 'width: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .secondary-ctas-elements .list-items .item .thumbnail img' => 'height: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
@@ -273,7 +273,7 @@ class Secondary_CTAs extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .secondary-ctas-elements .list-items .item .thumbnail img' => 'max-width: {{SIZE}}{{UNIT}}',
+                        '{{WRAPPER}} .secondary-ctas-elements .list-items .item .thumbnail img' => 'max-height: {{SIZE}}{{UNIT}}',
                     ],
                 ]
             );
