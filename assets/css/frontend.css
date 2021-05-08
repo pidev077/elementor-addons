@@ -187,7 +187,12 @@
 	.bt-custom-counter .bt-heading{
 		font-size: 30px;
 	}
-
+	.bt-custom-counter .elementor-grid .elementor-counter{
+		margin-bottom: 30px;
+	}
+	.bt-custom-counter .elementor-grid{
+		padding: 50px 0 20px 0;
+	}
 }
 @media only screen and (max-width: 540px){
 	.bt-custom-counter .bt-heading{
@@ -201,6 +206,7 @@
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+
 }
 
 /*be post*/
@@ -371,21 +377,21 @@
 
 /*be promo*/
 .bt-elements-elementor.bt-promo {
-    display: flex;
-		justify-content: space-between;
-		align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .bt-promo h2.bt-heading {
-    font-size: 44px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.09;
-    letter-spacing: -0.65px;
-    color: #d2440f;
-		font-family: "Inter", Sans-serif;
-		margin-bottom: 25px;
-		max-width: 200px;
+	font-size: 44px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.09;
+	letter-spacing: -0.65px;
+	color: #d2440f;
+	font-family: "Inter", Sans-serif;
+	margin-bottom: 25px;
+	max-width: 200px;
 }
 .bt-promo .content-promo {
     max-width: 346px;
@@ -419,12 +425,12 @@
 		padding-left: 55px;
 	}
 }
-@media only screen and (min-width: 767px) {
+@media only screen and (max-width: 767px) {
 	.bt-promo h2.bt-heading{
 		font-size: 34px;
 	}
 }
-@media only screen and (min-width: 540px) {
+@media only screen and (max-width: 540px) {
 
 	.bt-promo h2.bt-heading{
 		font-size: 28px;
@@ -552,6 +558,7 @@ article.be-latest-resources .elementor-post__content {
 	}
 	.heading-resources h2{
 		margin-bottom: 10px;
+		width: 100%;
 	}
 }
 

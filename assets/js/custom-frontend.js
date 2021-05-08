@@ -50,32 +50,6 @@
         });
     }
 
-
-    // funtion check for equal image height in element Secondary CTAs
-    function equalImageHeight() {
-        let i;
-        let totalImage = $('.secondary-ctas-elements .list-items .item .thumbnail').length;
-        let isHeight = 0;
-        let widthWindow = $( window ).width();
-        for (i = 0; i < totalImage; i++){
-
-            let isImage = $('.secondary-ctas-elements .list-items .item .thumbnail.secondary-ctas-thumbnail-'+i);
-            let isHeightImage = isImage.outerHeight();
-
-            if(isHeightImage > isHeight) {
-
-                isHeight = isHeightImage;
-            }
-
-        }
-
-        if(widthWindow > 767){
-            $('.secondary-ctas-elements .list-items .item .thumbnail').css('height',isHeight);
-        }else {
-            $('.secondary-ctas-elements .list-items .item .thumbnail').css('height', 'auto');
-        }
-
-    }
     // funtion hidden modules alert banner in page
     function hiddenModulesAlertBanner() {
         let ctaHidden = $('.alert-banner-elements > .cta-close');
@@ -97,7 +71,6 @@
     }
 
     // active tab by url
-
     function ativeTabsByUrl(url) {
 
         if(window.location.href.indexOf(url) > -1) {
@@ -124,10 +97,11 @@
     $( document ).ready(function() {
         tabsElement();
         showAllContent();
-        equalImageHeight();
         hiddenModulesAlertBanner();
         getUrlTabs();
     });
+
+
 
 
 }) (jQuery);
