@@ -163,6 +163,11 @@
   height: 40px;
   cursor: pointer;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter {
+    font-size: 15px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa {
   transition: 0.3s all;
 }
@@ -308,6 +313,11 @@
   cursor: pointer;
   position: relative;
   z-index: 1;
+}
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
+    font-size: 15px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select:focus {
   outline: none;

@@ -97,7 +97,6 @@
     }
 
     // active tab by url
-
     function ativeTabsByUrl(url) {
 
         if(window.location.href.indexOf(url) > -1) {
