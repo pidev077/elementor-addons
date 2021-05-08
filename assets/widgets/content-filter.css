@@ -398,6 +398,11 @@
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
   margin-top: 36px;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
+    margin-top: 15px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids {
   width: 100% !important;
 }
