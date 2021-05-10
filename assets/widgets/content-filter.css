@@ -196,6 +196,11 @@
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
   font-size: 36px;
 }
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
+    font-size: 30px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter {
   display: none;
   position: absolute;
@@ -330,6 +335,11 @@
   font-size: 36px;
   position: absolute;
   right: 0;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div:before {
+    font-size: 30px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
   font-size: 17px;
