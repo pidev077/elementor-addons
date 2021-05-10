@@ -98,6 +98,7 @@
 @media only screen and (max-width: 767px) {
   .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion {
     line-height: 20px;
+    padding-bottom: 4px;
   }
 }
 @media only screen and (max-width: 540px) {
