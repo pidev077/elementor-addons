@@ -414,6 +414,11 @@
   margin-bottom: 21px;
   float: left;
 }
+@media only screen and (max-width: 1023px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+    width: calc(100% / 2 - (42px / 2));
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta {
   padding: 16px;
   display: flex;
