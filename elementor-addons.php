@@ -11,6 +11,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+define('ELEMENT_ADDON_VER', '1.2.1' );
+define('ELEMENT_ADDON_PATH', plugin_dir_path( __FILE__ ) );
+define('ELEMENT_ADDON_TEMPLATE', ELEMENT_ADDON_PATH.'templates/' );
+
 /**
  * Main Elementor Hello World Class
  *
@@ -94,8 +98,7 @@ final class Elementor_Addons {
 		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
             array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
 	  ob_start();
-		$TEMPLATEPATH =  dirname(__FILE__);
-		include($TEMPLATEPATH.'/templates/content-filter/form-search.php');
+		include(ELEMENT_ADDON_TEMPLATE.'content-filter/form-search.php');
 	  return ob_get_clean();
 	}
 
@@ -165,7 +168,6 @@ final class Elementor_Addons {
 
 		// The Query
 		ob_start();
-		$TEMPLATEPATH =  dirname(__FILE__);
 		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$the_query = new WP_Query($args);
 		$_GLOBAL['wp_query'] = $the_query;
@@ -220,7 +222,7 @@ final class Elementor_Addons {
 				if($paged < 2){ ?> <div class="list-grids template-<?php echo $post_type.($template ? '-'.$template:''); ?>"> <?php }
 					while ( $the_query->have_posts() ) {
 							$the_query->the_post();
-							include($TEMPLATEPATH.'/templates/content-filter/item-'.$post_type.($template ? '-'.$template:'').'.php');
+							include(ELEMENT_ADDON_TEMPLATE.'content-filter/item-'.$post_type.($template ? '-'.$template:'').'.php');
 					}
 				if($paged < 2){ ?></div> <?php }
 		} else {

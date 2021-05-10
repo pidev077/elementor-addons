@@ -10,8 +10,9 @@
         padding: 0;
         font-size: 20px;
         top: 10px;
-        @media only screen and (max-width: 767px){
-            top: 3px;
+        @media only screen and (max-width: 1023px){
+            top: calc(50% - 4px);
+            transform: translateY(-50%);
         }
         .fa::before {
           font-size: 22px;
@@ -42,9 +43,14 @@
           background: transparent;
           @media only screen and (max-width: 1023px){
               font-size: 30px;
+              padding-bottom: 4px;
           }
           @media only screen and (max-width: 767px){
               font-size: 27px;
+          }
+          @media only screen and (max-width: 640px){
+              font-size: 22px;
+               letter-spacing: -0.5px;
           }
           &.__is-error{
             border-color: #ff5858;
@@ -85,6 +91,10 @@
         justify-content: space-between;
         padding: 17px 0;
         font-size: 15px;
+        @media only screen and (max-width: 767px){
+            line-height: 20px;
+            padding-bottom: 4px;
+        }
         @media only screen and (max-width: 540px){
             flex-wrap: wrap;
         }
@@ -105,8 +115,8 @@
               color: #4a4a4a;
               text-decoration: underline;
               cursor: pointer;
-              @media only screen and (max-width: 375px){
-                  font-size: 13px;
+              @media only screen and (max-width: 767px){
+                  line-height: 20px;
               }
             }
           }
@@ -121,7 +131,14 @@
           display: inline-flex;
           align-items: center;
           @media only screen and (max-width: 540px){
-              margin-top: 10px;
+              margin-top: 13px;
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              font-weight: 700;
           }
           .fa{
             margin-right: 12px;
@@ -148,6 +165,10 @@
           .ica-item-filter{
             width: calc(50% - 10px);
             position: relative;
+            @media only screen and (max-width: 480px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
             .name-filter{
               font-size: 17px;
               font-weight: bold;
@@ -169,6 +190,9 @@
                 transition: 0.3s all;
                 &:before{
                   font-size: 36px;
+                  @media only screen and (max-width: 480px){
+                      font-size: 30px;
+                  }
                 }
               }
             }
@@ -250,11 +274,14 @@
             &.select-date-range{
               width: 100%;
               margin-top: 48px;
+              @media only screen and (max-width: 480px){
+                  margin-top: 0;
+              }
               .__date-options{
                 width: 50%;
                 margin-left: auto;
                 padding-left: 10px;
-                @media only screen and (max-width: 767px){
+                @media only screen and (max-width: 1023px){
                     width: 100%;
                     padding-left: 0;
                 }
@@ -270,9 +297,16 @@
                 .__select-options{
                   display: flex;
                   justify-content: space-between;
+                  @media only screen and (max-width: 480px){
+                      flex-wrap: wrap;
+                  }
                   >div{
                     width: calc(50% - 11px);
                     position: relative;
+                     @media only screen and (max-width: 480px){
+                         width: 100%;
+                         margin-bottom: 20px;
+                     }
                     &:before{
                       content: "\f107";
                       display: inline-block;
@@ -284,6 +318,9 @@
                       font-size: 36px;
                       position: absolute;
                       right: 0;
+                      @media only screen and (max-width: 480px){
+                          font-size: 30px;
+                      }
                     }
                     select{
                       font-size: 17px;
@@ -329,6 +366,9 @@
           justify-content: space-between;
           align-items: center;
           margin-top: 65px;
+          @media only screen and (max-width: 480px){
+              margin-top: 15px;
+          }
           .btn-clearall{
              font-size: 15px;
              font-weight: normal;
@@ -373,6 +413,9 @@
             color: #2f2f39;
             border-radius: 0;
             min-width: auto;
+            @media only screen and (max-width: 374px){
+                padding: 6px 30px;
+            }
           }
         }
         &.__is-actived{
@@ -388,7 +431,10 @@
     .content-filter-results{
       margin-top: 36px;
       @media only screen and (max-width: 767px){
-          margin-top: 15px;
+          margin-top: 0px;
+          &.data-loaded{
+              margin-top: 30px;
+          }
       }
       .list-grids{
         width: 100% !important;
@@ -399,6 +445,12 @@
           background-color: #ffffff;
           margin-bottom: 21px;
           float: left;
+           @media only screen and (max-width: 1023px){
+               width: calc(100% / 2 - (42px / 2));
+           }
+           @media only screen and (max-width: 640px){
+               width: 100%;
+           }
           .__meta{
             padding: 16px;
             display: flex;
@@ -451,6 +503,13 @@
               letter-spacing: -0.5px;
               color: #2f2f39;
               margin-bottom: 17px;
+              @media only screen and (max-width: 767px){
+                font-size: 20px;
+              }
+              @media only screen and (max-width: 480px){
+                  font-size: 18px;
+                  margin-bottom: 15px;
+              }
             }
             .__content{
               font-size: 15px;
@@ -673,6 +732,9 @@
             display: flex;
             align-items: center;
             cursor: pointer;
+            @media only screen and (max-width: 480px){
+                font-size: 18px;
+            }
             .fa{
               margin-left: 25px;
               &::before{
