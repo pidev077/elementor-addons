@@ -974,6 +974,10 @@
     }
 }
 @media only screen and (max-width: 767px){
+    .resources-elements .heading{
+      font-size: 18px;
+      line-height: 24px;
+    }
     .resources-elements .heading br{
         display: none;
     }
