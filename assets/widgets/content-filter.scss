@@ -151,6 +151,10 @@
           .ica-item-filter{
             width: calc(50% - 10px);
             position: relative;
+            @media only screen and (max-width: 480px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
             .name-filter{
               font-size: 17px;
               font-weight: bold;
@@ -253,6 +257,9 @@
             &.select-date-range{
               width: 100%;
               margin-top: 48px;
+              @media only screen and (max-width: 480px){
+                  margin-top: 0;
+              }
               .__date-options{
                 width: 50%;
                 margin-left: auto;
@@ -273,9 +280,16 @@
                 .__select-options{
                   display: flex;
                   justify-content: space-between;
+                  @media only screen and (max-width: 480px){
+                      flex-wrap: wrap;
+                  }
                   >div{
                     width: calc(50% - 11px);
                     position: relative;
+                     @media only screen and (max-width: 480px){
+                         width: 100%;
+                         margin-bottom: 20px;
+                     }
                     &:before{
                       content: "\f107";
                       display: inline-block;
@@ -332,6 +346,9 @@
           justify-content: space-between;
           align-items: center;
           margin-top: 65px;
+          @media only screen and (max-width: 480px){
+              margin-top: 15px;
+          }
           .btn-clearall{
              font-size: 15px;
              font-weight: normal;
@@ -391,7 +408,7 @@
     .content-filter-results{
       margin-top: 36px;
       @media only screen and (max-width: 767px){
-          margin-top: 15px;
+          margin-top: 30px;
       }
       .list-grids{
         width: 100% !important;
