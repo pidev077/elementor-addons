@@ -870,7 +870,14 @@
     color: #2f2f39;
     font-size: 20px;
 }
-
+@media only screen and (max-width: 480px){
+    .alert-banner-elements > .cta-close{
+        right: 10px;
+    }
+    .alert-banner-elements .heading{
+        max-width: calc(100% - 40px);
+    }
+}
 
 /* elements resources */
 .resources-elements .heading{
