@@ -53,6 +53,11 @@
     font-size: 27px;
   }
 }
+@media only screen and (max-width: 640px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 18px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error, .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead.__is-error {
   border-color: #ff5858;
 }
@@ -268,7 +273,7 @@
   margin-left: auto;
   padding-left: 10px;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1023px) {
   .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
     width: 100%;
     padding-left: 0;
@@ -419,6 +424,11 @@
     width: calc(100% / 2 - (42px / 2));
   }
 }
+@media only screen and (max-width: 640px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+    width: 100%;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta {
   padding: 16px;
   display: flex;
@@ -470,6 +480,17 @@
   letter-spacing: -0.5px;
   color: #2f2f39;
   margin-bottom: 17px;
+}
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content {
   font-size: 15px;
@@ -670,6 +691,11 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
+    font-size: 20px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa {
   margin-left: 25px;
