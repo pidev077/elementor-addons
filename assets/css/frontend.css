@@ -198,13 +198,14 @@
 		font-size: 28px;
 	}
 	.bt-custom-counter .elementor-grid .elementor-counter{
-		margin-bottom: 30px;
+		margin-bottom: 22px;
 	}
 	.bt-custom-counter .elementor-grid{
 		padding: 35px 0 20px 0;
 	}
 	.bt-custom-counter{
 		padding-top: 45px;
+		padding-bottom: 60px;
 	}
 	.elementor-counter h2.bt-title{
 		font-size: 15px;
