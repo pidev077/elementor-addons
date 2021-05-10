@@ -782,16 +782,16 @@
     .secondary-ctas-elements .list-items .item{
         width: 50%;
     }
-    .secondary-ctas-elements .list-items{
+    /* .secondary-ctas-elements .list-items{
         margin-left: 0 !important;
         margin-right: 0 !important;
-    }
+    } */
 }
-@media only screen and (max-width: 540px){
+/* @media only screen and (max-width: 540px){
     .secondary-ctas-elements .list-items .item{
         width: 100%;
     }
-}
+} */
 
 /* Alert Banner elements */
 .alert-banner-elements{
