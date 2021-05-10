@@ -361,12 +361,51 @@
 
 							//remove loading
 							$scope.removeClass('__is-loading');
+
+							setTimeout( () => {
+								urlScrollFAQ();
+							}, 500);
+
+
 	          },
 	          error: function(errorThrown){
 	            console.log(errorThrown);
 							$scope.removeClass('__is-loading');
 	          }
 	     });
+			}
+
+
+			function urlScrollFAQ() {
+				let url = "?active-part";
+		        let isFAQ = $('.site-inner .template-ins-faqs-list');
+		        let params = (new URL(document.location)).searchParams;
+		        let ids = params.get('id');
+				let itemFAQ = $scope.find('.template-ins-faqs-list .item-content-filter');
+				if((window.location.href.indexOf(url) > -1) && ids){
+					itemFAQ.each(function(){
+						let $this = $(this);
+						if($this.attr('data-part') == ids) {
+
+							let offsetItem =  $this.offset();
+							$('html, body').animate({
+				                scrollTop: offsetItem.top
+				            }, 500);
+
+							$this.addClass('__is-showed');
+							$this.addClass('__is-actived');
+							$this.children('.__info').slideDown();
+
+						}else {
+
+							$this.removeClass('__is-showed');
+							$this.removeClass('__is-actived');
+							$this.children('.__info').slideUp();
+
+						}
+
+		            });
+				}
 			}
 
 			$(document).on('click',function(event) {
