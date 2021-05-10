@@ -11,7 +11,8 @@
         font-size: 20px;
         top: 10px;
         @media only screen and (max-width: 767px){
-            top: 3px;
+            top: calc(50% - 7px);
+            transform: translateY(-50%);
         }
         .fa::before {
           font-size: 22px;
@@ -393,6 +394,9 @@
             color: #2f2f39;
             border-radius: 0;
             min-width: auto;
+            @media only screen and (max-width: 374px){
+                padding: 6px 30px;
+            }
           }
         }
         &.__is-actived{
@@ -707,7 +711,7 @@
             align-items: center;
             cursor: pointer;
             @media only screen and (max-width: 480px){
-                font-size: 20px;
+                font-size: 18px;
             }
             .fa{
               margin-left: 25px;

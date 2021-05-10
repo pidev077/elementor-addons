@@ -13,7 +13,8 @@
 }
 @media only screen and (max-width: 767px) {
   .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button {
-    top: 3px;
+    top: calc(50% - 7px);
+    transform: translateY(-50%);
   }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button .fa::before {
@@ -419,6 +420,11 @@
   border-radius: 0;
   min-width: auto;
 }
+@media only screen and (max-width: 374px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-applyfilter {
+    padding: 6px 30px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options.__is-actived {
   display: block;
 }
@@ -721,7 +727,7 @@
 }
 @media only screen and (max-width: 480px) {
   .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa {
