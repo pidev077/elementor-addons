@@ -330,7 +330,6 @@
 	          },
 	          dataType: 'JSON',
 	          success:function(response){
-							console.log(response);
 							if($option == 'loadmore'){
 								paged += 1;
 								$scope.find('.list-grids').append(response.html);
@@ -339,6 +338,7 @@
 								paged = 2;
 								resultFilter.html(response.html);
 							}
+							if(!resultFilter.hasClass('data-loaded')) resultFilter.addClass('data-loaded');
 							if(template != 'list'){
 								resultFilter.find('.list-grids').masonry('destroy'); // destroy
 								resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
