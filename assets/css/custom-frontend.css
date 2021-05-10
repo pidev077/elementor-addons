@@ -95,10 +95,13 @@
 .heading-media-bodycopy-elements .content a{
     text-decoration: underline;
 }
-.heading-media-bodycopy-elements .content ul{
+.heading-media-bodycopy-elements .content ol li ol{
+  padding: 0 !important;
+}
+.heading-media-bodycopy-elements .content ul, .heading-media-bodycopy-elements .content ol{
     padding: 20px 0 10px 20px;
 }
-.heading-media-bodycopy-elements .content ul li{
+.heading-media-bodycopy-elements .content ul li, .heading-media-bodycopy-elements .content ol li{
     position: relative;
 }
 .heading-media-bodycopy-elements .content ul li::before{
@@ -112,13 +115,19 @@
     top: 0px;
     left: -20px;
 }
-.heading-media-bodycopy-elements .content ul li a, .heading-media-bodycopy-elements .content ul li span{
+.heading-media-bodycopy-elements .content ul li a, .heading-media-bodycopy-elements .content ul li span , .heading-media-bodycopy-elements .content ol li a, .heading-media-bodycopy-elements .content ol li span{
     color: inherit;
     line-height: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
     font-family: inherit;
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 480px){
+  .heading-media-bodycopy-elements .content ol{
+    padding: 10px 0 10px 20px !important;
+  }
 }
 [tooltip]{
     position: relative;
