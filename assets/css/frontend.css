@@ -167,6 +167,16 @@
 	font-family: "Inter", Sans-serif;
 	text-decoration:underline;
 	transition: none;
+	position: relative;
+}
+.bt-custom-counter a.bt-button > i{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -20px;
+}
+.bt-custom-counter a.bt-button > i::before{
+	font-size: 26px;
 }
 @keyframes fade-up {
 	0% {
@@ -185,18 +195,41 @@
 
 @media only screen and (max-width: 767px){
 	.bt-custom-counter .bt-heading{
-		font-size: 30px;
+		font-size: 28px;
 	}
 	.bt-custom-counter .elementor-grid .elementor-counter{
 		margin-bottom: 30px;
 	}
 	.bt-custom-counter .elementor-grid{
-		padding: 50px 0 20px 0;
+		padding: 35px 0 20px 0;
+	}
+	.bt-custom-counter{
+		padding-top: 45px;
+	}
+	.elementor-counter h2.bt-title{
+		font-size: 15px;
+		letter-spacing: -0.44px;
+		margin-bottom: 15px;
+	}
+	.elementor-counter .elementor-counter__icon > img{
+		width: auto;
+		height: 70px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.elementor-counter .elementor-counter__title{
+		font-size: 16px;
+		line-height: 29px;
 	}
 }
 @media only screen and (max-width: 540px){
+	.elementor-counter .elementor-counter__title{
+		font-size: 13px;
+	}
 	.bt-custom-counter .bt-heading{
-		font-size: 28px;
+		font-size: 22px;
+		letter-spacing: -0.5px;
+		line-height: 30px;
 	}
 	.bt-custom-counter{
 		padding-left: 15px;
