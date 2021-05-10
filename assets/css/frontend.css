@@ -440,6 +440,12 @@
  	color: #2f2f39;
   margin-bottom: 50px;
 }
+.bt-promo .bt-des p{
+	margin-bottom: 0;
+}
+.bt-promo .bt-des p:not(:first-child){
+	margin-bottom: 15px;
+}
 .bt-promo a.bt-button {
 	font-size: 17px;
   font-weight: bold;
@@ -462,16 +468,15 @@
 @media only screen and (max-width: 767px) {
 	.bt-promo h2.bt-heading{
 		font-size: 34px;
+		margin-bottom: 15px;
+	}
+	.bt-promo .bt-des{
+		font-size: 15px;
+		margin-bottom: 30px;
 	}
 }
-@media only screen and (max-width: 540px) {
 
-	.bt-promo h2.bt-heading{
-		font-size: 28px;
-		max-width: 100%;
-	}
 
-}
 /*be-latest-resources*/
 article.be-latest-resources{
 	border-radius: 8px;
