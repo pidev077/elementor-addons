@@ -74,6 +74,7 @@
 			btnRemoveAll.on('click',function(){
 				inputSearch.val('');
 				btnRemoveAll.hide();
+				loadFilterData(inputSearch.val(),'filter');
 				return false;
 			});
 
