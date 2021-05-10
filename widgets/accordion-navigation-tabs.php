@@ -857,6 +857,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         $wp_query = new \WP_Query( array(
             'post_type' => 'team',
             'post_status' => 'publish',
+            'posts_per_page' => -1,
             'orderby' => 'menu_order',
             'order' => 'DESC',
         ) );

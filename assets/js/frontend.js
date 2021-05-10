@@ -91,5 +91,6 @@
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-latest-resources.default', SwiperSliderHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-testimonial.default', TestimonialHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-counter.default', CounterHandler );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/be-card-carousel.default', SwiperSliderHandler );
 	} );
 } )( jQuery );

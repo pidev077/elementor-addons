@@ -182,6 +182,33 @@
 	max-width: 650px;
 	margin: 0 auto;
 }
+
+@media only screen and (max-width: 767px){
+	.bt-custom-counter .bt-heading{
+		font-size: 30px;
+	}
+	.bt-custom-counter .elementor-grid .elementor-counter{
+		margin-bottom: 30px;
+	}
+	.bt-custom-counter .elementor-grid{
+		padding: 50px 0 20px 0;
+	}
+}
+@media only screen and (max-width: 540px){
+	.bt-custom-counter .bt-heading{
+		font-size: 28px;
+	}
+	.bt-custom-counter{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.bt-custom-counte .elementor-grid{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+}
+
 /*be post*/
 .elementor-posts--default .elementor-post {
 	 background: #f9f7f5;
@@ -341,23 +368,30 @@
 	 left: 3px;
 	 top: 3px;
 }
+
+@media only screen and (max-width: 767px){
+	 .elementor-posts--default .elementor-post__excerpt {
+		 min-height: auto;
+	 }
+}
+
 /*be promo*/
 .bt-elements-elementor.bt-promo {
-    display: flex;
-		justify-content: space-between;
-		align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .bt-promo h2.bt-heading {
-    font-size: 44px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.09;
-    letter-spacing: -0.65px;
-    color: #d2440f;
-		font-family: "Inter", Sans-serif;
-		margin-bottom: 25px;
-		max-width: 200px;
+	font-size: 44px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.09;
+	letter-spacing: -0.65px;
+	color: #d2440f;
+	font-family: "Inter", Sans-serif;
+	margin-bottom: 25px;
+	max-width: 200px;
 }
 .bt-promo .content-promo {
     max-width: 346px;
@@ -390,6 +424,19 @@
     margin-right: -165px;
 		padding-left: 55px;
 	}
+}
+@media only screen and (max-width: 767px) {
+	.bt-promo h2.bt-heading{
+		font-size: 34px;
+	}
+}
+@media only screen and (max-width: 540px) {
+
+	.bt-promo h2.bt-heading{
+		font-size: 28px;
+		max-width: 100%;
+	}
+
 }
 /*be-latest-resources*/
 article.be-latest-resources{
@@ -469,7 +516,7 @@ article.be-latest-resources .elementor-post__content {
 		margin-bottom: 30px;
 }
 .heading-resources h2{
-	font-family: "Inter", Sans-serif;
+  font-family: "Inter", Sans-serif;
   font-size: 34px;
   font-weight: bold;
   font-stretch: normal;
@@ -477,7 +524,7 @@ article.be-latest-resources .elementor-post__content {
   line-height: 0.76;
   letter-spacing: -0.77px;
   color: #2f2f39;
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 .heading-resources a {
 	font-family: "Inter", Sans-serif;
@@ -498,6 +545,23 @@ article.be-latest-resources .elementor-post__content {
 	position: relative;
 	top: 4px;
 }
+
+@media only screen and (max-width: 767px){
+	.heading-resources h2{
+	   font-size: 25px;
+	}
+}
+
+@media only screen and (max-width: 540px){
+	.heading-resources{
+		flex-wrap: wrap;
+	}
+	.heading-resources h2{
+		margin-bottom: 10px;
+		width: 100%;
+	}
+}
+
 /*popular results*/
 .popular-results-elements{
 	padding: 55px 77px 48px 78px;
@@ -529,6 +593,17 @@ article.be-latest-resources .elementor-post__content {
   color: #2f2f39;
 	text-decoration: underline;
 }
+@media only screen and (max-width: 480px){
+	.popular-results-elements{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.popular-results-elements .list-pdf-resources h3.elementor-post__title a{
+		font-size: 15px;
+		line-height: 23px;
+	}
+}
+
 
 /*be-latest-faq*/
 article.be-latest-faqs{
@@ -594,4 +669,57 @@ article.be-latest-faqs a.elementor-post__read-more{
 article.be-latest-faqs .elementor-post__content {
     padding: 10px 15px 22px 15px;
 		padding-bottom: 40px;
+}
+/*card carousel*/
+.elementor-card {
+	padding: 21px 20px;
+	padding-bottom: 40px;
+	color: #fff;
+	background-color: #0a334d;
+}
+.elementor-card .elementor-card__category {
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 100%;
+	margin-bottom: 10px;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.elementor-card .elementor-card__title {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 26px;
+	margin-bottom: 25px;
+	letter-spacing: -0.5px;
+	max-width: 200px;
+	color: #fff;
+}
+.elementor-card .elementor-card__content {
+	margin-bottom: 24px;
+	min-height: 130px;
+	font-size: 15px;
+}
+.elementor-card .elementor-card__content > p {
+	margin: 0;
+	font-size: 15px;
+}
+.elementor-card .elementor-post__read-more {
+	display: inline-block;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 100%;
+	color: #fff;
+	text-decoration:underline;
+	position: absolute;
+	bottom: 21px;
+}
+.elementor-card .elementor-post__read-more:hover {
+	color: #d2440f;
+}
+
+@media only screen and (max-width: 767px){
+	.elementor-card .elementor-card__content{
+		min-height: auto;
+	}
 }

@@ -11,6 +11,12 @@
   font-size: 20px;
   top: 10px;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button {
+    top: calc(50% - 7px);
+    transform: translateY(-50%);
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter button .fa::before {
   font-size: 22px;
 }
@@ -37,6 +43,21 @@
   color: #4a4a4a;
   padding: 0;
   background: transparent;
+}
+@media only screen and (max-width: 1023px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 27px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key], .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead {
+    font-size: 18px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter input[name=key].__is-error, .elementor-widget-ica-content-filter .ica-content-filter .form-content-filter .typeahead.__is-error {
   border-color: #ff5858;
@@ -72,8 +93,18 @@
   padding: 17px 0;
   font-size: 15px;
 }
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion {
+    flex-wrap: wrap;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
   display: flex;
+}
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion {
+    width: 100%;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions {
   margin-left: 4px;
@@ -89,6 +120,11 @@
   text-decoration: underline;
   cursor: pointer;
 }
+@media only screen and (max-width: 375px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .load-suggestion .list-suggestions span {
+    font-size: 13px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
   cursor: pointer;
   font-style: normal;
@@ -98,6 +134,11 @@
   color: #4a4a4a;
   display: inline-flex;
   align-items: center;
+}
+@media only screen and (max-width: 540px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter {
+    margin-top: 10px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-suggestion .btn-filter .fa {
   margin-right: 12px;
@@ -112,6 +153,7 @@
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options {
   display: none;
+  margin-top: 8.5px;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options {
   display: flex;
@@ -121,6 +163,12 @@
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter {
   width: calc(50% - 10px);
   position: relative;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter {
   font-size: 17px;
@@ -137,11 +185,21 @@
   height: 40px;
   cursor: pointer;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter {
+    font-size: 15px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa {
   transition: 0.3s all;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
   font-size: 36px;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .name-filter .fa:before {
+    font-size: 30px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter .select-filter {
   display: none;
@@ -222,10 +280,21 @@
   width: 100%;
   margin-top: 48px;
 }
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range {
+    margin-top: 0;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
   width: 50%;
   margin-left: auto;
   padding-left: 10px;
+}
+@media only screen and (max-width: 1023px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__label {
   font-size: 15px;
@@ -240,9 +309,20 @@
   display: flex;
   justify-content: space-between;
 }
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options {
+    flex-wrap: wrap;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div {
   width: calc(50% - 11px);
   position: relative;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div:before {
   content: "";
@@ -255,6 +335,11 @@
   font-size: 36px;
   position: absolute;
   right: 0;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div:before {
+    font-size: 30px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
   font-size: 17px;
@@ -277,6 +362,11 @@
   position: relative;
   z-index: 1;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select {
+    font-size: 15px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .wrap-options .ica-item-filter.select-date-range .__date-options .__select-options > div select:focus {
   outline: none;
 }
@@ -289,6 +379,11 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 65px;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions {
+    margin-top: 15px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall {
   font-size: 15px;
@@ -335,6 +430,11 @@
   border-radius: 0;
   min-width: auto;
 }
+@media only screen and (max-width: 374px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-applyfilter {
+    padding: 6px 30px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options.__is-actived {
   display: block;
 }
@@ -346,6 +446,11 @@
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
   margin-top: 36px;
 }
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
+    margin-top: 30px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids {
   width: 100% !important;
 }
@@ -356,6 +461,16 @@
   background-color: #ffffff;
   margin-bottom: 21px;
   float: left;
+}
+@media only screen and (max-width: 1023px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+    width: calc(100% / 2 - (42px / 2));
+  }
+}
+@media only screen and (max-width: 640px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+    width: 100%;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta {
   padding: 16px;
@@ -408,6 +523,17 @@
   letter-spacing: -0.5px;
   color: #2f2f39;
   margin-bottom: 17px;
+}
+@media only screen and (max-width: 767px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content {
   font-size: 15px;
@@ -494,7 +620,7 @@
   display: none;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -502,21 +628,62 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content h3 {
+  margin: 15px 0 12px 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content p {
+  margin-bottom: 10px;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
-  list-style-type: decimal;
-}
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li {
   position: relative;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li::marker {
+  font-weight: bold;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li span {
+  display: inline-block;
+  width: 100%;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol {
+  list-style-type: lower-latin;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li::marker {
+  color: #42866f;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol {
+  list-style-type: lower-roman;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol li::marker {
+  color: #2e6dff;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
+  list-style-type: decimal;
+  padding-left: 30px !important;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker {
+  font-weight: bold;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol {
   list-style-type: lower-latin;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li::marker {
+  color: #42866f;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol {
+  list-style-type: lower-roman;
+}
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol li::marker {
+  color: #2e6dff;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
   display: block;
@@ -567,6 +734,11 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+@media only screen and (max-width: 480px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
+    font-size: 18px;
+  }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa {
   margin-left: 25px;

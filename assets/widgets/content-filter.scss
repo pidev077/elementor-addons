@@ -10,6 +10,10 @@
         padding: 0;
         font-size: 20px;
         top: 10px;
+        @media only screen and (max-width: 1023px){
+            top: calc(50% - 4px);
+            transform: translateY(-50%);
+        }
         .fa::before {
           font-size: 22px;
         }
@@ -37,9 +41,23 @@
           color: #4a4a4a;
           padding: 0;
           background: transparent;
+          @media only screen and (max-width: 1023px){
+              font-size: 30px;
+              padding-bottom: 4px;
+          }
+          @media only screen and (max-width: 767px){
+              font-size: 27px;
+          }
+          @media only screen and (max-width: 640px){
+              font-size: 22px;
+               letter-spacing: -0.5px;
+          }
           &.__is-error{
             border-color: #ff5858;
           }
+          // &::placeholder{
+          //
+          // }
       }
       .typeahead{
         color: #b8b8b8;
@@ -73,8 +91,17 @@
         justify-content: space-between;
         padding: 17px 0;
         font-size: 15px;
+        @media only screen and (max-width: 767px){
+            line-height: 20px;
+        }
+        @media only screen and (max-width: 540px){
+            flex-wrap: wrap;
+        }
         .load-suggestion{
           display: flex;
+          @media only screen and (max-width: 540px){
+              width: 100%;
+          }
           .list-suggestions{
             margin-left: 4px;
             span{
@@ -87,6 +114,9 @@
               color: #4a4a4a;
               text-decoration: underline;
               cursor: pointer;
+              @media only screen and (max-width: 767px){
+                  line-height: 20px;
+              }
             }
           }
         }
@@ -99,6 +129,16 @@
           color: #4a4a4a;
           display: inline-flex;
           align-items: center;
+          @media only screen and (max-width: 540px){
+              margin-top: 13px;
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              font-weight: 700;
+          }
           .fa{
             margin-right: 12px;
             transition: .3s all;
@@ -116,6 +156,7 @@
       }
       .__filter-options{
         display: none;
+        margin-top: 8.5px;
         .wrap-options{
           display: flex;
           flex-wrap: wrap;
@@ -123,6 +164,10 @@
           .ica-item-filter{
             width: calc(50% - 10px);
             position: relative;
+            @media only screen and (max-width: 480px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
             .name-filter{
               font-size: 17px;
               font-weight: bold;
@@ -137,10 +182,16 @@
               justify-content: space-between;
               height: 40px;
               cursor: pointer;
+              @media only screen and (max-width: 767px){
+                  font-size: 15px;
+              }
               .fa{
                 transition: 0.3s all;
                 &:before{
                   font-size: 36px;
+                  @media only screen and (max-width: 480px){
+                      font-size: 30px;
+                  }
                 }
               }
             }
@@ -222,10 +273,17 @@
             &.select-date-range{
               width: 100%;
               margin-top: 48px;
+              @media only screen and (max-width: 480px){
+                  margin-top: 0;
+              }
               .__date-options{
                 width: 50%;
                 margin-left: auto;
                 padding-left: 10px;
+                @media only screen and (max-width: 1023px){
+                    width: 100%;
+                    padding-left: 0;
+                }
                 .__label{
                   font-size: 15px;
                   font-weight: normal;
@@ -238,9 +296,16 @@
                 .__select-options{
                   display: flex;
                   justify-content: space-between;
+                  @media only screen and (max-width: 480px){
+                      flex-wrap: wrap;
+                  }
                   >div{
                     width: calc(50% - 11px);
                     position: relative;
+                     @media only screen and (max-width: 480px){
+                         width: 100%;
+                         margin-bottom: 20px;
+                     }
                     &:before{
                       content: "\f107";
                       display: inline-block;
@@ -252,6 +317,9 @@
                       font-size: 36px;
                       position: absolute;
                       right: 0;
+                      @media only screen and (max-width: 480px){
+                          font-size: 30px;
+                      }
                     }
                     select{
                       font-size: 17px;
@@ -273,6 +341,9 @@
                       cursor: pointer;
                       position: relative;
                       z-index: 1;
+                      @media only screen and (max-width: 767px){
+                          font-size: 15px;
+                      }
                       &:focus{
                         outline: none;
                       }
@@ -294,6 +365,9 @@
           justify-content: space-between;
           align-items: center;
           margin-top: 65px;
+          @media only screen and (max-width: 480px){
+              margin-top: 15px;
+          }
           .btn-clearall{
              font-size: 15px;
              font-weight: normal;
@@ -338,6 +412,9 @@
             color: #2f2f39;
             border-radius: 0;
             min-width: auto;
+            @media only screen and (max-width: 374px){
+                padding: 6px 30px;
+            }
           }
         }
         &.__is-actived{
@@ -352,6 +429,9 @@
     }
     .content-filter-results{
       margin-top: 36px;
+      @media only screen and (max-width: 767px){
+          margin-top: 30px;
+      }
       .list-grids{
         width: 100% !important;
         .item-content-filter{
@@ -361,6 +441,12 @@
           background-color: #ffffff;
           margin-bottom: 21px;
           float: left;
+           @media only screen and (max-width: 1023px){
+               width: calc(100% / 2 - (42px / 2));
+           }
+           @media only screen and (max-width: 640px){
+               width: 100%;
+           }
           .__meta{
             padding: 16px;
             display: flex;
@@ -413,6 +499,13 @@
               letter-spacing: -0.5px;
               color: #2f2f39;
               margin-bottom: 17px;
+              @media only screen and (max-width: 767px){
+                font-size: 20px;
+              }
+              @media only screen and (max-width: 480px){
+                  font-size: 18px;
+                  margin-bottom: 15px;
+              }
             }
             .__content{
               font-size: 15px;
@@ -502,27 +595,80 @@
               padding-bottom: 20px;
               display: none;
               .__content{
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
                 line-height: 1.54;
                 letter-spacing: -0.1px;
                 color: #2f2f39;
+                h3{
+                    margin: 15px 0 12px 0;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 25px;
+                }
+                p{
+                    margin-bottom: 10px;
+                }
                 ol{
                     width: 100%;
                     margin: 0;
                     padding: 0;
 
                 }
+                ol{
+                    li{
+                        position: relative;
+                        &::marker {
+                            font-weight: bold;
+                        }
+                        span{
+                            display: inline-block;
+                            width: 100%;
+                        }
+                    }
+                    > ol{
+                        list-style-type:lower-latin;
+                          > li{
+                              &::marker{
+                                  color: #42866f;
+                              }
+                            > ol{
+                                list-style-type:lower-roman;
+                                li{
+                                    &::marker{
+                                        color: #2e6dff;
+                                    }
+                                }
+                            }
+                          }
+                    }
+                }
                 > ol{
                     list-style-type:decimal;
+                    padding-left: 30px !important;
                     >li{
-                        position: relative;
-                        ol{
+                        &::marker {
+                            font-weight: bold;
+                        }
+                        > ol{
                             list-style-type:lower-latin;
                             margin-top: 5px;
                             margin-bottom: 5px;
+                            > li{
+                                &::marker{
+                                    color: #42866f;
+                                }
+                                > ol{
+                                    list-style-type:lower-roman;
+                                    li{
+                                        &::marker{
+                                            color: #2e6dff;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -582,6 +728,9 @@
             display: flex;
             align-items: center;
             cursor: pointer;
+            @media only screen and (max-width: 480px){
+                font-size: 18px;
+            }
             .fa{
               margin-left: 25px;
               &::before{
