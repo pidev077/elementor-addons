@@ -231,9 +231,9 @@ class Card_Lrg extends Widget_Base {
                             'max' => 200,
                         ],
                     ],
-                    'selectors' => [
-                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                    ],
+                    //'selectors' => [
+                    //    '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    //],
                 ]
             );
 
