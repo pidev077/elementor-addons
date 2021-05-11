@@ -42,7 +42,8 @@ class Be_Top_Faq extends Widget_Base {
 
 		$wp_query = new \WP_Query( array(
 														'post_type' => 'ins-faqs',
-														'post_status' => 'publish'
+														'post_status' => 'publish',
+														'posts_per_page' => -1,
 													) );
 
 		if ( $wp_query->have_posts() ) {

@@ -42,7 +42,8 @@ class Be_Latest_Resources extends Widget_Base {
 
 		$wp_query = new \WP_Query( array(
 														'post_type' => 'resources',
-														'post_status' => 'publish'
+														'post_status' => 'publish',
+														'posts_per_page' => -1,
 													) );
 
 		if ( $wp_query->have_posts() ) {
