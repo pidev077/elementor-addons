@@ -653,6 +653,11 @@
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title .fa:before {
   font-size: 30px;
 }
+@media (max-width: 767.98px) {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title {
+    font-size: 18px;
+  }
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info {
   padding: 0;
   padding-bottom: 20px;
