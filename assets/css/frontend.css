@@ -647,8 +647,7 @@ article.be-latest-resources .elementor-post__content {
 }
 @media only screen and (max-width: 768px){
 	.popular-results-elements{
-		padding-left: 15px;
-		padding-right: 15px;
+		 padding: 20px;
 	}
 	.popular-results-elements .list-pdf-resources h3.elementor-post__title a{
 		font-size: 15px;
