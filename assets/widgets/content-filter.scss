@@ -610,6 +610,9 @@
                   font-size: 30px;
                 }
               }
+              @media (max-width: 768px - 0.02){
+                font-size: 18px;
+              }
             }
             .__info{
               padding: 0;
