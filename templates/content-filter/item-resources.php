@@ -19,12 +19,16 @@ $upload_file = get_field( 'upload_file' );
         <?php the_post_thumbnail('medium'); ?>
     </div>
     <div class="__info">
-      <a href="<?php the_permalink(); ?>"><h3 class="__title"><?php the_title(); ?></h3></a>
+      <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
+        ?><a href="<?php echo $upload_file['url']; ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
+      }else{
+        ?><a href="<?php the_permalink(); ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
+      } ?>
       <div class="__content">
         <?php the_excerpt(); ?>
       </div>
       <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
-        ?><a href="<?php echo $upload_file['url']; ?>" download class="btn-readmore">Download <?php echo strtoupper($upload_file['subtype']); ?></a><?php
+        ?><a href="<?php echo $upload_file['url']; ?>" class="btn-readmore">Download <?php echo strtoupper($upload_file['subtype']); ?></a><?php
       }else{
         ?><a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a><?php
       } ?>
