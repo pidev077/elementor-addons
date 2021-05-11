@@ -469,6 +469,7 @@
 	.bt-promo h2.bt-heading{
 		font-size: 34px;
 		margin-bottom: 15px;
+		letter-spacing: -0.5px;
 	}
 	.bt-promo .bt-des{
 		font-size: 15px;
@@ -587,7 +588,19 @@ article.be-latest-resources .elementor-post__content {
 
 @media only screen and (max-width: 767px){
 	.heading-resources h2{
-	   font-size: 25px;
+	   font-size: 22px;
+	   line-height: 30px;
+	}
+	.heading-resources{
+		margin-bottom: 26px;
+	}
+	.heading-resources a i.fa{
+		font-size: 26px !important;
+	}
+	article.be-latest-resources .elementor-post__cat-links{
+		font-size: 15px;
+		line-height: 22px;
+		letter-spacing: -0.1px;
 	}
 }
 
