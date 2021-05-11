@@ -175,7 +175,7 @@ class Card_Lrg extends Widget_Base {
                 [
                     'name' => 'sub_heading_card_lrg_typography',
                     'default' => '',
-                    'selector' => '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading',
+                    'selector' => '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading1',
                 ]
             );
 
@@ -186,7 +186,7 @@ class Card_Lrg extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'default' => '#2f2f39',
                     'selectors' => [
-                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading1' => 'color: {{VALUE}};',
                     ],
                 ]
             );
@@ -212,7 +212,7 @@ class Card_Lrg extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading1' => 'text-align: {{VALUE}};',
                     ],
                 ]
             );
@@ -231,9 +231,9 @@ class Card_Lrg extends Widget_Base {
                             'max' => 200,
                         ],
                     ],
-                    //'selectors' => [
-                    //    '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                    //],
+                    'selectors' => [
+                       '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading1' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
                 ]
             );
 
@@ -645,7 +645,7 @@ class Card_Lrg extends Widget_Base {
                 <div class="card-lrg-content">
                     <div class="meta-card-lrg">
                         <?php if ($subheading): ?>
-                            <p class="sub-heading"> <?php echo $subheading ?> </p>
+                            <p class="sub-heading1"> <?php echo $subheading ?> </p>
                         <?php endif; ?>
 
                         <?php if ($heading): ?>
