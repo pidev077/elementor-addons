@@ -645,7 +645,7 @@ article.be-latest-resources .elementor-post__content {
   color: #2f2f39;
 	text-decoration: underline;
 }
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 768px){
 	.popular-results-elements{
 		padding-left: 15px;
 		padding-right: 15px;
