@@ -53,7 +53,7 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
     <div class="wrrap-content-filter">
       <div class="form-content-filter">
          <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
-         <button class="btn-removeall" required="false"><i class="fa fa-times"></i></button>
+         <button class="btn-removeall" data-ajax="<?php echo $ajax; ?>" required="false"><i class="fa fa-times"></i></button>
          <button type="submit" data-ajax="<?php echo $ajax; ?>" <?php echo (!$ajax) ? 'data-redirect="'.$action.'"' : ''; ?>><i class="fa fa-search"></i></button>
       </div>
       <div class="log-error"></div>

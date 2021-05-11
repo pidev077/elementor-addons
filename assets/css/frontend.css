@@ -167,6 +167,16 @@
 	font-family: "Inter", Sans-serif;
 	text-decoration:underline;
 	transition: none;
+	position: relative;
+}
+.bt-custom-counter a.bt-button > i{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -20px;
+}
+.bt-custom-counter a.bt-button > i::before{
+	font-size: 26px;
 }
 @keyframes fade-up {
 	0% {
@@ -185,18 +195,42 @@
 
 @media only screen and (max-width: 767px){
 	.bt-custom-counter .bt-heading{
-		font-size: 30px;
+		font-size: 28px;
 	}
 	.bt-custom-counter .elementor-grid .elementor-counter{
-		margin-bottom: 30px;
+		margin-bottom: 22px;
 	}
 	.bt-custom-counter .elementor-grid{
-		padding: 50px 0 20px 0;
+		padding: 35px 0 20px 0;
+	}
+	.bt-custom-counter{
+		padding-top: 45px;
+		padding-bottom: 60px;
+	}
+	.elementor-counter h2.bt-title{
+		font-size: 15px;
+		letter-spacing: -0.44px;
+		margin-bottom: 15px;
+	}
+	.elementor-counter .elementor-counter__icon > img{
+		width: auto;
+		height: 70px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.elementor-counter .elementor-counter__title{
+		font-size: 16px;
+		line-height: 29px;
 	}
 }
 @media only screen and (max-width: 540px){
+	.elementor-counter .elementor-counter__title{
+		font-size: 13px;
+	}
 	.bt-custom-counter .bt-heading{
-		font-size: 28px;
+		font-size: 22px;
+		letter-spacing: -0.5px;
+		line-height: 30px;
 	}
 	.bt-custom-counter{
 		padding-left: 15px;
@@ -406,6 +440,12 @@
  	color: #2f2f39;
   margin-bottom: 50px;
 }
+.bt-promo .bt-des p{
+	margin-bottom: 0;
+}
+.bt-promo .bt-des p:not(:first-child){
+	margin-bottom: 15px;
+}
 .bt-promo a.bt-button {
 	font-size: 17px;
   font-weight: bold;
@@ -428,16 +468,16 @@
 @media only screen and (max-width: 767px) {
 	.bt-promo h2.bt-heading{
 		font-size: 34px;
+		margin-bottom: 15px;
+		letter-spacing: -0.5px;
+	}
+	.bt-promo .bt-des{
+		font-size: 15px;
+		margin-bottom: 30px;
 	}
 }
-@media only screen and (max-width: 540px) {
 
-	.bt-promo h2.bt-heading{
-		font-size: 28px;
-		max-width: 100%;
-	}
 
-}
 /*be-latest-resources*/
 article.be-latest-resources{
 	border-radius: 8px;
@@ -548,7 +588,19 @@ article.be-latest-resources .elementor-post__content {
 
 @media only screen and (max-width: 767px){
 	.heading-resources h2{
-	   font-size: 25px;
+	   font-size: 22px;
+	   line-height: 30px;
+	}
+	.heading-resources{
+		margin-bottom: 26px;
+	}
+	.heading-resources a i.fa{
+		font-size: 26px !important;
+	}
+	article.be-latest-resources .elementor-post__cat-links{
+		font-size: 15px;
+		line-height: 22px;
+		letter-spacing: -0.1px;
 	}
 }
 
