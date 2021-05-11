@@ -90,8 +90,11 @@ class Sidebar extends Widget_Base {
             'link',
             [
                 'label' => __( 'Link', 'bearsthemes-addons' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
+                'type' => Controls_Manager::URL,
+                'placeholder' => 'http://your-link.com',
+                'default' => [
+                    'url' => '#!',
+                ],
             ]
         );
 
@@ -155,8 +158,11 @@ class Sidebar extends Widget_Base {
             'link',
             [
                 'label' => __( 'Link', 'bearsthemes-addons' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
+                'type' => Controls_Manager::URL,
+                'placeholder' => 'http://your-link.com',
+                'default' => [
+                    'url' => '#!',
+                ],
             ]
         );
 
@@ -215,8 +221,11 @@ class Sidebar extends Widget_Base {
             'link',
             [
                 'label' => __( 'Link', 'bearsthemes-addons' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
+                'type' => Controls_Manager::URL,
+                'placeholder' => 'http://your-link.com',
+                'default' => [
+                    'url' => '#!',
+                ],
             ]
         );
 
@@ -536,7 +545,7 @@ class Sidebar extends Widget_Base {
                             <?php foreach ($items_pdf as $key => $item) { ?>
                                 <?php if ($item['name']): ?>
                                     <div class="item">
-                                        <a href="<?php echo $item['link'] ?>" target="_blank"> <?php echo $item['name'] ?>  </a>
+                                        <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>"> <?php echo $item['name'] ?>  </a>
                                     </div>
                                 <?php endif; ?>
                             <?php } ?>
@@ -559,7 +568,7 @@ class Sidebar extends Widget_Base {
         foreach ($items as $key => $item) { ?>
             <?php if ($item['name']): ?>
                 <div class="item">
-                    <a href="<?php echo $item['link'] ?>"> <?php echo $item['name'] ?>  </a>
+                    <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>"> <?php echo $item['name'] ?>  </a>
                 </div>
             <?php endif; ?>
         <?php }
