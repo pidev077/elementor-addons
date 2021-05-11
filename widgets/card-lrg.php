@@ -232,7 +232,7 @@ class Card_Lrg extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
