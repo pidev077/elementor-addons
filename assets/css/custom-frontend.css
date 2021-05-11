@@ -688,6 +688,7 @@
     font-weight: inherit;
     letter-spacing: inherit;
     font-family: inherit;
+    text-align: justify;
 }
 
 @media only screen and (max-width: 767px){
