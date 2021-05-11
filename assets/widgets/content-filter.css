@@ -418,7 +418,7 @@
 }
 @media only screen and (max-width: 767px) {
   .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 }
 .elementor-widget-ica-content-filter .ica-content-filter .template-filter-form .__filter-options .bt-actions .btn-clearall {
