@@ -384,10 +384,21 @@ class Be_Popular_Results extends Widget_Base {
             'post__in' => $id,
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
-            ?>
+        $upload_file = get_field( 'upload_file' );
+        $link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
+        ?>
 
             <div id="post-<?php the_ID(); ?>" class="items item-popular <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
-                <?php the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' ); ?>
+
+                <?php if (!empty($upload_file) && trim($upload_file['subtype'])): ?>
+                    <h3 class="elementor-post__title">
+                        <a href="<?php echo $upload_file['url']; ?>"> <?php the_title() ?> </a>
+                    </h3>
+                <?php else: ?>
+                    <h3 class="elementor-post__title">
+                        <a href="<?php echo $link_resources; ?>"> <?php the_title() ?> </a>
+                    </h3>
+                <?php endif; ?>
             </div>
         <?php
         endwhile;

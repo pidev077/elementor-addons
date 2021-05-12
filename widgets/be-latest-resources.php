@@ -41,10 +41,10 @@ class Be_Latest_Resources extends Widget_Base {
 		$supported_ids = [];
 
 		$wp_query = new \WP_Query( array(
-														'post_type' => 'resources',
-														'post_status' => 'publish',
-														'posts_per_page' => -1,
-													) );
+			'post_type' => 'resources',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		) );
 
 		if ( $wp_query->have_posts() ) {
 	    while ( $wp_query->have_posts() ) {
@@ -1930,6 +1930,8 @@ protected function register_design_pagination_section_controls() {
 		$settings = $this->get_settings_for_display();
 		$term_list = get_the_terms( get_the_id(), 'ins-type' );
 		$currentcolor='';
+		$upload_file = get_field( 'upload_file' );
+		$link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
 		foreach($term_list as $term_single)
 		{
 				$termid= $term_single->term_id;
@@ -1939,55 +1941,86 @@ protected function register_design_pagination_section_controls() {
 		?>
 		<div class="swiper-slide">
 			<article class="be-latest-resources" id="post-<?php the_ID();  ?>">
-        <?php if( '' !== $settings['show_category'] ) { ?>
-          <div class="elementor-post__meta">
-            <div class="elementor-post__cat-links"><span style="background-color:<?php echo $currentcolor; ?>"></span><?php
-              $terms = get_the_terms( get_the_id(), 'ins-type' );
-              if ($terms) {
-                foreach($terms as $term) {
-                  echo $term->name;
-                  //var_dump($term);
-                }
-              }
-             ?></div>
-             <div class="entry-date"><?php echo esc_html( get_the_date('d/m/y') ); ?></div>
-           </div>
-        <?php } ?>
-        <div class="elementor-post__thumbnail">
-          <?php the_post_thumbnail( $settings['thumbnail_size'] ); ?>
-        </div>
-        <div class="elementor-post__content">
-					<?php
-						if( '' !== $settings['show_title'] ) {
-							the_title( '<h3 class="elementor-post__title"><a href="' . get_the_permalink() . '">', '</a></h3>' );
+				<?php if( '' !== $settings['show_category'] ) { ?>
+					<div class="elementor-post__meta">
+						<div class="elementor-post__cat-links"><span style="background-color:<?php echo $currentcolor; ?>"></span><?php
+						$terms = get_the_terms( get_the_id(), 'ins-type' );
+						if ($terms) {
+							foreach($terms as $term) {
+								echo $term->name;
+							}
 						}
+						?></div>
+						<div class="entry-date"><?php echo esc_html( get_the_date('d/m/y') ); ?></div>
+					</div>
+				<?php } ?>
+				<div class="elementor-post__thumbnail">
+					<?php
+					if( '' !== $settings['show_title'] ) {
+						if(!empty($upload_file) && trim($upload_file['subtype'])){ ?>
+							<h3 class="elementor-post__title">
+								<a href="<?php echo $upload_file['url']; ?>">
+									<?php the_post_thumbnail( $settings['thumbnail_size'] ); ?>
+								</a>
+							</h3>
+					   <?php
+				   		}else{ ?>
+							<h3 class="elementor-post__title">
+								<a href="<?php echo $link_resources ?>">
+									<?php the_post_thumbnail( $settings['thumbnail_size'] ); ?>
+								 </a>
+							</h3>
+						<?php
+				        }
+					}
+					?>
+
+				</div>
+				<div class="elementor-post__content">
+					<?php
+					if( '' !== $settings['show_title'] ) {
+						if(!empty($upload_file) && trim($upload_file['subtype'])){ ?>
+							<h3 class="elementor-post__title">
+								<a href="<?php echo $upload_file['url']; ?>"> <?php the_title(); ?> </a>
+							</h3>
+					   <?php
+				   		}else{ ?>
+							<h3 class="elementor-post__title">
+								<a href="<?php echo $link_resources ?>"> <?php the_title(); ?> </a>
+							</h3>
+						<?php
+				        }
+					}
 					?>
 
 					<?php
-						if( '' !== $settings['show_excerpt'] ) {
-							add_filter( 'excerpt_more', [ $this, 'filter_excerpt_more' ], 20 );
-							add_filter( 'excerpt_length', [ $this, 'filter_excerpt_length' ], 20 );
+					if( '' !== $settings['show_excerpt'] ) {
+						add_filter( 'excerpt_more', [ $this, 'filter_excerpt_more' ], 20 );
+						add_filter( 'excerpt_length', [ $this, 'filter_excerpt_length' ], 20 );
 
-							?>
+						?>
+						<?php if (has_excerpt()): ?>
 							<div class="elementor-post__excerpt">
-								<?php the_excerpt(); ?>
+							<?php the_excerpt(); ?>
 							</div>
-							<?php
+						<?php endif; ?>
 
-							remove_filter( 'excerpt_length', [ $this, 'filter_excerpt_length' ], 20 );
-							remove_filter( 'excerpt_more', [ $this, 'filter_excerpt_more' ], 20 );
-						}
+						<?php
+
+						remove_filter( 'excerpt_length', [ $this, 'filter_excerpt_length' ], 20 );
+						remove_filter( 'excerpt_more', [ $this, 'filter_excerpt_more' ], 20 );
+					}
 					?>
 
 					<?php
-						if( '' !== $settings['show_read_more'] ) {
-              $pdf= get_field('upload_file');
-              if ( $settings['link_resources'] == 'link_pdf' ) {
-                echo '<a class="elementor-post__read-more" href="' . $pdf['url'] . '">' . $settings['read_more_text'] . '</a>';
-              } else {
-                echo '<a class="elementor-post__read-more" href="' . get_the_permalink() . '">' . $settings['read_more_text'] . '</a>';
-              }
+					if( '' !== $settings['show_read_more'] ) {
+
+						if(!empty($upload_file) && trim($upload_file['subtype'])){
+						  ?><a class="elementor-post__read-more" href="<?php echo $upload_file['url']; ?>">Download <?php echo strtoupper($upload_file['subtype']); ?></a><?php
+						}else{
+						  ?><a class="elementor-post__read-more" href="<?php echo $link_resources ?>"><?php echo $settings['read_more_text']  ?></a><?php
 						}
+					}
 					?>
 				</div>
 			</article>
