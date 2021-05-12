@@ -5,6 +5,8 @@ $postions = get_field('position_team_insuranceca');
 $addrress = get_field('addrress_team_insuranceca');
 $listSocial = get_field('list_social_team_insuranceca');
 $lengthDescription = strlen(get_the_content());
+global $post;
+$post_slug = $post->post_name;
 ?>
 <div id="post-<?php the_ID(); ?>" class="item-team">
     <div class="content-team">
@@ -13,7 +15,7 @@ $lengthDescription = strlen(get_the_content());
         </div>
         <div class="meta-team">
             <div class="header-meta">
-                <h3 class="name"> <?php the_title(); ?> </h3>
+                <h3 class="name name-team" data-name="<?php echo $post_slug; ?>"> <?php the_title(); ?> </h3>
                 <?php if ($listSocial): ?>
                     <div class="list-social-team">
                         <?php foreach ($listSocial as $key => $social): ?>

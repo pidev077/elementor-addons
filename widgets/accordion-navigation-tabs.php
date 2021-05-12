@@ -942,7 +942,9 @@ class Accordion_Navigation_Tabs extends Widget_Base {
             'post__in' => $id,
             'orderby' => 'menu_order',
             'order' =>  $order,
+            'posts_per_page'=>-1,
         ) ); ?>
+        
         <?php
         while ( $loop->have_posts() ) : $loop->the_post();
           include(ELEMENT_ADDON_TEMPLATE.'team/item-team.php');

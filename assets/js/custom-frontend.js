@@ -60,48 +60,86 @@
         });
     }
 
-    // get url tabs
-    function getUrlTabs() {
 
-        let isTabs = $('.accordion-navigation-tabs-container .accordion-navigation-tabs-title .item-tabs-title');
-        isTabs.each(function(){
-            let dataUrl = $(this).data('active');
-            ativeTabsByUrl(dataUrl);
-        });
-    }
-
-    // active tab by url
-    function ativeTabsByUrl(url) {
-
-        if(window.location.href.indexOf(url) > -1) {
-            let isTabs = $('.accordion-navigation-tabs-container .accordion-navigation-tabs-title .item-tabs-title');
-            let contetTabs = $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content');
-
-            isTabs.each(function(){
-
-                if ($(this).attr('data-active') == url) {
-
-                    let dataTabs = $(this).data('tab');
-                    $(this).addClass('active');
-                    contetTabs.removeClass('active');
-                    $('.accordion-navigation-tabs-elements .accordion-navigation-tabs-content .item-tabs-content.'+dataTabs).addClass('active');
-
-                }else {
-                    $(this).removeClass('active');
-                }
-
-            });
-        }
-    }
 
     $( document ).ready(function() {
+
         tabsElement();
         showAllContent();
         hiddenModulesAlertBanner();
-        getUrlTabs();
+
     });
 
 
+    var WidgetAccordionNavigationTabs = function( $scope, $ ) {
+
+        var tabsTitle   = $scope.find('.item-tabs-title');
+        var tabsContent = $scope.find('.item-tabs-content');
+        var nameTeam = $scope.find('.name-team');
+
+        // get url tab title
+        function getUrlTabs(items){
+
+            items.each(function(){
+                let dataUrl = $(this).data('active');
+                activeTabsByUrl(dataUrl);
+
+            });
+        }
+
+        // active tab and scroll to team
+        function activeTabsByUrl(url){
+            if(window.location.href.indexOf(url) > -1){
+                let params = (new URL(document.location)).searchParams;
+                let id = params.get('id');
+
+                tabsTitle.each(function(){
+
+                    if ($(this).attr('data-active') == url) {
+
+                        let dataTab = $(this).data('tab');
+                        $(this).addClass('active');
+                        tabsContent.removeClass('active');
+                        $scope.find('.item-tabs-content.'+dataTab).addClass('active');
+
+                        if (id) {
+
+                            let contentTabsActive = $scope.find('.item-tabs-content.active');
+                            let isTeam = contentTabsActive.find(nameTeam);
+
+                            isTeam.each(function(){
+
+                                if ($(this).attr('data-name') == id){
+                                    let offsetTeam =  $(this).offset();
+
+            						$('html, body').animate({
+            			                scrollTop: offsetTeam.top
+            			            }, 500);
+                                }
+
+                            });
+                        }
+
+                    }else {
+                        $(this).removeClass('active');
+                        tabsContent.removeClass('active');
+                    }
+                });
+
+            }
+        }
+
+        $(window).on('load',function(){
+            getUrlTabs(tabsTitle);
+        });
+
+
+    }
+
+    // Make sure you run this code under Elementor.
+	$( window ).on( 'elementor/frontend/init', function() {
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/accordion-navigation-tabs.default', WidgetAccordionNavigationTabs );
+	} );
 
 
 }) (jQuery);
