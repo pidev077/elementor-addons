@@ -2,6 +2,7 @@
 $post_id = get_the_ID();
 $types = get_the_terms( $post_id, 'ins-type' );
 $upload_file = get_field( 'upload_file' );
+$link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
 ?>
 <div class="item-content-filter">
     <div class="__meta">
@@ -22,7 +23,7 @@ $upload_file = get_field( 'upload_file' );
               <?php the_post_thumbnail('medium'); ?>
           </a><?php
         }else{
-          ?><a href="<?php the_permalink(); ?>">
+          ?><a href="<?php echo $link_resources ?>">
               <?php the_post_thumbnail('medium'); ?>
           </a><?php
         } ?>
@@ -32,7 +33,7 @@ $upload_file = get_field( 'upload_file' );
       <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
         ?><a href="<?php echo $upload_file['url']; ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
       }else{
-        ?><a href="<?php the_permalink(); ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
+        ?><a href="<?php echo $link_resources ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
       } ?>
       <div class="__content">
         <?php the_excerpt(); ?>
@@ -40,7 +41,7 @@ $upload_file = get_field( 'upload_file' );
       <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
         ?><a href="<?php echo $upload_file['url']; ?>" class="btn-readmore">Download <?php echo strtoupper($upload_file['subtype']); ?></a><?php
       }else{
-        ?><a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a><?php
+        ?><a href="<?php echo $link_resources ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a><?php
       } ?>
     </div>
 </div>
