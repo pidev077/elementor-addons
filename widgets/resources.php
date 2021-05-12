@@ -272,6 +272,13 @@ class Resources_Widgets extends Widget_Base {
             'post_type' => 'resources',
             'post_status' => 'publish',
             'posts_per_page' => -1,
+            'meta_query' => array(
+              array(
+                'key'     => 'select_type_resources',
+                'value'   => 'PDF',
+                'compare' => 'LIKE',
+              ),
+            ),
         ) );
 
         if ( $wp_query->have_posts() ) {
@@ -382,6 +389,13 @@ class Resources_Widgets extends Widget_Base {
             'post_type' => 'resources',
             'post_status' => 'publish',
             'post__in' => $id,
+            'meta_query' => array(
+              array(
+                'key'     => 'select_type_resources',
+                'value'   => 'PDF',
+                'compare' => 'LIKE',
+              ),
+            ),
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
         //var_dump($loop);
