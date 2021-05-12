@@ -217,7 +217,7 @@ class Card_Lrg extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'sub_heading_card_lrg_spacing',
                 [
                     'label' => __( 'Spacing', 'elementor' ),
@@ -232,7 +232,7 @@ class Card_Lrg extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                      '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .sub-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -295,7 +295,7 @@ class Card_Lrg extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'heading_card_lrg_spacing',
                 [
                     'label' => __( 'Spacing', 'elementor' ),
@@ -372,7 +372,7 @@ class Card_Lrg extends Widget_Base {
                 ]
             );
 
-            $this->add_control(
+            $this->add_responsive_control(
                 'description_card_lrg_spacing',
                 [
                     'label' => __( 'Spacing', 'elementor' ),
