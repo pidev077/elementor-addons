@@ -328,6 +328,7 @@
 			var template = $scope.find('.ica-content-filter').data('template');
 			var sortby = $scope.find('.ica-content-filter').data('sortby');
 			var cats_faq = $scope.find('.ica-content-filter').data('cat_faq');
+			var ex_cats_faq = $scope.find('.ica-content-filter').data('ex_cat_faq');
 
 			listFilters.each(function(index,e){
 				var filter = $(e).data('filter');
@@ -353,15 +354,16 @@
 					'action'				:'load_filter_data',
 					'key' 					: $key,
 					'post_type' 		: post_type,
-					'numberposts'  : numberposts,
+					'numberposts'   : numberposts,
 					'orderby' 			: orderby,
 					'order' 				: order,
 					'filters' 			: filters,
-					'pagination'   : pagination,
+					'pagination'    : pagination,
 					'sortby'				: sortby,
-					'paged'        : paged,
+					'paged'         : paged,
 					'option'				: $option,
-					'cats_faq'     : cats_faq,
+					'cats_faq'      : cats_faq,
+					'ex_cats_faq'   : ex_cats_faq,
 					'template'			: template
 				},
 				dataType: 'JSON',

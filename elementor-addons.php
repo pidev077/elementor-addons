@@ -91,6 +91,7 @@ final class Elementor_Addons {
 				'types'	=> '',
 				'topics' => '',
 				'cats_faq' => '',
+				'ex_cats_faq' => '',
 				'template' => ''
 	  ), $atts, 'ica_content_filter' );
 
@@ -121,6 +122,7 @@ final class Elementor_Addons {
 		$template  = $_POST['template'];
 		$sortby		 = $_POST['sortby'];
 		$cats_faq  = $_POST['cats_faq'];
+		$ex_cats_faq  = $_POST['ex_cats_faq'];
 
 		$args = array(
 			'post_type' => $post_type,
@@ -163,6 +165,15 @@ final class Elementor_Addons {
 					'taxonomy' => 'cat-faq',
 					'field'    => 'slug',
 					'terms'    => $cats_faq
+			);
+		}
+
+		if(!empty($ex_cats_faq)){
+			$args['tax_query'][] = array(
+					'taxonomy' => 'cat-faq',
+					'field'    => 'slug',
+					'operator' => 'NOT IN',
+					'terms'    => $ex_cats_faq
 			);
 		}
 

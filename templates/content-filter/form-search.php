@@ -49,7 +49,8 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
   data-showcontent="<?php echo $showcontent; ?>"
   data-template="<?php echo $template; ?>"
   data-sortby="<?php echo $sortby; ?>"
-  data-cat_faq="<?php echo $cats_faq; ?>">
+  data-cat_faq="<?php echo $cats_faq; ?>"
+  data-ex_cat_faq="<?php echo $ex_cats_faq; ?>">
     <div class="wrrap-content-filter">
       <div class="form-content-filter">
          <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
