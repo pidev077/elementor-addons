@@ -164,7 +164,7 @@ final class Elementor_Addons {
 			$args['tax_query'][] = array(
 					'taxonomy' => 'cat-faq',
 					'field'    => 'slug',
-					'terms'    => $cats_faq
+					'terms'    => explode(',',$cats_faq)
 			);
 		}
 
@@ -173,7 +173,7 @@ final class Elementor_Addons {
 					'taxonomy' => 'cat-faq',
 					'field'    => 'slug',
 					'operator' => 'NOT IN',
-					'terms'    => $ex_cats_faq
+					'terms'    => explode(',',$ex_cats_faq)
 			);
 		}
 
