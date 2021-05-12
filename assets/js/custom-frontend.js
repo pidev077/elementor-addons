@@ -122,7 +122,6 @@
 
                     }else {
                         $(this).removeClass('active');
-                        tabsContent.removeClass('active');
                     }
                 });
 

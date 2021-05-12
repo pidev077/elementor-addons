@@ -16,7 +16,17 @@ $upload_file = get_field( 'upload_file' );
         </div>
     </div>
     <div class="__featured-img">
-        <?php the_post_thumbnail('medium'); ?>
+
+        <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
+          ?><a href="<?php echo $upload_file['url']; ?>">
+              <?php the_post_thumbnail('medium'); ?>
+          </a><?php
+        }else{
+          ?><a href="<?php the_permalink(); ?>">
+              <?php the_post_thumbnail('medium'); ?>
+          </a><?php
+        } ?>
+
     </div>
     <div class="__info">
       <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
