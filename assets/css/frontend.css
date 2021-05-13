@@ -765,9 +765,7 @@ article.be-latest-faqs .elementor-post__content {
 	position: absolute;
 	bottom: 21px;
 }
-.elementor-card .elementor-post__read-more:hover {
-	color: #d2440f;
-}
+
 
 @media only screen and (max-width: 767px){
 	.elementor-card .elementor-card__content{
