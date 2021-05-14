@@ -37,12 +37,14 @@ class Sidebar extends Widget_Base {
         return [ 'elementor-addons-custom-frontend' ];
     }
 
+
     protected function register_sidebar_header_section_controls() {
         $this->start_controls_section(
             'section_sidebar_header_layout',[
                 'label' => __( 'Sidebar Header', 'bearsthemes-addons' ),
              ]
         );
+
 
             $this->add_control(
                 'heading_sidebar_widget',
@@ -155,16 +157,27 @@ class Sidebar extends Widget_Base {
         );
 
         $itemsPDF->add_control(
-            'link',
-            [
-                'label' => __( 'Link', 'bearsthemes-addons' ),
-                'type' => Controls_Manager::URL,
-                'placeholder' => 'http://your-link.com',
-                'default' => [
-                    'url' => '#!',
-                ],
-            ]
-        );
+              'file_link',
+              [
+                'label' => esc_html__( 'Select File', 'bearsthemes-addons' ),
+                'type'	=> 'file-select',
+                'placeholder' => esc_html__( 'URL to File', 'bearsthemes-addons' ),
+                'description' => esc_html__( 'Select file from media library or upload', 'bearsthemes-addons' ),
+              ]
+          );
+
+        $itemsPDF->add_control(
+      			'link_target',
+      			[
+      				'label' => esc_html__( 'Link Target', 'bearsthemes-addons' ),
+      				'type' => \Elementor\Controls_Manager::SELECT,
+      				'options' => [
+      					'_parent' => esc_html__( 'Same Tab', 'bearsthemes-addons' ),
+      					'_blank' => esc_html__( 'New Tab', 'bearsthemes-addons' ),
+      				],
+      				'default' => '_parent',
+      			]
+      		);
 
         $this->add_control(
             'items_sidebar_pdf',
@@ -175,11 +188,9 @@ class Sidebar extends Widget_Base {
                 'default' => [
                     [
                         'name' => __( 'Lorem ipsum', 'bearsthemes-addons' ),
-                        'link' => __( '#!', 'bearsthemes-addons' ),
                     ],
                     [
                         'name' => __( 'Ducimus qui blanditlls', 'bearsthemes-addons' ),
-                        'link' => __( '#!', 'bearsthemes-addons' ),
                     ],
                 ],
                 'title_field' => '{{{ name }}}',
@@ -545,7 +556,7 @@ class Sidebar extends Widget_Base {
                             <?php foreach ($items_pdf as $key => $item) { ?>
                                 <?php if ($item['name']): ?>
                                     <div class="item">
-                                        <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>"> <?php echo $item['name'] ?>  </a>
+                                        <a href="<?php echo $item['file_link'] ?>" target="<?php echo $item['link_target'] ?>"> <?php echo $item['name'] ?>  </a>
                                     </div>
                                 <?php endif; ?>
                             <?php } ?>
