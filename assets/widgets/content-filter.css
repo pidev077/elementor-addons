@@ -558,15 +558,20 @@
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info {
   padding: 26px 16px 17px;
 }
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__text-highligh {
+  overflow: hidden;
+  font-weight: 700;
+}
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.18;
   letter-spacing: -0.5px;
   color: #2f2f39;
   margin-bottom: 17px;
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 767px) {
   .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
@@ -779,6 +784,8 @@
   font-size: 15px;
   line-height: 20px;
   font-weight: 700;
+  font-weight: 500;
+  opacity: 0.8;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__content {
   color: #4a4a4a;

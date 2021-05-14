@@ -182,7 +182,7 @@ final class Elementor_Addons {
 		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$the_query = new WP_Query($args);
 		$_GLOBAL['wp_query'] = $the_query;
-		echo $key;
+
 		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$totalpost = (($_POST['numberposts']*($paged-1)) + $the_query->post_count);
 

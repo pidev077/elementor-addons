@@ -11,9 +11,21 @@ $cats = get_the_terms( $post_id, 'category' );
     <?php endif; ?>
   </div>
   <div class="__info">
-    <a href="<?php the_permalink(); ?>"><h3 class="__title"><?php the_title(); ?></h3></a>
+    <a href="<?php the_permalink(); ?>"><h3 class="__title">
+        <?php
+            $key = strtolower($key);
+            $title = strtolower( get_the_title( get_the_ID() ) );
+            $title_replace = "<span class='__text-highligh'> $key </span>";
+            echo str_replace($key, $title_replace, $title);
+         ?>
+    </h3></a>
     <div class="__content">
-      <?php the_excerpt(); ?>
+        <?php
+            $excerpt = get_the_excerpt();
+            $excerpt_replace = "<span class='__text-highligh'> $key </span>";
+            echo str_replace($key, $excerpt_replace, $excerpt);
+        ?>
+
     </div>
     <a href="<?php the_permalink(); ?>" class="btn-readmore"><?php echo __('Read more','bearsthemes-addons'); ?></a>
   </div>
