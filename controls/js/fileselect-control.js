@@ -6,9 +6,6 @@ elementor.addControlView('file-select', elementor.modules.controls.BaseData.exte
 			$el = this.$el,
 			wpMediaOptions = {
     title: 'Pick a PDF',
-    button: {
-        text: 'Use this file...'
-    },
     library: {
         type: 'application/pdf'
     },
