@@ -273,11 +273,17 @@ class Resources_Widgets extends Widget_Base {
             'post_status' => 'publish',
             'posts_per_page' => -1,
             'meta_query' => array(
+              'relation'		=> 'AND',
               array(
                 'key'     => 'select_type_resources',
                 'value'   => 'PDF',
-                'compare' => 'LIKE',
+                'compare' => '=',
               ),
+              array(
+          			'key'	  	=> 'upload_file',
+                'value'   => '',
+                'compare' => '!=',
+          		),
             ),
         ) );
 
