@@ -714,6 +714,48 @@
             }
           }
         }
+        &.template-page-list{
+            height: auto;
+            overflow: hidden;
+            max-width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            @media only screen and (max-width: 767px){
+              max-width: 90%;
+            }
+            @media only screen and (max-width: 540px){
+              max-width: 100%;
+            }
+            .item-content-filter{
+                width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                margin: 0;
+                .__info{
+                    padding: 0;
+                }
+                .__title{
+                    margin:0;
+                }
+                .__link{
+                    margin: 4px 0;
+                    font-family: "Inter", sans-serif;
+                    letter-spacing: -0.1px;
+                    color:#2a8164 ;
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 700;
+                }
+                .__content{
+                    color: #4a4a4a;
+                    letter-spacing: -0.1px;
+                }
+                &:not(:last-child){
+                    margin-bottom: 26px;
+                }
+            }
+        }
       }
       .not-found{
         width: 100%;

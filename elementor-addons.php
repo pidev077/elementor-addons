@@ -182,6 +182,7 @@ final class Elementor_Addons {
 		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$the_query = new WP_Query($args);
 		$_GLOBAL['wp_query'] = $the_query;
+		echo $key;
 		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$totalpost = (($_POST['numberposts']*($paged-1)) + $the_query->post_count);
 
@@ -301,11 +302,11 @@ final class Elementor_Addons {
 
 		if ( $meta_query = $wp_query->get( 'meta_query' ) ) {
 
-			$where = preg_replace(
-			"/\)\)\)\s*AND \(\s*\(\s*".$wpdb->postmeta.".meta_key/",
-			"))) OR (( ".$wpdb->postmeta.".meta_key",
-			$where
-			);
+			// $where = preg_replace(
+			// "/\)\)\)\s*AND \(\s*\(\s*".$wpdb->postmeta.".meta_key/",
+			// "))) OR (( ".$wpdb->postmeta.".meta_key",
+			// $where
+			// );
 		}
 
 

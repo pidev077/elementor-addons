@@ -170,7 +170,7 @@ class Content_Filter extends Widget_Base {
 				'label_block' => true,
 				'default' => 'grid',
 				'condition' => [
-					'ica_source' => 'ins-faqs',
+					'ica_source' => ['ins-faqs', 'page'],
 				],
 			]
 		);

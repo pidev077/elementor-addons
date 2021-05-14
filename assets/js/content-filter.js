@@ -103,6 +103,8 @@
 						}
 					});
 					window.location.href = $linkSearch;
+				}else {
+					loadFilterData(inputSearch.val(),'filter');
 				}
 
 				return false;

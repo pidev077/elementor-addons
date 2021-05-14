@@ -2,7 +2,7 @@
 $post_id = get_the_ID();
 $cats = get_the_terms( $post_id, 'category' );
 ?>
-<div class="item-content-filter post-faq">
+<div class="item-content-filter item-page">
   <div class="__meta">
     <?php if(!empty($cats)): ?>
       <div class="__meta--type">
