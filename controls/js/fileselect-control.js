@@ -1,10 +1,24 @@
 elementor.addControlView('file-select', elementor.modules.controls.BaseData.extend({
 
 	onReady: function () {
-		
+
 		var that = this,
 			$el = this.$el,
-			wpMediaOptions = { multiple: false },
+			wpMediaOptions = {
+    title: 'Pick a PDF',
+    button: {
+        text: 'Use this file...'
+    },
+    library: {
+        type: 'application/pdf'
+    },
+    multiple: false,
+
+    // Is there a similar option to this that works?
+    uploader: {
+        type: 'application/pdf'
+    }
+},
 			inputHidden = $el.find('.tnc-selected-fle-url');
 
 		if (!!this.model.attributes.library_type) {
@@ -14,7 +28,7 @@ elementor.addControlView('file-select', elementor.modules.controls.BaseData.exte
 				post_mime_type: [ this.model.attributes.library_type ]
 			};
 		}
-		
+
 		$el.find('.tnc-select-file').click(function (e) {
 			var tnc_file_uploader = wp.media(wpMediaOptions)
 				.on('select', function () {
