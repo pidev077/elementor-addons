@@ -15,14 +15,14 @@ $cats = get_the_terms( $post_id, 'category' );
         <?php
             $key = strtolower($key);
             $title = strtolower( get_the_title( get_the_ID() ) );
-            $title_replace = "<span class='__text-highligh'> $key </span>";
+            $title_replace = "<span class='__text-highligh'>$key</span>";
             echo str_replace($key, $title_replace, $title);
          ?>
     </h3></a>
     <div class="__content">
         <?php
             $excerpt = get_the_excerpt();
-            $excerpt_replace = "<span class='__text-highligh'> $key </span>";
+            $excerpt_replace = "<span class='__text-highligh'>$key</span>";
             echo str_replace($key, $excerpt_replace, $excerpt);
         ?>
 
