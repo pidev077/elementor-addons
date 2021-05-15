@@ -50,9 +50,9 @@ class Plugin {
 	 * @access public
 	 */
 	public function widget_styles() {
-		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
-		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) );
-		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', __FILE__ ) );
+		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', ELEMENT_ADDON_VER ) );
+		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', ELEMENT_ADDON_VER ) );
+		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', ELEMENT_ADDON_VER ) );
 	}
 
 
