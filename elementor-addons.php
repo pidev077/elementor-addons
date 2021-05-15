@@ -358,6 +358,8 @@ final class Elementor_Addons {
 			return;
 		}
 
+		// Add Plugin actions
+		add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
 	}
@@ -431,6 +433,15 @@ final class Elementor_Addons {
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+	}
+
+	public function init_controls() {
+
+		// Include Widget files
+		require_once( __DIR__ . '/controls/fileselect-control.php' );
+
+		// Register controls
+		\Elementor\Plugin::$instance->controls_manager->register_control( 'file-select', new \FileSelect_Control() );
 	}
 }
 
