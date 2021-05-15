@@ -769,6 +769,7 @@
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+  background: transparent;
 }
 .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter .__info {
   padding: 0;

@@ -125,12 +125,12 @@ final class Elementor_Addons {
 		$sortby		 = $_POST['sortby'];
 		$cats_faq  = $_POST['cats_faq'];
 		$ex_cats_faq  = $_POST['ex_cats_faq'];
-		$showfilter2 = $_POST['showfilter2'];
-		$numberposts = $_POST['numberposts2'] ? $_POST['numberposts2'] : $_POST['numberposts'];
-		$orderby = $_POST['orderby2'] ? $_POST['orderby2'] : $_POST['orderby'];
-		$order =  $_POST['order2'] ?  $_POST['order2'] : $_POST['order'];
-		$post_type = $_POST['post_type2'] ? $_POST['post_type2'] : $_POST['post_type'];
-		$template  =   $_POST['template2'] ?  $_POST['template2'] : $_POST['template'];
+		$type_filter = $_POST['type_filter'];
+		$numberposts = $_POST['numberposts'];
+		$orderby = $_POST['orderby'];
+		$order =  $_POST['order'];
+		$post_type = $_POST['post_type'];
+		$template  =   $_POST['template'];
 
 		$args = array(
 			'post_type' => $post_type,
@@ -221,7 +221,7 @@ final class Elementor_Addons {
 					<div class="info-numberposts">Showing <span class="totalpost"><?php echo $totalpost ?></span> of <?php echo $the_query->found_posts; ?> results</div>
 					<div class="btn-sortby <?php echo ($option == 'sortby') ? '__is-actived' : ''; ?>">
 						<span>Sort by <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-						<div class="content-sortby" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
+						<div class="content-sortby" data-type_filter="<?php echo $type_filter; ?>" style="display:<?php echo ($option == 'sortby') ? 'block' : 'none'; ?>">
 								<div class="item-sortby <?php echo $orderby == 'post_date' ? '__is-actived' : ''; ?>" data-order="<?php echo $orderby == 'post_date' ? $order : 'desc'; ?>" data-orderby="post_date">
 									Date <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
 								</div>
@@ -248,14 +248,11 @@ final class Elementor_Addons {
 					}
 				if($paged < 2){ ?></div> <?php }
 		} else {
-			if ($showfilter2 !='yes') {
 				$countpost = 0;
 				?> <div class="not-found">
 					<i class="fa fa-frown-o" aria-hidden="true"></i>
 					<div><?php echo __("Not found result!"); ?></div>
 				</div> <?php
-			}
-
 		}
 
 		if($pagination && $the_query->max_num_pages > $paged && $paged < 2){

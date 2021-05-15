@@ -21,6 +21,7 @@
 		var btnLoadmore 	 = $scope.find('button[name="button-showmore"]');
 		var btnClearAll    = $scope.find('.btn-clearall');
 		var paged = 1;
+		var paged2 = 1;
 
 		//Show and Hide Filters
 		toggleFilter.click(function (e) {
@@ -216,7 +217,7 @@
 		$scope.on('click', '.item-filter i.fa', removeFilterItem);
 		$scope.on('click', '.btn-sortby span', showHideSortby);
 		$scope.on('click', '.item-sortby', loadDataSortby);
-  		$scope.on('click','.template-ins-faqs-list .__title', toggleContentFAQ);
+  	$scope.on('click','.template-ins-faqs-list .__title', toggleContentFAQ);
 
 		function loadFilters(){
 			var ajax = $(this).data('ajax');
@@ -295,7 +296,8 @@
 		function loadDataSortby(){
 			var order = $(this).data('order');
 			var orderby = $(this).data('orderby');
-			$(this).closest('.content-sortby').find('.item-sortby').removeClass('__is-actived');
+			var sortby_temp = $(this).closest('.content-sortby');
+			sortby_temp.find('.item-sortby').removeClass('__is-actived');
 			$(this).addClass('__is-actived');
 			if(order == 'desc'){
 				$(this).data('order','asc');
@@ -303,9 +305,15 @@
 				$(this).data('order','desc');
 			}
 			var neworder = $(this).data('order');
-			$scope.find('.ica-content-filter').data('order',neworder);
-			$scope.find('.ica-content-filter').data('orderby',orderby);
-			loadFilterData(inputSearch.val(),'sortby');
+			var type_filter = sortby_temp.data('type_filter');
+			if(type_filter == 2){
+				$scope.find('.ica-content-filter').data('order2',neworder);
+				$scope.find('.ica-content-filter').data('orderby2',orderby);
+			}else{
+				$scope.find('.ica-content-filter').data('order',neworder);
+				$scope.find('.ica-content-filter').data('orderby',orderby);
+			}
+			//loadFilterData(inputSearch.val(),'sortby',type_filter);
 		}
 
 		function validationForm(){
@@ -344,20 +352,24 @@
 		};
 
 		// initialize Masonry
-		var template = $scope.find('.ica-content-filter').data('template');
+		var template 			 = $scope.find('.ica-content-filter').data('template');
+		var template2 		 = $scope.find('.ica-content-filter').data('template2');
+		var showfilter2 	 = $scope.find('.ica-content-filter').data('files2');
 		if(template != 'list') resultFilter.find('.list-grids').masonry( masonryOptions );
+		if(showfilter2 == 'yes' && template2 != 'list'){
+			resultFilter2.find('.list-grids').masonry( masonryOptions );
+		}
 
 		//Load default data
 		var showcontent = $scope.find('.ica-content-filter').data('showcontent');
 		if(showcontent) loadFilterData(inputSearch.val(),'default');
 
-		function loadFilterData($key,$option){
+		function loadFilterData($key,$option,$filter = 'all'){
 
 			if($option !== 'loadmore') paged = 1;
 			$scope.addClass('__is-loading');
 			var filters = [];
 			var post_type = $scope.find('.ica-content-filter').data('post');
-
 			var numberposts = $scope.find('.ica-content-filter').data('numberposts');
 			var orderby = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('orderby') : $scope.find('.ica-content-filter').data('orderby');
 			var order = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('order') :  $scope.find('.ica-content-filter').data('order');
@@ -366,17 +378,10 @@
 			var sortby = $scope.find('.ica-content-filter').data('sortby');
 			var cats_faq = $scope.find('.ica-content-filter').data('cat_faq');
 			var ex_cats_faq = $scope.find('.ica-content-filter').data('ex_cat_faq');
-			var showfilter2 = $scope.find('.ica-content-filter').data('files2');
-			if (showfilter2 == 'yes') {
-
-				var post_type2 = $scope.find('.ica-content-filter').data('post2');
-				var numberposts2= $scope.find('.ica-content-filter').data('numberposts2');
-				var template2 = $scope.find('.ica-content-filter').data('template2');
-				var orderby2 = $scope.find('.ica-content-filter').data('orderby2 ');
-				var order2 = $scope.find('.ica-content-filter').data('order2');
-
-			}
-
+			var post_type2 = $scope.find('.ica-content-filter').data('post2');
+			var numberposts2= $scope.find('.ica-content-filter').data('numberposts2');
+			var orderby2 = $scope.find('.ica-content-filter').data('orderby2 ');
+			var order2 = $scope.find('.ica-content-filter').data('order2');
 			listFilters.each(function(index,e){
 				var filter = $(e).data('filter');
 				var vals = [];
@@ -394,91 +399,27 @@
 					if(start_date || end_date) filters.push({name : 'post_date' , value : start_date+","+end_date});
 				}
 			});
-		
-			jQuery.ajax({
-				type: 'POST',
-				url: ajaxObject.ajaxUrl,
-				data:{
-					'action'				:'load_filter_data',
-					'key' 					: $key,
-					'post_type' 		: post_type,
-					'numberposts'   : numberposts,
-					'orderby' 			: orderby,
-					'order' 				: order,
-					'filters' 			: filters,
-					'pagination'    : pagination,
-					'sortby'				: sortby,
-					'paged'         : paged,
-					'option'				: $option,
-					'cats_faq'      : cats_faq,
-					'ex_cats_faq'   : ex_cats_faq,
-					'template'			: template
-				},
-				dataType: 'JSON',
-				success:function(response){
-					if($option == 'loadmore'){
-						paged += 1;
-						$scope.find('.list-grids').append(response.html);
-						$scope.find('.totalpost').text(response.totalpost);
-					}else{
-						paged = 2;
-						resultFilter.html(response.html);
-					}
-					if(!resultFilter.hasClass('data-loaded')) resultFilter.addClass('data-loaded');
-					if(template != 'list'){
-						resultFilter.find('.list-grids').masonry('destroy'); // destroy
-						resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
-					}
-					if(!response.countpost){
-						resultFilter.css('height','auto');
-					}
 
-					//Pagination
-					if(!response.pagination){
-						$scope.find('.content-filter-pagination').remove();
-					}
-
-					//Button Clear All
-					if(filters.length > 0){
-						btnClearAll.css('visibility','visible');
-					}else{
-						btnClearAll.css('visibility','hidden');
-					}
-
-					//remove loading
-					$scope.removeClass('__is-loading');
-
-					setTimeout( () => {
-					urlScrollFAQ();
-					}, 500);
-
-
-				},
-				error: function(errorThrown){
-				console.log(errorThrown);
-				$scope.removeClass('__is-loading');
-				}
-			});
-
-			if (showfilter2 == 'yes'){
-
+			if($filter == 'all' || $filter == '1'){
 				jQuery.ajax({
 					type: 'POST',
 					url: ajaxObject.ajaxUrl,
 					data:{
 						'action'				:'load_filter_data',
 						'key' 					: $key,
+						'post_type' 		: post_type,
+						'numberposts'   : numberposts,
+						'orderby' 			: orderby,
+						'order' 				: order,
 						'filters' 			: filters,
 						'pagination'    : pagination,
 						'sortby'				: sortby,
 						'paged'         : paged,
 						'option'				: $option,
-						'numberposts2' : numberposts2,
-						'orderby2' : orderby2,
-						'template2' : template2,
-						'post_type2' 	: post_type2,
-						'order2' : order2,
-						'showfilter2': showfilter2,
+						'cats_faq'      : cats_faq,
+						'ex_cats_faq'   : ex_cats_faq,
+						'template'			: template,
+						'type_filter' 	: '1'
 					},
 					dataType: 'JSON',
 					success:function(response){
@@ -488,22 +429,87 @@
 							$scope.find('.totalpost').text(response.totalpost);
 						}else{
 							paged = 2;
-							resultFilter2.html(response.html);
+							resultFilter.html(response.html);
 						}
-						if(!resultFilter2.hasClass('data-loaded')) resultFilter2.addClass('data-loaded');
+						if(!resultFilter.hasClass('data-loaded')) resultFilter.addClass('data-loaded');
 						if(template != 'list'){
-							resultFilter2.find('.list-grids').masonry('destroy'); // destroy
-							resultFilter2.find('.list-grids').masonry( masonryOptions ); // re-initialize
-
+							resultFilter.find('.list-grids').masonry('destroy'); // destroy
+							resultFilter.find('.list-grids').masonry( masonryOptions ); // re-initialize
 						}
 						if(!response.countpost){
-							resultFilter2.css('height','auto');
-
+							resultFilter.css('height','auto');
 						}
 
 						//Pagination
 						if(!response.pagination){
 							$scope.find('.content-filter-pagination').remove();
+						}
+
+						//Button Clear All
+						if(filters.length > 0){
+							btnClearAll.css('visibility','visible');
+						}else{
+							btnClearAll.css('visibility','hidden');
+						}
+
+						//remove loading
+						$scope.removeClass('__is-loading');
+
+						setTimeout( () => {
+						urlScrollFAQ();
+						}, 500);
+
+
+					},
+					error: function(errorThrown){
+					console.log(errorThrown);
+					$scope.removeClass('__is-loading');
+					}
+				});
+			}
+			if (showfilter2 == 'yes' && ($filter == 'all' || $filter == '2')){
+				if($option !== 'loadmore') paged2 = 1;
+				$scope.addClass('__is-loading');
+				jQuery.ajax({
+					type: 'POST',
+					url: ajaxObject.ajaxUrl,
+					data:{
+						'action'				:'load_filter_data',
+						'key' 					: $key,
+						'filters' 			: filters,
+						'pagination'    : pagination,
+						'sortby'				: sortby,
+						'paged'         : paged2,
+						'option'				: $option,
+						'numberposts' : numberposts2,
+						'orderby' : orderby2,
+						'template' : template2,
+						'post_type' 	: post_type2,
+						'order' : order2,
+						'type_filter' : '2'
+					},
+					dataType: 'JSON',
+					success:function(response){
+						if($option == 'loadmore'){
+							paged2 += 1;
+							$scope.find('.content-filter-results2 .list-grids').append(response.html);
+							$scope.find('.content-filter-results2 .totalpost').text(response.totalpost);
+						}else{
+							paged2 = 2;
+							resultFilter2.html(response.html);
+						}
+						if(!resultFilter2.hasClass('data-loaded')) resultFilter2.addClass('data-loaded');
+						if(template2 != 'list'){
+							resultFilter2.find('.list-grids').masonry('destroy'); // destroy
+							resultFilter2.find('.list-grids').masonry( masonryOptions ); // re-initialize
+						}
+						if(!response.countpost){
+							resultFilter2.css('height','auto');
+						}
+
+						//Pagination
+						if(!response.pagination){
+							$scope.find('.content-filter-results2 .content-filter-pagination').remove();
 						}
 
 						//Button Clear All
@@ -522,8 +528,6 @@
 					$scope.removeClass('__is-loading');
 					}
 				});
-
-
 			}
 		}
 
