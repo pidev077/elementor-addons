@@ -50,7 +50,15 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
   data-template="<?php echo $template; ?>"
   data-sortby="<?php echo $sortby; ?>"
   data-cat_faq="<?php echo $cats_faq; ?>"
-  data-ex_cat_faq="<?php echo $ex_cats_faq; ?>">
+  data-ex_cat_faq="<?php echo $ex_cats_faq; ?>"
+  data-post2="<?php echo $post_type2?>"
+  data-files2 ="<?php echo $showfilter2 ?>"
+  data-numberposts2 ="<?php echo $numberposts2 ?>"
+  data-template2 ="<?php echo $template2 ?>"
+  data-orderby2 ="<?php echo $orderby2 ?>"
+  data-order2 ="<?php echo $order2 ?>"
+  >
+
     <div class="wrrap-content-filter">
       <div class="form-content-filter">
          <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
@@ -157,5 +165,8 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
       </div>
     </div>
     <div class="content-filter-results"></div>
+    <?php if ($showfilter2 == 'yes'): ?>
+        <div class="content-filter-results2"></div>
+    <?php endif; ?>
 </div>
 <?php

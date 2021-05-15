@@ -129,6 +129,16 @@ class Content_Filter extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'show_filter_2',
+			[
+				'label' => __( 'Show Filter 2?', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_off' => __( 'HIDE', 'bearsthemes-addons' ),
+				'label_on' => __( 'SHOW', 'bearsthemes-addons' )
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -136,7 +146,7 @@ class Content_Filter extends Widget_Base {
 		$this->start_controls_section(
 			'section_query',
 			[
-				'label' => __( 'Query', 'bearsthemes-addons' ),
+				'label' => __( 'Filter 1', 'bearsthemes-addons' ),
 			]
 		);
 
@@ -287,6 +297,92 @@ class Content_Filter extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	protected function register_query_filter_2_section_controls() {
+		$this->start_controls_section(
+			'section_query_2',
+			[
+				'label' => __( 'Filter 2', 'bearsthemes-addons' ),
+				'condition' => [
+					'show_filter_2' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'ica_source_2',
+			[
+				'label' => __( 'Source', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'multiple' => true,
+				'options' => [
+					'resources'  => __( 'Resources', 'bearsthemes-addons' ),
+					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
+					'post' => __( 'Post', 'bearsthemes-addons' ),
+					'page' => __( 'Page', 'bearsthemes-addons' ),
+				],
+				'label_block' => false,
+				'default' => 'resources',
+			]
+		);
+
+		$this->add_control(
+			'ica_template_faq_2',
+			[
+				'label' => __( 'Templates', 'bearsthemes-addons' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'multiple' => true,
+				'options' => [
+					'grid'  => __( 'Grid', 'bearsthemes-addons' ),
+					'list' => __( 'List', 'bearsthemes-addons' ),
+				],
+				'label_block' => true,
+				'default' => 'grid',
+				'condition' => [
+					'ica_source_2' => ['ins-faqs', 'page'],
+				],
+			]
+		);
+
+		$this->add_control(
+			'posts_per_page_2',
+			[
+				'label' => __( 'Posts Per Page', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 6,
+			]
+		);
+
+		$this->add_control(
+			'orderby_2',
+			[
+				'label' => __( 'Order By', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'post_date',
+				'options' => [
+					'post_date' => __( 'Date', 'bearsthemes-addons' ),
+					'post_title' => __( 'Title', 'bearsthemes-addons' ),
+					'menu_order' => __( 'Custom', 'bearsthemes-addons' ),
+					'rand' => __( 'Random', 'bearsthemes-addons' ),
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_2',
+			[
+				'label' => __( 'Order', 'bearsthemes-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'desc',
+				'options' => [
+					'asc' => __( 'ASC', 'bearsthemes-addons' ),
+					'desc' => __( 'DESC', 'bearsthemes-addons' ),
+				],
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
 	protected function register_style_form_section_controls(){
 		$this->start_controls_section(
 				'style_title_section',[
@@ -353,6 +449,7 @@ class Content_Filter extends Widget_Base {
   protected function _register_controls() {
 		$this->register_layout_section_controls();
 		$this->register_query_filter_section_controls();
+		$this->register_query_filter_2_section_controls();
 		$this->register_style_form_section_controls();
 	}
 
@@ -395,6 +492,12 @@ class Content_Filter extends Widget_Base {
 			cats_faq="'.($settings['cat_faq'] ? implode(',',$settings['cat_faq']) : '').'"
 			ex_cats_faq="'.($settings['ex_cat_faq'] ? implode(',',$settings['ex_cat_faq']) : '').'"
 			template="'.($settings['ica_template_faq'] ? $settings['ica_template_faq'] : '').'"
+			showfilter2="'.$settings['show_filter_2'].'"
+			post_type2="'.$settings['ica_source_2'].'"
+			numberposts2="'.$settings['posts_per_page_2'].'"
+			orderby2="'.$settings['orderby_2'].'"
+			order2="'.$settings['order_2'].'"
+			template2="'.($settings['ica_template_faq_2'] ? $settings['ica_template_faq_2'] : '').'"
 		]');
 	}
 

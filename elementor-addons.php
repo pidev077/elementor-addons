@@ -92,7 +92,13 @@ final class Elementor_Addons {
 				'topics' => '',
 				'cats_faq' => '',
 				'ex_cats_faq' => '',
-				'template' => ''
+				'template' => '',
+				'post_type2' => '',
+				'showfilter2' => '',
+				'numberposts2' => '',
+				'orderby2' => '',
+				'order2' => '',
+				'template2' => '',
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
@@ -115,32 +121,26 @@ final class Elementor_Addons {
 		$filters = $_POST['filters'];
 		$paged = $_POST['paged'];
 		$pagination = $_POST['pagination'];
-		$orderby = $_POST['orderby'];
-		$order = $_POST['order'];
 		$option = $_POST['option'];
-		$post_type = $_POST['post_type'];
-		$template  = $_POST['template'];
 		$sortby		 = $_POST['sortby'];
 		$cats_faq  = $_POST['cats_faq'];
 		$ex_cats_faq  = $_POST['ex_cats_faq'];
+		$showfilter2 = $_POST['showfilter2'];
+		$numberposts = $_POST['numberposts2'] ? $_POST['numberposts2'] : $_POST['numberposts'];
+		$orderby = $_POST['orderby2'] ? $_POST['orderby2'] : $_POST['orderby'];
+		$order =  $_POST['order2'] ?  $_POST['order2'] : $_POST['order'];
+		$post_type = $_POST['post_type2'] ? $_POST['post_type2'] : $_POST['post_type'];
+		$template  =   $_POST['template2'] ?  $_POST['template2'] : $_POST['template'];
 
 		$args = array(
 			'post_type' => $post_type,
 			'post_status' => 'publish',
-			'posts_per_page' => $_POST['numberposts'],
+			'posts_per_page' => $numberposts,
 			'orderby' 	 => $orderby,
 			'order' 		 => $order,
 			'paged' 		 => $paged,
 			 's' =>        $key,
 		);
-
-		if(trim($key) != '' && $post_type == 'resources'){
-			$args['meta_query'][] = array(
-					'key' => 'content_file',
-					'value' =>	$key,
-					'compare' => 'LIKE'
-			);
-		}
 
 		if(!empty($filters)){
 			$args['tax_query']['relation'] = 'AND';
@@ -176,15 +176,14 @@ final class Elementor_Addons {
 			);
 		}
 
-		// The Query
 		ob_start();
-
 		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
 		$the_query = new WP_Query($args);
 		$_GLOBAL['wp_query'] = $the_query;
 
+
 		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
-		$totalpost = (($_POST['numberposts']*($paged-1)) + $the_query->post_count);
+		$totalpost = (($numberposts*($paged-1)) + $the_query->post_count);
 
 		//Top content filter
 		if($paged < 2){
@@ -225,24 +224,29 @@ final class Elementor_Addons {
 				</div>
 				<?php
 			endif;
+
 		}
 
 		// The Loop
 		if ( $the_query->have_posts() ) {
 				$countpost = $the_query->found_posts;
 				$item = 0;
+
 				if($paged < 2){ ?> <div class="list-grids template-<?php echo $post_type.($template ? '-'.$template:''); ?>"> <?php }
 					while ( $the_query->have_posts() ) {
-							$the_query->the_post();
-							include(ELEMENT_ADDON_TEMPLATE.'content-filter/item-'.$post_type.($template ? '-'.$template:'').'.php');
+						$the_query->the_post();
+						include(ELEMENT_ADDON_TEMPLATE.'content-filter/item-'.$post_type.($template ? '-'.$template:'').'.php');
 					}
 				if($paged < 2){ ?></div> <?php }
 		} else {
-			$countpost = 0;
-			?> <div class="not-found">
-				<i class="fa fa-frown-o" aria-hidden="true"></i>
-				<div><?php echo __("Not found result!"); ?></div>
-			</div> <?php
+			if ($showfilter2 !='yes') {
+				$countpost = 0;
+				?> <div class="not-found">
+					<i class="fa fa-frown-o" aria-hidden="true"></i>
+					<div><?php echo __("Not found result!"); ?></div>
+				</div> <?php
+			}
+
 		}
 
 		if($pagination && $the_query->max_num_pages > $paged && $paged < 2){

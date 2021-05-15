@@ -484,21 +484,21 @@
   font-size: 14px;
   display: none;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 {
   margin-top: 36px;
 }
 @media only screen and (max-width: 767px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 {
     margin-top: 0px;
   }
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results.data-loaded {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results.data-loaded, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2.data-loaded {
     margin-top: 30px;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids {
   width: 100% !important;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter {
   width: calc(100% / 3 - (42px / 3));
   border-radius: 8px;
   box-shadow: 0 0 0 1px rgba(150, 150, 150, 0.21);
@@ -507,22 +507,22 @@
   float: left;
 }
 @media only screen and (max-width: 1023px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter {
     width: calc(100% / 2 - (42px / 2));
   }
 }
 @media only screen and (max-width: 640px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter {
     width: 100%;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__meta {
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--type {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--type, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__meta--type {
   font-size: 17px;
   font-weight: bold;
   font-stretch: normal;
@@ -531,14 +531,14 @@
   letter-spacing: -0.5px;
   color: #2f2f39;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--color {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--color, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__meta--color {
   display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   margin-right: 5px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--date {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__meta--date, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__meta--date {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -549,20 +549,20 @@
   color: #2f2f39;
   opacity: 0.7;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__featured-img img {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__featured-img img, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__featured-img img {
   height: 206px;
   object-fit: cover;
   object-position: center;
   width: 100%;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info {
   padding: 26px 16px 17px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__text-highligh {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__text-highligh, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__text-highligh {
   overflow: hidden;
   font-weight: 700;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__title {
   font-size: 22px;
   font-weight: 600;
   font-stretch: normal;
@@ -574,17 +574,17 @@
   text-transform: capitalize;
 }
 @media only screen and (max-width: 767px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__title {
     font-size: 20px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__title {
     font-size: 18px;
     margin-bottom: 15px;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__content {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -593,10 +593,10 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content p {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .__content p, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .__content p {
   margin-bottom: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .btn-readmore {
   opacity: 0.7;
   font-size: 13px;
   font-weight: normal;
@@ -609,13 +609,13 @@
   margin-top: 28px;
   display: inline-block;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore:hover {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter .__info .btn-readmore:hover, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter .__info .btn-readmore:hover {
   text-decoration: none;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__meta {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__meta, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter.post-faq .__meta {
   padding: 22px 16px 8px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__meta--type {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__meta--type, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter.post-faq .__meta--type {
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -624,13 +624,13 @@
   letter-spacing: normal;
   color: #2f2f39;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter.post-faq .__info {
   padding: 0 16px 16px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info .btn-readmore {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids .item-content-filter.post-faq .__info .btn-readmore, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids .item-content-filter.post-faq .__info .btn-readmore {
   margin-top: 10px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter {
   width: 100%;
   border: none;
   box-shadow: none;
@@ -639,7 +639,7 @@
   border-radius: 0;
   margin-bottom: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__title {
   position: relative;
   display: flex;
   align-items: center;
@@ -655,25 +655,25 @@
   padding: 20px 0;
   cursor: pointer;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title .fa, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__title .fa {
   position: absolute;
   right: 0;
   transition: 0.3s all;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title .fa:before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title .fa:before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__title .fa:before {
   font-size: 30px;
 }
 @media (max-width: 767.98px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__title {
     font-size: 18px;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info {
   padding: 0;
   padding-bottom: 20px;
   display: none;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -682,71 +682,71 @@
   letter-spacing: -0.1px;
   color: #2f2f39;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content h3 {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content h3, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content h3 {
   margin: 15px 0 12px 0;
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content p {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content p, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content p {
   margin-bottom: 10px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li {
   position: relative;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li::marker {
   font-weight: bold;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li span {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li span, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol li span {
   display: inline-block;
   width: 100%;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol {
   list-style-type: lower-latin;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li::marker {
   color: #42866f;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol {
   list-style-type: lower-roman;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content ol > ol > li > ol li::marker {
   color: #2e6dff;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol {
   list-style-type: decimal;
   padding-left: 30px !important;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li::marker {
   font-weight: bold;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol {
   list-style-type: lower-latin;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li::marker {
   color: #42866f;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol {
   list-style-type: lower-roman;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol li::marker {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol li::marker, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter .__info .__content > ol > li > ol > li > ol li::marker {
   color: #2e6dff;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter.__is-actived .__info {
   display: block;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-showed .__title .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-ins-faqs-list .item-content-filter.__is-showed .__title .fa, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-ins-faqs-list .item-content-filter.__is-showed .__title .fa {
   transform: rotate(180deg);
   transform-origin: center;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list {
   height: auto;
   overflow: hidden;
   max-width: 85%;
@@ -755,28 +755,28 @@
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 767px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list {
     max-width: 90%;
   }
 }
 @media only screen and (max-width: 540px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list {
     max-width: 100%;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter {
   width: 100%;
   border-radius: 0;
   box-shadow: none;
   margin: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__info {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__info, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter .__info {
   padding: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__title {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__title, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter .__title {
   margin: 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__link {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__link, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter .__link {
   margin: 4px 0;
   font-family: "Inter", sans-serif;
   letter-spacing: -0.1px;
@@ -787,14 +787,14 @@
   font-weight: 500;
   opacity: 0.8;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__content {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter .__content, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter .__content {
   color: #4a4a4a;
   letter-spacing: -0.1px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter:not(:last-child) {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .list-grids.template-page-list .item-content-filter:not(:last-child), .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .list-grids.template-page-list .item-content-filter:not(:last-child) {
   margin-bottom: 26px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .not-found {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .not-found, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .not-found {
   width: 100%;
   text-align: center;
   font-size: 18px;
@@ -802,17 +802,17 @@
   background: #fff;
   padding: 20px 10px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .not-found .fa:before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .not-found .fa:before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .not-found .fa:before {
   font-size: 40px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: solid 3px #4a4a4a;
   margin-bottom: 43px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .info-numberposts {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .info-numberposts, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .info-numberposts {
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -821,10 +821,10 @@
   letter-spacing: -0.1px;
   color: #4a4a4a;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby {
   position: relative;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby span {
   font-size: 22px;
   font-weight: bold;
   font-stretch: normal;
@@ -838,22 +838,22 @@
   cursor: pointer;
 }
 @media only screen and (max-width: 767px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby span {
     font-size: 18px;
   }
 }
 @media only screen and (max-width: 540px) {
-  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span {
+  .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby span {
     font-size: 15px;
   }
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby span .fa {
   margin-left: 25px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby span .fa::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby span .fa::before {
   font-size: 30px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby {
   display: none;
   position: absolute;
   padding: 18px;
@@ -865,7 +865,7 @@
   box-shadow: 0 2px 4px 0 rgba(26, 26, 26, 0.1), 0 0 0 1px rgba(26, 26, 26, 0.1);
   background-color: #d8d8d8;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby::before {
   content: "";
   position: absolute;
   right: 40px;
@@ -875,7 +875,7 @@
   border-left: 12px solid transparent;
   border-bottom: 12px solid #d8d8d8;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby .item-sortby {
   display: flex;
   align-items: center;
   font-size: 17px;
@@ -889,13 +889,13 @@
   cursor: pointer;
   position: relative;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby .item-sortby .fa {
   margin-left: 10px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby .fa::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby .item-sortby .fa::before {
   font-size: 16px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby.__is-actived::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby.__is-actived::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby .item-sortby.__is-actived::before {
   content: "";
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -906,13 +906,13 @@
   left: 0;
   position: absolute;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby[data-order=asc] .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .sort-by-content .btn-sortby .content-sortby .item-sortby[data-order=asc] .fa::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .sort-by-content .btn-sortby .content-sortby .item-sortby[data-order=asc] .fa::before {
   content: "";
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .filter-selected {
   margin-top: 40px;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected label {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected label, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .filter-selected label {
   font-size: 17px;
   font-weight: bold;
   font-stretch: normal;
@@ -923,7 +923,7 @@
   margin-bottom: 20px;
   display: inline-block;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .filter-selected .list-selected .item-filter {
   border-radius: 21.5px;
   background-color: #2a8164;
   padding: 12px 20px;
@@ -937,10 +937,10 @@
   color: #ffffff;
   margin: 0 20px 20px 0;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter .fa {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter .fa, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .filter-selected .list-selected .item-filter .fa {
   cursor: pointer;
 }
-.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter .fa::before {
+.elementor-widget-ica-content-filter .ica-content-filter .content-filter-results .filter-selected .list-selected .item-filter .fa::before, .elementor-widget-ica-content-filter .ica-content-filter .content-filter-results2 .filter-selected .list-selected .item-filter .fa::before {
   width: 17px;
   height: 17px;
   border-radius: 50%;

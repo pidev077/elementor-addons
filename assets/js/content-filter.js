@@ -8,6 +8,7 @@
 		var optionFilter   = $scope.find('.__filter-options');
 		var selectFilter   = $scope.find('.select-filter');
 		var resultFilter   = $scope.find('.content-filter-results');
+		var resultFilter2   = $scope.find('.content-filter-results2');
 		var inputSearch    = $scope.find('input[name="key"]');
 		var btnSearch  	   = $scope.find('button[type="submit"]');
 		var logError       = $scope.find('.log-error');
@@ -356,6 +357,7 @@
 			$scope.addClass('__is-loading');
 			var filters = [];
 			var post_type = $scope.find('.ica-content-filter').data('post');
+
 			var numberposts = $scope.find('.ica-content-filter').data('numberposts');
 			var orderby = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('orderby') : $scope.find('.ica-content-filter').data('orderby');
 			var order = ($option == 'sortby') ? $scope.find('.content-sortby .__is-actived').data('order') :  $scope.find('.ica-content-filter').data('order');
@@ -364,6 +366,16 @@
 			var sortby = $scope.find('.ica-content-filter').data('sortby');
 			var cats_faq = $scope.find('.ica-content-filter').data('cat_faq');
 			var ex_cats_faq = $scope.find('.ica-content-filter').data('ex_cat_faq');
+			var showfilter2 = $scope.find('.ica-content-filter').data('files2');
+			if (showfilter2 == 'yes') {
+
+				var post_type2 = $scope.find('.ica-content-filter').data('post2');
+				var numberposts2= $scope.find('.ica-content-filter').data('numberposts2');
+				var template2 = $scope.find('.ica-content-filter').data('template2');
+				var orderby2 = $scope.find('.ica-content-filter').data('orderby2 ');
+				var order2 = $scope.find('.ica-content-filter').data('order2');
+
+			}
 
 			listFilters.each(function(index,e){
 				var filter = $(e).data('filter');
@@ -382,6 +394,7 @@
 					if(start_date || end_date) filters.push({name : 'post_date' , value : start_date+","+end_date});
 				}
 			});
+		
 			jQuery.ajax({
 				type: 'POST',
 				url: ajaxObject.ajaxUrl,
@@ -446,6 +459,72 @@
 				$scope.removeClass('__is-loading');
 				}
 			});
+
+			if (showfilter2 == 'yes'){
+
+				jQuery.ajax({
+					type: 'POST',
+					url: ajaxObject.ajaxUrl,
+					data:{
+						'action'				:'load_filter_data',
+						'key' 					: $key,
+						'filters' 			: filters,
+						'pagination'    : pagination,
+						'sortby'				: sortby,
+						'paged'         : paged,
+						'option'				: $option,
+						'numberposts2' : numberposts2,
+						'orderby2' : orderby2,
+						'template2' : template2,
+						'post_type2' 	: post_type2,
+						'order2' : order2,
+						'showfilter2': showfilter2,
+					},
+					dataType: 'JSON',
+					success:function(response){
+						if($option == 'loadmore'){
+							paged += 1;
+							$scope.find('.list-grids').append(response.html);
+							$scope.find('.totalpost').text(response.totalpost);
+						}else{
+							paged = 2;
+							resultFilter2.html(response.html);
+						}
+						if(!resultFilter2.hasClass('data-loaded')) resultFilter2.addClass('data-loaded');
+						if(template != 'list'){
+							resultFilter2.find('.list-grids').masonry('destroy'); // destroy
+							resultFilter2.find('.list-grids').masonry( masonryOptions ); // re-initialize
+
+						}
+						if(!response.countpost){
+							resultFilter2.css('height','auto');
+
+						}
+
+						//Pagination
+						if(!response.pagination){
+							$scope.find('.content-filter-pagination').remove();
+						}
+
+						//Button Clear All
+						if(filters.length > 0){
+							btnClearAll.css('visibility','visible');
+						}else{
+							btnClearAll.css('visibility','hidden');
+						}
+
+						//remove loading
+						$scope.removeClass('__is-loading');
+
+					},
+					error: function(errorThrown){
+					console.log(errorThrown);
+					$scope.removeClass('__is-loading');
+					}
+				});
+
+
+			}
 		}
 
 
