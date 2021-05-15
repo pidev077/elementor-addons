@@ -142,6 +142,15 @@ final class Elementor_Addons {
 			 's' =>        $key,
 		);
 
+		if(trim($key) != '' && $post_type == 'resources'){
+			$args['meta_query'][] = array(
+					'key' => 'content_file',
+					'value' =>	$key,
+					'compare' => 'LIKE'
+			);
+			$args['_search_key'] = $key;
+		}
+
 		if(!empty($filters)){
 			$args['tax_query']['relation'] = 'AND';
 
@@ -294,6 +303,15 @@ final class Elementor_Addons {
 
 	public function ica_title_filter( $where, &$wp_query ){
 	    global $wpdb;
+
+			if ( $_search_key = $wp_query->get( '_search_key' ) ) {
+				$where = preg_replace(
+            	"/\)\)\)\s*AND \(\s*\(\s*".$wpdb->postmeta.".meta_key/",
+	            ") OR ".$wpdb->postmeta.".meta_key",
+							$where
+				);
+			}
+
 			if ( $search_date = $wp_query->get( 'search_date' ) ) {
 				  $date = explode(',',$search_date);
 					if($date[0] && !$date[1])
@@ -303,17 +321,6 @@ final class Elementor_Addons {
 					if($date[0] && $date[1])
 							$where .= " AND post_date >= '".$date[0]."-01-01'  AND post_date <= '".$date[1]."-12-31'";
 	    }
-
-		if ( $meta_query = $wp_query->get( 'meta_query' ) ) {
-
-			// $where = preg_replace(
-			// "/\)\)\)\s*AND \(\s*\(\s*".$wpdb->postmeta.".meta_key/",
-			// "))) OR (( ".$wpdb->postmeta.".meta_key",
-			// $where
-			// );
-		}
-
-
 	    return $where;
 	}
 
@@ -363,6 +370,8 @@ final class Elementor_Addons {
 			return;
 		}
 
+		// Add Plugin actions
+		add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
 	}
@@ -436,6 +445,15 @@ final class Elementor_Addons {
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+	}
+
+	public function init_controls() {
+
+		// Include Widget files
+		require_once( __DIR__ . '/controls/fileselect-control.php' );
+
+		// Register controls
+		\Elementor\Plugin::$instance->controls_manager->register_control( 'file-select', new \FileSelect_Control() );
 	}
 }
 
