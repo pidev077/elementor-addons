@@ -256,7 +256,7 @@ final class Elementor_Addons {
 		}
 
 		if($pagination && $the_query->max_num_pages > $paged && $paged < 2){
-			?><div class="content-filter-pagination"><button type="button" name="button-showmore">Show more</button></div><?php
+			?><div class="content-filter-pagination"><button type="button" name="button-showmore" data-type_filter="<?php echo $type_filter; ?>">Show more</button></div><?php
 		}
 
 		//Top content filter

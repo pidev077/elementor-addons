@@ -255,7 +255,8 @@
 		}
 
 		function loadMoreContent(){
-			loadFilterData(inputSearch.val(),'loadmore');
+			var type_filter = $(this).data('type_filter');
+			loadFilterData(inputSearch.val(),'loadmore',type_filter);
 		}
 
 		function clearAllFilters(){
@@ -313,7 +314,7 @@
 				$scope.find('.ica-content-filter').data('order',neworder);
 				$scope.find('.ica-content-filter').data('orderby',orderby);
 			}
-			//loadFilterData(inputSearch.val(),'sortby',type_filter);
+			loadFilterData(inputSearch.val(),'sortby',type_filter);
 		}
 
 		function validationForm(){
@@ -364,7 +365,7 @@
 		var showcontent = $scope.find('.ica-content-filter').data('showcontent');
 		if(showcontent) loadFilterData(inputSearch.val(),'default');
 
-		function loadFilterData($key,$option,$filter = 'all'){
+		function loadFilterData($key,$option,$type_filter = 'all'){
 
 			if($option !== 'loadmore') paged = 1;
 			$scope.addClass('__is-loading');
@@ -380,7 +381,7 @@
 			var ex_cats_faq = $scope.find('.ica-content-filter').data('ex_cat_faq');
 			var post_type2 = $scope.find('.ica-content-filter').data('post2');
 			var numberposts2= $scope.find('.ica-content-filter').data('numberposts2');
-			var orderby2 = $scope.find('.ica-content-filter').data('orderby2 ');
+			var orderby2 = $scope.find('.ica-content-filter').data('orderby2');
 			var order2 = $scope.find('.ica-content-filter').data('order2');
 			listFilters.each(function(index,e){
 				var filter = $(e).data('filter');
@@ -400,7 +401,7 @@
 				}
 			});
 
-			if($filter == 'all' || $filter == '1'){
+			if($type_filter == 'all' || $type_filter == '1'){
 				jQuery.ajax({
 					type: 'POST',
 					url: ajaxObject.ajaxUrl,
@@ -425,8 +426,8 @@
 					success:function(response){
 						if($option == 'loadmore'){
 							paged += 1;
-							$scope.find('.list-grids').append(response.html);
-							$scope.find('.totalpost').text(response.totalpost);
+							$scope.find('.content-filter-results .list-grids').append(response.html);
+							$scope.find('.content-filter-results .totalpost').text(response.totalpost);
 						}else{
 							paged = 2;
 							resultFilter.html(response.html);
@@ -442,7 +443,7 @@
 
 						//Pagination
 						if(!response.pagination){
-							$scope.find('.content-filter-pagination').remove();
+							$scope.find('.content-filter-results .content-filter-pagination').remove();
 						}
 
 						//Button Clear All
@@ -455,10 +456,12 @@
 						//remove loading
 						$scope.removeClass('__is-loading');
 
-						setTimeout( () => {
-						urlScrollFAQ();
-						}, 500);
-
+						//Scroll FAQs
+						if(post_type == 'ins-faqs'){
+							setTimeout( () => {
+							urlScrollFAQ();
+							}, 500);
+						}
 
 					},
 					error: function(errorThrown){
@@ -467,7 +470,7 @@
 					}
 				});
 			}
-			if (showfilter2 == 'yes' && ($filter == 'all' || $filter == '2')){
+			if (showfilter2 == 'yes' && ($type_filter == 'all' || $type_filter == '2')){
 				if($option !== 'loadmore') paged2 = 1;
 				$scope.addClass('__is-loading');
 				jQuery.ajax({

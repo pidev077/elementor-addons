@@ -50,9 +50,9 @@ class Plugin {
 	 * @access public
 	 */
 	public function widget_styles() {
-		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
-		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) );
-		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', __FILE__ ) );
+		wp_register_style( 'elementor-addons', plugins_url( '/assets/css/frontend.css', __FILE__ ) , array() ,ELEMENT_ADDON_VER );
+		wp_register_style( 'elementor-addons-custom-frontend', plugins_url( '/assets/css/custom-frontend.css', __FILE__ ) , array() , ELEMENT_ADDON_VER);
+		wp_register_style( 'elementor-addons-content-filter', plugins_url( '/assets/widgets/content-filter.css', __FILE__ ) , array() , ELEMENT_ADDON_VER );
 	}
 
 
@@ -65,11 +65,11 @@ class Plugin {
 	 * @access public
 	 */
 	public function widget_scripts() {
-		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'elementor-addons-bloodhound', plugins_url( '/assets/js/typeahead/typeahead.bundle.min.js', __FILE__ ), [ 'jquery' ], false, true );
-		wp_register_script( 'elementor-addons-masonry', plugins_url( '/assets/js/masonry.pkgd.min.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'elementor-addons', plugins_url( '/assets/js/frontend.js', __FILE__ ), [ 'jquery' ], ELEMENT_ADDON_VER, true );
+		wp_register_script( 'elementor-addons-content-filter', plugins_url( '/assets/js/content-filter.js', __FILE__ ), [ 'jquery' ], ELEMENT_ADDON_VER, true );
+		wp_register_script( 'elementor-addons-custom-frontend', plugins_url( '/assets/js/custom-frontend.js', __FILE__ ), [ 'jquery' ], ELEMENT_ADDON_VER, true );
+		wp_register_script( 'elementor-addons-bloodhound', plugins_url( '/assets/js/typeahead/typeahead.bundle.min.js', __FILE__ ), [ 'jquery' ], ELEMENT_ADDON_VER, true );
+		wp_register_script( 'elementor-addons-masonry', plugins_url( '/assets/js/masonry.pkgd.min.js', __FILE__ ), [ 'jquery' ], ELEMENT_ADDON_VER, true );
 	}
 
 	/**
