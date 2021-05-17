@@ -142,6 +142,14 @@ final class Elementor_Addons {
 			 's' =>        $key,
 		);
 
+		if($post_type == 'page'){
+			$args['meta_query'][] = array(
+					'key' => 'is_not_search_page',
+					'value' =>	'1',
+					'compare' => '!='
+			);
+		}
+
 		if(trim($key) != '' && $post_type == 'resources'){
 			$args['meta_query'][] = array(
 					'key' => 'content_file',
@@ -456,3 +464,23 @@ final class Elementor_Addons {
 
 // Instantiate Elementor_Addons.
 new Elementor_Addons();
+
+add_action('init','update_field_resources');
+function update_field_resources(){
+	if(isset($_GET['update-field'])){
+		$args = array(
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'posts_per_page' => -1
+		);
+		$the_query =new WP_Query($args);
+		if ( $the_query->have_posts() ) {
+				while ( $the_query->have_posts() ) {
+						$the_query->the_post();
+						$page_id = get_the_ID();
+						$is_not_search_page = get_field('is_not_search_page',$page_id);
+						if(!$is_not_search_page) update_field('is_not_search_page',0,$page_id);
+			  }
+		}
+	}
+}
