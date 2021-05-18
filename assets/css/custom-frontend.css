@@ -1107,7 +1107,7 @@
 }
 @media only screen and (max-width: 767px) {
   .card-lrg-elements .card-lrg-content > div.meta-card-lrg{
-      width: 79%;
+      width: 79% !important;
   }
   .card-lrg-elements .card-lrg-content > div.thumbnail-card-lrg{
       width: 21%;
