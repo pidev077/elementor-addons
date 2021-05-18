@@ -557,8 +557,8 @@ class Heading_Media_BodyCopy extends Widget_Base {
                     <?php endif; ?>
                 <?php endif; ?>
                 <?php
-      						if( '' !== $settings['show_sub_heading'] ) {
-      							echo '<h4 class="bt-sub-heading"">' . $settings['sub_heading_media_bodycopy'] . '</h4>';
+      						if( '' !== $settings['show_sub_heading'] && trim($settings['sub_heading_media_bodycopy']) != '' ) {
+      							echo '<h4 class="bt-sub-heading">' . $settings['sub_heading_media_bodycopy'] . '</h4>';
       						}
       					?>
                 <?php if ($content): ?>
