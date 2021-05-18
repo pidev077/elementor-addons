@@ -76,6 +76,28 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'description' => __( 'Select post to be included', 'bearsthemes-addons' )
                 ]
             );
+            $litsItems->add_control(
+                'apply_search',
+                [
+                    'label' => __( 'Apply search this team?', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::SWITCHER,
+                    'label_off' => __( 'Yes', 'bearsthemes-addons' ),
+            				'label_on' => __( 'No', 'bearsthemes-addons' ),
+            				'return_value' => '1',
+            				'default' => '0',
+                ]
+            );
+            $litsItems->add_control(
+                'add_shortcode',
+                [
+                    'label' => __( 'Add shortcode Elementor:', 'plugin-domain' ),
+                    'type' => \Elementor\Controls_Manager::TEXT,
+                    'label_block' => true,
+                    'condition' => [
+            					'apply_search' => '1',
+            				]
+                ]
+            );
             $this->add_control(
                 'list_tabs_items',
                 [
@@ -920,9 +942,10 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                 <?php foreach ($items as $key => $item): ?>
                                     <?php $activeContent = ($key == 0) ? "active" : " " ;?>
                                     <?php $ids = $item['post_ids_tabs'] ?>
+                                    <?php $apply_search = $item['apply_search'] ?>
                                     <?php if ($ids): ?>
                                         <div class="items item-tabs-content bears-tab-<?php echo $key ?> <?php echo $activeContent; ?>">
-                                            <?php $this->get_team_template($ids, $order); ?>
+                                            <?php $this->get_team_template($ids, $orderm, $item); ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
@@ -935,22 +958,25 @@ class Accordion_Navigation_Tabs extends Widget_Base {
         <?php
     }
 
-    protected function get_team_template($id, $order) {
-        $loop = new \WP_Query( array(
-            'post_type' => 'team',
-            'post_status' => 'publish',
-            'post__in' => $id,
-            'orderby' => 'menu_order',
-            'order' =>  $order,
-            'posts_per_page'=>-1,
-        ) ); ?>
-        
-        <?php
-        while ( $loop->have_posts() ) : $loop->the_post();
-          include(ELEMENT_ADDON_TEMPLATE.'team/item-team.php');
-        endwhile;
-        wp_reset_postdata(); ?>
-    <?php
+    protected function get_team_template($id, $order, $item = array()) {
+        if($item['apply_search']){
+          echo do_shortcode($item['add_shortcode']);
+        }else{
+          $loop = new \WP_Query( array(
+              'post_type' => 'team',
+              'post_status' => 'publish',
+              'post__in' => $id,
+              'orderby' => 'menu_order',
+              'order' =>  $order,
+              'posts_per_page'=>-1,
+          ) ); ?>
+
+          <?php
+          while ( $loop->have_posts() ) : $loop->the_post();
+            include(ELEMENT_ADDON_TEMPLATE.'team/item-team.php');
+          endwhile;
+          wp_reset_postdata();
+        }
     }
 
     protected function _content_template() {

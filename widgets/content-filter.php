@@ -161,6 +161,7 @@ class Content_Filter extends Widget_Base {
 					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
 					'post' => __( 'Post', 'bearsthemes-addons' ),
 					'page' => __( 'Page', 'bearsthemes-addons' ),
+					'team' => __( 'Team', 'bearsthemes-addons' )
 				],
 				'label_block' => false,
 				'default' => 'resources',
@@ -180,7 +181,7 @@ class Content_Filter extends Widget_Base {
 				'label_block' => true,
 				'default' => 'grid',
 				'condition' => [
-					'ica_source' => ['ins-faqs', 'page'],
+					'ica_source' => ['ins-faqs', 'page','team'],
 				],
 			]
 		);
@@ -197,7 +198,10 @@ class Content_Filter extends Widget_Base {
 					'date' => __( 'Date', 'bearsthemes-addons' ),
 				],
 				'label_block' => true,
-				'default' => [ 'ins-type', 'ins-topic', 'date' ]
+				'default' => [ 'ins-type', 'ins-topic', 'date' ],
+				'condition' => [
+					'ica_source' => 'resources'
+				]
 			]
 		);
 
@@ -212,6 +216,18 @@ class Content_Filter extends Widget_Base {
 				'condition' => [
 					'ica_source' => 'resources',
 				],
+			]
+		);
+
+		$this->add_control(
+			'select_team',
+			[
+				'label'       => __( 'Select Team', 'bears-elementor-extension' ),
+				'type'        => \Elementor\Controls_Manager::SELECT2,
+				'multiple'    => true,
+				'options'     => $this->bears_show_post_team_for_select(),
+				'default'     => [],
+				'description' => __( 'Select post to be included', 'bearsthemes-addons' )
 			]
 		);
 
@@ -319,6 +335,7 @@ class Content_Filter extends Widget_Base {
 					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
 					'post' => __( 'Post', 'bearsthemes-addons' ),
 					'page' => __( 'Page', 'bearsthemes-addons' ),
+					'team' => __( 'Team', 'bearsthemes-addons' ),
 				],
 				'label_block' => false,
 				'default' => 'resources',
@@ -446,6 +463,30 @@ class Content_Filter extends Widget_Base {
 		return $supported_taxonomies;
 	}
 
+	// function query post type team
+	protected function bears_show_post_team_for_select(){
+			$supported_ids = [];
+
+			$wp_query = new \WP_Query( array(
+					'post_type' => 'team',
+					'post_status' => 'publish',
+					'posts_per_page' => -1,
+					'orderby' => 'menu_order',
+					'order' => 'DESC',
+			) );
+
+			if ( $wp_query->have_posts() ) {
+					while ( $wp_query->have_posts() ) {
+							$wp_query->the_post();
+							$supported_ids[get_the_ID()] = get_the_title();
+					}
+			}
+
+
+
+			return $supported_ids;
+	}
+
   protected function _register_controls() {
 		$this->register_layout_section_controls();
 		$this->register_query_filter_section_controls();
@@ -470,7 +511,7 @@ class Content_Filter extends Widget_Base {
   protected function render() {
 		$settings = $this->get_settings_for_display();
 		$placeholder = $settings['placeholder'];
-		$filters = implode(',',$settings['ica_filters']);
+		$filters = (!empty($settings['ica_filters'])) ? implode(',',$settings['ica_filters']) : '';
 		$ajax = $settings['ajax_toggle'];
 		$action = $settings['action_result'];
 		echo do_shortcode('[ica_content_filter

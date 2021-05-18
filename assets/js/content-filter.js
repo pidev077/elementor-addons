@@ -54,9 +54,11 @@
 				$auto.empty();
 				$('<option value="">Select end year</option>').appendTo($auto);
 				for (var i = 0; i < 20; i++) {
+					var year_end = i + value;
 					$('<option>', {
-						text: i + value
+						text: year_end
 					}).appendTo($auto);
+					if(year_end == ajaxObject.year_current) break;
 				}
 				var end_date = window.location.search.match(new RegExp('(?:[\?\&]end_date=)([^&]+)'));
 				if(end_date){

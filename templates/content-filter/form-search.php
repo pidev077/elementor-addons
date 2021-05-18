@@ -3,6 +3,7 @@ extract($atts);
 $suggestionsArr = explode(',',$suggestions);
 $suggestionTop = array();
 foreach ($suggestionsArr as $key => $val) {
+  if($val == '') continue;
   $suggestionTop[] = $val;
   if($key > 1) break;
 }
@@ -58,7 +59,6 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
   data-orderby2 ="<?php echo $orderby2 ?>"
   data-order2 ="<?php echo $order2 ?>"
   >
-
     <div class="wrrap-content-filter">
       <div class="form-content-filter">
          <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>

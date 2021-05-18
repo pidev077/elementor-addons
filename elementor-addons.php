@@ -102,8 +102,10 @@ final class Elementor_Addons {
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
+		$year_current = date( 'Y', current_time( 'timestamp', 1 ) ) ;
+
 		wp_localize_script( 'elementor-addons-content-filter', 'ajaxObject',
-            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
+            array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ), 'year_current' => $year_current ) );
 	  ob_start();
 		include(ELEMENT_ADDON_TEMPLATE.'content-filter/form-search.php');
 	  return ob_get_clean();
@@ -464,23 +466,3 @@ final class Elementor_Addons {
 
 // Instantiate Elementor_Addons.
 new Elementor_Addons();
-
-add_action('init','update_field_resources');
-function update_field_resources(){
-	if(isset($_GET['update-field'])){
-		$args = array(
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'posts_per_page' => -1
-		);
-		$the_query =new WP_Query($args);
-		if ( $the_query->have_posts() ) {
-				while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						$page_id = get_the_ID();
-						$is_not_search_page = get_field('is_not_search_page',$page_id);
-						if(!$is_not_search_page) update_field('is_not_search_page',0,$page_id);
-			  }
-		}
-	}
-}
