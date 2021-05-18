@@ -59,6 +59,13 @@
     letter-spacing: -0.5px;
     font-weight: 400;
 }
+
+@media (max-width:768px){
+  .hidden-subheading-mb .subhead-bodycopy-elements .content{
+    display: none;
+  }
+}
+
 .bt-elements-elementor.heading-media-bodycopy-elements .heading{
     font-size: 34px;
     line-height: 40px;

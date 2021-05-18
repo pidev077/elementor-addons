@@ -11,7 +11,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define('ELEMENT_ADDON_VER', '1.2.3' );
+define('ELEMENT_ADDON_VER', '1.2.4' );
 define('ELEMENT_ADDON_PATH', plugin_dir_path( __FILE__ ) );
 define('ELEMENT_ADDON_TEMPLATE', ELEMENT_ADDON_PATH.'templates/' );
 
