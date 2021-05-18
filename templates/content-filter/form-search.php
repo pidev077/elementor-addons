@@ -1,5 +1,8 @@
 <?php
+
+//Extract Shortcode
 extract($atts);
+
 $suggestionsArr = explode(',',$suggestions);
 $suggestionTop = array();
 foreach ($suggestionsArr as $key => $val) {
@@ -58,7 +61,7 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
   data-template2 ="<?php echo $template2 ?>"
   data-orderby2 ="<?php echo $orderby2 ?>"
   data-order2 ="<?php echo $order2 ?>"
-  >
+  data-select_team ="<?php echo $select_team; ?>">
     <div class="wrrap-content-filter">
       <div class="form-content-filter">
          <input type="text" class="typeahead" name="key" value="<?php echo isset($_GET['key']) ? $_GET['key'] : ''; ?>" placeholder="<?php echo $atts['placeholder']; ?>" autocomplete="off" required>
@@ -126,7 +129,6 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
                   <?php $is_date_filter = ($filter == 'date') ? true : false; ?>
                   <?php endforeach; ?>
                   <?php if($is_date_filter){
-                    $breakYears = 30;
                     $years = date('Y',current_time( 'timestamp', 1 ));
                     ?>
                     <div class="ica-item-filter select-date-range" data-filter="date">
@@ -136,18 +138,18 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
                           <div class="select-date-start">
                             <select name="date-range-start">
                               <option value=""><?php echo __('Select start year','bearsthemes-addons') ?></option>
-                              <?php for ($i=0; $i < $breakYears; $i++) {
-                                $selected = ($years - $i == $start_date) ? 'selected="selected"' : '';
-                                ?><option value="<?php echo $years - $i ?>" <?php echo $selected; ?>><?php echo $years - $i ?></option><?php
+                              <?php for ($i=2010; $i <= $years; $i++) {
+                                $selected = ($i == $start_date) ? 'selected="selected"' : '';
+                                ?><option value="<?php echo $i ?>" <?php echo $selected; ?>><?php echo $i ?></option><?php
                               } ?>
                             </select>
                           </div>
                           <div class="select-date-end">
                             <select name="date-range-end">
                               <option value=""><?php echo __('Select end year','bearsthemes-addons') ?></option>
-                              <?php for ($i=0; $i < $breakYears; $i++) {
-                                $selected = ($years - $i == $end_date) ? 'selected="selected"' : '';
-                                ?><option value="<?php echo $years - $i ?>" <?php echo $selected; ?>><?php echo $years - $i ?></option><?php
+                              <?php for ($i=2010; $i <= $years; $i++) {
+                                $selected = ($i == $end_date) ? 'selected="selected"' : '';
+                                ?><option value="<?php echo $i ?>" <?php echo $selected; ?>><?php echo $i ?></option><?php
                               } ?>
                             </select>
                           </div>

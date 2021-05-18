@@ -26,7 +26,7 @@ class Content_Filter extends Widget_Base {
 	}
 
   public function get_script_depends() {
-		return [ 'elementor-addons-content-filter', 'elementor-addons-bloodhound' , 'elementor-addons-masonry' ];
+		return ['elementor-addons-custom-frontend', 'elementor-addons-content-filter', 'elementor-addons-bloodhound' , 'elementor-addons-masonry' ];
 	}
 
   public function get_style_depends() {
@@ -227,7 +227,10 @@ class Content_Filter extends Widget_Base {
 				'multiple'    => true,
 				'options'     => $this->bears_show_post_team_for_select(),
 				'default'     => [],
-				'description' => __( 'Select post to be included', 'bearsthemes-addons' )
+				'description' => __( 'Select post to be included', 'bearsthemes-addons' ),
+				'condition' => [
+					'ica_source' => 'team',
+				],
 			]
 		);
 
@@ -334,8 +337,7 @@ class Content_Filter extends Widget_Base {
 					'resources'  => __( 'Resources', 'bearsthemes-addons' ),
 					'ins-faqs' => __( 'FAQs', 'bearsthemes-addons' ),
 					'post' => __( 'Post', 'bearsthemes-addons' ),
-					'page' => __( 'Page', 'bearsthemes-addons' ),
-					'team' => __( 'Team', 'bearsthemes-addons' ),
+					'page' => __( 'Page', 'bearsthemes-addons' )
 				],
 				'label_block' => false,
 				'default' => 'resources',
@@ -539,6 +541,7 @@ class Content_Filter extends Widget_Base {
 			orderby2="'.$settings['orderby_2'].'"
 			order2="'.$settings['order_2'].'"
 			template2="'.($settings['ica_template_faq_2'] ? $settings['ica_template_faq_2'] : '').'"
+			select_team = "'.($settings['select_team'] ? implode(',',$settings['select_team']) : '').'"
 		]');
 	}
 

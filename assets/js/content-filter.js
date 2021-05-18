@@ -381,6 +381,7 @@
 			var sortby = $scope.find('.ica-content-filter').data('sortby');
 			var cats_faq = $scope.find('.ica-content-filter').data('cat_faq');
 			var ex_cats_faq = $scope.find('.ica-content-filter').data('ex_cat_faq');
+			var select_team = $scope.find('.ica-content-filter').data('select_team');
 			var post_type2 = $scope.find('.ica-content-filter').data('post2');
 			var numberposts2= $scope.find('.ica-content-filter').data('numberposts2');
 			var orderby2 = $scope.find('.ica-content-filter').data('orderby2');
@@ -422,7 +423,8 @@
 						'cats_faq'      : cats_faq,
 						'ex_cats_faq'   : ex_cats_faq,
 						'template'			: template,
-						'type_filter' 	: '1'
+						'type_filter' 	: '1',
+						'select_team'		: select_team
 					},
 					dataType: 'JSON',
 					success:function(response){

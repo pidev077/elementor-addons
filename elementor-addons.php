@@ -11,7 +11,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define('ELEMENT_ADDON_VER', '1.2.2' );
+define('ELEMENT_ADDON_VER', '1.2.3' );
 define('ELEMENT_ADDON_PATH', plugin_dir_path( __FILE__ ) );
 define('ELEMENT_ADDON_TEMPLATE', ELEMENT_ADDON_PATH.'templates/' );
 
@@ -99,6 +99,7 @@ final class Elementor_Addons {
 				'orderby2' => '',
 				'order2' => '',
 				'template2' => '',
+				'select_team' => ''
 	  ), $atts, 'ica_content_filter' );
 
 		// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
@@ -133,17 +134,19 @@ final class Elementor_Addons {
 		$order =  $_POST['order'];
 		$post_type = $_POST['post_type'];
 		$template  =   $_POST['template'];
+		$select_team  =   $_POST['select_team'];
 
 		$args = array(
-			'post_type' => $post_type,
-			'post_status' => 'publish',
+			'post_type' 		 => $post_type,
+			'post_status' 	 => 'publish',
 			'posts_per_page' => $numberposts,
-			'orderby' 	 => $orderby,
-			'order' 		 => $order,
-			'paged' 		 => $paged,
-			 's' =>        $key,
+			'orderby' 	 		 => $orderby,
+			'order' 		 		 => $order,
+			'paged' 		 		 => $paged,
+			 's' 						 => $key
 		);
 
+		//Page
 		if($post_type == 'page'){
 			$args['meta_query'][] = array(
 					'key' => 'is_not_search_page',
@@ -152,6 +155,12 @@ final class Elementor_Addons {
 			);
 		}
 
+		//Team
+		if($post_type == 'team' && $select_team != ''){
+			$args['p'] = array('144','713');//explode(',',$select_team);
+		}
+
+		//Resources
 		if(trim($key) != '' && $post_type == 'resources'){
 			$args['meta_query'][] = array(
 					'key' => 'content_file',
@@ -160,7 +169,6 @@ final class Elementor_Addons {
 			);
 			$args['_search_key'] = $key;
 		}
-
 		if(!empty($filters)){
 			$args['tax_query']['relation'] = 'AND';
 
@@ -178,6 +186,7 @@ final class Elementor_Addons {
 			}
 		}
 
+		//FAQs
 		if(!empty($cats_faq)){
 			$args['tax_query'][] = array(
 					'taxonomy' => 'cat-faq',
@@ -185,7 +194,6 @@ final class Elementor_Addons {
 					'terms'    => explode(',',$cats_faq)
 			);
 		}
-
 		if(!empty($ex_cats_faq)){
 			$args['tax_query'][] = array(
 					'taxonomy' => 'cat-faq',
@@ -196,12 +204,10 @@ final class Elementor_Addons {
 		}
 
 		ob_start();
-		add_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		add_filter('posts_where', array($this, 'ica_title_filter') , 10, 2 );
 		$the_query = new WP_Query($args);
 		$_GLOBAL['wp_query'] = $the_query;
-
-
-		remove_filter( 'posts_where', array($this, 'ica_title_filter' ) , 10, 2 );
+		remove_filter('posts_where', array($this, 'ica_title_filter') , 10, 2 );
 		$totalpost = (($numberposts*($paged-1)) + $the_query->post_count);
 
 		//Top content filter
