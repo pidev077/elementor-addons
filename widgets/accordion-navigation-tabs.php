@@ -73,7 +73,10 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'multiple'    => true,
                     'options'     => $this->bears_show_post_team_for_select(),
                     'default'     => [],
-                    'description' => __( 'Select post to be included', 'bearsthemes-addons' )
+                    'description' => __( 'Select post to be included', 'bearsthemes-addons' ),
+                    'condition' => [
+            					'apply_search' => '',
+            				]
                 ]
             );
             $litsItems->add_control(
@@ -938,16 +941,16 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
-                            <div class="accordion-navigation-tabs-content"> 
+                            <div class="accordion-navigation-tabs-content">
                                 <?php foreach ($items as $key => $item): ?>
                                     <?php $activeContent = ($key == 0) ? "active" : " " ;?>
                                     <?php $ids = $item['post_ids_tabs'] ?>
                                     <?php $apply_search = $item['apply_search'] ?>
-                                    <?php if ($ids): ?>
+                                    <?php //if ($ids): ?>
                                         <div class="items item-tabs-content bears-tab-<?php echo $key ?> <?php echo $activeContent; ?>">
                                             <?php $this->get_team_template($ids, $order, $item); ?>
                                         </div>
-                                    <?php endif; ?>
+                                    <?php //endif; ?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
