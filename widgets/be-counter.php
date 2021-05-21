@@ -101,33 +101,11 @@ class Be_Counter extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'starting_number',
-			[
-				'label' => __( 'Starting Number', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 0,
-				'separator' => 'before',
-			]
-		);
-
-		$repeater->add_control(
 			'ending_number',
 			[
 				'label' => __( 'Ending Number', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::NUMBER,
+				'type' => Controls_Manager::TEXT,
 				'default' => 100,
-			]
-		);
-
-
-		$repeater->add_control(
-			'duration',
-			[
-				'label' => __( 'Animation Duration', 'bearsthemes-addons' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 2000,
-				'min' => 100,
-				'step' => 100,
 			]
 		);
 
@@ -616,7 +594,22 @@ class Be_Counter extends Widget_Base {
 		$this->register_design_number_section_controls();
 		$this->register_design_title_section_controls();
 	}
+	protected function counter_data() {
+		$settings = $this->get_settings_for_display();
 
+		$counter_data = array(
+			'easing' => 'linear',
+			'duration' => $settings['duration'],
+			'toValue' => $settings['ending_number'],
+			'rounding' => 0,
+		);
+
+		if ( ! empty( $settings['thousand_separator'] ) ) {
+			$counter_data['delimiter'] = $settings['thousand_separator_char'];
+		}
+
+		return $counter_data = json_encode( $counter_data );
+	}
 
 	protected function render_icon( $icon ) {
 		$icon_html = '';
@@ -640,6 +633,7 @@ class Be_Counter extends Widget_Base {
 		} ?>
 		<div class="elementor-grid-<?php echo $settings['columns']; ?> bt-custom-counter">
 		<h2 class=bt-heading><?php echo $settings['bt_heading']; ?></h2>
+
 		<div class="elementor-grid">
 		<?php
 		$i = 0;
@@ -668,8 +662,8 @@ class Be_Counter extends Widget_Base {
 						</span>
 					<?php } ?>
 
-					<span class="elementor-counter__number vv<?php echo $i++; ?>" data-counter={"easing":"linear","duration":<?php echo $item['duration'] ?>,"toValue":<?php echo $item['ending_number'] ?>,"rounding":0,"delimiter":"."}>
-						<?php echo $item['starting_number']; ?>
+					<span class="elementor-counter__number vv<?php echo $i++; ?>" >
+						<?php echo $item['ending_number'] ?>
 					</span>
 
 					<?php if( $item['suffix'] ) { ?>
