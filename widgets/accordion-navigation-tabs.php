@@ -75,7 +75,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'default'     => [],
                     'description' => __( 'Select post to be included', 'bearsthemes-addons' ),
                     'condition' => [
-            					'apply_search' => '0',
+            					'apply_search' => '',
             				]
                 ]
             );
@@ -87,7 +87,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'label_off' => __( 'Yes', 'bearsthemes-addons' ),
             				'label_on' => __( 'No', 'bearsthemes-addons' ),
             				'return_value' => '1',
-            				'default' => '0',
+            				'default' => '',
                 ]
             );
             $litsItems->add_control(
