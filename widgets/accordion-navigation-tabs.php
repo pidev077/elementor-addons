@@ -938,7 +938,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
-                            <div class="accordion-navigation-tabs-content">
+                            <div class="accordion-navigation-tabs-content"> 
                                 <?php foreach ($items as $key => $item): ?>
                                     <?php $activeContent = ($key == 0) ? "active" : " " ;?>
                                     <?php $ids = $item['post_ids_tabs'] ?>
