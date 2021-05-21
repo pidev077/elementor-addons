@@ -467,6 +467,11 @@
 							}, 500);
 						}
 
+						//Team
+						if(post_type == 'team'){
+							showAllContent();
+						}
+
 					},
 					error: function(errorThrown){
 					console.log(errorThrown);
@@ -537,6 +542,39 @@
 				});
 			}
 		}
+
+		// funtion show all content in elements accordion navigation tabs
+    function showAllContent() {
+
+	      let isCTA = $('.accordion-navigation-tabs-content .item-team .show-more > span');
+	      let isContent = $('.accordion-navigation-tabs-content .item-team .meta-team .description');
+	      let isHeight = isContent.scrollHeight;
+
+	      isCTA.on('click',function(e){
+
+	          $(this).parent().toggleClass('show-more');
+	          let fullHeight = $(this).parent().siblings('.content-team').children().find('.description')['0'].scrollHeight;
+	          let isItem = $(this).parent().siblings('.content-team').children().find('.description');
+
+	          if($(this).attr('data-state') == 1) {
+
+	              $(this).attr('data-state', 0);
+	              $(this).text('Collapse');
+	              isItem.animate({
+	                  'height': fullHeight
+	              })
+
+	          }else {
+
+	              $(this).attr('data-state', 1);
+	              $(this).text('Expand');
+	              isItem.animate({
+	                  'height': '106'
+	              })
+	          }
+
+	      });
+	  }
 
 
 		// load url scroll items FAQ

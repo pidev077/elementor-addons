@@ -157,7 +157,7 @@ final class Elementor_Addons {
 
 		//Team
 		if($post_type == 'team' && $select_team != ''){
-			$args['p'] = array('144','713');//explode(',',$select_team);
+			$args['post__in'] = explode(',',$select_team);
 		}
 
 		//Resources

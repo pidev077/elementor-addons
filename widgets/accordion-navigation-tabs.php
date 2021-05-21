@@ -945,7 +945,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                                     <?php $apply_search = $item['apply_search'] ?>
                                     <?php if ($ids): ?>
                                         <div class="items item-tabs-content bears-tab-<?php echo $key ?> <?php echo $activeContent; ?>">
-                                            <?php $this->get_team_template($ids, $orderm, $item); ?>
+                                            <?php $this->get_team_template($ids, $order, $item); ?>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
