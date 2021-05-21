@@ -75,7 +75,7 @@ class Accordion_Navigation_Tabs extends Widget_Base {
                     'default'     => [],
                     'description' => __( 'Select post to be included', 'bearsthemes-addons' ),
                     'condition' => [
-            					'apply_search' => '',
+            					'apply_search' => '0',
             				]
                 ]
             );
