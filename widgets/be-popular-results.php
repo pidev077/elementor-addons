@@ -385,7 +385,7 @@ class Be_Popular_Results extends Widget_Base {
         ) );
         while ( $loop->have_posts() ) : $loop->the_post();
         $upload_file = get_field( 'upload_file' );
-        $link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
+        $link_resources = get_permalink() ;
         ?>
 
             <div id="post-<?php the_ID(); ?>" class="items item-popular <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">

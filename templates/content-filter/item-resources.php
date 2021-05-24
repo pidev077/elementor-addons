@@ -2,7 +2,7 @@
 $post_id = get_the_ID();
 $types = get_the_terms( $post_id, 'ins-type' );
 $upload_file = get_field( 'upload_file' );
-$link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
+$link_resources = get_permalink() ;
 ?>
 <div class="item-content-filter">
     <div class="__meta">

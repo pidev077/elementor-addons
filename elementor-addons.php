@@ -143,7 +143,7 @@ final class Elementor_Addons {
 			'orderby' 	 		 => $orderby,
 			'order' 		 		 => $order,
 			'paged' 		 		 => $paged,
-			 's' 						 => $key
+			 //'s' 						 => $key
 		);
 
 		//Page
@@ -168,7 +168,10 @@ final class Elementor_Addons {
 					'compare' => 'LIKE'
 			);
 			$args['_search_key'] = $key;
+		}else{
+			$args['s'] = $key;
 		}
+
 		if(!empty($filters)){
 			$args['tax_query']['relation'] = 'AND';
 
@@ -318,10 +321,13 @@ final class Elementor_Addons {
 	    global $wpdb;
 
 			if ( $_search_key = $wp_query->get( '_search_key' ) ) {
-				$where = preg_replace(
-            	"/\)\)\)\s*AND \(\s*\(\s*".$wpdb->postmeta.".meta_key/",
-	            ") OR ".$wpdb->postmeta.".meta_key",
-							$where
+				$like_sql = ' OR (' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( $wpdb->esc_like( $_search_key ) ) . '%\')';
+				$like_sql .= ' OR (' . $wpdb->posts . '.post_content LIKE \'%' . esc_sql( $wpdb->esc_like( $_search_key ) ) . '%\')';
+				$like_sql .= ' OR (' . $wpdb->posts . '.post_excerpt LIKE \'%' . esc_sql( $wpdb->esc_like( $_search_key ) ) . '%\')';
+				$where = str_replace(
+        	") AND ".$wpdb->posts.".post_type",
+          $like_sql." ) AND ".$wpdb->posts.".post_type",
+					$where
 				);
 			}
 
@@ -334,6 +340,7 @@ final class Elementor_Addons {
 					if($date[0] && $date[1])
 							$where .= " AND post_date >= '".$date[0]."-01-01'  AND post_date <= '".$date[1]."-12-31'";
 	    }
+
 	    return $where;
 	}
 

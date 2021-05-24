@@ -1931,7 +1931,7 @@ protected function register_design_pagination_section_controls() {
 		$term_list = get_the_terms( get_the_id(), 'ins-type' );
 		$currentcolor='';
 		$upload_file = get_field( 'upload_file' );
-		$link_resources = (get_field( 'link_html' )) ? get_field( 'link_html' ) : get_permalink() ;
+		$link_resources = get_permalink() ;
 		foreach($term_list as $term_single)
 		{
 				$termid= $term_single->term_id;
