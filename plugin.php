@@ -141,6 +141,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/alert-banner.php' );
 		require_once( __DIR__ . '/widgets/alert-banner.php' );
 		require_once( __DIR__ . '/widgets/resources.php' );
+		require_once( __DIR__ . '/widgets/repeater-resources.php' );
 		require_once( __DIR__ . '/widgets/card-lrg.php' );
 		require_once( __DIR__ . '/widgets/be-promo.php' );
 		require_once( __DIR__ . '/widgets/be-latest-resources.php' );
@@ -198,6 +199,7 @@ public function add_category( $elements_manager ) {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Popular_Results() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Top_Faq() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Be_Card_Carousel() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Repeater_resources_widget());
 
 	}
 
