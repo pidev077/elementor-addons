@@ -171,51 +171,7 @@ class Repeater_resources_widget extends Widget_Base {
             </div>
         </div>
         <?php
-
-
-
     }
-
-    protected function loop_items($items){
-        foreach ($items as $key => $item) { ?>
-            <?php if ($item['name']): ?>
-                <div class="item">
-                    <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>"> <?php echo $item['name'] ?>  </a>
-                </div>
-            <?php endif; ?>
-        <?php }
-    }
-
-    protected function get_resources_template($id, $class_des, $class_tab,  $class_mobi){
-
-        $loop = new \WP_Query( array(
-            'post_type' => 'resources',
-            'post_status' => 'publish',
-            'post__in' => $id,
-            'meta_query' => array(
-              array(
-                'key'     => 'select_type_resources',
-                'value'   => 'PDF',
-                'compare' => 'LIKE',
-              ),
-            ),
-        ) );
-        while ( $loop->have_posts() ) : $loop->the_post();
-        //var_dump($loop);
-            $pdf= get_field('upload_file');
-            $id_pdf = $pdf['ID'];
-            $name_pdf = $pdf['title'];
-            $filesize = filesize( get_attached_file( $id_pdf ) );
-            $filesize = size_format($filesize, 2);
-            $link_pdf = $pdf['url'];
-        endwhile;
-        wp_reset_postdata();
-    }
-
-    protected function _content_template() {
-
-    }
-
 
     protected function bears_show_post_resources_for_select(){
         $supported_ids = [];
