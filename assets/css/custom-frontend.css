@@ -273,6 +273,13 @@
     align-items: center;
     align-content: center;
 }
+.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item a{
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item a > img{
+    margin-top: 4px;
+}
 .sidebar-widget-elements .content-elements > div ._content .item a > span{
     color: inherit;
     font-size: inherit;
@@ -280,6 +287,9 @@
     font-weight: inherit;
     letter-spacing: inherit;
     text-decoration: underline;
+}
+.sidebar-widget-elements .content-elements > div ._content .item a img{
+    height: auto;
 }
 .sidebar-widget-elements .content-elements > div ._content .item{
     line-height: 21px;

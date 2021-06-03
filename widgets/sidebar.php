@@ -87,16 +87,19 @@ class Sidebar extends Widget_Base {
 				'label_on' => __( 'YES', 'elementor-addons' ),
 				'label_off' => __( 'NO', 'elementor-addons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 			]
 		);
 
         $this->add_control(
             'icon_sidebar_main',[
                 'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::ICON,
+                'type' => Controls_Manager::ICONS,
                 'label_block' => true,
-                'default' => 'fa fa-file-pdf-o',
+                'default' => [
+    				'value' => 'fa fa-file-pdf-o',
+    				'library' => 'fa-solid',
+    			],
                 'condition' => [
                     'show_icon_sidebar_main' => 'yes',
                 ],
@@ -187,9 +190,8 @@ class Sidebar extends Widget_Base {
         $this->add_control(
             'icon_sidebar_pdf',[
                 'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::ICON,
+                'type' => Controls_Manager::ICONS,
                 'label_block' => true,
-                'default' => 'fa fa-file-pdf-o',
                 'condition' => [
                     'show_icon_sidebar_pdf' => 'yes',
                 ],
@@ -283,9 +285,8 @@ class Sidebar extends Widget_Base {
         $this->add_control(
             'icon_sidebar_footer',[
                 'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::ICON,
+                'type' => Controls_Manager::ICONS,
                 'label_block' => true,
-                'default' => 'fa fa-file-pdf-o',
                 'condition' => [
                     'show_icon_sidebar_footer' => 'yes',
                 ],
@@ -615,7 +616,7 @@ class Sidebar extends Widget_Base {
                     'label' => __( 'Font Size Icon', 'elementor' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 15,
+                        'size' => 20,
                     ],
                     'range' => [
                         'px' => [
@@ -625,6 +626,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main img' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -645,6 +647,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main img' => 'margin-right: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -678,7 +681,7 @@ class Sidebar extends Widget_Base {
                     'label' => __( 'Font Size Icon', 'elementor' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 15,
+                        'size' => 30,
                     ],
                     'range' => [
                         'px' => [
@@ -688,6 +691,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf img' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -708,6 +712,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf img' => 'margin-right: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -740,7 +745,7 @@ class Sidebar extends Widget_Base {
                     'label' => __( 'Font Size Icon', 'elementor' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 15,
+                        'size' => 14,
                     ],
                     'range' => [
                         'px' => [
@@ -750,6 +755,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer img' => 'width: {{SIZE}}{{UNIT}} !important; min-width: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -760,7 +766,7 @@ class Sidebar extends Widget_Base {
                     'label' => __( 'Spacing Icon', 'elementor' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 10,
+                        'size' => 13,
                     ],
                     'range' => [
                         'px' => [
@@ -770,6 +776,7 @@ class Sidebar extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer img' => 'margin-right: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -809,7 +816,9 @@ class Sidebar extends Widget_Base {
         $icon_pdf = $settings['icon_sidebar_pdf'];
         $icon_footer = $settings['icon_sidebar_footer'];
 
-
+        // echo "<pre>";
+        // echo print_r($icon_main);
+        // echo "</pre>";
 
         ?>
         <div class="bt-elements-elementor sidebar-widget-elements">
@@ -825,9 +834,21 @@ class Sidebar extends Widget_Base {
                                 <?php if ($item['name']): ?>
                                     <div class="item">
                                         <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>">
+
                                             <?php if ($icon_main): ?>
-                                                    <i class="<?php echo $icon_main ?>"></i>
+
+                                                    <?php if ($icon_main['value']): ?>
+
+                                                        <?php if ($icon_main['library']=="svg"): ?>
+                                                            <img src="<?php echo $icon_main['value']['url'] ?>" alt="icon">
+                                                        <?php else: ?>
+                                                            <i class="<?php echo $icon_main['value'] ?>"></i>
+                                                        <?php endif; ?>
+
+                                                    <?php endif; ?>
+
                                             <?php endif; ?>
+
                                             <span> <?php echo $item['name'] ?> </span>
                                         </a>
                                     </div>
@@ -845,9 +866,24 @@ class Sidebar extends Widget_Base {
                                 <?php if ($item['name']): ?>
                                     <div class="item">
                                         <a href="<?php echo $item['file_link'] ?>" target="<?php echo $item['link_target'] ?>">
+
+
                                             <?php if ($icon_pdf): ?>
-                                                    <i class="<?php echo $icon_pdf ?>"></i>
+                                                    <?php if ($icon_pdf['value']): ?>
+
+                                                        <?php if ($icon_pdf['library']=="svg"): ?>
+                                                            <img src="<?php echo $icon_pdf['value']['url'] ?>" alt="icon">
+                                                        <?php else: ?>
+                                                            <i class="<?php echo $icon_pdf['value'] ?>"></i>
+                                                        <?php endif; ?>
+
+                                                    <?php else: ?>
+                                                        <img src="<?php echo plugins_url('elementor-addons/assets/images/Bitmap-pdf.svg') ?>" alt="icon">
+                                                    <?php endif; ?>
+
                                             <?php endif; ?>
+
+
                                             <span> <?php echo $item['name'] ?> </span>
                                         </a>
                                     </div>
@@ -865,9 +901,23 @@ class Sidebar extends Widget_Base {
                                 <?php if ($item['name']): ?>
                                     <div class="item">
                                         <a href="<?php echo $item['link']['url'] ?>" target="<?php echo $item['link']['is_external'] ? '_blank' :  '_self' ?>">
+
                                             <?php if ($icon_footer): ?>
-                                                    <i class="<?php echo $icon_footer ?>"></i>
+                                                    <?php if ($icon_footer['value']): ?>
+
+                                                        <?php if ($icon_footer['library']=="svg"): ?>
+                                                            <img src="<?php echo $icon_footer['value']['url'] ?>" alt="icon">
+                                                        <?php else: ?>
+                                                            <i class="<?php echo $icon_footer['value'] ?>"></i>
+                                                        <?php endif; ?>
+
+                                                    <?php else: ?>
+                                                        <img src="<?php echo plugins_url('elementor-addons/assets/images/browsers-icon.svg') ?>" alt="icon">
+                                                    <?php endif; ?>
+
                                             <?php endif; ?>
+
+
                                             <span> <?php echo $item['name'] ?> </span>
                                         </a>
                                     </div>
