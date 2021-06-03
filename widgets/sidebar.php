@@ -624,7 +624,7 @@ class Sidebar extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-main i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -654,7 +654,7 @@ class Sidebar extends Widget_Base {
                 [
                     'label' => __( 'Color', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#ccc7ba',
+                    'default' => '#C09A37',
                     'selectors' => [
                         '{{WRAPPER}} .sidebar-widget-elements .content-elements .sidebar-main i' => 'color: {{VALUE}};',
                     ],
@@ -687,7 +687,7 @@ class Sidebar extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-pdf i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -717,7 +717,7 @@ class Sidebar extends Widget_Base {
                 [
                     'label' => __( 'Color', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#ccc7ba',
+                    'default' => '#C09A37',
                     'selectors' => [
                         '{{WRAPPER}} .sidebar-widget-elements .content-elements .sidebar-pdf i' => 'color: {{VALUE}};',
                     ],
@@ -749,7 +749,7 @@ class Sidebar extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}}  .sidebar-widget-elements .content-elements .sidebar-footer i' => 'font-size: {{SIZE}}{{UNIT}} !important;',
                     ],
                 ]
             );
@@ -779,7 +779,7 @@ class Sidebar extends Widget_Base {
                 [
                     'label' => __( 'Color', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::COLOR,
-                    'default' => '#ccc7ba',
+                    'default' => '#C09A37',
                     'selectors' => [
                         '{{WRAPPER}} .sidebar-widget-elements .content-elements .sidebar-footer i' => 'color: {{VALUE}};',
                     ],
