@@ -18,6 +18,9 @@
     letter-spacing: -0.5px;
     font-weight: 400;
 }
+.subhead-bodycopy-elements .content ul li{
+    list-style-type: initial;
+}
 .subhead-bodycopy-elements .content{
     color: #2f2f39;
 }
@@ -840,9 +843,11 @@
 /* Alert Banner elements */
 .alert-banner-elements{
     position: relative;
+    overflow: hidden;
+    padding: 30px 10px;
 }
 .alert-banner-elements  > .content-elements{
-    max-width: 805px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -908,7 +913,7 @@
     cursor: pointer;
     position: absolute;
     right: 60px;
-    top:0;
+    top:25px;
 }
 .alert-banner-elements > .cta-close i{
     color: #2f2f39;

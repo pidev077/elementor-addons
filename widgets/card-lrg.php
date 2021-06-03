@@ -19,7 +19,7 @@ class Card_Lrg extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Card Lrg', 'bearsthemes-addons' );
+        return __( 'Card Lrg Small', 'bearsthemes-addons' );
     }
 
     public function get_icon() {
@@ -147,6 +147,18 @@ class Card_Lrg extends Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
              ]
         );
+
+            $this->add_control(
+                'content_background_color',
+                [
+                    'label' => __( 'Background Color', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#97979780',
+                    'selectors' => [
+                        '{{WRAPPER}} .card-lrg-elements' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
 
             $this->add_responsive_control(
                 'content_padding_card_lrg',
@@ -373,12 +385,12 @@ class Card_Lrg extends Widget_Base {
             );
 
             $this->add_responsive_control(
-                'description_card_lrg_spacing',
+                'description_card_spacing',
                 [
-                    'label' => __( 'Spacing', 'elementor' ),
+                    'label' => __( 'Spacing', 'bearsthemes-addons' ),
                     'type' => Controls_Manager::SLIDER,
                     'default' => [
-                        'size' => 100,
+                        'size' => 0,
                     ],
                     'range' => [
                         'px' => [
@@ -387,7 +399,7 @@ class Card_Lrg extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{WRAPPER}} .card-lrg-elements .meta-card-lrg .description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .card-lrg-elements .meta-card-lrg .description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                 ]
             );
@@ -634,10 +646,6 @@ class Card_Lrg extends Widget_Base {
         $images = $settings['image_card_lrg'];
         $animation = $settings['image_animation_card_lrg'];
         $classAnimation = $animation ? "elementor-animation-"."$animation" : "" ;
-
-        // echo "<pre>";
-        // echo print_r($settings);
-        // echo "</pre>";
         ?>
 
         <div class="bt-elements-elementor card-lrg-elements">
