@@ -816,10 +816,6 @@ class Sidebar extends Widget_Base {
         $icon_pdf = $settings['icon_sidebar_pdf'];
         $icon_footer = $settings['icon_sidebar_footer'];
 
-        // echo "<pre>";
-        // echo print_r($icon_main);
-        // echo "</pre>";
-
         ?>
         <div class="bt-elements-elementor sidebar-widget-elements">
             <div class="content-elements">
