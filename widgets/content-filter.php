@@ -200,7 +200,7 @@ class Content_Filter extends Widget_Base {
 				'label_block' => true,
 				'default' => [ 'ins-type', 'ins-topic', 'date' ],
 				'condition' => [
-					'ica_source' => 'resources'
+					'ica_source' => array('resources','ins-faqs'),
 				]
 			]
 		);
