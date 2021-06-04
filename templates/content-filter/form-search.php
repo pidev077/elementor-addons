@@ -109,8 +109,24 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
                           <div class="select-filter">
                               <span class="btn-select-all"><?php echo __('Select all','bearsthemes-addons') ?></span>
                               <?php foreach ($terms as $key => $term) {
+
+                                 $args = array(
+                                    'post_type' => $post_type,
+                                    'post_status' => 'publish',
+                                    'posts_per_page' => -1,
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => $filter,
+                                            'field' => 'slug',
+                                            'terms' => $term->slug,
+                                        ),
+                                    )
+                                  );
+                                  $post_query = get_posts( $args );
+                                  wp_reset_postdata();
+
                                   ?>
-                                  <label class="checkbox-container"><?php echo $term->name; ?> (<?php echo $term->count; ?>)
+                                  <label class="checkbox-container"><?php echo $term->name; ?> (<?php echo count($post_query); ?>)
                                     <input type="checkbox"
                                            name="<?php echo $taxonomy->name ?>"
                                            value="<?php echo $term->slug ?>"
