@@ -67,7 +67,41 @@ class Alert_Banner extends Widget_Base {
         $this->end_controls_section();
     }
 
+    protected function register_style_general_controls() {
 
+        $this->start_controls_section(
+            'style_general_section',[
+                'label' => __( 'General', 'bearsthemes-addons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+             ]
+        );
+
+            $this->add_control(
+                'general_background_color',
+                [
+                    'label' => __( 'Background Color', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#E6E3DC',
+                    'selectors' => [
+                        '{{WRAPPER}} .alert-banner-elements' => 'background-color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'general_padding',
+                [
+                    'label' => __( 'Padding', 'elementor' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .alert-banner-elements' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+        $this->end_controls_section();
+    }
 
     protected function register_style_title_section_controls() {
         $this->start_controls_section(
@@ -253,6 +287,7 @@ class Alert_Banner extends Widget_Base {
 
     protected function _register_controls() {
         $this->register_content_section_controls();
+        $this->register_style_general_controls();
         $this->register_style_title_section_controls();
         $this->register_style_content_section_controls();
         $this->register_style_button_section_controls();
@@ -263,10 +298,6 @@ class Alert_Banner extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $heading  = $settings['heading_alert_banner'];
         $content  = $settings['content_alert_banner'];
-
-        // echo "<pre>";
-        // echo print_r($settings);
-        // echo "</pre>";
         ?>
 
         <div class="bt-elements-elementor alert-banner-elements">

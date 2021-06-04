@@ -41,16 +41,16 @@ class Be_Posts extends Widget_Base {
 		$supported_ids = [];
 
 		$wp_query = new \WP_Query( array(
-														'post_type' => 'resources',
-														'post_status' => 'publish',
-														'posts_per_page' => -1,
-													) );
+			'post_type' => 'resources',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		) );
 
 		if ( $wp_query->have_posts() ) {
 	    while ( $wp_query->have_posts() ) {
-        $wp_query->the_post();
-        $supported_ids[get_the_ID()] = get_the_title();
-	    }
+	        $wp_query->the_post();
+	        	$supported_ids[get_the_ID()] = get_the_title();
+		    }
 		}
 
 		return $supported_ids;

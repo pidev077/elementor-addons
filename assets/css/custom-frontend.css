@@ -18,6 +18,12 @@
     letter-spacing: -0.5px;
     font-weight: 400;
 }
+.subhead-bodycopy-elements .content ul li{
+    list-style-type: initial;
+}
+.subhead-bodycopy-elements .content ol li{
+    list-style-type: decimal;
+}
 .subhead-bodycopy-elements .content{
     color: #2f2f39;
 }
@@ -263,8 +269,33 @@
     line-height: 17.5px;
     font-weight: 400;
     color: #2f2f39;
-    text-decoration: underline;
+    text-decoration: none;
     letter-spacing: 0;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item a{
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item a > img{
+    margin-top: 4px;
+}
+.sidebar-widget-elements .content-elements > div ._content .item a > span{
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-decoration: underline;
+}
+.sidebar-widget-elements .content-elements > div ._content .item a img{
+    height: auto;
 }
 .sidebar-widget-elements .content-elements > div ._content .item{
     line-height: 21px;
@@ -273,7 +304,7 @@
 .sidebar-widget-elements .content-elements > div ._content .item:not(:last-child){
     margin-bottom: 10px;
 }
-.sidebar-widget-elements .content-elements > div.sidebar-pdf ._content .item::before, .sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item::before{
+/* .sidebar-widget-elements .content-elements > div.sidebar-pdf ._content .item::before, .sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item::before{
     content: " ";
     display: inline-block;
     position: absolute;
@@ -288,19 +319,19 @@
     background-image: url('../images/Bitmap-pdf.svg');
     top: 50%;
     transform: translateY(-50%);
-}
-.sidebar-widget-elements .content-elements > div.sidebar-pdf ._content .item{
+} */
+/* .sidebar-widget-elements .content-elements > div.sidebar-pdf ._content .item{
     padding-left: 40px;
-}
-.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item{
+} */
+/* .sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item{
     padding-left: 25px;
-}
-.sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item::before{
+} */
+/* .sidebar-widget-elements .content-elements > div.sidebar-footer ._content .item::before{
     width: 12px;
     height: 11px;
     background-image: url('../images/browsers-icon.svg');
     top:6px;
-}
+} */
 .sidebar-widget-elements .content-elements > div.sidebar-pdf ._content .item:not(:last-child){
     margin-bottom: 23px;
 }
@@ -815,9 +846,11 @@
 /* Alert Banner elements */
 .alert-banner-elements{
     position: relative;
+    overflow: hidden;
+    padding: 40px 10px;
 }
 .alert-banner-elements  > .content-elements{
-    max-width: 805px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -883,7 +916,7 @@
     cursor: pointer;
     position: absolute;
     right: 60px;
-    top:0;
+    top:25px;
 }
 .alert-banner-elements > .cta-close i{
     color: #2f2f39;
