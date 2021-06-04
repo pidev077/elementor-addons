@@ -120,67 +120,178 @@ class Repeater_resources_widget extends Widget_Base {
 
     protected function register_style_title_section_controls() {
         $this->start_controls_section(
-            'section_sidebar_pdf_layout',[
-                'label' => __( 'Choose PDF', 'bearsthemes-addons' ),
+            'style_heading_section',[
+                'label' => __( 'Heading', 'bearsthemes-addons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
              ]
         );
 
-        $this->add_control(
-            'heading_resources_repeater',
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
                 [
-                    'label' => __( 'Heading', 'bearsthemes-addons' ),
-                    'type' => Controls_Manager::TEXTAREA,
-                    'default' => __( 'Key documentation sed do eiusmod tempor incididunt', 'bearsthemes-addons' ),
-                    'label_block' => true,
+                    'name' => 'heading_resources_typography',
+                    'default' => '',
+                    'selector' => '{{WRAPPER}} .resources-elements .heading',
                 ]
+            );
+
+            $this->add_control(
+                'heading_resources_color',
+                [
+                    'label' => __( 'Color', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#2f2f39',
+                    'selectors' => [
+                        '{{WRAPPER}} .resources-elements .heading' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+
+            $this->add_responsive_control(
+                'heading_resources_alignment',
+                [
+                    'label' => __( 'Alignment', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .resources-elements .heading' => 'text-align: {{VALUE}};',
+                    ],
+                ]
+            );
+
+
+            $this->add_responsive_control(
+                'heading_resources_spacing',
+                [
+                    'label' => __( 'Spacing', 'elementor' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 25,
+                    ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 200,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .resources-elements .heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+        $this->end_controls_section();
+
+    }
+
+    protected function register_style_content_section_controls() {
+        $this->start_controls_section(
+            'style_content_section',[
+                'label' => __( 'Content', 'bearsthemes-addons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+             ]
         );
 
-        $itemsPDF = new \Elementor\Repeater();
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'content_resources_typography',
+                    'default' => '',
+                    'selector' => '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf',
+                ]
+            );
 
-        $itemsPDF->add_control(
-            'post_ids_resources',
-            [
-                'label'       => __( 'Select Resources', 'bears-elementor-extension' ),
-                'type'        => \Elementor\Controls_Manager::SELECT2,
-                'multiple'    => false,
-                'options'     => $this->bears_show_post_resources_for_select(),
-                'default'     => [],
-                'description' => __( 'Select post to be included', 'bearsthemes-addons' )
-            ]
-        );
-
-        $itemsPDF->add_control(
-            'name',
-            [
-                'label' => __( 'Name', 'bearsthemes-addons' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
+            $this->add_control(
+                'content_resources_color',
+                [
+                    'label' => __( 'Color', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '#2f2f39',
+                    'selectors' => [
+                        '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .list-pdf-resources .meta-resources > a' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
 
 
-        $itemsPDF->add_control(
-  			'link_target',
-  			[
-  				'label' => esc_html__( 'Link Target', 'bearsthemes-addons' ),
-  				'type' => \Elementor\Controls_Manager::SELECT,
-  				'options' => [
-  					'_parent' => esc_html__( 'Same Tab', 'bearsthemes-addons' ),
-  					'_blank' => esc_html__( 'New Tab', 'bearsthemes-addons' ),
-  				],
-  				'default' => '_parent',
-  			]
-  		);
+            $this->add_responsive_control(
+                'content_resources_alignment',
+                [
+                    'label' => __( 'Alignment', 'bearsthemes-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __( 'Left', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => __( 'Center', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => __( 'Right', 'bearsthemes-addons' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .list-pdf-resources .meta-resources .info-pdf' => 'text-align: {{VALUE}};',
+                    ],
+                ]
+            );
 
-        $this->add_control(
-            'items_sidebar_pdf',
-            [
-                'label' => __( 'List Items', 'plugin-domain' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $itemsPDF->get_controls(),
-                'title_field' => '{{{ name }}}',
-            ]
-        );
+            $this->add_responsive_control(
+                'content_resources_spacing',
+                [
+                    'label' => __( 'Spacing Items PDF', 'elementor' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 20,
+                    ],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 200,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .resources-elements .list-pdf-resources .item-pdf' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+    			'container_items_pdf_resources',
+    			[
+    				'label' => __( 'Container Items PDF', 'bearsthemes-addons' ),
+    				'type' => Controls_Manager::SLIDER,
+    				'size_units' => [ 'px', '%' ],
+    				'range' => [
+    					'px' => [
+    						'min' => 0,
+    						'max' => 800,
+    					],
+    				],
+    				'selectors' => [
+    					'{{WRAPPER}} .resources-elements .list-pdf-resources .meta-resources' => 'max-width: {{SIZE}}{{UNIT}}',
+    				],
+    			]
+    		);
+
 
         $this->end_controls_section();
     }
@@ -241,24 +352,22 @@ class Repeater_resources_widget extends Widget_Base {
                 break;
         }
 
-            $id_pdf = $pdf['ID'];
-            $name_pdf = $pdf['title'];
-            $filesize = filesize( get_attached_file( $id_pdf ) );
-            $filesize = size_format($filesize, 2);
-            $link_pdf = $pdf['url'];
-            if(!empty($link_pdf)){
-                array_push ($link_pdf_all,$link_pdf);
-            }
-            if(!empty($filesize)) {
-                array_push($pdf_file_size,$filesize);
-            }
+        switch ($column_tab) {
+            case '4':
+                $class_tab = 'columns-tab-4';
+                break;
 
-            if(!empty($value['name'])){
-                array_push ($name_pdf_custom,$value['name']);
-            }else{
-                array_push ($name_pdf_custom,$name_pdf);
-            }
+            case '3':
+                $class_tab = 'columns-tab-3';
+            break;
 
+            case '2':
+                $class_tab = 'columns-tab-2';
+            break;
+
+            default:
+                $class_tab = 'columns-tab-1';
+                break;
         }
 
         foreach ($items_pdf as $key => $value) {
@@ -314,42 +423,7 @@ class Repeater_resources_widget extends Widget_Base {
             </div>
         </div>
         <?php
-
-
-
     }
-
-    protected function bears_show_post_resources_for_select(){
-        $supported_ids = [];
-
-        $wp_query = new \WP_Query( array(
-            'post_type' => 'resources',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-              'relation'		=> 'AND',
-              array(
-                'key'     => 'select_type_resources',
-                'value'   => 'PDF',
-                'compare' => '=',
-              ),
-              array(
-          		'key'	  	=> 'upload_file',
-                'value'   => '',
-                'compare' => '!=',
-          		),
-            ),
-        ) );
-
-        if ( $wp_query->have_posts() ) {
-            while ( $wp_query->have_posts() ) {
-                $wp_query->the_post();
-                $supported_ids[get_the_ID()] = get_the_title();
-            }
-        }
-        return $supported_ids;
-    }
-
 
     protected function bears_show_post_resources_for_select(){
         $supported_ids = [];

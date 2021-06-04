@@ -124,7 +124,7 @@ if(isset($_GET['end_date']) && $_GET['end_date'] != ''){
                                   );
                                   $post_query = get_posts( $args );
                                   wp_reset_postdata();
-                                  
+
                                   ?>
                                   <label class="checkbox-container"><?php echo $term->name; ?> (<?php echo count($post_query); ?>)
                                     <input type="checkbox"
