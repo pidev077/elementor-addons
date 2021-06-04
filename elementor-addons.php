@@ -334,7 +334,7 @@ final class Elementor_Addons {
 			if ( $search_date = $wp_query->get( 'search_date' ) ) {
 				  $date = explode(',',$search_date);
 					if($date[0] && !$date[1])
-							$where .= " AND post_date >= '".$date[0]."-01-01'";
+							$where .= " AND post_date >= '".$date[0]."-01-01'"; 
 					if(!$date[0] && $date[1])
  						  $where .= " AND post_date <= '".$date[1]."-12-31'";
 					if($date[0] && $date[1])

@@ -405,9 +405,6 @@ class Secondary_CTAs extends Widget_Base {
         $items = $settings['items_secondary_ctas'];
         $animation = $settings['image_animation'];
         $classAnimation = $animation ? "elementor-animation-"."$animation" : "" ;
-        // echo "<pre>";
-        // echo print_r($settings);
-        // echo "</pre>";
         ?>
         <div class="bt-elements-elementor secondary-ctas-elements">
             <div class="content-elements">
