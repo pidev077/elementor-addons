@@ -21,6 +21,9 @@
 .subhead-bodycopy-elements .content ul li{
     list-style-type: initial;
 }
+.subhead-bodycopy-elements .content ol li{
+    list-style-type: decimal;
+}
 .subhead-bodycopy-elements .content{
     color: #2f2f39;
 }
@@ -844,7 +847,7 @@
 .alert-banner-elements{
     position: relative;
     overflow: hidden;
-    padding: 30px 10px;
+    padding: 40px 10px;
 }
 .alert-banner-elements  > .content-elements{
     max-width: 960px;
