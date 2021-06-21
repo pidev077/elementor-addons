@@ -977,6 +977,7 @@
     padding-left: 42px;
     width: 100%;
     max-width: 370px;
+    min-height: 42px;
 }
 .resources-elements .list-pdf-resources .meta-resources > a{
     text-decoration: underline;
