@@ -58,15 +58,13 @@ class Repeater_resources_widget extends Widget_Base {
         $itemsPDF = new \Elementor\Repeater();
 
         $itemsPDF->add_control(
-            'post_ids_resources',
-            [
-                'label'       => __( 'Select Resources', 'bears-elementor-extension' ),
-                'type'        => \Elementor\Controls_Manager::SELECT2,
-                'multiple'    => false,
-                'options'     => $this->bears_show_post_resources_for_select(),
-                'default'     => [],
-                'description' => __( 'Select post to be included', 'bearsthemes-addons' )
-            ]
+              'file_pdf',
+              [
+                'label' => esc_html__( 'Select File', 'bearsthemes-addons' ),
+                'type'	=> 'file-select',
+                'placeholder' => esc_html__( 'URL to File', 'bearsthemes-addons' ),
+                'description' => esc_html__( 'Select file from media library or upload', 'bearsthemes-addons' ),
+              ]
         );
 
         $itemsPDF->add_control(
@@ -98,6 +96,16 @@ class Repeater_resources_widget extends Widget_Base {
                 'label' => __( 'List Items', 'plugin-domain' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $itemsPDF->get_controls(),
+                'default' => [
+                    [
+                        'name' => __( 'Lorem ipsum', 'bearsthemes-addons' ),
+                        'link' => __( '#!', 'bearsthemes-addons' ),
+                    ],
+                    [
+                        'name' => __( 'Ducimus qui blanditlls', 'bearsthemes-addons' ),
+                        'link' => __( '#!', 'bearsthemes-addons' ),
+                    ],
+                ],
                 'title_field' => '{{{ name }}}',
             ]
         );
@@ -370,11 +378,18 @@ class Repeater_resources_widget extends Widget_Base {
                 break;
         }
 
+
         foreach ($items_pdf as $key => $value) {
+
             $pdf= get_field('upload_file',$value['post_ids_resources']);
             $id_pdf = $pdf['ID'];
             $name_pdf = $pdf['title'];
-            $filesize = filesize( get_attached_file( $id_pdf ) );
+
+            $url = $value['file_pdf'];
+            $path = str_replace( site_url('/'), ABSPATH, esc_url( $url) );
+
+            $filesize = filesize( $path );
+
             $filesize = size_format($filesize, 2);
             $link_pdf = $pdf['url'];
             if(!empty($link_pdf)){
@@ -400,24 +415,30 @@ class Repeater_resources_widget extends Widget_Base {
                 <?php endif; ?>
 
                 <div class="list-pdf-resources">
-                    <?php
-                        if(!empty($link_pdf_all)){
-                            foreach ($link_pdf_all as $key => $value) {
-                                ?>
-                                <div class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
-                                    <div class="__content">
-                                        <div class="meta-resources">
-                                            <a href="<?php echo $value; ?>" target="<?php echo $items_pdf[$key]['link_target']?>">
-                                                <h4 class="info-pdf name-pdf"> <?php echo $name_pdf_custom[$key]; ?> </h4>
-                                                <div class="info-pdf size-pdf"> [PDF <span><?php echo $pdf_file_size[$key] ?>]</span></div>
-                                            </a>
-                                        </div>
+                    <?php if ($items_pdf): ?>
+                        <?php
+                        foreach ($items_pdf as $key => $value) {
+
+                            $url = $value['file_pdf'];
+                            $path = str_replace( site_url('/'), ABSPATH, esc_url( $url) );
+                            $filesize = filesize( $path );
+                            $filesize = size_format($filesize, 2);
+                            ?>
+
+                            <div class="items item-pdf <?php echo $class_des; echo " "; echo $class_tab; echo " "; echo $class_mobi ?>">
+                                <div class="__content">
+                                    <div class="meta-resources">
+                                        <a href="<?php echo $value['file_pdf']; ?>" target="<?php echo $items_pdf[$key]['link_target']?>">
+                                            <h4 class="info-pdf name-pdf"> <?php echo $value['name']; ?> </h4>
+                                            <div class="info-pdf size-pdf"> [PDF <span><?php echo $filesize; ?>]</span></div>
+                                        </a>
                                     </div>
                                 </div>
-                                <?php
-                            }
+                            </div>
+                            <?php
                         }
-                    ?>
+                        ?>
+                    <?php endif; ?>
                 </div>
 
             </div>

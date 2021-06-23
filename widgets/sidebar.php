@@ -186,18 +186,7 @@ class Sidebar extends Widget_Base {
                 'default' => 'yes',
             ]
         );
-
-        $this->add_control(
-            'icon_sidebar_pdf',[
-                'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::ICONS,
-                'label_block' => true,
-                'condition' => [
-                    'show_icon_sidebar_pdf' => 'yes',
-                ],
-            ]
-        );
-
+        
         $itemsPDF = new \Elementor\Repeater();
         $itemsPDF->add_control(
             'name',
@@ -216,20 +205,27 @@ class Sidebar extends Widget_Base {
                 'placeholder' => esc_html__( 'URL to File', 'bearsthemes-addons' ),
                 'description' => esc_html__( 'Select file from media library or upload', 'bearsthemes-addons' ),
               ]
-          );
+        );
 
         $itemsPDF->add_control(
-      			'link_target',
-      			[
-      				'label' => esc_html__( 'Link Target', 'bearsthemes-addons' ),
-      				'type' => \Elementor\Controls_Manager::SELECT,
-      				'options' => [
-      					'_parent' => esc_html__( 'Same Tab', 'bearsthemes-addons' ),
-      					'_blank' => esc_html__( 'New Tab', 'bearsthemes-addons' ),
-      				],
-      				'default' => '_parent',
-      			]
-      		);
+            'link_target',[
+                'label' => esc_html__( 'Link Target', 'bearsthemes-addons' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                '_parent' => esc_html__( 'Same Tab', 'bearsthemes-addons' ),
+                '_blank' => esc_html__( 'New Tab', 'bearsthemes-addons' ),
+                ],
+                'default' => '_parent',
+            ]
+        );
+
+        $itemsPDF->add_control(
+            'icon_sidebar_pdf',[
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+            ]
+        );
 
         $this->add_control(
             'items_sidebar_pdf',
@@ -813,7 +809,7 @@ class Sidebar extends Widget_Base {
         $items_pdf = $settings['items_sidebar_pdf'];
         $items_footer = $settings['items_sidebar_footer'];
         $icon_main = $settings['icon_sidebar_main'];
-        $icon_pdf = $settings['icon_sidebar_pdf'];
+        // $icon_pdf = $settings['icon_sidebar_pdf'];
         $icon_footer = $settings['icon_sidebar_footer'];
 
         ?>
@@ -859,14 +855,16 @@ class Sidebar extends Widget_Base {
                         <div class="_content">
 
                             <?php foreach ($items_pdf as $key => $item) { ?>
+                                <?php $icon_pdf = $item['icon_sidebar_pdf'] ?>
+
                                 <?php if ($item['name']): ?>
+
                                     <div class="item">
                                         <a href="<?php echo $item['file_link'] ?>" target="<?php echo $item['link_target'] ?>">
+                                            <?php if ($settings['show_icon_sidebar_pdf']): ?>
+                                                <?php if ($icon_pdf): ?>
 
-
-                                            <?php if ($icon_pdf): ?>
                                                     <?php if ($icon_pdf['value']): ?>
-
                                                         <?php if ($icon_pdf['library']=="svg"): ?>
                                                             <img src="<?php echo $icon_pdf['value']['url'] ?>" alt="icon">
                                                         <?php else: ?>
@@ -877,13 +875,13 @@ class Sidebar extends Widget_Base {
                                                         <img src="<?php echo plugins_url('elementor-addons/assets/images/Bitmap-pdf.svg') ?>" alt="icon">
                                                     <?php endif; ?>
 
-                                            <?php endif; ?>
-
-
-                                            <span> <?php echo $item['name'] ?> </span>
+                                                <?php endif; ?>
+                                        <?php endif; ?>
+                                        <span> <?php echo $item['name'] ?> </span>
                                         </a>
                                     </div>
                                 <?php endif; ?>
+
                             <?php } ?>
 
                         </div>
