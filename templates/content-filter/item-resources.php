@@ -16,6 +16,7 @@ $link_resources = get_permalink() ;
           <?php echo get_the_date('d/m/Y'); ?>
         </div>
     </div>
+    <?php if(has_post_thumbnail()): ?>
     <div class="__featured-img">
 
         <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
@@ -29,6 +30,7 @@ $link_resources = get_permalink() ;
         } ?>
 
     </div>
+    <?php endif; ?>
     <div class="__info">
       <?php if(!empty($upload_file) && trim($upload_file['subtype'])){
         ?><a href="<?php echo $upload_file['url']; ?>"><h3 class="__title"><?php the_title(); ?></h3></a><?php
