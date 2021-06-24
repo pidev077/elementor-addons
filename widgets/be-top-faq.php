@@ -41,10 +41,17 @@ class Be_Top_Faq extends Widget_Base {
 		$supported_ids = [];
 
 		$wp_query = new \WP_Query( array(
-														'post_type' => 'ins-faqs',
-														'post_status' => 'publish',
-														'posts_per_page' => -1,
-													) );
+			'post_type' => 'resources',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'tax_query' => array(
+	        array(
+	            'taxonomy' => 'ins-type',
+	            'field'    => 'slug',
+	            'terms'    => 'faqs',
+	       	),
+	    ),
+		));
 
 		if ( $wp_query->have_posts() ) {
 	    while ( $wp_query->have_posts() ) {
@@ -60,7 +67,7 @@ class Be_Top_Faq extends Widget_Base {
 		$supported_taxonomies = [];
 
 		$categories = get_terms( array(
-			'taxonomy' => 'cat-faq',
+			'taxonomy' => 'ins-type',
 	    'hide_empty' => false,
 		) );
 		if( ! empty( $categories ) ) {
@@ -1711,13 +1718,20 @@ protected function register_design_pagination_section_controls() {
 		}
 
 		$args = [
-			'post_type' => 'ins-faqs',
+			'post_type' => 'resources',
 			'post_status' => 'publish',
 			'posts_per_page' => $this->get_settings_for_display('posts_per_page'),
 			'paged' => $paged,
 			'orderby' => $settings['orderby'],
 			'order' => $settings['order'],
 			'ignore_sticky_posts' => ('yes' !== $settings['ignore_sticky_posts']) ? true : false,
+			'tax_query' => array(
+	        array(
+	            'taxonomy' => 'ins-type',
+	            'field'    => 'slug',
+	            'terms'    => 'faqs',
+	       	),
+	    ),
 		];
 
 		if( ! empty( $settings['ids'] ) ) {
@@ -1731,7 +1745,7 @@ protected function register_design_pagination_section_controls() {
 		if( ! empty( $settings['category'] ) ) {
 			$args['tax_query'] = array(
 				array(
-						'taxonomy' => 'cat-faq',
+						'taxonomy' => 'ins-type',
 						'field'    => 'term_id',
 						'terms'    => $settings['category'],
 				),
@@ -1741,7 +1755,7 @@ protected function register_design_pagination_section_controls() {
 		if( ! empty( $settings['category_exclude'] ) ) {
 			$args['tax_query'] = array(
 				array(
-						'taxonomy' => 'cat-faq',
+						'taxonomy' => 'ins-type',
 						'field'    => 'term_id',
 						'terms'    => $settings['category_exclude'],
 						'operator' => 'NOT IN',
@@ -1928,7 +1942,7 @@ protected function register_design_pagination_section_controls() {
 
 	protected function render_post() {
 		$settings = $this->get_settings_for_display();
-		$term_list = get_the_terms( get_the_id(), 'cat-faq' );
+		$term_list = get_the_terms( get_the_id(), 'ins-type' );
 		$currentcolor='';
 		?>
 		<div class="swiper-slide">
@@ -1936,7 +1950,7 @@ protected function register_design_pagination_section_controls() {
         <?php if( '' !== $settings['show_category'] ) { ?>
           <div class="elementor-post__meta">
             <div class="elementor-post__cat-links"><?php
-              $terms = get_the_terms( get_the_id(), 'cat-faq' );
+              $terms = get_the_terms( get_the_id(), 'ins-type' );
               if ($terms) {
                 foreach($terms as $term) {
                   echo $term->name;

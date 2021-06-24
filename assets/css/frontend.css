@@ -666,7 +666,6 @@ article.be-latest-faqs{
 }
 article.be-latest-faqs .elementor-post__cat-links{
 	font-size: 13px;
-	font-weight: 400;
 	font-stretch: normal;
 	font-style: normal;
 	line-height: 1.18;
@@ -674,6 +673,16 @@ article.be-latest-faqs .elementor-post__cat-links{
 	color: #2f2f39;
 	font-family: "Inter", Sans-serif;
 	margin-bottom: 0;
+	font-weight: bold;
+}
+article.be-latest-faqs .elementor-post__cat-links::before{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin-right: 5px;
+	background-color: #1e73be;
+	content: '';
 }
 
 article.be-latest-faqs .elementor-post__meta {
@@ -716,6 +725,7 @@ article.be-latest-faqs a.elementor-post__read-more{
 	letter-spacing: -0.1px;
 	color: #2f2f39;
 	font-family: "Inter", Sans-serif;
+	opacity: 0.7;
 }
 article.be-latest-faqs .elementor-post__content {
     padding: 10px 15px 22px 15px;
@@ -765,7 +775,6 @@ article.be-latest-faqs .elementor-post__content {
 	position: absolute;
 	bottom: 21px;
 }
-
 
 @media only screen and (max-width: 767px){
 	.elementor-card .elementor-card__content{
