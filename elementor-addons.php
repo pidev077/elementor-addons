@@ -270,7 +270,7 @@ final class Elementor_Addons {
 				$countpost = 0;
 				?> <div class="not-found">
 					<i class="fa fa-frown-o" aria-hidden="true"></i>
-					<div><?php echo __("Not found result!"); ?></div>
+					<div><?php echo __("No found result!"); ?></div>
 				</div> <?php
 		}
 
